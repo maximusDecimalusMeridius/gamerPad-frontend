@@ -12,7 +12,7 @@ function Header() {
             <h1 id="title">
                 gamerPad
             </h1>
-            <div>
+            <div className="hamburger">
                 <Hamburger/>
             </div>
             <hr/>
