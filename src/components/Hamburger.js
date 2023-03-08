@@ -7,7 +7,7 @@ export default function Hamburger() {
             <div className="hamburger">
                 <div className="burger burger1"/>
                 <div className="burger burger2"/>
-                <div classname="burger burger3"/>
+                <div className="burger burger3"/>
             </div>
         </>
     )
