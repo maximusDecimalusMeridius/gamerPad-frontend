@@ -1,10 +1,9 @@
 import React from "react";
 import "./DashboardPage.css";
 import GamesList from "../../components/dynamic/GamesList/GamesList";
-import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
-import CommunitiesList from "../../components/dynamic/CommunitiesList/CommunitiesList";
 import NotesList from "../../components/dynamic/NotesList/NotesList";
-
+import SocialPage from "../SocialPage/SocialPage";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // psuedocode:
 // dashboard will need to only be rendered when logged in
 // will need boxes that will conditionally render games,
@@ -18,25 +17,33 @@ import NotesList from "../../components/dynamic/NotesList/NotesList";
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
 function DashboardPage() {
-    return(
-        <div>
-            <div>
-                <a>
-                    Games
-                </a>
-            </div>
-            <div>
-                <a>
-                    Social
-                </a>
-            </div>
-            <div>
-                <a>
-                    Notes
-                </a>
-            </div>
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/social">Social</Link>
+          </li>
+          <li>
+            <Link to="/notes">Notes</Link>
+          </li>
+          <li>
+            <Link to="/games">Games</Link>
+          </li>
+         
+        </ul>
+        <div className="dashboardContainer">
 
+        <Routes>
+          <Route path="/social" element={<SocialPage />} />
+
+          <Route path="/notes" element={<NotesList />} />
+
+          <Route path="/games" element={<GamesList />} />
+        </Routes>
         </div>
-    )
+      </div>
+    </Router>
+  );
 }
 export default DashboardPage;

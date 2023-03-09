@@ -8,7 +8,7 @@ function FriendsList() {
 
     return (
         <div className="friendContainer">
-
+                <p>Friends</p>
         </div>
     );
 }

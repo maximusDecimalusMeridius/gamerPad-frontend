@@ -12,7 +12,11 @@ import SocialPage from "./pages/SocialPage/SocialPage";
 function App() {
   return (
   <div>
+    
+            {/* <Link to="/dashboard">Dashboard</Link>  */}
     <Header />
+    <DashboardPage/>      
+    {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
   </div>
   );
 }

@@ -13,7 +13,7 @@ function GamesList() {
 
     return (
         <div className="gamesContainer">
-
+            <p>Games</p>
         </div>
     );
 }
