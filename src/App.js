@@ -14,8 +14,12 @@ function App() {
   <div>
     
             {/* <Link to="/dashboard">Dashboard</Link>  */}
-    <Header />
-    <DashboardPage/>      
+    <header>
+      <Header />
+    </header>
+    <main>
+      <LandingPage />    
+    </main>  
     {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
   </div>
   );
