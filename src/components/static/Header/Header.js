@@ -18,21 +18,26 @@ function Header() {
         // TODO: create the profile picture element that when clicked opens modal
     }
 
-    function openNavMenu() {
-        // TODO: Add pseudocode
-    }
+    function useNavMenu() {
+
+        
+        }
+        
+        // TODO: create modal/slideout menu when hamburger menu is clicked
+        // TODO: on modal have links to all main pages, and dashboard as home route
+        // TODO: on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
+        // TODO: add close box on modal/slide out menu
+    
 
     return (
-        <div>
-            <a>
-                <image onClick={openUserMenu}>
-                    {}
-                </image>
-            </a>
-            <h1 id="headerTitle">
-                gamerPad
-            </h1>
-            <div className="hamburger" onClick={openNavMenu}>
+        <div className="header">
+            <div className="imageContainer">
+            <a><image onClick={openUserMenu}>{}</image></a>
+            </div>
+            <div className="">
+            <h1 id="headerTitle">gamerPad</h1>
+            </div>
+            <div className="hamburger" onClick={useNavMenu}>
                 <div className="burger" id="burger-1"></div>
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
