@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./Friends.css";
-import SearchBar from "../../components/static/SearchBar/SearchBar"
+import SearchBar from "../../static/SearchBar/SearchBar"
 import FriendsList from "../../dynamic/FriendsList/FriendsList";
 
 function Friends() {

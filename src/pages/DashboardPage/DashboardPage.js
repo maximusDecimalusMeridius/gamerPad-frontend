@@ -2,7 +2,7 @@ import React from "react";
 import "./DashboardPage.css";
 import GamesList from "../../components/dynamic/GamesList/GamesList";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
-import CommunitiesList from "../../components/dynamic/CommunitiesList/CommunitiesList ";
+import CommunitiesList from "../../components/dynamic/CommunitiesList/CommunitiesList";
 import NotesList from "../../components/dynamic/NotesList/NotesList";
 
 // psuedocode:
@@ -20,6 +20,21 @@ import NotesList from "../../components/dynamic/NotesList/NotesList";
 function DashboardPage() {
     return(
         <div>
+            <div>
+                <a>
+                    Games
+                </a>
+            </div>
+            <div>
+                <a>
+                    Social
+                </a>
+            </div>
+            <div>
+                <a>
+                    Notes
+                </a>
+            </div>
 
         </div>
     )
