@@ -23,21 +23,19 @@ function Header() {
     }
 
     return (
-        <div>
-            <a>
-                <image onClick={openUserMenu}>
-                    {}
-                </image>
-            </a>
-            <h1 id="headerTitle">
-                gamerPad
-            </h1>
+        <div className="header">
+            <div className="imageContainer">
+                <div className="imagePlaceholder"></div>
+                {/* <a><image onClick={openUserMenu}>{}</image></a> */}
+            </div>
+            <div className="headerTitle">
+                <h1>gamerPad</h1>
+            </div>
             <div className="hamburger" onClick={openNavMenu}>
                 <div className="burger" id="burger-1"></div>
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
             </div>
-            <hr/>
         </div>
     )
 }
