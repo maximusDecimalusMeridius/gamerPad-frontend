@@ -8,7 +8,7 @@ function NotesList() {
 
     return (
         <div className="noteContainer">
-
+                <p>Notes</p>
         </div>
     );
 }

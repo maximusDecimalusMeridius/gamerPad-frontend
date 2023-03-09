@@ -14,7 +14,7 @@ import Communities from "../../components/static/Communities/Communities";
 function SocialPage() {
   return (
     <div>
-
+        <p>friends and communtities</p>
     </div>
   );
 }
