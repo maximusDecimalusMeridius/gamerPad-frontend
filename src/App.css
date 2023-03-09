@@ -1,0 +1,30 @@
+:root {
+
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img, video {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    height: calc(100vh - 51px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    
+}
+
+header {
+    width: 100%;
+    height: 50px;
+}
