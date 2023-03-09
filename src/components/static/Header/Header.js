@@ -32,17 +32,17 @@ function Header() {
     return (
         <div className="header">
             <div className="imageContainer">
-            <a><image onClick={openUserMenu}>{}</image></a>
+                <div className="imagePlaceholder"></div>
+                {/* <a><image onClick={openUserMenu}>{}</image></a> */}
             </div>
-            <div className="">
-            <h1 id="headerTitle">gamerPad</h1>
+            <div className="headerTitle">
+                <h1>gamerPad</h1>
             </div>
-            <div className="hamburger" onClick={useNavMenu}>
+            <div className="hamburger" onClick={openNavMenu}>
                 <div className="burger" id="burger-1"></div>
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
             </div>
-            <hr/>
         </div>
     )
 }
