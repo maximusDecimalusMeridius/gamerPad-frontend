@@ -27,20 +27,14 @@ function App() {
     {/* TODO: conditionally render landing page if user is not logged in (tokens) */}
 
             {/* <Link to="/dashboard">Dashboard</Link>  */}
-<<<<<<< HEAD
-    <Header />
-    <button id="loginBtn" onClick={handleClick}>Log In</button>
-    
-    {!loggedIn && <LandingPage/>}
-    {loggedIn && <DashboardPage/>}      
-=======
     <header>
       <Header />
     </header>
+    <button id='loginBtn' onClick={handleClick}>login</button>
     <main>
-      <LandingPage />    
+      {!loggedIn && <LandingPage />}
+      {loggedIn && <DashboardPage/>}    
     </main>  
->>>>>>> dev
     {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
   </div>
   );

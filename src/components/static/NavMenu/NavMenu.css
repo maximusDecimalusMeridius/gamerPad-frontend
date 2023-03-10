@@ -1,7 +1,17 @@
 .navMenu {
+    position: absolute;
+    right:1%;
+    top:20%;
+    height: 60vw;
+    width:40vw;
+}
+.navMenu ul {
+    list-style: none;
+    font-size: xx-large;
     
 }
 
 .navMenuItem {
-    
+    gap:25px;
+
 }
