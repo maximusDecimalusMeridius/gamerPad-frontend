@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Login.css"
 
 function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
@@ -11,7 +11,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 login: userValue,
                 password: passwordValue
             }
-            
+
             const result = await fetch("http://localhost:3001/api/users/login", {
                 method: "POST",
                 body: JSON.stringify(loginObj),

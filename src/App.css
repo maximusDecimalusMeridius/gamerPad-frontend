@@ -26,8 +26,7 @@ img, video {
 }
 
 main {
-    height: calc(100% - var(--header-height));
-    padding: 50px;
+    height: calc(100% - 51px);
     display: flex;
     justify-content: center;
     align-items: flex-start;

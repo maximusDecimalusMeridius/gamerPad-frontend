@@ -35,7 +35,7 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           />
       </header>
-      <button id='loginBtn' onClick={handleClick}>login</button>
+      {/* <button id='loginBtn' onClick={handleClick}>login</button> */}
       <main>
         {!isLoggedIn && <LandingPage 
                         setIsLoggedIn={setIsLoggedIn} />}

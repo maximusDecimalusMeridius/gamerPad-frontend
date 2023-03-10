@@ -53,8 +53,6 @@ function LandingPage({isLoggedIn, setIsLoggedIn}) {
         }
     }
 
-
-
     return (
         <div className="landingContainer">
             <h2 className="landingTitle">{activePage} Page</h2>
