@@ -8,11 +8,18 @@ import NotesList from "../../components/dynamic/NotesList/NotesList";
 // TODO: create an accordian menu with multiple divs
 // TODO: when a div is clicked on make that area expand to show full note
 
+const style = {
+  searchbar: {
+    width: "80%",
+    height: "25px"
+  }
+}
+
 function NotesPage() {
   return (
     <div>
       {/* for testing */}
-        <p>notes</p>
+        <div id="test-searchbar" style={style.searchbar}>Test</div>
     </div>
   );
 }

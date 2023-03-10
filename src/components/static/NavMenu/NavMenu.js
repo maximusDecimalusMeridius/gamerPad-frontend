@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./NavMenu.css"
 
-function NavMenu({isLoggedIn, setIsLoggedIn}) {
+function NavMenu({ isLoggedIn, setIsLoggedIn }) {
 
     const endSession = () => {
         setIsLoggedIn(false);
@@ -11,8 +11,9 @@ function NavMenu({isLoggedIn, setIsLoggedIn}) {
     }
 
     return (
-            <div className="navMenuContainer">
-                <ul className="navMenu">
+        <div className="navMenuContainer">
+            <ul className="navMenu">
+                {isLoggedIn ? (<>
                     <li className="navMenuItem" id="navMenuItem-1">
                         <Link to="/dashboard">Home</Link>
                     </li>
@@ -28,14 +29,22 @@ function NavMenu({isLoggedIn, setIsLoggedIn}) {
                     <li className="navMenuItem" id="navMenuItem-5">
                         <Link to="/communities">Communities</Link>
                     </li>
-                    {/* ternary operator to conditionally render the logout button */}
-                    { isLoggedIn &&
-                            <li className="navMenuItem" id="logoutButton" onClick={endSession}>
-                                Logout
-                            </li>            
-                    }
-                </ul>
-            </div>
+                    <li className="navMenuItem" id="logoutButton" onClick={endSession}>
+                        Logout
+                    </li>
+                </>
+                ) : (<>
+                    <li className="navMenuItem" id="navMenuItem-1">
+                        <Link to="/dashboard">About Us</Link>
+                    </li>
+                    <li className="navMenuItem" id="navMenuItem-2">
+                        <Link to="/games">Something Else!</Link>
+                    </li>
+                </>
+                )}
+
+            </ul>
+        </div>
     )
 }
 export default NavMenu;
