@@ -4,7 +4,7 @@ import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
 
-function Header({isLoggedIn, setIsLoggedIn}) {
+function Header({isLoggedIn, setIsLoggedIn, Router, Routes, Route, Link}) {
     
     // const [menuType, setMenuType] = useState("");
     const [openNav, setOpenNav] = useState(false);
@@ -50,6 +50,10 @@ function Header({isLoggedIn, setIsLoggedIn}) {
              {openNav && <NavMenu
                             isLoggedIn={isLoggedIn}
                             setIsLoggedIn={setIsLoggedIn}
+                            Router={Router}
+                            Routes={Routes}
+                            Route={Route}
+                            Link={Link}
                         />}
             </div>
         </div>

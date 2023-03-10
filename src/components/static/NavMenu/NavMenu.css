@@ -1,12 +1,14 @@
 .navMenu {
+    height: 100vh;
     position: absolute;
+    background: rgb(183, 183, 183);
+    opacity: .5;
+    top: 0px;
+    right: 0px;
     display: grid;
-    right:-1%;
-    top:4%;
-    height: 60vw;
-    width:25vw;
-    
+    width: 200px;
 }
+
 .navMenu ul {
     height: 80vh;
     min-height: 580px;
