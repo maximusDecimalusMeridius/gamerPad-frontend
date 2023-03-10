@@ -2,7 +2,7 @@
     width: 80%;
     max-width: 600px;
     height: 80%;
-    min-height: 150px;
+    min-height: 250px;
     max-height: 500px;
     margin: 25px;
     background: var(--window-light-gray);
@@ -22,10 +22,10 @@
 
 /* child form and input styling for login and signup */
 .landingContainer > form {
-    height: 100%;
+    height: 80%;
     min-height: 160px;
     max-height: 300px;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     place-self: center;
     background: #323232;
@@ -70,7 +70,7 @@
 
 /* p tag to toggle between login and signup form modals */
 #toggleButton {
-    margin: 15px;
+    margin: 10px;
     cursor: pointer;
     user-select: none;
     justify-self: flex-start;
