@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Header from "./components/static/Header/Header";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
@@ -10,6 +10,9 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SocialPage from "./pages/SocialPage/SocialPage";
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
   <div className="appContainer">
             {/* <Link to="/dashboard">Dashboard</Link>  */}
@@ -17,7 +20,10 @@ function App() {
       <Header />
     </header>
     <main>
-      <LandingPage />    
+      <LandingPage 
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+      />    
     </main>  
     {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
   </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css"
 
-function Login({activePage, userValue, passwordValue, handleChange}) {
+function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,7 +22,9 @@ function Login({activePage, userValue, passwordValue, handleChange}) {
 
             const data = await result.json();
 
-            console.log(data);
+            if(result.ok){
+                window.location.href="/dashboard";
+            }
         } catch (error){
             console.error(error);
         }
