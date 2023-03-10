@@ -5,6 +5,7 @@ import Signup from "../../components/static/Signup/Signup";
 
 function LandingPage() {
     const [activePage, setActivePage] = useState("Login");
+    const [otherPage, setOtherPage] = useState("Signup")
     
     const renderPage = () => {
         if(activePage === "Login") {
@@ -17,8 +18,10 @@ function LandingPage() {
     const setPage = () => {
         if(activePage === "Login"){
             setActivePage("Signup");
+            setOtherPage("Login");
         } else {
             setActivePage("Login");
+            setOtherPage("Signup");
         }
     }
 
@@ -27,10 +30,10 @@ function LandingPage() {
             <h2 className="landingTitle">{activePage} Page</h2>
             {renderPage()}
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage"></p>
+                <p className="warningMessage" id="warningMessage">Oh noes!</p>
                 <button className="submitButton" id="submitButton" data-activepage={activePage}>{activePage}</button>
             </div>
-            <p id="toggleButton" onClick={setPage}>Click to {activePage}</p>
+            <p id="toggleButton" onClick={setPage}>Click to {otherPage}</p>
         </div>
     );
 }

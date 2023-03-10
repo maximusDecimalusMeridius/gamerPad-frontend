@@ -22,10 +22,7 @@ function App() {
     document.querySelector('#loginBtn').textContent = "logout"}
  }
   return (
-  <div>
-    {/* TODO: conditionally render dashboard if user is logged (tokens) */}
-    {/* TODO: conditionally render landing page if user is not logged in (tokens) */}
-
+  <div className="appContainer">
             {/* <Link to="/dashboard">Dashboard</Link>  */}
     <header>
       <Header />
