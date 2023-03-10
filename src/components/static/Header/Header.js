@@ -6,7 +6,7 @@ import UserMenu from "../../static/UserMenu/UserMenu.js";
 
 function Header() {
     
-    const [menuType, setMenuType] = useState("");
+    // const [menuType, setMenuType] = useState("");
     const [openNav, setOpenNav] = useState(false);
     //TODO: Pass page prop and setter to Modal with menu type
 

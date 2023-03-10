@@ -1,17 +1,27 @@
 .navMenu {
     position: absolute;
-    right:1%;
-    top:20%;
+    display: grid;
+    right:-1%;
+    top:4%;
     height: 60vw;
-    width:40vw;
+    width:25vw;
+    
 }
 .navMenu ul {
+    height: 80vh;
+    border: solid transparent;
+    border-radius: 15px;
+    background-color: #bebebe;
     list-style: none;
     font-size: xx-large;
+    box-shadow: 5px 10px 10px gray;
     
 }
 
 .navMenuItem {
-    gap:25px;
-
+    text-align: center;
+    margin-top: 50px;
+}
+#navMenuItem-1{
+    margin-top: 120px;
 }
