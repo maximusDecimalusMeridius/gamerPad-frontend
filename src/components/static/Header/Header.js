@@ -3,7 +3,6 @@ import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
-
 function Header() {
     
     // const [menuType, setMenuType] = useState("");

@@ -1,5 +1,6 @@
 
 import React, {useState} from 'react';
+import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Header from "./components/static/Header/Header";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
@@ -22,18 +23,26 @@ function App() {
     document.querySelector('#loginBtn').textContent = "logout"}
  }
   return (
+    <Router>
   <div className="appContainer">
             {/* <Link to="/dashboard">Dashboard</Link>  */}
     <header>
-      <Header />
+      <Header
+      Routes={Routes}
+      Route={Route}
+      Link={Link} />
     </header>
     <button id='loginBtn' onClick={handleClick}>login</button>
     <main>
       {!loggedIn && <LandingPage />}
-      {loggedIn && <DashboardPage/>}    
+      {loggedIn && <DashboardPage
+                    Routes={Routes}
+                    Route={Route}
+                    Link={Link} />}    
     </main>  
     {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
   </div>
+    </Router>
   );
 }
 

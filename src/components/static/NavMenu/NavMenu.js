@@ -1,17 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import DashboardPage from "../../../pages/DashboardPage/DashboardPage";
 import GamesPage from "../../../pages/GamesPage/GamesPage";
 import SocialPage from "../../../pages/SocialPage/SocialPage";
 import NotesPage from "../../../pages/NotesPage/NotesPage";
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import { Routes, Route, Link} from "react-router-dom";
 
 import "./NavMenu.css"
 
 function NavMenu() {
 
     return (
-        <Router>
-
             <div className="navMenu">
                 <ul>
                     <li className="navMenuItem" id="navMenuItem-1">
@@ -31,9 +29,8 @@ function NavMenu() {
                     </li>
                     {/* <li className="navMenuItem" id="navMenuItem-6">
                    <Link to="/Logout">Logout</Link>
-                    </li> */}
+                </li> */}
                 </ul>
-            </div>
             <div className="navRoutesContainer">
         <Routes>
             <Route path="/" element={<DashboardPage/>}/>
@@ -44,8 +41,7 @@ function NavMenu() {
             {/* <Route path="/Logout" element={<Logout/>}/> */}
         </Routes>
             </div>
-
-        </Router>
+            </div>
     )
 }
 export default NavMenu;
