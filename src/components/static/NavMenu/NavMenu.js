@@ -7,7 +7,12 @@ import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
 import "./NavMenu.css"
 
-function NavMenu() {
+function NavMenu({isLoggedIn, setIsLoggedIn}) {
+
+    const endSession = () => {
+        setIsLoggedIn(false);
+        localStorage.token = "";
+    }
 
     return (
         <Router>
@@ -15,23 +20,26 @@ function NavMenu() {
             <div className="navMenu">
                 <ul>
                     <li className="navMenuItem" id="navMenuItem-1">
-                   <Link to="/">Home</Link>
+                        <Link to="/">Home</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-2">
-                   <Link to="/games">Games</Link>
+                        <Link to="/games">Games</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-3">
-                   <Link to="/friends">Friends</Link>
+                        <Link to="/friends">Friends</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-4">
-                   <Link to="/notes">Notes</Link>
+                        <Link to="/notes">Notes</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-5">
-                   <Link to="/communities">Communities</Link>
+                        <Link to="/communities">Communities</Link>
                     </li>
-                    {/* <li className="navMenuItem" id="navMenuItem-6">
-                   <Link to="/Logout">Logout</Link>
-                    </li> */}
+                    {/* ternary operator to conditionally render the logout button */}
+                    { isLoggedIn ?
+                            <li className="navMenuItem" id="navMenuItem-6" onClick={endSession}>
+                                Link
+                            </li> : ""               
+                    }
                 </ul>
             </div>
             <div className="navRoutesContainer">

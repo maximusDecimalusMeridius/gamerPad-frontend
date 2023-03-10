@@ -24,7 +24,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
             const data = await result.json();
             console.log("Logged In!");
             console.log(data);
-            //TODO: store token in localStorage
+            localStorage.token = data.token;
+            console.log(localStorage.getItem("token"));
         } catch (error){
             console.error(error);
         }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Login.css"
 
 function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
@@ -23,7 +23,8 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             const data = await result.json();
 
             if(result.ok){
-                window.location.href="/dashboard";
+                setIsLoggedIn(true);
+                localStorage.token = data.token;
             }
         } catch (error){
             console.error(error);

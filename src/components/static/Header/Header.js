@@ -4,7 +4,7 @@ import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
 
-function Header() {
+function Header({isLoggedIn, setIsLoggedIn}) {
     
     // const [menuType, setMenuType] = useState("");
     const [openNav, setOpenNav] = useState(false);
@@ -47,7 +47,10 @@ function Header() {
                 <div className="burger" id="burger-3"></div>
             </div>
             <div className="navMenu">
-             {openNav && <NavMenu/>}
+             {openNav && <NavMenu
+                            isLoggedIn={isLoggedIn}
+                            setIsLoggedIn={setIsLoggedIn}
+                        />}
             </div>
         </div>
     )
