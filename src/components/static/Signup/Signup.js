@@ -3,16 +3,11 @@ import "./Signup.css"
 
 function Signup() {
     return (
-        <div className="signupContainer">
-            <div className="signupContainer">
-            <form id="signupForm">
-                <input id="signupUsername" required></input>
-                <input id="signupPassword" required></input>
-                <input id="signupConfirm" required></input>
-            </form>
-            <div className="signupBuffer"></div>
-        </div>
-        </div>
+        <form id="signupForm">
+            <input id="signupUsername" placeholder="username" required></input>
+            <input id="signupPassword" placeholder="password" required></input>
+            <input id="signupConfirm" placeholder="verify password" required></input>
+        </form>
     );
 }
 
