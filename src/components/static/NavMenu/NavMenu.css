@@ -1,7 +1,39 @@
 .navMenu {
+    position: absolute;
+    display: grid;
+    right:-1%;
+    top:4%;
+    height: 60vw;
+    width:25vw;
     
+}
+.navMenu ul {
+    height: 80vh;
+    min-height: 580px;
+    border: solid transparent;
+    border-radius: 15px;
+    background-color: #bebebe;
+    list-style: none;
+    font-size: xx-large;
+    box-shadow: 5px 10px 10px gray;
+}
+a:link, a:visited,a:hover, a:active {
+    text-decoration: none;
+    color:#bebebe;
 }
 
 .navMenuItem {
+    margin-left: 35px;
+    margin-top: 50px;
+    padding: 5px;
+    width:340px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #323232;
     
+    
+    
+}
+#navMenuItem-1{
+    margin-top: 120px;
 }

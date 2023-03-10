@@ -20,7 +20,7 @@ function DashboardPage() {
   return (
     <Router>
       <div>
-        <ul>
+        <ul className="pageLinks">
           <li>
             <Link to="/social">Social</Link>
           </li>
@@ -36,11 +36,11 @@ function DashboardPage() {
 
           <Routes>
             <Route path="/social" element={<SocialPage />} />
-
+            {/* will be rendered differently than notes and games, need to make different component for this item */}
             <Route path="/notes" element={<NotesList />} />
 
-            <Route path="/games" element={<GamesList />} />
-          </Routes>
+          <Route path="/games" element={<GamesList />} />
+        </Routes>
         </div>
       </div>
     </Router>

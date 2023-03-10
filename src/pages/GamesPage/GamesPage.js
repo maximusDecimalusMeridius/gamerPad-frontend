@@ -12,7 +12,8 @@ import GamesList from "../../components/dynamic/GamesList/GamesList";
 function GamesPage() {
   return (
   <div>
-
+    {/* for testing */}
+    <p>games</p>
   </div>
   );
 }

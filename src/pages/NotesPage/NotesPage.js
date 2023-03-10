@@ -11,7 +11,8 @@ import NotesList from "../../components/dynamic/NotesList/NotesList";
 function NotesPage() {
   return (
     <div>
-      
+      {/* for testing */}
+        <p>notes</p>
     </div>
   );
 }
