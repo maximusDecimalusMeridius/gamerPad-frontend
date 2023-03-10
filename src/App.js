@@ -26,29 +26,31 @@ function App() {
   //   }
   // }
   return (
-    <div className="appContainer">
-      {/* <Link to="/dashboard">Dashboard</Link>  */}
-      <header>
-        <Header 
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          />
-      </header>
-      {/* <button id='loginBtn' onClick={handleClick}>login</button> */}
-      <main>
-        {!isLoggedIn && <LandingPage 
-                        setIsLoggedIn={setIsLoggedIn} />}
-        {isLoggedIn && <DashboardPage 
-                        Router={Router}
-                        Routes={Routes}
-                        Route={Route}
-                        Link={Link}
-                      />
+    <Router>
+      <div className="appContainer">
+        {/* <Link to="/dashboard">Dashboard</Link>  */}
+        <header>
+          <Header 
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            />
+        </header>
+        {/* <button id='loginBtn' onClick={handleClick}>login</button> */}
+        <main>
+          {!isLoggedIn && <LandingPage 
+                          setIsLoggedIn={setIsLoggedIn} />}
+          {isLoggedIn && <DashboardPage 
+                          Router={Router}
+                          Routes={Routes}
+                          Route={Route}
+                          Link={Link}
+                        />
 
-                        }
-      </main>
-      {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
-    </div>
+                          }
+        </main>
+        {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
+      </div>
+    </Router>
   );
 }
 
