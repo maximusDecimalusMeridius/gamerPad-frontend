@@ -11,8 +11,7 @@ import SocialPage from "./pages/SocialPage/SocialPage";
 
 function App() {
   return (
-  <div>
-    
+  <div className="appContainer">
             {/* <Link to="/dashboard">Dashboard</Link>  */}
     <header>
       <Header />
