@@ -3,7 +3,8 @@ import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
-function Header() {
+
+function Header({isLoggedIn, setIsLoggedIn}) {
     
     // const [menuType, setMenuType] = useState("");
     const [openNav, setOpenNav] = useState(false);
@@ -18,18 +19,13 @@ function Header() {
         // TODO: create the profile picture element that when clicked opens modal
     }
 
-    function useNavMenu() {
-        setOpenNav(!openNav)
+    const useNavMenu = (event) => {
+        setOpenNav(!openNav);
     }
         // TODO: create modal/slideout menu when hamburger menu is clicked
         // TODO: on modal have links to all main pages, and dashboard as home route
         // TODO: on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
         // TODO: add close box on modal/slide out menu
-       
-      
-      
-        
-    
 
     return (
         <div className="header">
@@ -40,14 +36,16 @@ function Header() {
             <div className="headerTitle">
                 <h1>gamerPad</h1>
             </div>
-            <div className="hamburger" onClick={useNavMenu}>
+            <div className="hamburger" id="hamburger" onClick={useNavMenu}>
                 <div className="burger" id="burger-1"></div>
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
             </div>
-            <div className="navMenu">
-             {openNav && <NavMenu/>}
-            </div>
+            
+            {openNav && <NavMenu
+                            isLoggedIn={isLoggedIn}
+                            setIsLoggedIn={setIsLoggedIn}
+                        />}
         </div>
     )
 

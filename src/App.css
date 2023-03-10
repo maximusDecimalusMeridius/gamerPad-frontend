@@ -1,6 +1,7 @@
 :root {
     --window-light-gray: #bebebe;
     --header-height: 50px;
+    --nav-menu-text-color: #bebebe;
 }
 
 /* #root {
@@ -26,14 +27,33 @@ img, video {
 }
 
 main {
-    height: calc(100% - var(--header-height));
+    height: calc(100% - 51px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 body {
     height: 100%;
+}
+
+button {
+    cursor: pointer;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    background: rgb(126, 11, 11);
+    color: white;
+    border: 2px solid white;
+}
+
+button:hover {
+    background: rgb(157, 22, 22);
+}
+
+button:active {
+    box-shadow: inset 1px 1px 2px white,
+                inset -1px -1px 2px white;
 }
 
 #root {

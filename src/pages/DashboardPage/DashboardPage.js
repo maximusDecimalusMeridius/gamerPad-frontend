@@ -18,32 +18,30 @@ import { Routes, Route, Link } from "react-router-dom";
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
 function DashboardPage() {
   return (
-   
-      <div>
-        <ul className="pageLinks">
-          <li>
-            <Link to="/social">Social</Link>
-          </li>
-          <li>
-            <Link to="/notes">Notes</Link>
-          </li>
-          <li>
-            <Link to="/games">Games</Link>
-          </li>
+    <div>
+      <ul className="pageLinks">
+        <li>
+          <Link to="/social">Social</Link>
+        </li>
+        <li>
+          <Link to="/notes">Notes</Link>
+        </li>
+        <li>
+          <Link to="/games">Games</Link>
+        </li>
 
-        </ul>
-        <div className="dashboardContainer">
+      </ul>
+      <div className="dashboardContainer">
 
-          <Routes>
-            <Route path="/social" element={<SocialPage />} />
-            {/* will be rendered differently than notes and games, need to make different component for this item */}
-            <Route path="/notes" element={<NotesList />} />
+        <Routes>
+          <Route path="/social" element={<SocialPage />} />
+          {/* will be rendered differently than notes and games, need to make different component for this item */}
+          <Route path="/notes" element={<NotesList />} />
 
           <Route path="/games" element={<GamesList />} />
         </Routes>
-        </div>
       </div>
-
+    </div>
   );
 }
 export default DashboardPage;
