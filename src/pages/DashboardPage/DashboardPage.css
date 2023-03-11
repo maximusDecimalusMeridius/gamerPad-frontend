@@ -1,0 +1,32 @@
+.dashboardContainer {
+    height: 80%;
+    width: 80%;
+    border: 2px solid black;
+}
+
+.pageTabs {
+    height: 50px;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+}
+
+.pageTab {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border-top: 2px solid red;
+    border-right: 2px solid red;
+    border-left: 2px solid red;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.pageTab a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

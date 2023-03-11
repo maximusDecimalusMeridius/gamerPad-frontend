@@ -37,6 +37,7 @@ function Header({isLoggedIn, setIsLoggedIn}) {
             <div className="headerTitle">
                 <h1>gamerPad</h1>
             </div>
+            
             <div className="hamburger" id="hamburger" onClick={useNavMenu}>
                 <div className="burger" id="burger-1"></div>
                 <div className="burger" id="burger-2"></div>

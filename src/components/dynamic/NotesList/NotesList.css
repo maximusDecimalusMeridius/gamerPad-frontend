@@ -1,3 +1,48 @@
 .noteContainer {
-    
+    height: calc(100% - 50px);
+    width: 100%;
+    background-color: var(--window-light-gray);
+    margin: 0 auto;
+}
+
+.selectNotes {
+    height: fit-content;
+    width: 100%;
+    padding-right: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: center;
+    gap: 5px; 
+}
+
+.selectNotes label {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.notes {
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.noteBox {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+}
+
+.noteCard {
+    width: 250px;
+    height: 150px;
+    margin: 5px;
+    border: 2px solid green;
+    border-radius: 15px;
+}
+
+@media (width < 350px) {
+    .selectNotes {
+        justify-content: center;
+    }
 }
