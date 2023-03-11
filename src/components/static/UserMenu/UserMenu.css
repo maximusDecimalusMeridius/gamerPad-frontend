@@ -1,7 +1,41 @@
-.userMenu {
-    
+.userMenuContainer {
+    height: 100vh;
+    width: 200px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: grid;
 }
 
-.userMenuItem {
-    
+.userMenu {
+    height: 80vh;
+    min-height: 100%;
+    border: solid transparent;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #323232;
+    list-style: none;
+    font-size: 24px;
+    box-shadow: 5px 10px 10px gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+}
+.userMenuItem{
+    padding: 5px;
+    width: 90%;
+    border-radius: 20px;
+    background-color: #323232;
+    color: var(--nav-menu-text-color)
+}
+#exitBox{
+    background-color:var(--nav-menu-text-color);
+    cursor: pointer;
+    color:red;
+    border-radius: 5px;
+    position: absolute;
+    top:4px;
+    left: 4px;
 }
