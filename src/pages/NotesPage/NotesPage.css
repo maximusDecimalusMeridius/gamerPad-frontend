@@ -1,6 +1,0 @@
-.noteContainer {
-    height: calc(100% - 50px);
-    width: 100%;
-    background-color: var(--window-light-gray);
-    margin: 0 auto;
-}
