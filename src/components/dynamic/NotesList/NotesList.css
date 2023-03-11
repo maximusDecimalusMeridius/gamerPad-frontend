@@ -2,7 +2,6 @@
     height: calc(100% - 50px);
     width: 100%;
     background-color: var(--window-light-gray);
-    margin: 0 auto;
 }
 
 .selectNotes {
@@ -37,10 +36,44 @@
 
 .noteCard {
     width: 250px;
-    height: 150px;
+    height: 200px;
     margin: 5px;
-    border: 2px solid green;
-    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    resize: both;
+    overflow: auto;
+}
+
+.noteHeader {
+    max-height: 55px;
+    padding: 5px;
+    /* border-top-left-radius: inherit;
+    border-top-right-radius: inherit; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* weird 1px right margin offset, need to review */
+    margin-left: -1px;
+}
+
+.noteTitle {
+    font-size: 16px;
+    font-weight: bold;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.noteDate {
+    font-size: 12px;
+    justify-self: flex-end;
+}
+
+.noteContent {
+    padding: 5px;
+    background-color: white;
+    flex-grow: 1;
 }
 
 @media (width < 350px) {

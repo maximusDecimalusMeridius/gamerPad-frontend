@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
 function NotesList() {
@@ -6,26 +7,6 @@ function NotesList() {
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
     const [writtenNotes, setWrittenNotes] = useState([]);
     const [sharedNotes, setSharedNotes] = useState([]);
-
-    const style = {
-        searchbar: {
-            width: "100%",
-            height: "50px",
-            background: "blue",
-            display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "center"
-        },
-        input: {
-            width: "500px",
-            padding: "2px"
-        },
-        button: {
-            width: "50px",
-            height: "25px",
-            padding: "0px"
-        }
-    }
 
     useEffect(() => { fetchNotes() },[]);
 
@@ -61,24 +42,24 @@ function NotesList() {
     }
         
     const wNotes = writtenNotes.map( (note, index) => 
-        <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{background: `${note.color}`}}>
-            <div>{note.id}</div>
-            <div>{note.createdAt}</div>
-            <div>{note.color}</div>
-            <div>{note.textContent}</div>
-            <div>{note.title}</div>
+        <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{border: `3px solid ${note.color}`}} resize>
+            <div className="noteHeader" style={{background: `${note.color}`}}>
+                <div className="noteTitle">{note.title}</div>
+                <div className="noteDate">{note.createdAt.slice(0,10)}</div>
+            </div>
+            <div className="noteContent">{note.textContent}</div>
         </div>
     )
 
     const sNotes = sharedNotes.map( (note, index) => 
                 
-        <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{background: `${note.color}`}}>
-            <div>{note.id}</div>
-            <div>{note.createdAt}</div>
-            <div>{note.color}</div>
-            <div>{note.textContent}</div>
-            <div>{note.title}</div>
-        </div>
+    <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{border: `3px solid ${note.color}`}} resize>
+    <div className="noteHeader" style={{background: `${note.color}`}}>
+        <div className="noteTitle">{note.title}</div>
+        <div className="noteDate">{note.createdAt.slice(0,10)}</div>
+    </div>
+    <div className="noteContent">{note.textContent}</div>
+</div>
     )
 
     const renderNotes = () => {
@@ -100,10 +81,7 @@ function NotesList() {
 
     return (
         <div className="noteContainer">
-            <div id="test-searchbar" style={style.searchbar}>
-                <input style={style.input} placeholder="type to search"></input>
-                <button style={style.button}>Add</button>
-            </div>
+            <SearchBar />
 
             <div className="noteBox">
                 <div className="selectNotes" onChange={handleChange}>
