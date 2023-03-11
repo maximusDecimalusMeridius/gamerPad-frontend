@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProfilePage.css';
+import SearchBar from "../../components/static/SearchBar/SearchBar"
 // TODO: create a searchbar for other users
 // TODO: create an add button that will add whichever user is currently selected
 // TODO: create an accordian menu with multiple divs
@@ -8,9 +9,11 @@ import './ProfilePage.css';
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
 function ProfilePage() {
+
   return (
   <div>
-
+    <p>profile</p>
+    <SearchBar/>
   </div>
   );
 }

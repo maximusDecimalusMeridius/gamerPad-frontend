@@ -8,7 +8,8 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import NotesPage from "./pages/NotesPage/NotesPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SocialPage from "./pages/SocialPage/SocialPage";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage"
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 // TODO: set state for rendering dashboard and landing page with boolean value 
 function App() {
   
@@ -39,16 +40,14 @@ function App() {
         <main>
           {!isLoggedIn && <LandingPage 
                           setIsLoggedIn={setIsLoggedIn} />}
-          {isLoggedIn && <DashboardPage 
-                          Router={Router}
-                          Routes={Routes}
-                          Route={Route}
-                          Link={Link}
-                        />
-
-                          }
+          {isLoggedIn && <HomePage />}
         </main>
         {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
+                    <Routes>
+                        <Route exact path="/DashboardPage" component={DashboardPage} />
+                        <Route exact path="/ProfilePage" component={ProfilePage} />
+                    </Routes>
+        
       </div>
     </Router>
   );

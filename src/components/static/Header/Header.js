@@ -6,11 +6,12 @@ import UserMenu from "../../static/UserMenu/UserMenu.js";
 
 function Header({isLoggedIn, setIsLoggedIn}) {
     
-    // const [menuType, setMenuType] = useState("");
+    const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
     //TODO: Pass page prop and setter to Modal with menu type
 
-    function openUserMenu() {
+    const openUserMenu = (event) => {
+        setMenuType(!menuType);
         // TODO: create a modal when profile picture is clicked
         // TODO: on modal have link to profile page
         // TODO: on modal a link to update profile picture is shown (cloudinary?)
@@ -22,14 +23,14 @@ function Header({isLoggedIn, setIsLoggedIn}) {
     const useNavMenu = (event) => {
         setOpenNav(!openNav);
     }
-        // TODO: create modal/slideout menu when hamburger menu is clicked
-        // TODO: on modal have links to all main pages, and dashboard as home route
+        // create modal/slideout menu when hamburger menu is clicked
+        //  on modal have links to all main pages, and dashboard as home route
         // TODO: on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
         // TODO: add close box on modal/slide out menu
 
     return (
         <div className="header">
-            <div className="imageContainer">
+            <div className="imageContainer" onClick={openUserMenu}>
                 <div className="imagePlaceholder"></div>
                 {/* <a><image onClick={openUserMenu}>{}</image></a> */}
             </div>
@@ -46,6 +47,10 @@ function Header({isLoggedIn, setIsLoggedIn}) {
             {openNav && <NavMenu
                             isLoggedIn={isLoggedIn}
                             setIsLoggedIn={setIsLoggedIn}
+                        />}
+            {menuType && <UserMenu
+                            menuType={menuType}
+                            setMenuType={setMenuType}
                         />}
         </div>
     )
