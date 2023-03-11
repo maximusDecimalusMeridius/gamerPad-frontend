@@ -60,8 +60,8 @@ function NotesList() {
         }
     }
         
-    const wNotes = writtenNotes.map( note => 
-        <div className="noteCard">
+    const wNotes = writtenNotes.map( (note, index) => 
+        <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{background: `${note.color}`}}>
             <div>{note.id}</div>
             <div>{note.createdAt}</div>
             <div>{note.color}</div>
@@ -70,8 +70,9 @@ function NotesList() {
         </div>
     )
 
-    const sNotes = sharedNotes.map( note => 
-        <div className="noteCard">
+    const sNotes = sharedNotes.map( (note, index) => 
+                
+        <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{background: `${note.color}`}}>
             <div>{note.id}</div>
             <div>{note.createdAt}</div>
             <div>{note.color}</div>
