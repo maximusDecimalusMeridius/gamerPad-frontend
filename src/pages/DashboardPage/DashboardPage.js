@@ -18,20 +18,19 @@ import { Routes, Route, Link } from "react-router-dom";
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
 function DashboardPage() {
   return (
-    <div>
-      <ul className="pageLinks">
-        <li>
+    <div className="dashboardContainer">
+      <ul className="pageTabs">
+        <li className="pageTab" id="pageTab-1">
           <Link to="/social">Social</Link>
         </li>
-        <li>
+        <li className="pageTab" id="pageTab-2">
           <Link to="/notes">Notes</Link>
         </li>
-        <li>
+        <li className="pageTab" id="pageTab-3">
           <Link to="/games">Games</Link>
         </li>
-
       </ul>
-      <div className="dashboardContainer">
+
 
         <Routes>
           <Route path="/social" element={<SocialPage />} />
@@ -40,7 +39,6 @@ function DashboardPage() {
 
           <Route path="/games" element={<GamesList />} />
         </Routes>
-      </div>
     </div>
   );
 }

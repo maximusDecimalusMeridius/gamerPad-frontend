@@ -2,6 +2,7 @@
     --window-light-gray: #bebebe;
     --header-height: 50px;
     --nav-menu-text-color: #bebebe;
+    --button-red: rgb(126, 11, 11);
 }
 
 /* #root {
@@ -27,7 +28,8 @@ img, video {
 }
 
 main {
-    height: calc(100% - 51px);
+    height: calc(100% - var(--header-height));
+    padding-top: 25px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -42,7 +44,7 @@ button {
     padding: 6px 12px;
     font-weight: bold;
     border-radius: 5px;
-    background: rgb(126, 11, 11);
+    background: var(--button-red);
     color: white;
     border: 2px solid white;
 }
