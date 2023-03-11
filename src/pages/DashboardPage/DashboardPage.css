@@ -2,6 +2,8 @@
     height: 100%;
     width: 100%;
     border: 2px solid black;
+    display: flex;
+    flex-direction: column;
 }
 
 .pageTabs {
@@ -12,6 +14,7 @@
 }
 
 .pageTab {
+    min-height: 50px;
     flex-grow: 1;
     display: flex;
     justify-content: center;
