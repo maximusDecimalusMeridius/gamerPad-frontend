@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes, Navigate } from "react-router-dom";
+import ProfilePage from "../../../pages/ProfilePage/ProfilePage";
 import "./UserMenu.css"
 
 function UserMenu({menuType, setMenuType}) {
@@ -7,12 +8,13 @@ function UserMenu({menuType, setMenuType}) {
         menuType && setMenuType(false)
     }
     //
-
+    
+    <Navigate to="/ProfilePage" />
     return (
-        <>  <div className="userMenuContainer">
+       <div className="userMenuContainer">
             <ul className="userMenu">
                 <div id='exitBox' onClick={handleExitClick}>X</div>
-                <li className="userMenuItem" id="userMenuItem-1"><Link to="/profile">Profile Name</Link></li>
+                <li className="userMenuItem" id="userMenuItem-1"><Link to="/ProfilePage">Profile Name</Link></li>
                 <br /><br />
                 <li className="userMenuItem" id="userMenuItem-2">Add Account</li>
                 <li className="userMenuItem" id="userMenuItem-3">Add Friend</li>
@@ -23,8 +25,10 @@ function UserMenu({menuType, setMenuType}) {
                 <br /><br />
                 <li className="userMenuItem" id="userMenuItem-7">Logout</li>
             </ul>
+            <Routes>
+            <Route to="/ProfilePage" element={<ProfilePage/>}/>
+            </Routes>
         </div>
-        </>
     )
 }
 export default UserMenu;
