@@ -73,4 +73,6 @@ button:active {
 header {
     width: 100%;
     height: var(--header-height);
+    position: fixed;
+    z-index: 3;
 }
