@@ -1,3 +1,104 @@
 .gamesContainer {
-    
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background: blue;
+}
+
+.gameCard {
+    width: 50%;
+    min-height: 125px;
+    margin: 10px;
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid blue;
+    background: white;
+}
+
+.gameCardHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gameCardTitle {
+
+}
+
+.gameCardPlatforms {
+    padding-right: 5px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    white-space: nowrap;
+}
+
+.gameCardPlatforms li {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.ratingsContainer {
+    width: 90%;
+    max-width: 600px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.ratings {
+    width: 150px;
+    text-align: center;
+    background: #323232;
+    color: white;
+    box-shadow: 2px 2px 4px black;
+    border-radius: 10px;
+}
+
+.bubbles {
+    height: 40px;
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bubble {
+    height: 20px;
+    width: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: white;
+}
+
+.filled {
+    background: blue;
+    box-shadow: 0px 0px 6px 3px rgb(86, 86, 255);
+}
+
+@media (width < 750px) {
+    .gamesContainer {
+        
+    }
+
+    .gameCard {
+        width: 100%;
+    }
+}
+
+@media (width < 420px) {
+    .ratingsContainer {
+        flex-direction: column;
+    }
 }
