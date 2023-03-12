@@ -1,4 +1,5 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 import "./Login.css"
 
 function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
@@ -25,6 +26,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             if(result.ok){
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
+                localStorage.isLoggedIn = true;
             }
         } catch (error){
             console.error(error);

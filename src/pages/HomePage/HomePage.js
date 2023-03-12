@@ -17,6 +17,7 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal }) {
     return (
         <div className="homeContainer" id="homePage">
             <Routes>
+                <Route path="/" element={<DashboardPage />} />
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="dashboard" element={<DashboardPage
                     showModal={showModal}

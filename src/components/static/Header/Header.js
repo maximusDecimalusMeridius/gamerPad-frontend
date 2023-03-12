@@ -3,6 +3,7 @@ import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
+import {Link} from "react-router-dom";
 
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal}) {
     
@@ -39,7 +40,10 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                 {/* <a><image onClick={openUserMenu}>{}</image></a> */}
             </div>
             <div className="headerTitle">
-                <h1 onClick={handleModal}>gamerPad</h1>
+                {isLoggedIn ? (<Link to="/dashboard">
+                    <h1>gamerPad</h1>
+                </Link>) : (<h1>gamerPad</h1>)}
+                
             </div>
             
             <div className="hamburger" id="hamburger" onClick={useNavMenu}>
