@@ -15,37 +15,26 @@ function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
  
-  // const handleClick = () => {
-  //   if (isLoggedIn) {
-  //     setIsLoggedIn(false)
-  //     console.log(document.querySelector('#loginBtn'))
-
-  //     document.querySelector('#loginBtn').textContent = "login"
-  //   } else {
-  //     setIsLoggedIn(true)
-  //     document.querySelector('#loginBtn').textContent = "logout"
-  //   }
-  // }
   return (
     <Router>
       <div className="appContainer">
-        {/* <Link to="/dashboard">Dashboard</Link>  */}
+       
         <header>
           <Header 
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
             />
         </header>
-        {/* <button id='loginBtn' onClick={handleClick}>login</button> */}
+    
         <main>
           {!isLoggedIn && <LandingPage 
                           setIsLoggedIn={setIsLoggedIn} />}
           {isLoggedIn && <HomePage />}
         </main>
-        {/* <Route path="/dashboard" element={<DashboardPage/>} /> */}
+   
                     <Routes>
-                        <Route exact path="/DashboardPage" component={DashboardPage} />
-                        <Route exact path="/ProfilePage" component={ProfilePage} />
+                        <Route exact path="/dashboard" element={<DashboardPage/>} />
+                        <Route exact path="/profilepage" element={<ProfilePage/>} />
                     </Routes>
         
       </div>
