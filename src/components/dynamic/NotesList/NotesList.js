@@ -3,7 +3,7 @@ import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
 function NotesList() {
-    const [originalWittenNotesList, setOriginalWittenNotesList] = useState([])
+    const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
@@ -31,7 +31,7 @@ function NotesList() {
             const data = await result.json();
 
             setWrittenNotes(data.WritenNotes);
-            setOriginalWittenNotesList(data.WritenNotes)
+            setOriginalWrittenNotesList(data.WritenNotes)
             setSharedNotes(data.SharedNotes);
             setOriginalSharedNotesList(data.SharedNotes)
 
@@ -88,7 +88,7 @@ function NotesList() {
     const renderSearchBar = () => {
         if (currentNotes === "writtenNotes") {
             return (
-                <SearchBar originalList={originalWittenNotesList} setList={setWrittenNotes} />
+                <SearchBar originalList={originalWrittenNotesList} setList={setWrittenNotes} />
             )
         } else if (currentNotes === "sharedNotes") {
             return (
