@@ -3,8 +3,9 @@ import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
+import {Link} from "react-router-dom";
 
-function Header({isLoggedIn, setIsLoggedIn}) {
+function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
@@ -28,6 +29,10 @@ function Header({isLoggedIn, setIsLoggedIn}) {
         // TODO: on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
         // TODO: add close box on modal/slide out menu
 
+    const handleModal = () => {
+        showModal ? setShowModal(false) : setShowModal(true)
+    }
+
     return (
         <div className="header">
             <div className="imageContainer" onClick={openUserMenu}>
@@ -35,7 +40,10 @@ function Header({isLoggedIn, setIsLoggedIn}) {
                 {/* <a><image onClick={openUserMenu}>{}</image></a> */}
             </div>
             <div className="headerTitle">
-                <h1>gamerPad</h1>
+                {isLoggedIn ? (<Link to="/dashboard">
+                    <h1>gamerPad</h1>
+                </Link>) : (<h1>gamerPad</h1>)}
+                
             </div>
             
             <div className="hamburger" id="hamburger" onClick={useNavMenu}>
@@ -43,14 +51,25 @@ function Header({isLoggedIn, setIsLoggedIn}) {
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
             </div>
-            
+    
+            {showModal && <Modal 
+                            showModal={showModal}
+                            setShowModal={setShowModal}
+                            activeModal={activeModal}
+                            setActiveModal={setActiveModal}
+                        />}
+
             {openNav && <NavMenu
                             isLoggedIn={isLoggedIn}
                             setIsLoggedIn={setIsLoggedIn}
-                        />}
+                            />}
             {menuType && <UserMenu
                             menuType={menuType}
                             setMenuType={setMenuType}
+                            showModal={showModal}
+                            setShowModal={setShowModal}
+                            activeModal={activeModal}
+                            setActiveModal={setActiveModal}
                         />}
         </div>
     )

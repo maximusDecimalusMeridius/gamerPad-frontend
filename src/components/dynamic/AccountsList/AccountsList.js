@@ -8,6 +8,7 @@ function AccountsList({setUserName}) {
     // const [contentRating, setContentRating] = useState("3");
     // const [replayRating, setReplayRating] = useState("3");
     const [accountsList, setAccountsList] = useState([]);
+    const [originalAccountsList, setOriginalAccountsList] = useState([]);
 
     useEffect(() => {
         fetchAccounts();
@@ -41,7 +42,7 @@ function AccountsList({setUserName}) {
     const accounts = accountsList.map((account, index) => {
         // TODO: iterate over platforms to populate below
         return(
-            <div>
+            <div key="index">
                 <div>{account.account}</div>
                 <div>{account.type}</div>
                 <div>{account.gamerTag}</div>
@@ -51,7 +52,7 @@ function AccountsList({setUserName}) {
 
     return (
         <div className="accountsContainer">
-            <SearchBar />
+            <SearchBar originalList={accountsList} setList={setAccountsList}/>
             {accounts}
         </div>
     );
