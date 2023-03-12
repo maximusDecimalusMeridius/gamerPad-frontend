@@ -68,9 +68,16 @@ button:active {
 
 .appContainer {
     height: 100%;
+    background: lightyellow;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 header {
     width: 100%;
     height: var(--header-height);
+    position: fixed;
+    z-index: 3;
 }
