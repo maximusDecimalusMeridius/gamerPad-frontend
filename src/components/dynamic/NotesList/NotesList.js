@@ -3,6 +3,8 @@ import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
 function NotesList() {
+    const [originalWittenNotesList, setOriginalWittenNotesList] = useState([])
+    const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
     const [writtenNotes, setWrittenNotes] = useState([]);
@@ -29,7 +31,9 @@ function NotesList() {
             const data = await result.json();
 
             setWrittenNotes(data.WritenNotes);
+            setOriginalWittenNotesList(data.WritenNotes)
             setSharedNotes(data.SharedNotes);
+            setOriginalSharedNotesList(data.SharedNotes)
 
         } catch (error) {
             console.error(error);
@@ -48,8 +52,8 @@ function NotesList() {
         return (
             <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
                 <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <div className="noteTitle">{note.title}</div>
-                    <div className="noteDate">{note.createdAt.slice(0, 10)}</div>
+                    <h1 className="noteTitle">{note.title}</h1>
+                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
                 </div>
                 <div className="noteContent">{note.textContent}</div>
             </div>
@@ -58,10 +62,11 @@ function NotesList() {
 
     const sNotes = sharedNotes.map((note, index) => {
         return (
-            <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>    <div className="noteHeader" style={{ background: `${note.color}` }}>
-                <div className="noteTitle">{note.title}</div>
-                <div className="noteDate">{note.createdAt.slice(0, 10)}</div>
-            </div>
+            <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
+                <div className="noteHeader" style={{ background: `${note.color}` }}>
+                    <h1 className="noteTitle">{note.title}</h1>
+                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+                </div>
                 <div className="noteContent">{note.textContent}</div>
             </div>
         )
@@ -69,7 +74,6 @@ function NotesList() {
 
     const renderNotes = () => {
         if (currentNotes === "writtenNotes") {
-            console.log(writtenNotes);
             return (
                 <div className="notes">{wNotes}</div>
             )
@@ -81,13 +85,24 @@ function NotesList() {
 
     }
 
+    const renderSearchBar = () => {
+        if (currentNotes === "writtenNotes") {
+            return (
+                <SearchBar originalList={originalWittenNotesList} setList={setWrittenNotes} />
+            )
+        } else if (currentNotes === "sharedNotes") {
+            return (
+                <SearchBar originalList={originalSharedNotesList} setList={setSharedNotes} />
+            )
+        }
+    }
+
     // TODO: filter data from data array
     // TODO: map over data to display 
 
     return (
         <div className="noteContainer">
-            <SearchBar />
-
+            {renderSearchBar()}
             <div className="noteBox">
                 <div className="selectNotes" onChange={handleChange}>
                     <div>
