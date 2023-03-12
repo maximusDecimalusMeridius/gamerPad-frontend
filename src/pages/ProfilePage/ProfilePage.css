@@ -1,0 +1,102 @@
+.profilePageContainer {
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.profileHeader {
+    width: 100%;
+    height: 100px;
+    padding-bottom: 10px;
+    background: #323232;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.profileInfo {
+    width: 100%;
+    height: fit-content;
+    background: #bebebe;
+}
+
+.userRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.friendCodeRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+#friend-code {
+    margin-left: 5px;
+    margin: auto;
+}
+
+.passwordRow {
+    display: flex;
+    flex-direction: column;
+}
+
+.updatePasswordForm {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.passwordFormInputs {
+    width: 60%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.passwordFormInputs input {
+    width: 80%;
+    height: 25px;
+    max-width: 250px;
+    font-style: italic;
+}
+
+.editButton {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* .profileTable {
+    
+} */
+
+@media (width < 385px) {
+    .profileHeader {
+        flex-wrap: wrap;
+    }
+    
+    .profileHeader h3 {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    .profileHeader div {
+        order: 2;
+    }
+
+    .updatePasswordForm {
+        flex-direction: column;
+    }
+
+    .passwordFormInputs {
+        width: 90%;
+    }
+}

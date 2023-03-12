@@ -6,10 +6,12 @@
     align-items: center;
     overflow: auto;
     background: blue;
+    transition: all .5s ease-out;
 }
 
 .gameCard {
     width: 50%;
+    min-width: 200px;
     min-height: 125px;
     margin: 10px;
     padding: 15px;
@@ -19,6 +21,7 @@
     align-items: center;
     border: 1px solid blue;
     background: white;
+    transition: all .5s ease-out;
 }
 
 .gameCardHeader {
@@ -95,9 +98,15 @@
     .gameCard {
         width: 100%;
     }
-}
 
-@media (width < 420px) {
+    .ratings:first-child {
+        margin-right: auto;
+    }
+
+    .ratings:last-child {
+        margin-left: auto;
+    }
+
     .ratingsContainer {
         flex-direction: column;
     }
