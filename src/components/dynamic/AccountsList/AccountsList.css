@@ -1,0 +1,7 @@
+.accountsContainer {
+    width: 80%;
+    min-height: 150px;
+    
+    background: white;
+    overflow: auto;
+}

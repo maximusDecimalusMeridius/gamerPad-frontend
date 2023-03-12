@@ -13,7 +13,7 @@ function GamesPage() {
   return (
   <div>
     {/* for testing */}
-    <p>games</p>
+    {<GamesList />}
   </div>
   );
 }
