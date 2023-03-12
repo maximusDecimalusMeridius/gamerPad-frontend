@@ -41,7 +41,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
             </div>
             <div className="headerTitle">
                 {isLoggedIn ? (<Link to="/dashboard">
-                    <h1>gamerPad</h1>
+                    <h1 className="loggedInHeader">gamerPad</h1>
                 </Link>) : (<h1>gamerPad</h1>)}
                 
             </div>
