@@ -8,6 +8,8 @@ function Header({isLoggedIn, setIsLoggedIn}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [activeModal, setActiveModal] = useState("Add Account");
     //TODO: Pass page prop and setter to Modal with menu type
 
     const openUserMenu = (event) => {
@@ -28,6 +30,10 @@ function Header({isLoggedIn, setIsLoggedIn}) {
         // TODO: on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
         // TODO: add close box on modal/slide out menu
 
+    const handleModal = () => {
+        showModal ? setShowModal(false) : setShowModal(true)
+    }
+
     return (
         <div className="header">
             <div className="imageContainer" onClick={openUserMenu}>
@@ -35,7 +41,7 @@ function Header({isLoggedIn, setIsLoggedIn}) {
                 {/* <a><image onClick={openUserMenu}>{}</image></a> */}
             </div>
             <div className="headerTitle">
-                <h1>gamerPad</h1>
+                <h1 onClick={handleModal}>gamerPad</h1>
             </div>
             
             <div className="hamburger" id="hamburger" onClick={useNavMenu}>
@@ -43,14 +49,25 @@ function Header({isLoggedIn, setIsLoggedIn}) {
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
             </div>
-            
+    
+            {showModal && <Modal 
+                            showModal={showModal}
+                            setShowModal={setShowModal}
+                            activeModal={activeModal}
+                            setActiveModal={setActiveModal}
+                        />}
+
             {openNav && <NavMenu
                             isLoggedIn={isLoggedIn}
                             setIsLoggedIn={setIsLoggedIn}
-                        />}
+                            />}
             {menuType && <UserMenu
                             menuType={menuType}
                             setMenuType={setMenuType}
+                            showModal={showModal}
+                            setShowModal={setShowModal}
+                            activeModal={activeModal}
+                            setActiveModal={setActiveModal}
                         />}
         </div>
     )
