@@ -1,0 +1,16 @@
+.socialPageContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.socialTitle{
+    color: rgb(17, 181, 93);
+    border:solid red 2px;
+    text-align: center;
+}
+#swapButton{
+    width:fit-content;
+    background-color: blue;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
