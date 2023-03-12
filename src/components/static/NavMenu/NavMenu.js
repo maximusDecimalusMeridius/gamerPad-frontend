@@ -15,7 +15,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn }) {
             <ul className="navMenu">
                 {isLoggedIn ? (<>
                     <li className="navMenuItem" id="navMenuItem-1">
-                        <Link to="/dashboard">Home</Link>
+                        <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-2">
                         <Link to="/games">Games</Link>

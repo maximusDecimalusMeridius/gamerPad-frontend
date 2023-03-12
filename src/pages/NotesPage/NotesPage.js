@@ -18,7 +18,7 @@ const style = {
 function NotesPage() {
   return (
     <div>
-      {/* for testing */}
+      Notes
         <div id="test-searchbar" style={style.searchbar}>Test</div>
     </div>
   );
