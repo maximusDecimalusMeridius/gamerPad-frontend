@@ -3,4 +3,5 @@
     width:80%;
     background: #323232;
     margin-top: var(--header-height);
+    overflow: auto;
 }

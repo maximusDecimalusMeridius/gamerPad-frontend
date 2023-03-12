@@ -11,7 +11,7 @@ function HomePage() {
     
     return(
         <div className="homeContainer"id="homePage">
-            <GamesPage />
+            <ProfilePage />
         </div>
     )
 } export default HomePage;
