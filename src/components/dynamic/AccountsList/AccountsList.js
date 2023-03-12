@@ -41,7 +41,7 @@ function AccountsList({setUserName}) {
     const accounts = accountsList.map((account, index) => {
         // TODO: iterate over platforms to populate below
         return(
-            <div>
+            <div key="index">
                 <div>{account.account}</div>
                 <div>{account.type}</div>
                 <div>{account.gamerTag}</div>
