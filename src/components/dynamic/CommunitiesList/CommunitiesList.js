@@ -43,7 +43,11 @@ function CommunitiesList() {
               {game.title}
             </h2>
             {isOpen && (
-              <p classname="commMems">community members</p>
+              <ul className="topMems">
+                  <li>person 1</li>
+                  <li>person 2</li>
+                  <li>person 3</li>
+              </ul>
             )}
           </div>
         </div>
