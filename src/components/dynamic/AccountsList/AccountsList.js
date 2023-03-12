@@ -8,6 +8,7 @@ function AccountsList({setUserName}) {
     // const [contentRating, setContentRating] = useState("3");
     // const [replayRating, setReplayRating] = useState("3");
     const [accountsList, setAccountsList] = useState([]);
+    const [originalAccountsList, setOriginalAccountsList] = useState([]);
 
     useEffect(() => {
         fetchAccounts();
@@ -51,7 +52,7 @@ function AccountsList({setUserName}) {
 
     return (
         <div className="accountsContainer">
-            <SearchBar />
+            <SearchBar originalList={accountsList} setList={setAccountsList}/>
             {accounts}
         </div>
     );

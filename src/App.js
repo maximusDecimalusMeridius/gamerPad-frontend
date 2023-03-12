@@ -14,6 +14,8 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [activeModal, setActiveModal] = useState("Add Account");
   
   return (
     <Router>
@@ -23,20 +25,22 @@ function App() {
           <Header 
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            activeModal={activeModal}
+            setActiveModal={setActiveModal}
             />
         </header>
     
         <main>
           {!isLoggedIn && <LandingPage 
                           setIsLoggedIn={setIsLoggedIn} />}
-          {isLoggedIn && <HomePage />}
-        </main>
-   
-                    <Routes>
-                        <Route exact path="/dashboard" element={<DashboardPage/>} />
-                        <Route exact path="/profilepage" element={<ProfilePage/>} />
-                    </Routes>
-        
+          {isLoggedIn && <HomePage 
+                          showModal={showModal}
+                          setShowModal={setShowModal}
+                          activeModal={activeModal}
+                          setActiveModal={setActiveModal}/>}
+        </main>        
       </div>
     </Router>
   );

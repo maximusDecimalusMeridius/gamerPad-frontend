@@ -4,12 +4,10 @@ import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
 
-function Header({isLoggedIn, setIsLoggedIn}) {
+function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-    const [activeModal, setActiveModal] = useState("Add Account");
     //TODO: Pass page prop and setter to Modal with menu type
 
     const openUserMenu = (event) => {

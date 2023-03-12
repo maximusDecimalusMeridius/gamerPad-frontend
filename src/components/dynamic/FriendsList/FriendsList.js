@@ -3,8 +3,9 @@ import SearchBar from "../../static/SearchBar/SearchBar";
 import "./FriendsList.css";
 
 function FriendsList() {
-  const [friendsList, setFriendsList] = useState([]);
   const [openIndex, setOpenIndex] = useState(-1);
+  const [friendsList, setFriendsList] = useState([]);
+  const [originalFriendsList, setOriginalFriendsList] = useState([]);
   useEffect(() => {
     fetchFriends();
     document.title = `gamerPad - Friends`;
@@ -30,6 +31,7 @@ function FriendsList() {
       const data = await result.json();
       console.log(data.Friends);
       setFriendsList(data.Friends);
+      setOriginalFriendsList(data.Friends);
     } catch (error) {
       console.error(error);
     }
@@ -54,7 +56,7 @@ function FriendsList() {
             <img
               className="friendPic"
               src={friend.profilePicture}
-              alt="profile picture"
+              alt="user profile identity"
             />
           )}
         </div>
@@ -66,7 +68,7 @@ function FriendsList() {
 
   return (
     <div className="friendsContainer">
-      <SearchBar />
+      <SearchBar originalList={originalFriendsList} setList={setFriendsList}/>
       <div className="friendPage">{friends}</div>
     </div>
   );

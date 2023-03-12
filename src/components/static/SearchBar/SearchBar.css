@@ -5,24 +5,24 @@
     background: #323232;
     display: flex;
     align-items: center;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .searchbarInput {
     --searchbar-width: 60%;
     width: var(--searchbar-width);
     padding: 2px;
-    position: absolute;
-    left: 5%;
 }
 
 .searchbarInput:focus {
-    width: 90%;
+    
     z-index: 2;
     position: fixed;
-    left: 5%;
-    right: 5%;
-    top: calc(var(--header-height) + var(--searchbar-container-height));
+    /* left: 5%;
+    right: 5%; */
+    /* top: calc(var(--header-height) + var(--searchbar-container-height)); */
     box-shadow: 0px 0px 4px 2px pink;
 }
 

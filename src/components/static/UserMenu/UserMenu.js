@@ -19,7 +19,7 @@ function UserMenu({menuType, setMenuType, showModal, setShowModal, activeModal, 
        <div className="userMenuContainer">
             <ul className="userMenu">
                 <div id='exitBox' onClick={handleExitClick}>X</div>
-                <li className="userMenuItem" id="userMenuItem-1"><Link to="/ProfilePage">Profile Name</Link></li>
+                <li className="userMenuItem" id="userMenuItem-1"><Link to="/profile">Profile Name</Link></li>
                     <br /><br />
                 <li className="userMenuItem cursor" id="userMenuItem-2" value="Add Account" onClick={handleModal}>Add Account</li>
                 <li className="userMenuItem cursor" id="userMenuItem-3" value="Add Friend" onClick={handleModal}>Add Friend</li>

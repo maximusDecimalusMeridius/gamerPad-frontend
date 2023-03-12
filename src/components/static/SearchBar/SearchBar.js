@@ -3,8 +3,8 @@ import "./SearchBar.css"
 
 function SearchBar(props) {
     const [searchBarInput, setsearchBarInput] = useState("")
-    const originalList = props.originalList
 
+    const originalList = props.originalList
 
     const handleInputChange = async (e) => {
         setsearchBarInput(e.target.value)
@@ -30,7 +30,6 @@ function SearchBar(props) {
     return (
         <div id="searchbarContainer" className="searchbarContainer">
             <input className="searchbarInput" placeholder="type to search" value={searchBarInput} onChange={handleInputChange}></input>
-            <button className="searchbarButton">Add</button>
         </div>
     );
 }

@@ -9,7 +9,7 @@ function GamesList() {
     // const [replayRating, setReplayRating] = useState("3");
     // const [valueRating, setValueRating] = useState("3");
     const [gamesList, setGamesList] = useState([]);
-    const [originalGameList, setOriginalGameList] = useState([])
+    const [originalGameList, setOriginalGameList] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {

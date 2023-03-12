@@ -4,6 +4,8 @@ import GamesList from "../../components/dynamic/GamesList/GamesList";
 import NotesList from "../../components/dynamic/NotesList/NotesList";
 import SocialPage from "../SocialPage/SocialPage";
 import { Routes, Route, Link } from "react-router-dom";
+import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
+import ProfilePage from "../ProfilePage/ProfilePage";
 // psuedocode:
 // dashboard will need to only be rendered when logged in
 // will need boxes that will conditionally render games,
@@ -21,24 +23,33 @@ function DashboardPage() {
     <div className="dashboardContainer">
       <ul className="pageTabs">
         <li className="pageTab" id="pageTab-1">
-          <Link to="/social">Social</Link>
+          <Link to="/dashboard/">Social</Link>
         </li>
         <li className="pageTab" id="pageTab-2">
-          <Link to="/notes">Notes</Link>
+          <Link to="/dashboard/notes">Notes</Link>
         </li>
         <li className="pageTab" id="pageTab-3">
-          <Link to="/games">Games</Link>
+          <Link to="/dashboard/games">Games</Link>
         </li>
       </ul>
 
-
-        <Routes>
-          <Route path="/social" element={<SocialPage />} />
-          {/* will be rendered differently than notes and games, need to make different component for this item */}
-          <Route path="/notes" element={<NotesList />} />
-
-          <Route path="/games" element={<GamesList />} />
-        </Routes>
+      <Routes>
+        <Route path="/">
+          <Route path="" element={<SocialPage />} />
+          <Route path="social">
+            <Route path="" element={<SocialPage />} />
+            <Route index={true} element={<SocialPage />} />
+          </Route>
+          <Route path="notes">
+            <Route path="" element={<NotesList />} />
+            <Route index={true} element={<NotesList />} />
+          </Route>
+          <Route path="games">
+            <Route path="" element={<GamesList />} />
+            <Route index={true} element={<GamesList />} />
+          </Route>
+          </Route>
+      </Routes>
     </div>
   );
 }

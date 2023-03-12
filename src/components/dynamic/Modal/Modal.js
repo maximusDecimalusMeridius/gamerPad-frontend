@@ -26,24 +26,6 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal}) {
             default:
                 break;
         }
-        
-        // if(activeModal === "Add Account") {
-        // } else if(activeModal === "Add Friend") {
-        //     return <AddFriend
-        //             activeModal={activeModal}
-        //             setActiveModal={setActiveModal}
-        //             />
-        //     } else if(activeModal === "Add Game") {
-        //         return <AddGame 
-        //                 activeModal={activeModal}
-        //                 setActiveModal={setActiveModal}
-        //                 />
-        //         } else if(activeModal === "Add Note") {
-        //             return <AddNote
-        //                     activeModal={activeModal}
-        //                     setActiveModal={setActiveModal}
-        //                     />
-        // }
     }
 
     const handleClick = (event) => {
