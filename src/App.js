@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 // TODO: set state for rendering dashboard and landing page with boolean value 
 function App() {
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
  
   // const handleClick = () => {
   //   if (isLoggedIn) {
