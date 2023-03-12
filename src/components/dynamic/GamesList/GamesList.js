@@ -9,6 +9,7 @@ function GamesList() {
     // const [replayRating, setReplayRating] = useState("3");
     // const [valueRating, setValueRating] = useState("3");
     const [gamesList, setGamesList] = useState([]);
+    const [originalGameList, setOriginalGameList] = useState([])
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
@@ -33,6 +34,7 @@ function GamesList() {
 
             console.log(data);
             setGamesList(data.UserGames)
+            setOriginalGameList(data.UserGames)
 
         } catch (error) {
             console.error(error);
@@ -45,7 +47,7 @@ function GamesList() {
         // TODO: iterate over platforms to populate below
         const platforms = game.Platforms.map((platform, index) => {
             return (
-                <li className="gamePlatform">{platform.platform}</li>
+                <li className="gamePlatform" key={index}>{platform.platform}</li>
             )
         })
 
@@ -53,7 +55,7 @@ function GamesList() {
             
             const bubbleArray = new Array(5).fill("");
 
-            const bubbles = bubbleArray.map( (bubble, index) => ( (index + 1) <= rating ? <div className="bubble filled">{bubble}</div> : <div className="bubble">{bubble}</div>) );
+            const bubbles = bubbleArray.map( (bubble, index) => ( (index + 1) <= rating ? <div key={index} className="bubble filled">{bubble}</div> : <div key={index} className="bubble">{bubble}</div>) );
 
             return (
                 <div className="bubbles">
@@ -90,7 +92,7 @@ function GamesList() {
 
     return (
         <div className="gamesContainer">
-            <SearchBar />
+            <SearchBar originalList={originalGameList} setList={setGamesList} />
             {games}
         </div>
     );
