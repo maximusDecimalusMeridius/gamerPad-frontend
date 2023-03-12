@@ -41,3 +41,9 @@
     width:80px;
     justify-self: flex-start;
 }
+
+@media screen and (max-width:380px){ 
+    .friendsContainer{
+        width:250px
+    }
+}
