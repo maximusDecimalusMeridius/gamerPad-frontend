@@ -9,6 +9,9 @@
     text-align: center;
 }
 #swapButton{
+    display:flex;
+    position: absolute;
+    margin-top: 11vh;
     width:fit-content;
     background-color: blue;
     justify-self: flex-start;

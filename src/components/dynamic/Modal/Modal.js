@@ -5,7 +5,7 @@ import AddFriend from "../../static/AddFriend/AddFriend.js"
 import AddGame from "../../static/AddGame/AddGame.js"
 import AddNote from "../../static/AddNote/AddNote.js"
 
-function Modal({showModal, setShowModal, activeModal, setActiveModal}) {
+function Modal({showModal, setShowModal, activeModal, setActiveModal, setOpenNav, setMenuType}) {
 
     
     //TODO: conditionally render display component based on activeModal
@@ -30,7 +30,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal}) {
 
     const handleClick = (event) => {
         if(event.target.id === "modalContainer" || event.target.id === "closeModalX"){
-            setShowModal(false);
+            setShowModal(false) && setMenuType(false);
         }
     }
 

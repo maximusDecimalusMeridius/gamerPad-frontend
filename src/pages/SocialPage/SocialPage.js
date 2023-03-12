@@ -37,11 +37,15 @@ function SocialPage() {
 }
    
   return (
-    <div className='socialPageContainer'>
+  <div className='socialPageContainer'>
+    <div className='socialPageCards'>
+
        <h2 className="socialTitle">{currentPage} Page</h2>
-            <button id="swapButton" onClick={setPage}>Click to {otherPage}</button>
             {renderPage()}
+            <button id="swapButton" onClick={setPage}>Click to {otherPage}</button>
+          
     </div>
+  </div>
             
   )
   }
