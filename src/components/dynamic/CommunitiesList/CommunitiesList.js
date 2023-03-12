@@ -5,6 +5,7 @@ import SearchBar from "../../static/SearchBar/SearchBar";
 function CommunitiesList() {
   const [commsList, setCommsList] = useState([]);
   const [openIndex, setOpenIndex] = useState(-1);
+  const [originalCommsList, setOriginalCommsList] = useState([]);
 
   useEffect(() => {
     fetchComms();
@@ -23,6 +24,7 @@ function CommunitiesList() {
       const data = await result.json();
       console.log(data);
       setCommsList(data);
+      setOriginalCommsList(data);
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +57,7 @@ function CommunitiesList() {
     });
     return (
         <div className="commsContainer">
-      <SearchBar />
+      <SearchBar  originalList={originalCommsList} setList={setCommsList}/>
       <div className="commsPage">
         {comms}
     </div>
