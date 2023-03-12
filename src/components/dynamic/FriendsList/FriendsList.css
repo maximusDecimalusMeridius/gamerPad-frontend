@@ -7,6 +7,7 @@
 .friendCard {
     width: 50%;
     min-height: fit-content;
+    min-width:fit-content;
     margin: 10px;
     padding: 15px;
     flex-grow: 1;
@@ -27,6 +28,7 @@
     background-color: rgb(84, 84, 247);
     height:fit-content;
     border-radius: 5px;
+    cursor: pointer;
 }
 .friendPic{
     border-radius: 50%;
