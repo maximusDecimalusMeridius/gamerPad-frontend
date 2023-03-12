@@ -1,3 +1,36 @@
-.friendContainer {
+
+.friendPage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.friendCard {
+    width: 50%;
+    min-height: fit-content;
+    margin: 10px;
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid blue;
+    background: #bebebe;
+}
+.friendCardHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     
+}
+.friendUsername{
+    background-color: rgb(84, 84, 247);
+    height:fit-content;
+    border-radius: 5px;
+}
+.friendPic{
+    border-radius: 50%;
+    height:80px;
+    width:80px;
+    justify-self: flex-start;
 }
