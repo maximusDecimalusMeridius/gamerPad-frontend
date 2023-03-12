@@ -42,28 +42,25 @@ function FriendsList() {
     const isOpen = index === openIndex;
 
     return (
-        <div className="friendCardContainer">
-
       <div className="friendCard" key={index}>
         <div className="friendCardHeader">
           <h2
             className="friendUsername"
             onClick={() => handleFriendClick(index)}
-            >
+          >
             {friend.username}
           </h2>
           {isOpen && (
-              <img
+            <img
               className="friendPic"
               src={friend.profilePicture}
               alt="profile picture"
-              />
-              )}
+            />
+          )}
         </div>
         {/* <div className="faveGamesContainer">
             </div> */}
       </div>
-            </div>
     );
   });
 
