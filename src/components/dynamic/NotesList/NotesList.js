@@ -30,8 +30,8 @@ function NotesList() {
 
             const data = await result.json();
 
-            setWrittenNotes(data.WritenNotes);
-            setOriginalWrittenNotesList(data.WritenNotes)
+            setWrittenNotes(data.WrittenNotes);
+            setOriginalWrittenNotesList(data.WrittenNotes)
             setSharedNotes(data.SharedNotes);
             setOriginalSharedNotesList(data.SharedNotes)
 
