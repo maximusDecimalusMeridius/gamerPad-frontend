@@ -1,10 +1,12 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./AddFriend.css"
 
 function AddFriend({friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
     
     const [friendName, setFriendName] = useState([]);
     const [friendCode, setFriendCode] = useState([]);
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
 
@@ -32,6 +34,7 @@ function AddFriend({friendsList, setFriendsList, originalFriendsList, setOrigina
             if(result.ok){
                 console.log(data);
                 console.log("friend added");
+                navigate("/", {replace: true});
             }
 
         } catch(error) {

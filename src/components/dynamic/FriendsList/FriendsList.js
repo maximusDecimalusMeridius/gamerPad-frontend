@@ -16,6 +16,7 @@ function FriendsList({friendsList, setFriendsList, originalFriendsList, setOrigi
   //  TODO: display usernames, on click open all other data
   const fetchFriends = async (event) => {
     console.log(friendsList);
+
     try {
       const token = localStorage.getItem("token");
 
@@ -32,6 +33,7 @@ function FriendsList({friendsList, setFriendsList, originalFriendsList, setOrigi
     
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);
+      
     } catch (error) {
       console.error(error);
     }
@@ -39,6 +41,11 @@ function FriendsList({friendsList, setFriendsList, originalFriendsList, setOrigi
   const handleFriendClick = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
+
+  const handleDelete = (event) => {
+    
+  }
+
 
   const friends = friendsList.map((friend, index) => {
     const isOpen = index === openIndex;
@@ -49,9 +56,9 @@ function FriendsList({friendsList, setFriendsList, originalFriendsList, setOrigi
           <h2
             className="friendUsername"
             onClick={() => handleFriendClick(index)}
-          >
-            {friend.username}
+          >{friend.username}
           </h2>
+            <span onClick={handleDelete}>X</span>
           {isOpen && (
             <img
               className="friendPic"
