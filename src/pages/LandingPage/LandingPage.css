@@ -28,7 +28,7 @@
     width: 90%;
     max-width: 600px;
     place-self: center;
-    background: #323232;
+    background: var(--window-dark-gray);
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -43,6 +43,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 5px;
+    resize: both;
     overflow: auto;
 }
 
@@ -75,6 +76,7 @@
     padding: 5px;
     background-color: white;
     flex-grow: 1;
+    overflow: auto;
 }
 
 @media (width < 350px) {

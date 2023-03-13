@@ -2,15 +2,23 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-y:hidden
 }
 .socialTitle{
     color: rgb(17, 181, 93);
     border:solid red 2px;
     text-align: center;
 }
-#swapButton{
-    width:fit-content;
+.buttonContainer{
+    display:flex;
+    position: absolute;
+    margin-top: 50px;
+    height: 60vh;
+}
+#swapButton{  
     background-color: blue;
-    justify-self: flex-start;
-    align-self: flex-start;
+    padding:3px;
+    margin-left: 1px;
+    height:fit-content;
+    width:fit-content;
 }

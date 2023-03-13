@@ -30,6 +30,7 @@ function AccountsList({setUserName}) {
 
             console.log(data);
             setAccountsList(data.Accounts)
+            setOriginalAccountsList(data.Accounts)
             setUserName(data.username)
 
         } catch (error) {
@@ -52,7 +53,7 @@ function AccountsList({setUserName}) {
 
     return (
         <div className="accountsContainer">
-            <SearchBar originalList={accountsList} setList={setAccountsList}/>
+            <SearchBar originalList={originalAccountsList} setList={setAccountsList}/>
             {accounts}
         </div>
     );

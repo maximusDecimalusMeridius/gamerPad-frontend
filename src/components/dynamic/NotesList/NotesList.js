@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
-function NotesList() {
-    const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
+function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList}) {
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
-    const [writtenNotes, setWrittenNotes] = useState([]);
-    const [sharedNotes, setSharedNotes] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
@@ -42,8 +39,10 @@ function NotesList() {
 
     const handleChange = (event) => {
         if (event.target.value === "writtenNotes") {
+            setWrittenNotes([]);
             setCurrentNotes("writtenNotes");
         } else if (event.target.value === "sharedNotes") {
+            setSharedNotes([]);
             setCurrentNotes("sharedNotes");
         }
     }
@@ -80,6 +79,10 @@ function NotesList() {
         } else if (currentNotes === "sharedNotes") {
             return (
                 <div className="notes">{sNotes}</div>
+            )
+        } else {
+            return(
+                <div></div>
             )
         }
 

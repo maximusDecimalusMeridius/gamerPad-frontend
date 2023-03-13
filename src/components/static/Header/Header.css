@@ -12,9 +12,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #323232;
-    background: #323232;
+    border-bottom: 1px solid #393e41;
+    background: #393e41;
     color: white;
+}
+
+.loggedInHeader {
+    color: #2fb32d;
 }
 
 #headerTitle {
