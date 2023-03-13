@@ -24,7 +24,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
             color: noteColorCode
         }
 
-        const result = await fetch("http://localhost:3001/api/notes/", {
+        const result = await fetch("https://gamerpad-backend.herokuapp.com/api/notes/", {
             method: "POST",
             headers: {
                 "Content-Type":"application/json",
