@@ -44,7 +44,8 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setShowModal={setShowModal}
                         />
             case("Add Game"):
-                return <AddGame />
+                return <AddGame 
+                        setShowModal={setShowModal}/>
 
             default:
                 break;
