@@ -12,6 +12,7 @@
 .buttonContainer{
     display:flex;
     position: absolute;
+    margin-top: 50px;
     height: 60vh;
 }
 #swapButton{  
@@ -20,5 +21,4 @@
     margin-left: 1px;
     height:fit-content;
     width:fit-content;
-    align-self: center;
 }
