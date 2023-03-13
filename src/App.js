@@ -31,7 +31,7 @@ function App() {
   const validateToken = async (token) => {
 
     try {
-        const result = await fetch("http://localhost:3001/api/users/isValidToken", {
+        const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/isValidToken", {
             method: "GET",
             headers: {
                 authorization: token ? `Bearer ${token}` : ''

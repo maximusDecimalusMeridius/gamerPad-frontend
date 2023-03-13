@@ -21,7 +21,7 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                 friendCode: friendCode
             }
 
-            const result = await fetch ("http://localhost:3001/api/friends/addFriend", {
+            const result = await fetch ("https://gamerpad-backend.herokuapp.com/api/friends/addFriend", {
                 method: "POST",
                 body: JSON.stringify(newFriendObj),
                 headers: {

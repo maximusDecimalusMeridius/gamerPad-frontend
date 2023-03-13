@@ -20,7 +20,7 @@ function AddGame({setShowModal, warningMessage, setWarningMessage}) {
                 GameId: gameId
             }
 
-            const result = await fetch("http://localhost:3001/api/games/usergame", {
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame", {
                 method: "POST",
                 body: JSON.stringify(newUserGameObj),
                 headers: {

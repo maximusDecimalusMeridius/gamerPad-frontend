@@ -23,7 +23,7 @@ function GamesList() {
         try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch("http://localhost:3001/api/games/usergame", {
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame", {
                 method: "GET",
                 headers: {
                     authorization: token ? `Bearer ${token}` : ''
