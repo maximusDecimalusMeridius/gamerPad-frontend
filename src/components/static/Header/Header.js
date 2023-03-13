@@ -15,7 +15,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
     //TODO: Pass page prop and setter to Modal with menu type
 
     const openUserMenu = (event) => {
-        setMenuType(!menuType);
+        isLoggedIn && setMenuType(!menuType);
         setOpenNav(false);
         // create a modal when profile picture is clicked
         // on modal have link to profile page
