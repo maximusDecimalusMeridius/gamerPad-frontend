@@ -41,8 +41,10 @@ function SocialPage() {
     <div className='socialPageCards'>
 
        <h2 className="socialTitle">{currentPage} Page</h2>
-            {renderPage()}
+            <div className='buttonContainer'>
             <button id="swapButton" onClick={setPage}>Click to {otherPage}</button>
+            </div>
+            {renderPage()}
           
     </div>
   </div>
