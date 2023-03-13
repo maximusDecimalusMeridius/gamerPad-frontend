@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from "./components/static/Header/Header";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
@@ -20,6 +20,38 @@ function App() {
   const [sharedNotes, setSharedNotes] = useState([]);
   const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
   const [showMenu, setShowMenu] = useState(false);
+
+  const [token, setToken] = useState("");
+
+  const validateToken = async (token) => {
+
+    try {
+        const result = await fetch("http://localhost:3001/api/users/isValidToken", {
+            method: "GET",
+            headers: {
+                authorization: token ? `Bearer ${token}` : ''
+            }
+        })
+        return result.json()
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+  useEffect(()=>{
+    const savedToken = localStorage.getItem("token");
+    console.log(savedToken)
+    if(savedToken){
+      validateToken(savedToken).then(tokenData=>{
+        if(tokenData.isValid){
+          setToken(savedToken);
+          setIsLoggedIn(true)
+        } else {
+          localStorage.removeItem("token")
+        }
+      })
+    }
+  },[])
   
   return (
     <Router>
