@@ -7,7 +7,7 @@ import AddNote from "../../static/AddNote/AddNote.js"
 
 function Modal({showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                sharedNotes, setSharedNotes}) {
+                sharedNotes, setSharedNotes, setOpenNav, setMenuType}) {
 
     
     //TODO: conditionally render display component based on activeModal
@@ -39,7 +39,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
 
     const handleClick = (event) => {
         if(event.target.id === "modalContainer" || event.target.id === "closeModalX"){
-            setShowModal(false);
+            setShowModal(false) && setMenuType(false);
         }
     }
 

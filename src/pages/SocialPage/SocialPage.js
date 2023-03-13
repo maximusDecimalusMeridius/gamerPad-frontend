@@ -1,9 +1,9 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import './SocialPage.css';
-import Friends from "../../components/static/Friends/Friends";
-import Communities from "../../components/static/Communities/Communities";
+
 import FriendsList from '../../components/dynamic/FriendsList/FriendsList';
+import CommunitiesList from '../../components/dynamic/CommunitiesList/CommunitiesList';
 
 // TODO: create a searchbar for other users
 // TODO: create an add button that will add whichever user is currently selected
@@ -15,9 +15,40 @@ import FriendsList from '../../components/dynamic/FriendsList/FriendsList';
 
 
 function SocialPage() {
-  return (
-    <FriendsList/>
-  );
-}
+  const [currentPage, setCurrentPage] = useState("Communities");
+  const [otherPage, setOtherPage] = useState("Friends");
+ 
+  const renderPage = () => {
+    if (currentPage === "Friends"){
+      return <FriendsList/>
+    } else {
+      return <CommunitiesList/>
+    }
+  }
 
+  const setPage = () => {
+    if(currentPage === "Friends"){
+        setCurrentPage("Communities");
+        setOtherPage("Friends");
+    } else {
+        setCurrentPage("Friends");
+        setOtherPage("Communties");
+    }
+}
+   
+  return (
+  <div className='socialPageContainer'>
+    <div className='socialPageCards'>
+
+       <h2 className="socialTitle">{currentPage} Page</h2>
+            <div className='buttonContainer'>
+            <button id="swapButton" onClick={setPage}>Click to {otherPage}</button>
+            </div>
+            {renderPage()}
+          
+    </div>
+  </div>
+            
+  )
+  }
 export default SocialPage;

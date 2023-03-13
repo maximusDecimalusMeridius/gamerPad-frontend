@@ -16,10 +16,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [activeModal, setActiveModal] = useState("Add Account");
-
   const [writtenNotes, setWrittenNotes] = useState([]);
   const [sharedNotes, setSharedNotes] = useState([]);
   const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
+  const [showMenu, setShowMenu] = useState(false);
   
   return (
     <Router>
@@ -39,6 +39,8 @@ function App() {
             setOriginalWrittenNotesList={setOriginalWrittenNotesList}
             sharedNotes={sharedNotes}
             setSharedNotes={setSharedNotes}
+            showMenu={showMenu}
+            setShowMenu={setShowModal}
             />
         </header>
     
