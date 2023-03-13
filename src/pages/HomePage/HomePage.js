@@ -13,7 +13,7 @@ import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                    sharedNotes, setSharedNotes}) {
+                    sharedNotes, setSharedNotes, friendsList, setFriendsList}) {
 
 
     return (
@@ -29,7 +29,9 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     originalWrittenNotesList={originalWrittenNotesList}
                                                     setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                                                     sharedNotes={sharedNotes}
-                                                    setSharedNotes={setSharedNotes} />}/>
+                                                    setSharedNotes={setSharedNotes}
+                                                    friendsList={friendsList}
+                                                    setFriendsList={setFriendsList} />}/>
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="dashboard" element={<DashboardPage
                                                     showModal={showModal}
@@ -41,7 +43,9 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     originalWrittenNotesList={originalWrittenNotesList}
                                                     setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                                                     sharedNotes={sharedNotes}
-                                                    setSharedNotes={setSharedNotes} />}>
+                                                    setSharedNotes={setSharedNotes}
+                                                    friendsList={friendsList}
+                                                    setFriendsList={setFriendsList} />}>
                         <Route path="notes" element={<NotesList 
                                                         writtenNotes={writtenNotes}
                                                         setWrittenNotes={setWrittenNotes}

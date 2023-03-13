@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, redirect } from "react-router-dom";
 import "./Login.css"
 
 function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
@@ -27,7 +27,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
-
+                return redirect("/");
             }
         } catch (error){
             console.error(error);

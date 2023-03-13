@@ -58,7 +58,7 @@ function AddAccount() {
     }
 
     return (
-        <div className="accountModalContainer">
+        <div className="contentModalWindow">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
             <div className="inputContainer">
                 <select type="text" id="accountName" name="accountName" placeholder="account name" onChange={handleChange} required>

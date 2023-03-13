@@ -3,7 +3,7 @@ import "./AddGame.css"
 
 function AddGame() {
     return (
-        <div className="gameContainer">
+        <div className="contentModalWindow">
                 Games
         </div>
     );

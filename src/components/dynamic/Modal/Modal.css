@@ -12,24 +12,42 @@
 }
 
 .modalWindow {
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     height: 80%;
     min-height: 250px;
     max-height: 500px;
     background: var(--window-dark-gray);
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: grid;
     grid-template-rows: 20% 1fr 15%;
     grid-template-columns: 90%;
-    justify-content: center;
+    justify-items: center;
+    align-content: center; */
     border-radius: 25px;
     box-shadow: 5px 5px 10px black;
     cursor: default;
     position: relative;
 }
 
+.contentModalWindow {
+    width: 75%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--window-light-gray);
+}
+
 .modalTitle {
-    margin: 25px auto;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .closeModalX {
@@ -39,14 +57,23 @@
     position: absolute;
     top: 15px;
     right: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modalNavMenu {
+    height: 50px;
+    padding-top: 15px;
     list-style-type: none;
     display: flex;
     flex-direction: row;
 }
 
+.modalNavMenu * {
+    margin: 0px 5px;
+}
 
 /* child form and input styling for login and signup */
 .landingContainer > form {

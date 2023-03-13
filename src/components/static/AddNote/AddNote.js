@@ -76,7 +76,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
     }
 
     return (
-        <div className="noteModalContainer">
+        <div className="contentModalWindow">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
             <input id="formNoteColorCode" type="color" onChange={handleChange}></input>
             <div className="inputContainer">

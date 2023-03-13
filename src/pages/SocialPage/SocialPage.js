@@ -1,7 +1,6 @@
 
 import React, {useState} from 'react';
 import './SocialPage.css';
-
 import FriendsList from '../../components/dynamic/FriendsList/FriendsList';
 import CommunitiesList from '../../components/dynamic/CommunitiesList/CommunitiesList';
 
@@ -14,13 +13,15 @@ import CommunitiesList from '../../components/dynamic/CommunitiesList/Communitie
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
 
 
-function SocialPage() {
+function SocialPage({friendsList, setFriendsList}) {
   const [currentPage, setCurrentPage] = useState("Communities");
   const [otherPage, setOtherPage] = useState("Friends");
  
   const renderPage = () => {
     if (currentPage === "Friends"){
-      return <FriendsList/>
+      return <FriendsList
+              friendsList={friendsList}
+              setFriendsList={setFriendsList} />
     } else {
       return <CommunitiesList/>
     }

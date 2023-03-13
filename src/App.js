@@ -18,7 +18,8 @@ function App() {
   const [activeModal, setActiveModal] = useState("Add Account");
   const [writtenNotes, setWrittenNotes] = useState([]);
   const [sharedNotes, setSharedNotes] = useState([]);
-  const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
+  const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([]);
+  const [friendsList, setFriendsList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   
   return (
@@ -39,6 +40,8 @@ function App() {
             setOriginalWrittenNotesList={setOriginalWrittenNotesList}
             sharedNotes={sharedNotes}
             setSharedNotes={setSharedNotes}
+            friendsList={friendsList}
+            setFriendsList={setFriendsList}
             showMenu={showMenu}
             setShowMenu={setShowModal}
             />
@@ -57,7 +60,10 @@ function App() {
                           originalWrittenNotesList={originalWrittenNotesList}
                           setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                           sharedNotes={sharedNotes}
-                          setSharedNotes={setSharedNotes}/>}
+                          setSharedNotes={setSharedNotes}
+                          friendsList={friendsList}
+                          setFriendsList={setFriendsList}
+                          />}
         </main>        
       </div>
     </Router>
