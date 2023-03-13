@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./AddAccount.css"
 
-function AddAccount() {
+function AddAccount({setShowModal, accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList}) {
     
     const verificationArray = ["Xbox Live", "Playstation", "blizzard.net", "nintendo id", "Steam", "Riot Games", "Epic Games"]
     const [accountUsername, setAccountUsername] = useState("");
@@ -38,8 +38,28 @@ function AddAccount() {
 
             const data = await result.json();
 
+            console.log(data);
+
             if(result.ok){
-                console.log(data);
+                setAccountsList([...accountsList, {
+                    UserId: data.UserId,
+                    account: `${data.account}`,
+                    createdAt: `${data.createdAt}`,
+                    gamerTag: `${data.gamerTag}`,
+                    id: data.id,
+                    type: `${data.type}`,
+                    username: `${data.username}`
+                }])
+                setOriginalAccountsList([...originalAccountsList, {
+                    UserId: data.UserId,
+                    account: `${data.account}`,
+                    createdAt: `${data.createdAt}`,
+                    gamerTag: `${data.gamerTag}`,
+                    id: data.id,
+                    type: `${data.type}`,
+                    username: `${data.username}`
+                }])
+                setShowModal(false);
             }
 
         } catch(error) {

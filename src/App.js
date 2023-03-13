@@ -21,6 +21,8 @@ function App() {
   const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([]);
   const [friendsList, setFriendsList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
+  const [accountsList, setAccountsList] = useState([]);
+  const [originalAccountsList, setOriginalAccountsList] = useState([]);
   
   return (
     <Router>
@@ -40,6 +42,10 @@ function App() {
             setOriginalWrittenNotesList={setOriginalWrittenNotesList}
             sharedNotes={sharedNotes}
             setSharedNotes={setSharedNotes}
+            accountsList={accountsList}
+            setAccountsList={setAccountsList}
+            originalAccountsList={originalAccountsList}
+            setOriginalAccountsList={setOriginalAccountsList}
             friendsList={friendsList}
             setFriendsList={setFriendsList}
             showMenu={showMenu}
@@ -59,6 +65,10 @@ function App() {
                           setWrittenNotes={setWrittenNotes}
                           originalWrittenNotesList={originalWrittenNotesList}
                           setOriginalWrittenNotesList={setOriginalWrittenNotesList}
+                          accountsList={accountsList}
+                          setAccountsList={setAccountsList}
+                          originalAccountsList={originalAccountsList}
+                          setOriginalAccountsList={setOriginalAccountsList}
                           sharedNotes={sharedNotes}
                           setSharedNotes={setSharedNotes}
                           friendsList={friendsList}
