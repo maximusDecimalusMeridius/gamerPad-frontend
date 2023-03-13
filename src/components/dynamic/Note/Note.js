@@ -12,9 +12,10 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
     const [textInput, setTextInput] = useState(textContent)
 
     const [friendInput, setFriendInput] = useState("")
+    const [shareNoteResult, setshareNoteResult] = useState("")
 
     const handleMoreClick = (event) => {
-        if (sideBarVisibility == 'none') {
+        if (sideBarVisibility === 'none') {
             setsideBarVisibility('block')
         } else {
             setsideBarVisibility('none')
@@ -28,6 +29,35 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
             setTextInput(e.target.value)
         } else if (e.target.className === "friendInput"){
             setFriendInput(e.target.value)
+        }
+    }
+
+    const handleShareNote = async (noteId) => {
+        setFriendInput("")
+        try {
+            const token = localStorage.getItem("token");
+
+            const result = await fetch(`http://localhost:3001/api/notes/${noteId}/shareWith/${friendInput}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json",
+                    authorization: token ? `Bearer ${token}` : ''
+                }
+            })
+
+            if (result.ok) {
+                setshareNoteResult("Note successfully shared!");
+                setTimeout(()=>{
+                    setShareModalVisibility("none")
+                }, 2000)
+            } else {
+                setshareNoteResult("Something went wrong! Make sure you have the accurate username");
+            }
+
+          
+            
+        } catch (error) {
+            console.error(error);
         }
     }
 
@@ -71,7 +101,8 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
                             <h2>What friend would you like to share this note with?</h2>
                             <p className="shareNoteCloseBtn" onClick={() => setShareModalVisibility('none')}>X</p>
                             <input className={"friendInput"} value={friendInput} onChange={handleChange} placeholder={"Friend Username"}></input>
-                            <button>Share Note</button>
+                            <p>{shareNoteResult}</p>
+                            <button onClick={() => handleShareNote(id)}>Share Note</button>
                         </div>
                     </div>
                 </div>
