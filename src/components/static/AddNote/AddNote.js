@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./AddNote.css"
 
 function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                sharedNotes, setSharedNotes, setShowModal}) {
+                sharedNotes, setSharedNotes, setShowModal, warningMessage, setWarningMessage}) {
     
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
@@ -83,8 +83,8 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
                 <input type="text" id="formNoteContent" name="noteContent" placeholder={`your ${getPlaceholder()}`} onChange={handleChange} value={noteContent} required></input>
             </div>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">Oh noes!</p>
-                <button className="submitButton">Create Note</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+                <button className="addSubmitButton">Create Note</button>
             </div>
         </form>
         </div>

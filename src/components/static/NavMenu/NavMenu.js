@@ -4,7 +4,7 @@ import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 import "./NavMenu.css"
 
-function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav  }) {
+function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav }) {
 
     const navigate = useNavigate();
 

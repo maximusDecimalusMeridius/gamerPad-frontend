@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
-function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
+function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
     
     const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             <input type="text" id="loginUsername" name="username" placeholder="email or username" value={userValue} onChange={handleChange} required></input>
             <input type="password" id="loginPassword" name="password" placeholder="password" value={passwordValue} onChange={handleChange} required></input>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">Oh noes!</p>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>
             </div>
         </form>

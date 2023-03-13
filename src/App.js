@@ -24,7 +24,7 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
-  
+  const [warningMessage, setWarningMessage] = useState("warningMessage");
   return (
     <Router>
       <div className="appContainer">
@@ -53,12 +53,17 @@ function App() {
             setOriginalFriendsList={setOriginalFriendsList}
             showMenu={showMenu}
             setShowMenu={setShowModal}
+            warningMessage={warningMessage}
+            setWarningMessage={setWarningMessage}
             />
         </header>
     
         <main>
           {!isLoggedIn && <LandingPage 
-                          setIsLoggedIn={setIsLoggedIn} />}
+                          setIsLoggedIn={setIsLoggedIn}
+                          warningMessage={warningMessage}
+                          setWarningMessage={setWarningMessage}
+                          />}
           {isLoggedIn && <HomePage 
                           showModal={showModal}
                           setShowModal={setShowModal}

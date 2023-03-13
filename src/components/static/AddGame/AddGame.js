@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./AddGame.css"
 
-function AddGame({setShowModal}) {
+function AddGame({setShowModal, warningMessage, setWarningMessage}) {
     
     const [gameId, setGameId] = useState("");
 
@@ -48,8 +48,8 @@ function AddGame({setShowModal}) {
                 <input type="text" id="gameId" name="friendName" placeholder="game id" onChange={handleChange} value={gameId}required></input>
             </div>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">Oh noes!</p>
-                <button className="submitButton">Add Friend</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+                <button className="addSubmitButton">Add Game</button>
             </div>
         </form>
         </div>

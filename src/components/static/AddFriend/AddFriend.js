@@ -1,12 +1,10 @@
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
 import "./AddFriend.css"
 
-function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
+function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, warningMessage, setWarningMessage}) {
     
     const [friendName, setFriendName] = useState([]);
     const [friendCode, setFriendCode] = useState([]);
-    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
 
@@ -59,8 +57,8 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                 <input type="text" id="friendCode" name="friendCode" placeholder="friend's code" onChange={handleChange} value={friendCode}required></input>
             </div>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">Oh noes!</p>
-                <button className="submitButton">Add Friend</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+                <button className="addSubmitButton">Add Friend</button>
             </div>
         </form>
         </div>

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "./AddAccount.css"
 
-function AddAccount({setShowModal, accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList}) {
+function AddAccount({setShowModal, accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, warningMessage, setWarningMessage}) {
     
     const navigate = useNavigate();
 
@@ -93,8 +93,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                 <input type="text" id="gamertag" name="gamertag" placeholder="gamertag" onChange={handleChange} value={gamertag}required></input>
             </div>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">Oh noes!</p>
-                <button className="submitButton">Create Note</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+                <button className="addSubmitButton">Add Account</button>
             </div>
         </form>
         </div>

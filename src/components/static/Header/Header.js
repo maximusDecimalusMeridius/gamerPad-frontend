@@ -8,11 +8,12 @@ import {Link} from "react-router-dom";
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                 sharedNotes, setSharedNotes, accountsList, setAccountsList, originalAccountsList, 
-                setOriginalAccountsList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, showMenu, setShowMenu}) {
+                setOriginalAccountsList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,
+                showMenu, setShowMenu, warningMessage, setWarningMessage}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
-   
+
     //TODO: Pass page prop and setter to Modal with menu type
 
     const openUserMenu = (event) => {
@@ -78,6 +79,8 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setFriendsList={setFriendsList}
                             originalFriendsList={originalFriendsList}
                             setOriginalFriendsList={setOriginalFriendsList}
+                            warningMessage={warningMessage}
+                            setWarningMessage={setWarningMessage}
                         />}
 
             {openNav && <NavMenu

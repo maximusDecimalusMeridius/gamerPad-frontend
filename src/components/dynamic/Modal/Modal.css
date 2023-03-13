@@ -108,10 +108,17 @@
     place-self: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 25px;
 }
 
 .warningMessage {
     color: red;
     font-size: 12px;
     text-align: center;
+}
+
+.addSubmitButton {
+    width: 50%;
+    box-shadow: 4px 4px 6px 2px black;
 }

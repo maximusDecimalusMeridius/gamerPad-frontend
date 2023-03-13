@@ -8,7 +8,7 @@ import AddNote from "../../static/AddNote/AddNote.js"
 function Modal({showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList,
                 setOriginalWrittenNotesList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, 
-                setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType}) {
+                setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType, warningMessage, setWarningMessage}) {
 
     //TODO: conditionally render display component based on activeModal
     //TODO: pass setter to every component
@@ -26,7 +26,11 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setAccountsList={setAccountsList}
                         originalAccountsList={originalAccountsList}
                         setOriginalAccountsList={setOriginalAccountsList}
-                        setShowModal={setShowModal}/>
+                        setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
+                        />
+                        
             case("Add Friend"):
                 return <AddFriend 
                         friendsList={friendsList}
@@ -34,6 +38,8 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         originalFriendsList={originalFriendsList}
                         setOriginalFriendsList={setOriginalFriendsList}
                         setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
                             />
             case("Add Note"):
                 return <AddNote 
@@ -42,10 +48,15 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         originalWrittenNotesList={originalWrittenNotesList}
                         setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                         setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
                         />
             case("Add Game"):
                 return <AddGame 
-                        setShowModal={setShowModal}/>
+                        setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
+                        />
 
             default:
                 break;
