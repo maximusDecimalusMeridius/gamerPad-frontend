@@ -55,7 +55,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
         <div className="modalContainer cursor" id="modalContainer" onClick={handleClick}>
             <div className="modalWindow">
                 <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>x</div>
-                <h2 className="modalTitle">{activeModal} Page</h2>
+                <h2 className="modalTitle">{activeModal}</h2>
                 {renderForm()}
                 <ul className="modalNavMenu">
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Account")}>{activeModal === "Add Account" ? `${activeModal}` : "Account"}</li> |

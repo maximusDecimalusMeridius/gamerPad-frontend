@@ -4,6 +4,7 @@
     --header-height: 50px;
     --nav-menu-text-color: #bebebe;
     --button-red: #bd4b3a;
+    --modal-text-shadow: 2px 2px black;
 }
 
 /* #root {
@@ -48,6 +49,7 @@ button {
     background: var(--button-red);
     color: white;
     border: 2px solid white;
+    text-shadow: 1px 1px black;
 }
 
 button:hover {

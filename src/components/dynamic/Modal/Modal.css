@@ -22,11 +22,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: grid;
-    grid-template-rows: 20% 1fr 15%;
-    grid-template-columns: 90%;
-    justify-items: center;
-    align-content: center; */
     border-radius: 25px;
     box-shadow: 5px 5px 10px black;
     cursor: default;
@@ -40,6 +35,8 @@
     justify-content: center;
     align-items: center;
     background-color: var(--window-light-gray);
+    border-radius: 20px;
+    box-shadow: inset 2px 2px 8px 2px black;
 }
 
 .modalTitle {
@@ -48,6 +45,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 32px;
+    text-shadow: var(--modal-text-shadow);
 }
 
 .closeModalX {
@@ -61,6 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: red;
 }
 
 .modalNavMenu {
@@ -73,6 +73,7 @@
 
 .modalNavMenu * {
     margin: 0px 5px;
+    text-shadow: var(--modal-text-shadow);
 }
 
 /* child form and input styling for login and signup */
@@ -90,14 +91,6 @@
     align-items: center;
     border-radius: 5px;
     box-shadow: 2px 2px 4px black;
-}
-
-#loginForm {
-    gap: 10%;
-}
-
-#signupForm {
-    gap: 3px;
 }
 
 .landingContainer input {
