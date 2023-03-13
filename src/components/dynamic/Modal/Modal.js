@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Modal.css";
 import AddAccount from "../../static/AddAccount/AddAccount.js"
 import AddFriend from "../../static/AddFriend/AddFriend.js"
@@ -10,9 +10,12 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                 setOriginalWrittenNotesList, friendsList, setFriendsList, accountsList, 
                 setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType}) {
 
-    
     //TODO: conditionally render display component based on activeModal
     //TODO: pass setter to every component
+
+    useEffect(() => {
+        document.title = `gamerPad - Add Something!`
+    })
 
     const renderForm = () => {
         

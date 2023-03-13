@@ -13,6 +13,10 @@ function ProfilePage({accountsList, setAccountsList, originalAccountsList, setOr
 
   const [username, setUserName] = useState([]);
 
+  useEffect(() => {
+    document.title = `gamerPad - Profile`
+  },[])
+
   return (
     <div className="profilePageContainer">
       <div className="profileHeader">
