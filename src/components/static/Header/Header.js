@@ -65,6 +65,10 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setShowModal={setShowModal}
                             activeModal={activeModal}
                             setActiveModal={setActiveModal}
+                            writtenNotes={writtenNotes}
+                            setWrittenNotes={setWrittenNotes}
+                            originalWrittenNotesList={originalWrittenNotesList}
+                            setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                         />}
 
             {openNav && <NavMenu

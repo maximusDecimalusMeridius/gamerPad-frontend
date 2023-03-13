@@ -6,8 +6,7 @@ import AddGame from "../../static/AddGame/AddGame.js"
 import AddNote from "../../static/AddNote/AddNote.js"
 
 function Modal({showModal, setShowModal, activeModal, setActiveModal,
-                writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                sharedNotes, setSharedNotes, setOpenNav, setMenuType}) {
+                writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, setMenuType}) {
 
     
     //TODO: conditionally render display component based on activeModal
@@ -26,8 +25,6 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setWrittenNotes={setWrittenNotes}
                         originalWrittenNotesList={originalWrittenNotesList}
                         setOriginalWrittenNotesList={setOriginalWrittenNotesList}
-                        sharedNotes={sharedNotes}
-                        setSharedNotes={setSharedNotes}
                         />
             case("Add Game"):
                 return <AddGame />

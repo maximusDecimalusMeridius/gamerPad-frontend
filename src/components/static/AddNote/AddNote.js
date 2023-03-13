@@ -30,28 +30,29 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
             body: JSON.stringify(newNoteObj)
         })
 
+
         const data = await result.json();
 
         if (result.ok) {
             setWrittenNotes([...writtenNotes, {
-                color: `${data.result.color}`,
-                createdAt: `${data.result.createdAt}`,
-                id: data.result.id,
-                isShared: `${data.result.isShared}`,
-                textContent: `${data.result.textContent}`,
-                title: data.result.title
+                color: `${data.color}`,
+                createdAt: `${data.createdAt}`,
+                id: data.id,
+                isShared: `${data.isShared}`,
+                textContent: `${data.textContent}`,
+                title: data.title
             }])
             setOriginalWrittenNotesList([...originalWrittenNotesList, {
-                color: `${data.result.color}`,
-                createdAt: `${data.result.createdAt}`,
-                id: data.result.id,
-                isShared: `${data.result.isShared}`,
-                textContent: `${data.result.textContent}`,
-                title: data.result.title
+                color: `${data.color}`,
+                createdAt: `${data.createdAt}`,
+                id: data.id,
+                isShared: `${data.isShared}`,
+                textContent: `${data.textContent}`,
+                title: data.title
             }])
 
-            setNoteTitle("");
-            setNoteContent("");
+            // setNoteTitle("");
+            // setNoteContent("");
         }
         } catch(error) {
             console.error(error);
