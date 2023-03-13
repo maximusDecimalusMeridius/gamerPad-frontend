@@ -19,6 +19,7 @@ function App() {
 
   const [writtenNotes, setWrittenNotes] = useState([]);
   const [sharedNotes, setSharedNotes] = useState([]);
+  const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
   
   return (
     <Router>
@@ -34,6 +35,8 @@ function App() {
             setActiveModal={setActiveModal}
             writtenNotes={writtenNotes}
             setWrittenNotes={setWrittenNotes}
+            originalWrittenNotesList={originalWrittenNotesList}
+            setOriginalWrittenNotesList={setOriginalWrittenNotesList}
             sharedNotes={sharedNotes}
             setSharedNotes={setSharedNotes}
             />
@@ -49,6 +52,8 @@ function App() {
                           setActiveModal={setActiveModal}
                           writtenNotes={writtenNotes}
                           setWrittenNotes={setWrittenNotes}
+                          originalWrittenNotesList={originalWrittenNotesList}
+                          setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                           sharedNotes={sharedNotes}
                           setSharedNotes={setSharedNotes}/>}
         </main>        

@@ -6,7 +6,8 @@ import UserMenu from "../../static/UserMenu/UserMenu.js";
 import {Link} from "react-router-dom";
 
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
-                writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
+                writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
+                sharedNotes, setSharedNotes}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
@@ -60,6 +61,8 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setActiveModal={setActiveModal}
                             writtenNotes={writtenNotes}
                             setWrittenNotes={setWrittenNotes}
+                            originalWrittenNotesList={originalWrittenNotesList}
+                            setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                             sharedNotes={sharedNotes}
                             setSharedNotes={setSharedNotes}
                         />}

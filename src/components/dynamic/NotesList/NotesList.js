@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
-function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
-    const [originalWittenNotesList, setOriginalWittenNotesList] = useState([])
+function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList}) {
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
@@ -29,7 +28,7 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes})
             const data = await result.json();
 
             setWrittenNotes(data.WritenNotes);
-            setOriginalWittenNotesList(data.WritenNotes)
+            setOriginalWrittenNotesList(data.WritenNotes)
             setSharedNotes(data.SharedNotes);
             setOriginalSharedNotesList(data.SharedNotes)
 
@@ -92,7 +91,7 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes})
     const renderSearchBar = () => {
         if (currentNotes === "writtenNotes") {
             return (
-                <SearchBar originalList={originalWittenNotesList} setList={setWrittenNotes} />
+                <SearchBar originalList={originalWrittenNotesList} setList={setWrittenNotes} />
             )
         } else if (currentNotes === "sharedNotes") {
             return (

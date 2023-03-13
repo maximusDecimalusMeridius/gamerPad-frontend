@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import "./AddNote.css"
 
-function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
+function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
+                sharedNotes, setSharedNotes}) {
     
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
@@ -33,6 +34,14 @@ function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
 
         if (result.ok) {
             setWrittenNotes([...writtenNotes, {
+                color: `${data.result.color}`,
+                createdAt: `${data.result.createdAt}`,
+                id: data.result.id,
+                isShared: `${data.result.isShared}`,
+                textContent: `${data.result.textContent}`,
+                title: data.result.title
+            }])
+            setOriginalWrittenNotesList([...originalWrittenNotesList, {
                 color: `${data.result.color}`,
                 createdAt: `${data.result.createdAt}`,
                 id: data.result.id,
