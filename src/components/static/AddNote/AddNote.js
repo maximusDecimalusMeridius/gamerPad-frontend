@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./AddNote.css"
 
-function AddNote() {
+function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
     
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
@@ -14,17 +14,35 @@ function AddNote() {
         const token = localStorage.getItem("token");
 
         const newNoteObj = {
-            title: "test",
-            textContent: "test"
+            title: noteTitle,
+            textContent: noteContent,
+            color: "salmon"
         }
 
         const result = await fetch("http://localhost:3001/api/notes/", {
             method: "POST",
             headers: {
-                authorization: token ? `Bearer ${token}` : ''
+                "Content-Type":"application/json",
+                authorization: token ? `Bearer ${token}` : '',
             },
             body: JSON.stringify(newNoteObj)
         })
+
+        const data = await result.json();
+
+        if (result.ok) {
+            setWrittenNotes([...writtenNotes, {
+                color: `${data.result.color}`,
+                createdAt: `${data.result.createdAt}`,
+                id: data.result.id,
+                isShared: `${data.result.isShared}`,
+                textContent: `${data.result.textContent}`,
+                title: data.result.title
+            }])
+
+            setNoteTitle("");
+            setNoteContent("");
+        }
         } catch(error) {
             console.error(error);
         }

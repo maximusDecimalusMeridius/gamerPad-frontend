@@ -5,7 +5,8 @@ import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
 import {Link} from "react-router-dom";
 
-function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal}) {
+function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
+                writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
@@ -57,6 +58,10 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setShowModal={setShowModal}
                             activeModal={activeModal}
                             setActiveModal={setActiveModal}
+                            writtenNotes={writtenNotes}
+                            setWrittenNotes={setWrittenNotes}
+                            sharedNotes={sharedNotes}
+                            setSharedNotes={setSharedNotes}
                         />}
 
             {openNav && <NavMenu

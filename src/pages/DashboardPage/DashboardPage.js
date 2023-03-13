@@ -18,7 +18,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: Create Div for carosel, with A tags on each image within carosel, have background linked to communities page
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
-function DashboardPage() {
+function DashboardPage({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
   return (
     <div className="dashboardContainer">
       <ul className="pageTabs">
@@ -41,8 +41,16 @@ function DashboardPage() {
             <Route index={true} element={<SocialPage />} />
           </Route>
           <Route path="notes">
-            <Route path="" element={<NotesList />} />
-            <Route index={true} element={<NotesList />} />
+            <Route path="" element={<NotesList 
+                                      writtenNotes={writtenNotes}
+                                      setWrittenNotes={setWrittenNotes}
+                                      sharedNotes={sharedNotes}
+                                      setSharedNotes={setSharedNotes}/>} />
+            <Route index={true} element={<NotesList 
+                                            writtenNotes={writtenNotes}
+                                            setWrittenNotes={setWrittenNotes}
+                                            sharedNotes={sharedNotes}
+                                            setSharedNotes={setSharedNotes}/>} />
           </Route>
           <Route path="games">
             <Route path="" element={<GamesList />} />

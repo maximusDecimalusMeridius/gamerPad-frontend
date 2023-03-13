@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
-function NotesList() {
+function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
     const [originalWittenNotesList, setOriginalWittenNotesList] = useState([])
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
-    const [writtenNotes, setWrittenNotes] = useState([]);
-    const [sharedNotes, setSharedNotes] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {

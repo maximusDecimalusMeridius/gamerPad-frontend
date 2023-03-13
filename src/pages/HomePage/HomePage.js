@@ -11,24 +11,44 @@ import SocialPage from "../SocialPage/SocialPage";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
 
-function HomePage({ showModal, setShowModal, activeModal, setActiveModal }) {
+function HomePage({ showModal, setShowModal, activeModal, setActiveModal, writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
 
 
     return (
         <div className="homeContainer" id="homePage">
             <Routes>
-                <Route path="/" element={<DashboardPage />} />
+                <Route path="/" element={<DashboardPage
+                                                    showModal={showModal}
+                                                    setShowModal={setShowModal}
+                                                    activeModal={activeModal}
+                                                    setActiveModal={setActiveModal}
+                                                    writtenNotes={writtenNotes}
+                                                    setWrittenNotes={setWrittenNotes}
+                                                    sharedNotes={sharedNotes}
+                                                    setSharedNotes={setSharedNotes} />}/>
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="dashboard" element={<DashboardPage
-                    showModal={showModal}
-                    setShowModal={setShowModal}
-                    activeModal={activeModal}
-                    setActiveModal={setActiveModal} />}>
-                        <Route path="notes" element={<NotesList />} />
+                                                    showModal={showModal}
+                                                    setShowModal={setShowModal}
+                                                    activeModal={activeModal}
+                                                    setActiveModal={setActiveModal}
+                                                    writtenNotes={writtenNotes}
+                                                    setWrittenNotes={setWrittenNotes}
+                                                    sharedNotes={sharedNotes}
+                                                    setSharedNotes={setSharedNotes} />}>
+                        <Route path="notes" element={<NotesList 
+                                                        writtenNotes={writtenNotes}
+                                                        setWrittenNotes={setWrittenNotes}
+                                                        sharedNotes={sharedNotes}
+                                                        setSharedNotes={setSharedNotes}/>} />
                         <Route path="games" element={<GamesList />} />
                 </Route>
                 <Route path="games" element={<GamesPage />} />
-                <Route path="notes" element={<NotesList />} />
+                <Route path="notes" element={<NotesList 
+                                                writtenNotes={writtenNotes}
+                                                setWrittenNotes={setWrittenNotes}
+                                                sharedNotes={sharedNotes}
+                                                setSharedNotes={setSharedNotes}/>} />
                 <Route path="social" element={<FriendsList />} />
                 <Route path="communities" element={<FriendsList />} />
             </Routes>      
