@@ -34,6 +34,11 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                 setShowModal(false);
                 //we can reload if we persist "loggedInData"
                 // window.location.reload();
+            } else {
+                setWarningMessage("Error adding friend");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             }
 
         } catch(error) {

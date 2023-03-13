@@ -30,7 +30,11 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
-                
+            } else {
+                setWarningMessage("Error logging in");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             }
         } catch (error){
             console.error(error);
@@ -42,8 +46,8 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             <input type="text" id="loginUsername" name="username" placeholder="email or username" value={userValue} onChange={handleChange} required></input>
             <input type="password" id="loginPassword" name="password" placeholder="password" value={passwordValue} onChange={handleChange} required></input>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
             </div>
         </form>
     );

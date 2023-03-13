@@ -22,11 +22,16 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
             })
 
             const data = await result.json();
-            console.log("Logged In!");
-            
+            console.log(data);
+
             if(result.ok){
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
+            } else {
+                setWarningMessage("Error signing up");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             }
 
         } catch (error){
@@ -43,8 +48,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
                 <input type="password" id="signupConfirm" placeholder="verify password" required></input>
             </div>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
             </div>
         </form>
     );

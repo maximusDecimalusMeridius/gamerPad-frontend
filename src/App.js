@@ -24,7 +24,7 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
-  const [warningMessage, setWarningMessage] = useState("warningMessage");
+  const [warningMessage, setWarningMessage] = useState("");
   return (
     <Router>
       <div className="appContainer">

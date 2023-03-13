@@ -64,6 +64,11 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                 }])
                 setShowModal(false);
                 navigate("/profile", {replace: true})
+            } else {
+                setWarningMessage("Error adding account");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             }
 
         } catch(error) {

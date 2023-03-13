@@ -52,7 +52,14 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
             setShowModal(false);
             // setNoteTitle("");
             // setNoteContent("");
+        } else {
+            setWarningMessage("Error adding note");
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
         }
+
+
         } catch(error) {
             console.error(error);
         }
