@@ -2,20 +2,20 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./FriendsList.css";
 
-function FriendsList() {
+function FriendsList({friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
   const [openIndex, setOpenIndex] = useState(-1);
-  const [friendsList, setFriendsList] = useState([]);
-  const [originalFriendsList, setOriginalFriendsList] = useState([]);
+  
   useEffect(() => {
     fetchFriends();
     document.title = `gamerPad - Friends`;
   }, []);
 
-  // TODO: fetch friendsList
-//   TODO: map over friends list
- //  TODO: display friends list
-//  TODO: display usernames, on click open all other data
+  //  TODO: fetch friendsList
+  //  TODO: map over friends list
+  //  TODO: display friends list
+  //  TODO: display usernames, on click open all other data
   const fetchFriends = async (event) => {
+    console.log(friendsList);
     try {
       const token = localStorage.getItem("token");
 
@@ -29,7 +29,7 @@ function FriendsList() {
         }
       );
       const data = await result.json();
-      console.log(data.Friends);
+    
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);
     } catch (error) {
@@ -60,8 +60,7 @@ function FriendsList() {
             />
           )}
         </div>
-        {/* <div className="faveGamesContainer">
-            </div> */}
+        
       </div>
     );
   });

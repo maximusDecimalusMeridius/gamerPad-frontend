@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./AddFriend.css"
 
-function AddFriend() {
+function AddFriend({friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
     
     const [friendName, setFriendName] = useState([]);
     const [friendCode, setFriendCode] = useState([]);
@@ -14,11 +14,11 @@ function AddFriend() {
             const token = localStorage.getItem("token");
 
             const newFriendObj = {
-                FriendId: 2,
-                friendCode: "addcode"
+                FriendId: friendName,
+                friendCode: friendCode
             }
 
-            const result = await fetch ("http://localhost:3001/api/friends/AddFriend", {
+            const result = await fetch ("http://localhost:3001/api/friends/addFriend", {
                 method: "POST",
                 body: JSON.stringify(newFriendObj),
                 headers: {
@@ -31,6 +31,7 @@ function AddFriend() {
 
             if(result.ok){
                 console.log(data);
+                console.log("friend added");
             }
 
         } catch(error) {

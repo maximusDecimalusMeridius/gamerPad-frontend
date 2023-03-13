@@ -13,7 +13,6 @@ function UserMenu({ showModal, setShowModal, activeModal, setActiveModal, setMen
         setMenuType(false)
     }
     const handleMenuClick = (event) => {
-        console.dir(event.target)
         if(event.target.classList.contains("modalContainer") || event.target.classList.contains("link") || event.target.id === "exitBox"){
             setMenuType(false)
             setOpenNav(false)

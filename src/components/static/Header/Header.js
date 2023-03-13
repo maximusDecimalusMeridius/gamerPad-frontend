@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                 sharedNotes, setSharedNotes, accountsList, setAccountsList, originalAccountsList, 
-                setOriginalAccountsList, friendsList, setFriendsList, showMenu, setShowMenu}) {
+                setOriginalAccountsList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, showMenu, setShowMenu}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
@@ -76,6 +76,8 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setOriginalAccountsList={setOriginalAccountsList}
                             friendsList={friendsList}
                             setFriendsList={setFriendsList}
+                            originalFriendsList={originalFriendsList}
+                            setOriginalFriendsList={setOriginalFriendsList}
                         />}
 
             {openNav && <NavMenu

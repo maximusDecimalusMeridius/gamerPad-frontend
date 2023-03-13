@@ -13,7 +13,7 @@ import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                    sharedNotes, setSharedNotes, friendsList, setFriendsList, accountsList, setAccountsList,
+                    sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
                     originalAccountsList, setOriginalAccountsList}) {
 
 
@@ -32,12 +32,16 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     sharedNotes={sharedNotes}
                                                     setSharedNotes={setSharedNotes}
                                                     friendsList={friendsList}
-                                                    setFriendsList={setFriendsList} />}/>
+                                                    setFriendsList={setFriendsList}
+                                                    originalFriendsList={originalFriendsList}
+                                                    setOriginalFriendsList={setOriginalFriendsList}
+                                                     />}/>
                 <Route path="profile" element={<ProfilePage 
                                                 accountsList={accountsList}
                                                 setAccountsList={setAccountsList}
                                                 originalAccountsList={originalAccountsList}
-                                                setOriginalAccountsList={setOriginalAccountsList}/>} />
+                                                setOriginalAccountsList={setOriginalAccountsList}/>}
+                                                 />
                 <Route path="dashboard" element={<DashboardPage
                                                     showModal={showModal}
                                                     setShowModal={setShowModal}
@@ -50,7 +54,10 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     sharedNotes={sharedNotes}
                                                     setSharedNotes={setSharedNotes}
                                                     friendsList={friendsList}
-                                                    setFriendsList={setFriendsList} />}>
+                                                    setFriendsList={setFriendsList}
+                                                    originalFriendsList={originalFriendsList}
+                                                    setOriginalFriendsList={setOriginalFriendsList}
+                                                    />}>
                         <Route path="notes" element={<NotesList 
                                                         writtenNotes={writtenNotes}
                                                         setWrittenNotes={setWrittenNotes}

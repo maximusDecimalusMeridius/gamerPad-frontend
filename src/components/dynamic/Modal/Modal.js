@@ -7,7 +7,7 @@ import AddNote from "../../static/AddNote/AddNote.js"
 
 function Modal({showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList,
-                setOriginalWrittenNotesList, friendsList, setFriendsList, accountsList, 
+                setOriginalWrittenNotesList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, 
                 setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType}) {
 
     //TODO: conditionally render display component based on activeModal
@@ -29,9 +29,11 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setShowModal={setShowModal}/>
             case("Add Friend"):
                 return <AddFriend 
-                    friendsList={friendsList}
-                    setFriendsList={setFriendsList}
-                    />
+                        friendsList={friendsList}
+                        setFriendsList={setFriendsList}
+                        originalFriendsList={originalFriendsList}
+                        setOriginalFriendsList={setOriginalFriendsList}
+                            />
             case("Add Note"):
                 return <AddNote 
                         writtenNotes={writtenNotes}

@@ -13,7 +13,7 @@ import CommunitiesList from '../../components/dynamic/CommunitiesList/Communitie
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
 
 
-function SocialPage({friendsList, setFriendsList}) {
+function SocialPage({friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
   const [currentPage, setCurrentPage] = useState("Communities");
   const [otherPage, setOtherPage] = useState("Friends");
  
@@ -21,7 +21,10 @@ function SocialPage({friendsList, setFriendsList}) {
     if (currentPage === "Friends"){
       return <FriendsList
               friendsList={friendsList}
-              setFriendsList={setFriendsList} />
+              setFriendsList={setFriendsList}
+              originalFriendsList={originalFriendsList}
+              setOriginalFriendsList={setOriginalFriendsList}
+              />
     } else {
       return <CommunitiesList/>
     }
