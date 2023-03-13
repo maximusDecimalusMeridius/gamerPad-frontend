@@ -1,0 +1,35 @@
+.searchbarContainer {
+    width: 100%;
+    --searchbar-container-height: 50px;
+    height: var(--searchbar-container-height);
+    background: #323232;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchbarInput {
+    --searchbar-width: 60%;
+    width: var(--searchbar-width);
+    padding: 2px;
+}
+
+.searchbarInput:focus {
+    
+    z-index: 2;
+    position: fixed;
+    /* left: 5%;
+    right: 5%; */
+    /* top: calc(var(--header-height) + var(--searchbar-container-height)); */
+    box-shadow: 0px 0px 4px 2px pink;
+}
+
+.searchbarButton {
+    width: 100px;
+    height: 25px;
+    padding: 0px;
+    position: absolute;
+    right: 5%;
+}

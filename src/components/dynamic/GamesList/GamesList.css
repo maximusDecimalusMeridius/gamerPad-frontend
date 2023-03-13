@@ -1,0 +1,112 @@
+.gamesContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    transition: all .5s ease-out;
+}
+
+.gameCard {
+    width: 90%;
+    min-width: 200px;
+    min-height: 125px;
+    margin: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    transition: all .5s ease-out;
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 4px 2px black;
+}
+
+.gameCardHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gameCardTitle {
+
+}
+
+.gameCardPlatforms {
+    padding-right: 5px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    white-space: nowrap;
+}
+
+.gameCardPlatforms li {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.ratingsContainer {
+    width: 90%;
+    max-width: 600px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.ratings {
+    width: 150px;
+    text-align: center;
+    background: #323232;
+    color: white;
+    box-shadow: 2px 2px 4px black;
+    border-radius: 10px;
+}
+
+.bubbles {
+    height: 40px;
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bubble {
+    height: 20px;
+    width: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: white;
+}
+
+.filled {
+    background: var(--xbox-green);
+    box-shadow: 0px 0px 6px 3px var(--light-xbox-green);
+}
+
+@media (width < 750px) {
+    .gamesContainer {
+        
+    }
+
+    .gameCard {
+        width: 100%;
+    }
+
+    .ratings:first-child {
+        margin-right: auto;
+    }
+
+    .ratings:last-child {
+        margin-left: auto;
+    }
+
+    .ratingsContainer {
+        flex-direction: column;
+    }
+}

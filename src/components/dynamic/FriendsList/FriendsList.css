@@ -1,0 +1,57 @@
+
+.friendsContainer{
+    height: 100%;
+    background-color: rgb(17, 181, 93);
+    background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
+}
+.friendPage{
+    display:flex;
+    flex-direction: column;
+    height:60vh;
+    align-items: center;
+    overflow-y: scroll;
+    padding: 10px;
+}
+.friendCard {
+    width: 74%;
+    max-height:fit-content;
+    min-height: fit-content;
+    min-width:fit-content;
+    margin-top: 30px;
+    padding: 10px;
+    /* flex-grow: 1; */
+    /* flex grow was causing issues with expanding too much */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid blue;
+    background: #bebebe;
+}
+.friendCardHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    
+}
+.friendUsername{
+    background-color: rgb(84, 84, 247);
+    height:fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.friendPic{
+    border-radius: 50%;
+    height:80px;
+    width:80px;
+    justify-self: flex-start;
+}
+
+@media screen and (max-width:380px){ 
+    .friendsContainer{
+        max-width:250px
+    }
+    .friendCard{
+        min-width: 250px;
+    }
+}

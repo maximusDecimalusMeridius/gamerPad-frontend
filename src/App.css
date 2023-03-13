@@ -1,0 +1,89 @@
+:root {
+    --window-light-gray: #f6f7eb;
+    --window-dark-gray: #393e41;
+    --header-height: 50px;
+    --nav-menu-text-color: #bebebe;
+    --button-red: #bd4b3a;
+    --modal-text-shadow: 2px 2px black;
+    --xbox-green: rgb(31, 119, 30);
+    --light-xbox-green: rgba(47, 179, 45, .5);
+}
+
+/* #root {
+    height:
+} */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sets min bounds for html page to 250x375 */
+html {
+    height: 100vh;
+    min-height: 300px;
+    min-width: 250px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+img, video {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    height: calc(100% - var(--header-height));
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+body {
+    height: 100%;
+}
+
+button {
+    cursor: pointer;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    background: var(--button-red);
+    color: white;
+    border: 2px solid white;
+    text-shadow: 1px 1px black;
+}
+
+button:hover {
+    background: rgb(157, 22, 22);
+}
+
+button:active {
+    box-shadow: inset 1px 1px 2px white,
+                inset -1px -1px 2px white;
+}
+
+#root {
+    height: 100%;
+}
+
+.rootContainer {
+    height: 100%;
+}
+
+.appContainer {
+    height: 100%;
+    background: #44bba4;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    z-index: 3;
+}

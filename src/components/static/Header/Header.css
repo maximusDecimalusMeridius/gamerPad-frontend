@@ -1,0 +1,47 @@
+.imagePlaceholder {
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+}
+
+.header {
+    width: 100%;
+    height: fit-content;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #393e41;
+    background: #393e41;
+    color: white;
+}
+
+.loggedInHeader {
+    color: white;
+}
+
+#headerTitle {
+    text-align: center;
+}
+
+/* Hamburger menu icon */
+.hamburger{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 2;
+}
+
+.burger{
+    width:2rem;
+    height:0.25rem;
+    border-radius: 10px;
+    background-color: var(--nav-menu-text-color);
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+}
+
+

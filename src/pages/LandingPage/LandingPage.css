@@ -1,0 +1,78 @@
+.landingContainer {
+    width: 80%;
+    max-width: 600px;
+    height: 80%;
+    min-height: 250px;
+    max-height: 500px;
+    margin: 25px;
+    background: var(--window-light-gray);
+    display: grid;
+    grid-template-rows: 20% 1fr 15%;
+    grid-template-columns: 90%;
+    justify-content: center;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+.landingTitle {
+    margin-bottom: 10px;
+    justify-self: center;
+    align-self: flex-end;
+}
+
+/* child form and input styling for login and signup */
+.landingContainer > form {
+    height: 80%;
+    min-height: 160px;
+    max-height: 300px;
+    width: 90%;
+    max-width: 600px;
+    place-self: center;
+    background: var(--window-dark-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px black;
+}
+
+#loginForm {
+    gap: 10%;
+}
+
+#signupForm {
+    gap: 3px;
+}
+
+.landingContainer input {
+    width: 80%;
+    padding: 2px;
+}
+
+.landingContainer input::placeholder {
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* div containing the warning message error box and the submit button */
+.statusWindow {
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.warningMessage {
+    color: red;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* p tag to toggle between login and signup form modals */
+#toggleButton {
+    margin: 10px;
+    cursor: pointer;
+    user-select: none;
+    justify-self: flex-start;
+    align-self: flex-end;
+}
