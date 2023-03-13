@@ -89,8 +89,6 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
                             <p className="noteMoreBtns" onClick={() => {setShareModalVisibility('flex'); setsideBarVisibility('none') }}>🔗</p>
                         </div>
                     </div>
-                    <div className="clickOutDiv" style={{display: `${sideBarVisibility}` }}  onClick={() => {setsideBarVisibility('none') }}>
-                    </div>
                     <div className="noteContent">
                         <p>{textContent}</p>
                         <br></br>
