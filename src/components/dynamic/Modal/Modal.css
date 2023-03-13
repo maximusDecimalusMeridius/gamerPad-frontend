@@ -17,13 +17,13 @@
     height: 80%;
     min-height: 250px;
     max-height: 500px;
-    background: var(--window-light-gray);
+    background: var(--window-dark-gray);
     display: grid;
     grid-template-rows: 20% 1fr 15%;
     grid-template-columns: 90%;
     justify-content: center;
     border-radius: 25px;
-    box-shadow: 5px 5px 10px gray;
+    box-shadow: 5px 5px 10px black;
     cursor: default;
     position: relative;
 }

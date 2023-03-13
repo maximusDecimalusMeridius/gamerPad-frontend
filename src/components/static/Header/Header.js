@@ -5,7 +5,9 @@ import NavMenu from "../../static/NavMenu/NavMenu.js";
 import UserMenu from "../../static/UserMenu/UserMenu.js";
 import {Link} from "react-router-dom";
 
-function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal, showMenu, setShowMenu}) {
+function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
+                writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
+                sharedNotes, setSharedNotes, showMenu, setShowMenu}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
@@ -47,7 +49,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
             </div>
             <div className="headerTitle">
                 {isLoggedIn ? (<Link to="/dashboard">
-                    <h1>gamerPad</h1>
+                    <h1 className="loggedInHeader">gamerPad</h1>
                 </Link>) : (<h1>gamerPad</h1>)}
                 
             </div>
@@ -63,8 +65,10 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setShowModal={setShowModal}
                             activeModal={activeModal}
                             setActiveModal={setActiveModal}
-                            setIsMenuType={setMenuType}
-                            setOpenNav={setOpenNav}
+                            writtenNotes={writtenNotes}
+                            setWrittenNotes={setWrittenNotes}
+                            originalWrittenNotesList={originalWrittenNotesList}
+                            setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                         />}
 
             {openNav && <NavMenu

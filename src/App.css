@@ -1,8 +1,9 @@
 :root {
-    --window-light-gray: #bebebe;
+    --window-light-gray: #f6f7eb;
+    --window-dark-gray: #393e41;
     --header-height: 50px;
     --nav-menu-text-color: #bebebe;
-    --button-red: rgb(126, 11, 11);
+    --button-red: #bd4b3a;
 }
 
 /* #root {
@@ -29,7 +30,7 @@ img, video {
 
 main {
     height: calc(100% - var(--header-height));
-    padding-top: 25px;
+    padding-top: 50px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -68,7 +69,7 @@ button:active {
 
 .appContainer {
     height: 100%;
-    background: lightyellow;
+    background: #44bba4;
 }
 
 .cursor {
