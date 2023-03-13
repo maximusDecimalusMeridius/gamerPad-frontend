@@ -1,8 +1,10 @@
 import React from "react";
-import { Navigate, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
 function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn}) {
+    
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -24,10 +26,11 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             const data = await result.json();
 
             if(result.ok){
+                navigate("/", {replace: true})
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
-                return redirect("/");
+                
             }
         } catch (error){
             console.error(error);

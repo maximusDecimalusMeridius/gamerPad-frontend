@@ -1,15 +1,19 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 
 import "./NavMenu.css"
 
 function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav  }) {
 
+    const navigate = useNavigate();
+
     const endSession = () => {
-        setIsLoggedIn(false);
-        localStorage.token = "";
-        
+        setTimeout(() => {
+            navigate("/", {replace: true});
+            setIsLoggedIn(false);
+            localStorage.token = "";
+        }, 250)
     }
     const handleMenuClick = (event) => {
         setMenuType(false)
