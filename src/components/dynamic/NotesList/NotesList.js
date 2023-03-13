@@ -13,6 +13,17 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
         document.title = `gamerPad - Notes`;
     }, []);
 
+      // temporary styles for temporary elements
+    const style = {
+        span: {
+            height: "20px",
+            width: "20px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            color: "red"
+    }
+    }
+
     const fetchNotes = async (event) => {
 
         try {
@@ -47,10 +58,31 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
         }
     }
 
+    const handleDelete = async function(event) {
+        event.stopPropagation();
+        try {
+
+            const token = localStorage.getItem("token");
+
+            const result = await fetch(`http://localhost:3001/api/notes/${event.target.dataset.id}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            })
+
+            // const data = await result.json();
+
+            fetchNotes();
+        } catch(error) {
+
+        }
+    }
+
     const wNotes = writtenNotes.map((note, index) => {
         return (
-            <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}>
+            <div className="noteCard wnote" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
+                <div className="noteHeader" style={{ background: `${note.color}` }}> <span data-id={note.id} onClick={handleDelete} style={style.span}>x</span>
                     <h1 className="noteTitle">{note.title}</h1>
                     <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
                 </div>

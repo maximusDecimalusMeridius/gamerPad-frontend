@@ -18,9 +18,13 @@ function App() {
   const [activeModal, setActiveModal] = useState("Add Account");
   const [writtenNotes, setWrittenNotes] = useState([]);
   const [sharedNotes, setSharedNotes] = useState([]);
-  const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([])
+  const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([]);
+  const [friendsList, setFriendsList] = useState([]);
+  const [originalFriendsList, setOriginalFriendsList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
-  
+  const [accountsList, setAccountsList] = useState([]);
+  const [originalAccountsList, setOriginalAccountsList] = useState([]);
+  const [warningMessage, setWarningMessage] = useState("");
   return (
     <Router>
       <div className="appContainer">
@@ -39,14 +43,27 @@ function App() {
             setOriginalWrittenNotesList={setOriginalWrittenNotesList}
             sharedNotes={sharedNotes}
             setSharedNotes={setSharedNotes}
+            accountsList={accountsList}
+            setAccountsList={setAccountsList}
+            originalAccountsList={originalAccountsList}
+            setOriginalAccountsList={setOriginalAccountsList}
+            friendsList={friendsList}
+            setFriendsList={setFriendsList}
+            originalFriendsList={originalFriendsList}
+            setOriginalFriendsList={setOriginalFriendsList}
             showMenu={showMenu}
             setShowMenu={setShowModal}
+            warningMessage={warningMessage}
+            setWarningMessage={setWarningMessage}
             />
         </header>
     
         <main>
           {!isLoggedIn && <LandingPage 
-                          setIsLoggedIn={setIsLoggedIn} />}
+                          setIsLoggedIn={setIsLoggedIn}
+                          warningMessage={warningMessage}
+                          setWarningMessage={setWarningMessage}
+                          />}
           {isLoggedIn && <HomePage 
                           showModal={showModal}
                           setShowModal={setShowModal}
@@ -56,8 +73,17 @@ function App() {
                           setWrittenNotes={setWrittenNotes}
                           originalWrittenNotesList={originalWrittenNotesList}
                           setOriginalWrittenNotesList={setOriginalWrittenNotesList}
+                          accountsList={accountsList}
+                          setAccountsList={setAccountsList}
+                          originalAccountsList={originalAccountsList}
+                          setOriginalAccountsList={setOriginalAccountsList}
                           sharedNotes={sharedNotes}
-                          setSharedNotes={setSharedNotes}/>}
+                          setSharedNotes={setSharedNotes}
+                          friendsList={friendsList}
+                          setFriendsList={setFriendsList}
+                          originalFriendsList={originalFriendsList}
+                          setOriginalFriendsList={setOriginalFriendsList}   
+                          />}
         </main>        
       </div>
     </Router>

@@ -1,9 +1,12 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./AddNote.css"
 
 function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                sharedNotes, setSharedNotes}) {
+                sharedNotes, setSharedNotes, setShowModal, warningMessage, setWarningMessage}) {
     
+    const navigate = useNavigate();
+
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [noteColorCode, setNoteColorCode] = useState("#fa8072");
@@ -30,7 +33,6 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
             body: JSON.stringify(newNoteObj)
         })
 
-
         const data = await result.json();
 
         if (result.ok) {
@@ -50,10 +52,18 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
                 textContent: `${data.textContent}`,
                 title: data.title
             }])
-
+            setShowModal(false);
+            navigate("/dashboard/notes", {replace: true})
             // setNoteTitle("");
             // setNoteContent("");
+        } else {
+            setWarningMessage("Error adding note");
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
         }
+
+
         } catch(error) {
             console.error(error);
         }
@@ -76,7 +86,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
     }
 
     return (
-        <div className="noteModalContainer">
+        <div className="contentModalWindow">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
             <input id="formNoteColorCode" type="color" onChange={handleChange}></input>
             <div className="inputContainer">
@@ -84,8 +94,8 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
                 <input type="text" id="formNoteContent" name="noteContent" placeholder={`your ${getPlaceholder()}`} onChange={handleChange} value={noteContent} required></input>
             </div>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">Oh noes!</p>
-                <button className="submitButton">Create Note</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+                <button className="addSubmitButton">Create Note</button>
             </div>
         </form>
         </div>

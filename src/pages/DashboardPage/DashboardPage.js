@@ -19,7 +19,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
 function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                        sharedNotes, setSharedNotes}) {
+                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
   return (
     <div className="dashboardContainer">
       <ul className="pageTabs">
@@ -36,10 +36,25 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
 
       <Routes>
         <Route path="/">
-          <Route path="" element={<SocialPage />} />
+          <Route path="" element={<SocialPage 
+                                  friendsList={friendsList}
+                                  setFriendsList={setFriendsList}
+                                  originalFriendsList={originalFriendsList}
+                                  setOriginalFriendsList={setOriginalFriendsList} />}
+                                  />
           <Route path="social">
-            <Route path="" element={<SocialPage />} />
-            <Route index={true} element={<SocialPage />} />
+            <Route path="" element={<SocialPage 
+                                    friendsList={friendsList}
+                                    setFriendsList={setFriendsList}
+                                    originalFriendsList={originalFriendsList}
+                                    setOriginalFriendsList={setOriginalFriendsList}
+                                    />} />
+            <Route index={true} element={<SocialPage 
+                                          friendsList={friendsList}
+                                          setFriendsList={setFriendsList}
+                                          originalFriendsList={originalFriendsList}
+                                          setOriginalFriendsList={setOriginalFriendsList}
+                                            />} />
           </Route>
           <Route path="notes">
             <Route path="" element={<NotesList 

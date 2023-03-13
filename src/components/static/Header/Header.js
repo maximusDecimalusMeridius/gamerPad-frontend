@@ -7,15 +7,17 @@ import {Link} from "react-router-dom";
 
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                sharedNotes, setSharedNotes, showMenu, setShowMenu}) {
+                sharedNotes, setSharedNotes, accountsList, setAccountsList, originalAccountsList, 
+                setOriginalAccountsList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,
+                showMenu, setShowMenu, warningMessage, setWarningMessage}) {
     
     const [menuType, setMenuType] = useState(false);
     const [openNav, setOpenNav] = useState(false);
-   
+
     //TODO: Pass page prop and setter to Modal with menu type
 
     const openUserMenu = (event) => {
-        isLoggedIn && setMenuType(!menuType);
+        setMenuType(!menuType);
         setOpenNav(false);
         // create a modal when profile picture is clicked
         // on modal have link to profile page
@@ -43,8 +45,8 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
 
     return (
         <div className="header">
-            <div className="imageContainer" onClick={openUserMenu}>
-                <div className="imagePlaceholder"></div>
+            <div className="imageContainer">
+                {isLoggedIn ? (<h1 className="imagePlaceholder cursor"  onClick={openUserMenu}></h1>) : ""}
                 {/* <a><image onClick={openUserMenu}>{}</image></a> */}
             </div>
             <div className="headerTitle">
@@ -54,7 +56,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                 
             </div>
             
-            <div className="hamburger" id="hamburger" onClick={useNavMenu}>
+            <div className="hamburger cursor" id="hamburger" onClick={useNavMenu}>
                 <div className="burger" id="burger-1"></div>
                 <div className="burger" id="burger-2"></div>
                 <div className="burger" id="burger-3"></div>
@@ -69,6 +71,16 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setWrittenNotes={setWrittenNotes}
                             originalWrittenNotesList={originalWrittenNotesList}
                             setOriginalWrittenNotesList={setOriginalWrittenNotesList}
+                            accountsList={accountsList}
+                            setAccountsList={setAccountsList}
+                            originalAccountsList={originalAccountsList}
+                            setOriginalAccountsList={setOriginalAccountsList}
+                            friendsList={friendsList}
+                            setFriendsList={setFriendsList}
+                            originalFriendsList={originalFriendsList}
+                            setOriginalFriendsList={setOriginalFriendsList}
+                            warningMessage={warningMessage}
+                            setWarningMessage={setWarningMessage}
                         />}
 
             {openNav && <NavMenu

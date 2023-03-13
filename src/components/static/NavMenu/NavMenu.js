@@ -1,37 +1,43 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 
 import "./NavMenu.css"
 
-function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav  }) {
+function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav }) {
+
+    const navigate = useNavigate();
 
     const endSession = () => {
-        setIsLoggedIn(false);
-        localStorage.token = "";
-        
+        setTimeout(() => {
+            navigate("/", {replace: true});
+            setIsLoggedIn(false);
+            localStorage.token = "";
+        }, 250)
     }
     const handleMenuClick = (event) => {
-        setMenuType(false)
-        setOpenNav(false)
+        if(event.target.id === "modalContainer" || event.target.classList.contains("link")){
+            setMenuType(false)
+            setOpenNav(false)
+        }
     }
     return (
       
-
-        <div className="navMenuContainer" onClick={handleMenuClick}>
+        <div className="modalContainer" id="modalContainer" onClick={handleMenuClick}>
+        <div className="navMenuContainer">
             <ul className="navMenu">
                 {isLoggedIn ? (<>
-                    <li className="userMenuItem" id="navMenuItem-1" onClick={handleMenuClick}>
-                        <Link to="/profile" >Profile Name</Link>
+                    <li className="navMenuItem" id="navMenuItem-1" onClick={handleMenuClick}>
+                        <Link to="/profile" className="link">Profile Name</Link>
                         </li>
                     <li className="navMenuItem" id="navMenuItem-2" onClick={handleMenuClick}>
-                        <Link to="/dashboard" >Dashboard</Link>
+                        <Link to="/dashboard" className="link">Dashboard</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-3" onClick={handleMenuClick}>
-                        <Link to="/dashboard" >About Us</Link>
+                        <Link to="/dashboard" className="link">About Us</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-4" onClick={handleMenuClick}>
-                        <Link to="/social" >Friends</Link>
+                        <Link to="/social" className="link">Friends</Link>
                     </li>
                     <li className="navMenuItem" id="logoutButton" onClick={endSession}>
                         Logout
@@ -47,7 +53,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav  }) {
 
             </ul>
         </div>
-             
+        </div>
     )
 }
 export default NavMenu;
