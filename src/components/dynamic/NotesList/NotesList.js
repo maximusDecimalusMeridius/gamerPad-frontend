@@ -7,8 +7,6 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
-    const [selectedNote, setSelectedNote] = useState(null);
-    const [friendSearch, setFriendSearch] = useState('')
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
@@ -40,7 +38,7 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
             })
 
             const data = await result.json();
-            console.log(data)
+
             setWrittenNotes(data.WrittenNotes);
             setOriginalWrittenNotesList(data.WrittenNotes)
             setSharedNotes(data.SharedNotes);
@@ -186,12 +184,6 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
         }
     }
 
-    const shareNote = () => {
-        if (selectedNote) {
-            document.querySelector(`#findFriendForm`).classList.remove('hidden');
-        }
-    }
-
     // TODO: filter data from data array
     // TODO: map over data to display 
 
@@ -208,24 +200,7 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
                         <input type="radio" id="sharedNotes" name="notes" value="sharedNotes" />
                         <label htmlFor="sharedNotes">Shared With You</label>
                     </div>
-                    <div>
-                        <button onClick={shareNote}>Share Note</button>
-                    </div>
                 </div>
-                <form 
-                    id="findFriendForm" 
-                    className="hidden" 
-                    onSubmit={handleSubmit}
-                >
-                    <input 
-                        id="friendSearch" 
-                        name="friendSearch" 
-                        onChange={handleChange} 
-                        value={friendSearch}
-                    />
-                    <label htmlFor="friendSearch">Find a friend by Id</label>
-                    <button className="submitButton">Send</button>
-                </form>
                 {renderNotes()}
             </div>
         </div>
