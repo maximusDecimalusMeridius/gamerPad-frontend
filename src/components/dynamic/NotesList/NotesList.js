@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
+import Note from "../Note/Note"
 
-function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList}) {
+function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList }) {
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
@@ -58,49 +59,100 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
         }
     }
 
-    const handleDelete = async function(event) {
-        event.stopPropagation();
-        try {
+    const handleDelete = async (noteId) => {
 
+        console.log(noteId)
+        try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch(`http://localhost:3001/api/notes/${event.target.dataset.id}`, {
+            let url = `http://localhost:3001/api/notes/${noteId}`;
+
+            if (currentNotes === "sharedNotes") {
+                url = `http://localhost:3001/api/notes/removeSharedNote/${noteId}`;
+            }
+
+            const result = await fetch(url, {
                 method: "DELETE",
                 headers: {
-                    authorization: `Bearer ${token}`
+                    authorization: token ? `Bearer ${token}` : ''
                 }
             })
 
-            // const data = await result.json();
 
-            fetchNotes();
-        } catch(error) {
+            if (result.ok) {
+                if (currentNotes === "writtenNotes") {
+                    setWrittenNotes(writtenNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                    setOriginalWrittenNotesList(writtenNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                } else {
+                    setSharedNotes(sharedNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                    setOriginalSharedNotesList(sharedNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                }
+            }
 
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const handleEdit = async (noteId, newTitle, newTextContent) => {
+
+        try {
+            const token = localStorage.getItem("token");
+            const noteObject = {
+                title: newTitle,
+                textContent: newTextContent
+            }
+            const result = await fetch(`http://localhost:3001/api/notes/${noteId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type":"application/json",
+                    authorization: token ? `Bearer ${token}` : ''
+                },
+                body: JSON.stringify(noteObject)
+            })
+
+            if (result.ok) {
+                setWrittenNotes(writtenNotes.map((note, index) => {
+                    if (note.id === noteId) {
+                        let newNote = note
+                        note.title = newTitle;
+                        note.textContent = newTextContent
+                        return newNote
+                    } else {
+                        return note
+                    }
+                }))
+
+                setOriginalWrittenNotesList(writtenNotes)
+            }
+
+        } catch (error) {
+            console.error(error);
         }
     }
 
     const wNotes = writtenNotes.map((note, index) => {
-        return (
-            <div className="noteCard wnote" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}> <span data-id={note.id} onClick={handleDelete} style={style.span}>x</span>
-                    <h1 className="noteTitle">{note.title}</h1>
-                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
-                </div>
-                <div className="noteContent">{note.textContent}</div>
-            </div>
-        )
+        return <Note {...note} index={index} handleDelete={handleDelete} key={index} currentNotes={currentNotes} handleEdit={handleEdit}/>
     })
 
     const sNotes = sharedNotes.map((note, index) => {
-        return (
-            <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h1 className="noteTitle">{note.title}</h1>
-                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
-                </div>
-                <div className="noteContent">{note.textContent}</div>
-            </div>
-        )
+        return <Note {...note} index={index} handleDelete={handleDelete} key={index} currentNotes={currentNotes} handleEdit={handleEdit}/>
     })
 
     const renderNotes = () => {
@@ -113,7 +165,7 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
                 <div className="notes">{sNotes}</div>
             )
         } else {
-            return(
+            return (
                 <div></div>
             )
         }
