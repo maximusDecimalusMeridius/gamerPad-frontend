@@ -2,20 +2,27 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./FriendsList.css";
 
-function FriendsList() {
+function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList }) {
   const [openIndex, setOpenIndex] = useState(-1);
-  const [friendsList, setFriendsList] = useState([]);
-  const [originalFriendsList, setOriginalFriendsList] = useState([]);
+
   useEffect(() => {
     fetchFriends();
     document.title = `gamerPad - Friends`;
   }, []);
 
-  // TODO: fetch friendsList
-//   TODO: map over friends list
- //  TODO: display friends list
-//  TODO: display usernames, on click open all other data
+  // temporary styles for temporary elements
+  const style = {
+    span: {
+      height: "20px",
+      width: "20px",
+      cursor: "pointer",
+      fontWeight: "bold",
+      color: "red"
+    }
+  }
+
   const fetchFriends = async (event) => {
+
     try {
       const token = localStorage.getItem("token");
 
@@ -29,9 +36,10 @@ function FriendsList() {
         }
       );
       const data = await result.json();
-      console.log(data.Friends);
+
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);
+
     } catch (error) {
       console.error(error);
     }
@@ -39,6 +47,31 @@ function FriendsList() {
   const handleFriendClick = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
+
+  const handleDelete = async (event) => {
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const result = await fetch(`http://localhost:3001/api/friends/${event.target.dataset.id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await result.json();
+
+      if(result.ok){
+        fetchFriends();
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  
 
   const friends = friendsList.map((friend, index) => {
     const isOpen = index === openIndex;
@@ -49,9 +82,9 @@ function FriendsList() {
           <h2
             className="friendUsername"
             onClick={() => handleFriendClick(index)}
-          >
-            {friend.username}
+          >{friend.username}
           </h2>
+          <span onClick={handleDelete} style={style.span} data-id={friend.id}>X</span>
           {isOpen && (
             <img
               className="friendPic"
@@ -60,15 +93,14 @@ function FriendsList() {
             />
           )}
         </div>
-        {/* <div className="faveGamesContainer">
-            </div> */}
+
       </div>
     );
   });
 
   return (
     <div className="friendsContainer">
-      <SearchBar originalList={originalFriendsList} setList={setFriendsList}/>
+      <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
       <div className="friendPage">{friends}</div>
     </div>
   );

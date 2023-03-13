@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
+import Note from "../Note/Note"
 
 function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList }) {
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
@@ -14,6 +15,17 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
         fetchNotes();
         document.title = `gamerPad - Notes`;
     }, []);
+
+      // temporary styles for temporary elements
+    const style = {
+        span: {
+            height: "20px",
+            width: "20px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            color: "red"
+    }
+    }
 
     const fetchNotes = async (event) => {
 
@@ -46,93 +58,104 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
         } else if (event.target.value === "sharedNotes") {
             setSharedNotes([]);
             setCurrentNotes("sharedNotes");
-        } else if (event.target.name === "friendSearch") {
-            setFriendSearch(event.target.value);
         }
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleDelete = async (noteId) => {
+
+        console.log(noteId)
         try {
             const token = localStorage.getItem("token");
-            const result = await fetch(`http://localhost:3001/api/notes/${selectedNote}/shareWith/${friendSearch}`, {
-                method: "POST",
+
+            let url = `http://localhost:3001/api/notes/${noteId}`;
+
+            if (currentNotes === "sharedNotes") {
+                url = `http://localhost:3001/api/notes/removeSharedNote/${noteId}`;
+            }
+
+            const result = await fetch(url, {
+                method: "DELETE",
                 headers: {
                     authorization: token ? `Bearer ${token}` : ''
                 }
             })
 
-            const data = await result.json();
-            console.log(data)
+
+            if (result.ok) {
+                if (currentNotes === "writtenNotes") {
+                    setWrittenNotes(writtenNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                    setOriginalWrittenNotesList(writtenNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                } else {
+                    setSharedNotes(sharedNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                    setOriginalSharedNotesList(sharedNotes.filter((note) => {
+                        if (note.id !== noteId) {
+                            return note
+                        }
+                    }))
+                }
+            }
+
         } catch (error) {
             console.error(error);
         }
     }
 
-    const selectNote = (e) => {
-        const currentNote = e.target.parentElement;
-        console.log(currentNote);
-        setSelectedNote(currentNote.getAttribute(`value`));
-        if(selectedNote) {
-            const allNotes = document.querySelectorAll(`.noteCard`);
-            allNotes.forEach(note => {
-                const color = note.getAttribute(`color`);
-                console.log(color);
-                note.setAttribute(`style`, `border: 3px solid ${color}`)
+    const handleEdit = async (noteId, newTitle, newTextContent) => {
+
+        try {
+            const token = localStorage.getItem("token");
+            const noteObject = {
+                title: newTitle,
+                textContent: newTextContent
+            }
+            const result = await fetch(`http://localhost:3001/api/notes/${noteId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type":"application/json",
+                    authorization: token ? `Bearer ${token}` : ''
+                },
+                body: JSON.stringify(noteObject)
             })
-            const tempNoteStyle = currentNote.getAttribute(`style`);
-            currentNote.setAttribute(`style`, `${tempNoteStyle}; box-shadow: 0px 0px 8px rgb(104, 255, 157);`);
-            
+
+            if (result.ok) {
+                setWrittenNotes(writtenNotes.map((note, index) => {
+                    if (note.id === noteId) {
+                        let newNote = note
+                        note.title = newTitle;
+                        note.textContent = newTextContent
+                        return newNote
+                    } else {
+                        return note
+                    }
+                }))
+
+                setOriginalWrittenNotesList(writtenNotes)
+            }
+
+        } catch (error) {
+            console.error(error);
         }
     }
 
-    let wNotes;
-    console.log(writtenNotes)
-    if (writtenNotes) {
-        wNotes = writtenNotes.map((note, index) => {
-            return (
-                <div
-                    className="noteCard"
-                    key={index}
-                    id={`wNote-${index + 1}`}
-                    color={note.color}
-                    style={{ border: `3px solid ${note.color}` }}
-                    value={`${note.id}`}
-                    onClick={selectNote}
-                >
-                    <div className="noteHeader" style={{ background: `${note.color}` }}>
-                        <h1 className="noteTitle">{note.title}</h1>
-                        <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
-                    </div>
-                    <div className="noteContent" value={note.id}>{note.textContent}</div>
-                </div>
-            )
-        })
-    }
+    const wNotes = writtenNotes.map((note, index) => {
+        return <Note {...note} index={index} handleDelete={handleDelete} key={index} currentNotes={currentNotes} handleEdit={handleEdit}/>
+    })
 
-    let sNotes;
-    if (sharedNotes !== [] && sharedNotes !== undefined) {
-        sNotes = sharedNotes.map((note, index) => {
-            console.log(note);
-            return (
-                <div
-                    className="noteCard"
-                    key={index}
-                    id={`sNote-${index + 1}`}
-                    color={note.color}
-                    style={{ border: `3px solid ${note.color}` }}
-                    value={`${note.id}`}
-                    onClick={selectNote}
-                >
-                    <div className="noteHeader" style={{ background: `${note.color}` }}>
-                        <h1 className="noteTitle">{note.title}</h1>
-                        <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
-                    </div>
-                    <div className="noteContent">{note.textContent}</div>
-                </div>
-            )
-        })
-    }
+    const sNotes = sharedNotes.map((note, index) => {
+        return <Note {...note} index={index} handleDelete={handleDelete} key={index} currentNotes={currentNotes} handleEdit={handleEdit}/>
+    })
 
     const renderNotes = () => {
         if (currentNotes === "writtenNotes") {

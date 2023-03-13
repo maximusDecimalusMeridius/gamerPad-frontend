@@ -9,10 +9,14 @@ import AccountsList from "../../components/dynamic/AccountsList/AccountsList";
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage() {
+function ProfilePage({accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList}) {
 
   const [username, setUserName] = useState([]);
   const [friendCount, setFriendCount] = useState(0)
+
+  useEffect(() => {
+    document.title = `gamerPad - Profile`
+  },[])
 
   return (
     <div className="profilePageContainer">
@@ -51,7 +55,12 @@ function ProfilePage() {
         <div className="lfmRow"></div>
       </div>
       <AccountsList 
-        setUserName={setUserName}/>
+        setUserName={setUserName}
+        accountsList={accountsList}
+        setAccountsList={setAccountsList}
+        originalAccountsList={originalAccountsList}
+        setOriginalAccountsList={setOriginalAccountsList}
+        />
 
     </div>
   );

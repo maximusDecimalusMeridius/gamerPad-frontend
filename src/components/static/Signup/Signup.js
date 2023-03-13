@@ -1,9 +1,9 @@
 import {React, useState} from "react";
 import "./Signup.css"
 
-function Signup({activePage, userValue, emailValue, passwordValue, confirmValue, handleChange, isLoggedIn, setIsLoggedIn}) {
+function Signup({activePage, userValue, emailValue, passwordValue, confirmValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
+
     
-    const [errorMessage, setErrorMessage] = useState('')
     const [currentPassword, setCurrentPassword] = useState('')
 
     const handleSubmit = async (event) => {
@@ -30,11 +30,16 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
             })
 
             const data = await result.json();
-            console.log("Logged In!");
-            
+            console.log(data);
+
             if(result.ok){
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
+            } else {
+                setWarningMessage("Error signing up");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             }
 
         } catch (error){
@@ -51,36 +56,36 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
         console.log(document.querySelector(`#signupPassword`).innerText)
         if(name === `username`){
             if(value === ''){
-                setErrorMessage('Username field is required');
+                setWarningMessage('Username field is required');
             } else {
-                setErrorMessage('');
+                setWarningMessage('');
             }
         } else if(name === `email`){
             if(value === ''){
-                setErrorMessage('Email field is required');
+                setWarningMessage('Email field is required');
             } else if(!emailValidator.test(value)){ 
-                setErrorMessage('Please enter a valid email address');
+                setWarningMessage('Please enter a valid email address');
             } else {
-                setErrorMessage('');
+                setWarningMessage('');
             }
         } else if(name === `password`){
             if(value === ''){
-                setErrorMessage('Password field is required');
+                setWarningMessage('Password field is required');
             } else if(!(passwordValidator.test(value))){
-                setErrorMessage('Passwords require at least 1 uppercase character, 1 lowercase character, 1 number, and 1 special character ds');
+                setWarningMessage('Passwords require at least 1 uppercase character, 1 lowercase character, 1 number, and 1 special character ds');
             } else if(value.length < 8 || value.length > 128){
-                setErrorMessage('Passwords must be between 8 and 128 characters long');
+                setWarningMessage('Passwords must be between 8 and 128 characters long');
             } else {
                 setCurrentPassword(value)
-                setErrorMessage('');
+                setWarningMessage('');
             }
         } else if(name === `vPassword`){
             if(value === ''){
-                setErrorMessage('Password field is required');
+                setWarningMessage('Password field is required');
             } else if(value !== currentPassword){
-                setErrorMessage('Passwords need to match'); 
+                setWarningMessage('Passwords need to match'); 
             } else {
-                setErrorMessage('');
+                setWarningMessage('');
             }
         }
     }
@@ -140,8 +145,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
                 I certify I am at least 13 years of age.
             </label>
             <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">{errorMessage}</p>
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
             </div>
         </form>
     );

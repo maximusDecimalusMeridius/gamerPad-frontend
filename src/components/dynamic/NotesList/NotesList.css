@@ -58,6 +58,7 @@
     align-items: center;
     /* TODO: weird 1px right margin offset, need to review */
     margin-left: -1px;
+    position: relative;
 }
 
 .noteTitle {
@@ -72,6 +73,40 @@
     justify-self: flex-end;
 }
 
+.noteMoreDiv {
+    right: 0px;
+    bottom: -100px;
+    position: absolute;
+    border-radius: 5px;
+    z-index: 6;
+}
+
+.clickOutDiv{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 5;
+    top: 0;
+    left: 0;
+}
+
+.noteMoreBtns {
+    padding: 7px;
+    cursor: pointer;
+}
+
+.bottomNote {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.noteMenu {
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 6;
+}
+
 .noteContent {
     padding: 5px;
     background-color: white;
@@ -79,10 +114,40 @@
     overflow: auto;
 }
 
-.hidden {
-    display: none;
+.shareModal {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.345);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.shareDiv {
+    border-radius: 5px;
+    height: 50%;
+    width: 50%;
+    background-color: rgb(189, 194, 200);
+    box-shadow: 0px 0px 10px 5px rgb(106, 108, 109);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 1%;
+    position: relative;
+}
+
+.shareNoteCloseBtn {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    padding: 10px;
+    cursor: pointer;
+}
 
 @media (width < 350px) {
     .selectNotes {

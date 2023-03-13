@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Modal.css";
 import AddAccount from "../../static/AddAccount/AddAccount.js"
 import AddFriend from "../../static/AddFriend/AddFriend.js"
@@ -6,28 +6,57 @@ import AddGame from "../../static/AddGame/AddGame.js"
 import AddNote from "../../static/AddNote/AddNote.js"
 
 function Modal({showModal, setShowModal, activeModal, setActiveModal,
-                writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, setMenuType}) {
+                writtenNotes, setWrittenNotes, originalWrittenNotesList,
+                setOriginalWrittenNotesList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, 
+                setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType, warningMessage, setWarningMessage}) {
 
-    
     //TODO: conditionally render display component based on activeModal
     //TODO: pass setter to every component
+
+    useEffect(() => {
+        document.title = `gamerPad - Add Something!`
+    })
 
     const renderForm = () => {
         
         switch(activeModal) {
             case("Add Account"):
-                return <AddAccount />
+                return <AddAccount 
+                        accountsList={accountsList}
+                        setAccountsList={setAccountsList}
+                        originalAccountsList={originalAccountsList}
+                        setOriginalAccountsList={setOriginalAccountsList}
+                        setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
+                        />
+                        
             case("Add Friend"):
-                return <AddFriend />
+                return <AddFriend 
+                        friendsList={friendsList}
+                        setFriendsList={setFriendsList}
+                        originalFriendsList={originalFriendsList}
+                        setOriginalFriendsList={setOriginalFriendsList}
+                        setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
+                            />
             case("Add Note"):
                 return <AddNote 
                         writtenNotes={writtenNotes}
                         setWrittenNotes={setWrittenNotes}
                         originalWrittenNotesList={originalWrittenNotesList}
                         setOriginalWrittenNotesList={setOriginalWrittenNotesList}
+                        setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
                         />
             case("Add Game"):
-                return <AddGame />
+                return <AddGame 
+                        setShowModal={setShowModal}
+                        warningMessage={warningMessage}
+                        setWarningMessage={setWarningMessage}
+                        />
 
             default:
                 break;
@@ -44,7 +73,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
         <div className="modalContainer cursor" id="modalContainer" onClick={handleClick}>
             <div className="modalWindow">
                 <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>x</div>
-                <h2 className="modalTitle">{activeModal} Page</h2>
+                <h2 className="modalTitle">{activeModal}</h2>
                 {renderForm()}
                 <ul className="modalNavMenu">
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Account")}>{activeModal === "Add Account" ? `${activeModal}` : "Account"}</li> |
