@@ -41,7 +41,6 @@ a:link, a:visited,a:hover, a:active {
 #logoutButton {
     color: red;
     font-weight: bold;
-    border: 3px solid red;
     text-align:center;
     cursor: pointer;
 }

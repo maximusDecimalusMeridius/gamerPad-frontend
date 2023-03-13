@@ -1,8 +1,11 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./AddFriend.css"
 
 function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, warningMessage, setWarningMessage}) {
     
+    const navigate = useNavigate();
+
     const [friendName, setFriendName] = useState([]);
     const [friendCode, setFriendCode] = useState([]);
 
@@ -32,6 +35,7 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
             if(result.ok){
                 console.log("friend added");
                 setShowModal(false);
+                navigate("/", {replace: true})
                 //we can reload if we persist "loggedInData"
                 // window.location.reload();
             } else {

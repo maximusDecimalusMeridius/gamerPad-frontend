@@ -1,9 +1,12 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./AddNote.css"
 
 function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                 sharedNotes, setSharedNotes, setShowModal, warningMessage, setWarningMessage}) {
     
+    const navigate = useNavigate();
+
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [noteColorCode, setNoteColorCode] = useState("#fa8072");
@@ -50,6 +53,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
                 title: data.title
             }])
             setShowModal(false);
+            navigate("/dashboard/notes", {replace: true})
             // setNoteTitle("");
             // setNoteContent("");
         } else {

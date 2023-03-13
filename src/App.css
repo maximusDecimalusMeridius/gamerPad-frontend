@@ -5,6 +5,8 @@
     --nav-menu-text-color: #bebebe;
     --button-red: #bd4b3a;
     --modal-text-shadow: 2px 2px black;
+    --xbox-green: rgb(31, 119, 30);
+    --light-xbox-green: rgba(47, 179, 45, .5);
 }
 
 /* #root {
@@ -22,6 +24,7 @@ html {
     height: 100vh;
     min-height: 300px;
     min-width: 250px;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 img, video {
