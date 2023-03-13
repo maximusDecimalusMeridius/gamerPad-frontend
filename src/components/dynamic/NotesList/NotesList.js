@@ -14,6 +14,17 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
         document.title = `gamerPad - Notes`;
     }, []);
 
+      // temporary styles for temporary elements
+    const style = {
+        span: {
+            height: "20px",
+            width: "20px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            color: "red"
+    }
+    }
+
     const fetchNotes = async (event) => {
 
         try {
@@ -47,8 +58,6 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
             setCurrentNotes("sharedNotes");
         }
     }
-
-
 
     const handleDelete = async (noteId) => {
 

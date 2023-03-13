@@ -1,3 +1,19 @@
-.friendContainer {
-    
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formNoteTitle {
+    width: 90%;
+}
+
+#formNoteContent {
+    width: 90%;
+    min-height: 50px;
+}
+
+.modalForm {
+    width: 90%;
+    width: 90%;
 }
