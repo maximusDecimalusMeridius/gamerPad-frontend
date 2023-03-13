@@ -30,7 +30,6 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
             body: JSON.stringify(newNoteObj)
         })
 
-
         const data = await result.json();
 
         if (result.ok) {
