@@ -29,6 +29,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setWrittenNotes={setWrittenNotes}
                         originalWrittenNotesList={originalWrittenNotesList}
                         setOriginalWrittenNotesList={setOriginalWrittenNotesList}
+                        setShowModal={setShowModal}
                         />
             case("Add Game"):
                 return <AddGame />

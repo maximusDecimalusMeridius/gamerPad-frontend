@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./AddNote.css"
 
 function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                sharedNotes, setSharedNotes}) {
+                sharedNotes, setSharedNotes, setShowModal}) {
     
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
@@ -50,7 +50,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
                 textContent: `${data.textContent}`,
                 title: data.title
             }])
-
+            setShowModal(false);
             // setNoteTitle("");
             // setNoteContent("");
         }
