@@ -47,30 +47,36 @@ function NotesList() {
             setCurrentNotes("sharedNotes");
         }
     }
-
-    const wNotes = writtenNotes.map((note, index) => {
-        return (
-            <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h1 className="noteTitle">{note.title}</h1>
-                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+    let wNotes;
+    console.log(writtenNotes)
+    if(writtenNotes !== [] && writtenNotes !== undefined){
+        wNotes = writtenNotes.map((note, index) => {
+            return (
+                <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
+                    <div className="noteHeader" style={{ background: `${note.color}` }}>
+                        <h1 className="noteTitle">{note.title}</h1>
+                        <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+                    </div>
+                    <div className="noteContent">{note.textContent}</div>
                 </div>
-                <div className="noteContent">{note.textContent}</div>
-            </div>
-        )
-    })
+            )
+        })
+    }
 
-    const sNotes = sharedNotes.map((note, index) => {
-        return (
-            <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h1 className="noteTitle">{note.title}</h1>
-                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+    let sNotes;
+    if(sharedNotes !== [] && sharedNotes !== undefined){
+        sNotes = sharedNotes.map((note, index) => {
+            return (
+                <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
+                    <div className="noteHeader" style={{ background: `${note.color}` }}>
+                        <h1 className="noteTitle">{note.title}</h1>
+                        <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+                    </div>
+                    <div className="noteContent">{note.textContent}</div>
                 </div>
-                <div className="noteContent">{note.textContent}</div>
-            </div>
-        )
-    })
+            )
+        })
+    }
 
     const renderNotes = () => {
         if (currentNotes === "writtenNotes") {
@@ -97,6 +103,10 @@ function NotesList() {
         }
     }
 
+    const shareNote = () => {
+        
+    }
+
     // TODO: filter data from data array
     // TODO: map over data to display 
 
@@ -112,6 +122,9 @@ function NotesList() {
                     <div>
                         <input type="radio" id="sharedNotes" name="notes" value="sharedNotes" />
                         <label htmlFor="sharedNotes">Shared With You</label>
+                    </div>
+                    <div>
+                        <button onClick={shareNote}></button>
                     </div>
                 </div>
                 {renderNotes()}

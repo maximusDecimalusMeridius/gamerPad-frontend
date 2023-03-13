@@ -12,13 +12,17 @@ import AccountsList from "../../components/dynamic/AccountsList/AccountsList";
 function ProfilePage() {
 
   const [username, setUserName] = useState([]);
+  const [friendCount, setFriendCount] = useState(0)
 
   return (
     <div className="profilePageContainer">
       <div className="profileHeader">
         <div>Games</div>
+        {/* put in games counter */}
         <h3>{username}</h3>
-        <div>Friends</div>
+        <div>Friends: {`${friendCount}`}</div>
+        {/* put in Friend counter */}
+        {/* pass down setter to account */}
       </div>
       <div className="profileInfo">
         <div className="userRow">
