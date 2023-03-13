@@ -16,6 +16,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [activeModal, setActiveModal] = useState("Add Account");
+  const [showMenu, setShowMenu] = useState(false);
+  
   
   return (
     <Router>
@@ -29,6 +31,8 @@ function App() {
             setShowModal={setShowModal}
             activeModal={activeModal}
             setActiveModal={setActiveModal}
+            showMenu={showMenu}
+            setShowMenu={setShowModal}
             />
         </header>
     
