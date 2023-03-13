@@ -14,8 +14,8 @@ import CommunitiesList from '../../components/dynamic/CommunitiesList/Communitie
 
 
 function SocialPage({friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList}) {
-  const [currentPage, setCurrentPage] = useState("Communities");
-  const [otherPage, setOtherPage] = useState("Friends");
+  const [currentPage, setCurrentPage] = useState("Friends");
+  const [otherPage, setOtherPage] = useState("Communities");
  
   const renderPage = () => {
     if (currentPage === "Friends"){

@@ -1,8 +1,11 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./AddAccount.css"
 
 function AddAccount({setShowModal, accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList}) {
     
+    const navigate = useNavigate();
+
     const verificationArray = ["Xbox Live", "Playstation", "blizzard.net", "nintendo id", "Steam", "Riot Games", "Epic Games"]
     const [accountUsername, setAccountUsername] = useState("");
     const [accountType, setAccountType] = useState("");
@@ -60,6 +63,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     username: `${data.username}`
                 }])
                 setShowModal(false);
+                navigate("/profile", {replace: true})
             }
 
         } catch(error) {

@@ -7,7 +7,6 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
     // const [filter, setFilter] = useState("all");
     // const [contentRating, setContentRating] = useState("3");
     // const [replayRating, setReplayRating] = useState("3");
-
     useEffect(() => {
         fetchAccounts();
     }, []);
@@ -26,10 +25,12 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
 
             const data = await result.json();
 
-            console.log(data);
-            setAccountsList(data.Accounts)
-            setOriginalAccountsList(data.Accounts)
-            setUserName(data.username)
+            
+                setAccountsList(data.Accounts)
+                setOriginalAccountsList(data.Accounts)
+                setUserName(data.username)
+            
+            
 
         } catch (error) {
             console.error(error);

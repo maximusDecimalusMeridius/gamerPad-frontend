@@ -33,6 +33,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setFriendsList={setFriendsList}
                         originalFriendsList={originalFriendsList}
                         setOriginalFriendsList={setOriginalFriendsList}
+                        setShowModal={setShowModal}
                             />
             case("Add Note"):
                 return <AddNote 
