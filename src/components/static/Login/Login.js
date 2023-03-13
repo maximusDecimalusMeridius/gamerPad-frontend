@@ -27,6 +27,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
+
             }
         } catch (error){
             console.error(error);

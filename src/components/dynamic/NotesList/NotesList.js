@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
 
-function NotesList() {
-    const [originalWittenNotesList, setOriginalWittenNotesList] = useState([])
+function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList}) {
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
-    const [writtenNotes, setWrittenNotes] = useState([]);
-    const [sharedNotes, setSharedNotes] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
@@ -30,8 +27,8 @@ function NotesList() {
 
             const data = await result.json();
 
-            setWrittenNotes(data.WritenNotes);
-            setOriginalWittenNotesList(data.WritenNotes)
+            setWrittenNotes(data.WrittenNotes);
+            setOriginalWrittenNotesList(data.WrittenNotes)
             setSharedNotes(data.SharedNotes);
             setOriginalSharedNotesList(data.SharedNotes)
 
@@ -42,8 +39,10 @@ function NotesList() {
 
     const handleChange = (event) => {
         if (event.target.value === "writtenNotes") {
+            setWrittenNotes([]);
             setCurrentNotes("writtenNotes");
         } else if (event.target.value === "sharedNotes") {
+            setSharedNotes([]);
             setCurrentNotes("sharedNotes");
         }
     }
@@ -87,6 +86,10 @@ function NotesList() {
             return (
                 <div className="notes">{sNotes}</div>
             )
+        } else {
+            return(
+                <div></div>
+            )
         }
 
     }
@@ -94,7 +97,7 @@ function NotesList() {
     const renderSearchBar = () => {
         if (currentNotes === "writtenNotes") {
             return (
-                <SearchBar originalList={originalWittenNotesList} setList={setWrittenNotes} />
+                <SearchBar originalList={originalWrittenNotesList} setList={setWrittenNotes} />
             )
         } else if (currentNotes === "sharedNotes") {
             return (
