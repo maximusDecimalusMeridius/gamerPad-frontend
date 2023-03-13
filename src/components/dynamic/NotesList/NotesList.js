@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar"
 import "./NotesList.css";
+import Note from "../Note/Note"
 
-function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList}) {
+function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, originalWrittenNotesList, setOriginalWrittenNotesList }) {
     const [originalSharedNotesList, setOriginalSharedNotesList] = useState([])
 
     const [currentNotes, setCurrentNotes] = useState("writtenNotes");
@@ -47,25 +48,17 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
         }
     }
 
-    const [sideBarVisibility, setsideBarVisibility] = useState('none')
 
-    const handleMoreClick = (event) => {
-        if(sideBarVisibility=='none'){
-            setsideBarVisibility('block')
-        } else {
-            setsideBarVisibility('none')
-        }
-    }
 
     const handleDelete = async (noteId) => {
-        setsideBarVisibility('none')
+
         console.log(noteId)
         try {
             const token = localStorage.getItem("token");
 
             let url = `http://localhost:3001/api/notes/${noteId}`;
 
-            if(currentNotes==="sharedNotes"){
+            if (currentNotes === "sharedNotes") {
                 url = `http://localhost:3001/api/notes/removeSharedNote/${noteId}`;
             }
 
@@ -76,78 +69,81 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
                 }
             })
 
-            
+
             if (result.ok) {
-                if(currentNotes==="writtenNotes"){
-                    setWrittenNotes(writtenNotes.filter((note) =>{
-                        if(note.id!==noteId){
+                if (currentNotes === "writtenNotes") {
+                    setWrittenNotes(writtenNotes.filter((note) => {
+                        if (note.id !== noteId) {
                             return note
                         }
                     }))
-                    setOriginalWrittenNotesList(writtenNotes.filter((note) =>{
-                        if(note.id!==noteId){
+                    setOriginalWrittenNotesList(writtenNotes.filter((note) => {
+                        if (note.id !== noteId) {
                             return note
                         }
                     }))
                 } else {
-                    setSharedNotes(sharedNotes.filter((note) =>{
-                        if(note.id!==noteId){
+                    setSharedNotes(sharedNotes.filter((note) => {
+                        if (note.id !== noteId) {
                             return note
                         }
                     }))
-                    setOriginalSharedNotesList(sharedNotes.filter((note) =>{
-                        if(note.id!==noteId){
+                    setOriginalSharedNotesList(sharedNotes.filter((note) => {
+                        if (note.id !== noteId) {
                             return note
                         }
                     }))
                 }
-                
-                
-    
-                // setNoteTitle("");
-                // setNoteContent("");
             }
 
         } catch (error) {
             console.error(error);
         }
-    } 
+    }
+
+    const handleEdit = async (noteId, newTitle, newTextContent) => {
+
+        try {
+            const token = localStorage.getItem("token");
+            const noteObject = {
+                title: newTitle,
+                textContent: newTextContent
+            }
+            const result = await fetch(`http://localhost:3001/api/notes/${noteId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type":"application/json",
+                    authorization: token ? `Bearer ${token}` : ''
+                },
+                body: JSON.stringify(noteObject)
+            })
+
+            if (result.ok) {
+                setWrittenNotes(writtenNotes.map((note, index) => {
+                    if (note.id === noteId) {
+                        let newNote = note
+                        note.title = newTitle;
+                        note.textContent = newTextContent
+                        return newNote
+                    } else {
+                        return note
+                    }
+                }))
+
+                setOriginalWrittenNotesList(writtenNotes)
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const wNotes = writtenNotes.map((note, index) => {
-        return (
-            <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h2 className="noteTitle">{note.title}</h2>
-                    <p className="noteMenu" onClick={handleMoreClick}>...</p>
-                    <div className="noteMoreDiv" style={{ background: `${note.color}`, display: `${sideBarVisibility}`}}>
-                        <p className="noteMoreBtns">✏️</p>
-                        <p className="noteMoreBtns" onClick={() => handleDelete(note.id)}>🗑️</p>
-                        <p className="noteMoreBtns">🔗</p>
-                    </div>
-                </div>
-                <div className="noteContent">
-                    <p>{note.textContent}</p>
-                    <br></br>
-                    <p className="bottomNote">On {note.createdAt.slice(0, 10)}</p>
-                </div>
-            </div>
-        )
+        return <Note {...note} index={index} handleDelete={handleDelete} key={index} currentNotes={currentNotes} handleEdit={handleEdit}/>
     })
 
     const sNotes = sharedNotes.map((note, index) => {
-        return (
-            <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
-                <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h2 className="noteTitle">{note.title}</h2>
-                    <p className="noteMoreBtns" onClick={() => handleDelete(note.id)}>🗑️</p>
-                </div>
-                <div className="noteContent">
-                    <p>{note.textContent}</p>
-                    <br></br>
-                    <p className="bottomNote">- {note.author} on {note.createdAt.slice(0, 10)}</p>
-                </div>
-            </div>
-        )
+        return <Note {...note} index={index} handleDelete={handleDelete} key={index} currentNotes={currentNotes} handleEdit={handleEdit}/>
     })
 
     const renderNotes = () => {
@@ -160,7 +156,7 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
                 <div className="notes">{sNotes}</div>
             )
         } else {
-            return(
+            return (
                 <div></div>
             )
         }
