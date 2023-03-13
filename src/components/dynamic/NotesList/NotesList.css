@@ -58,6 +58,7 @@
     align-items: center;
     /* TODO: weird 1px right margin offset, need to review */
     margin-left: -1px;
+    position: relative;
 }
 
 .noteTitle {
@@ -70,6 +71,29 @@
 .noteDate {
     font-size: 12px;
     justify-self: flex-end;
+}
+
+.noteMoreDiv {
+    right: 0px;
+    bottom: -100px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.noteMoreBtns {
+    padding: 7px;
+    cursor: pointer;
+}
+
+.bottomNote {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.noteMenu {
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .noteContent {

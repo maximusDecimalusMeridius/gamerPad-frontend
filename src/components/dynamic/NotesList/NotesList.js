@@ -47,14 +47,89 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
         }
     }
 
+    const [sideBarVisibility, setsideBarVisibility] = useState('none')
+
+    const handleMoreClick = (event) => {
+        if(sideBarVisibility=='none'){
+            setsideBarVisibility('block')
+        } else {
+            setsideBarVisibility('none')
+        }
+    }
+
+    const handleDelete = async (noteId) => {
+        setsideBarVisibility('none')
+        console.log(noteId)
+        try {
+            const token = localStorage.getItem("token");
+
+            let url = `http://localhost:3001/api/notes/${noteId}`;
+
+            if(currentNotes==="sharedNotes"){
+                url = `http://localhost:3001/api/notes/removeSharedNote/${noteId}`;
+            }
+
+            const result = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    authorization: token ? `Bearer ${token}` : ''
+                }
+            })
+
+            
+            if (result.ok) {
+                if(currentNotes==="writtenNotes"){
+                    setWrittenNotes(writtenNotes.filter((note) =>{
+                        if(note.id!==noteId){
+                            return note
+                        }
+                    }))
+                    setOriginalWrittenNotesList(writtenNotes.filter((note) =>{
+                        if(note.id!==noteId){
+                            return note
+                        }
+                    }))
+                } else {
+                    setSharedNotes(sharedNotes.filter((note) =>{
+                        if(note.id!==noteId){
+                            return note
+                        }
+                    }))
+                    setOriginalSharedNotesList(sharedNotes.filter((note) =>{
+                        if(note.id!==noteId){
+                            return note
+                        }
+                    }))
+                }
+                
+                
+    
+                // setNoteTitle("");
+                // setNoteContent("");
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    } 
+
     const wNotes = writtenNotes.map((note, index) => {
         return (
             <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
                 <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h1 className="noteTitle">{note.title}</h1>
-                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+                    <h2 className="noteTitle">{note.title}</h2>
+                    <p className="noteMenu" onClick={handleMoreClick}>...</p>
+                    <div className="noteMoreDiv" style={{ background: `${note.color}`, display: `${sideBarVisibility}`}}>
+                        <p className="noteMoreBtns">✏️</p>
+                        <p className="noteMoreBtns" onClick={() => handleDelete(note.id)}>🗑️</p>
+                        <p className="noteMoreBtns">🔗</p>
+                    </div>
                 </div>
-                <div className="noteContent">{note.textContent}</div>
+                <div className="noteContent">
+                    <p>{note.textContent}</p>
+                    <br></br>
+                    <p className="bottomNote">On {note.createdAt.slice(0, 10)}</p>
+                </div>
             </div>
         )
     })
@@ -63,10 +138,14 @@ function NotesList({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes, 
         return (
             <div className="noteCard" key={index} id={`sNote-${index + 1}`} style={{ border: `3px solid ${note.color}` }}>
                 <div className="noteHeader" style={{ background: `${note.color}` }}>
-                    <h1 className="noteTitle">{note.title}</h1>
-                    <p className="noteDate">{note.createdAt.slice(0, 10)}</p>
+                    <h2 className="noteTitle">{note.title}</h2>
+                    <p className="noteMoreBtns" onClick={() => handleDelete(note.id)}>🗑️</p>
                 </div>
-                <div className="noteContent">{note.textContent}</div>
+                <div className="noteContent">
+                    <p>{note.textContent}</p>
+                    <br></br>
+                    <p className="bottomNote">- {note.author} on {note.createdAt.slice(0, 10)}</p>
+                </div>
             </div>
         )
     })
