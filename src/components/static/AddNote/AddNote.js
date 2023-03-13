@@ -5,6 +5,7 @@ function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
     
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
+    const [noteColorCode, setNoteColorCode] = useState("#fa8072");
 
     const handleSubmit = async (event) => {
         
@@ -16,7 +17,7 @@ function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
         const newNoteObj = {
             title: noteTitle,
             textContent: noteContent,
-            color: "salmon"
+            color: noteColorCode
         }
 
         const result = await fetch("http://localhost:3001/api/notes/", {
@@ -53,6 +54,8 @@ function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
             setNoteTitle(event.target.value)
         } else if (event.target.id === "formNoteContent") {
             setNoteContent(event.target.value)
+        } else if (event.target.id === "formNoteColorCode") {
+            setNoteColorCode(event.target.value);
         }
     }
 
@@ -65,6 +68,7 @@ function AddNote({writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes}) {
     return (
         <div className="noteModalContainer">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
+            <input id="formNoteColorCode" type="color" onChange={handleChange}></input>
             <div className="inputContainer">
                 <input type="text" id="formNoteTitle" name="noteTitle" placeholder="note title" onChange={handleChange} value={noteTitle} required></input>
                 <input type="text" id="formNoteContent" name="noteContent" placeholder={`your ${getPlaceholder()}`} onChange={handleChange} value={noteContent} required></input>
