@@ -37,7 +37,7 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
         try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch(`http://localhost:3001/api/notes/${noteId}/shareWith/${friendInput}`, {
+            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/notes/${noteId}/shareWith/${friendInput}`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",

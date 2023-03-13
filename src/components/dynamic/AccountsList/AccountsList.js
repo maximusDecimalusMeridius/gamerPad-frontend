@@ -16,7 +16,7 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
         try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch("http://localhost:3001/api/accounts/currentUserAccounts", {
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/accounts/currentUserAccounts", {
                 method: "GET",
                 headers: {
                     authorization: token ? `Bearer ${token}` : ''

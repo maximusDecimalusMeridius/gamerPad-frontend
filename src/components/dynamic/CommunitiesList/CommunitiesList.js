@@ -15,7 +15,7 @@ function CommunitiesList() {
   const fetchComms = async (event) => {
     try {
       const token = localStorage.getItem("token");
-      const result = await fetch("http://localhost:3001/api/games", {
+      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games", {
         method: "GET",
         headers: {
           authorization: token ? `Bearer ${token}` : "",
