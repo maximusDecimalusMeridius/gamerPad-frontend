@@ -12,6 +12,8 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav }) {
         setTimeout(() => {
             navigate("/", {replace: true});
             setIsLoggedIn(false);
+            setMenuType(false)
+            setOpenNav(false)
             localStorage.token = "";
         }, 250)
     }
