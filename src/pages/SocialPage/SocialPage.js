@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SocialPage.css";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 import CommunitiesList from "../../components/dynamic/CommunitiesList/CommunitiesList";
-
+import SearchBar from "../../components/static/SearchBar/SearchBar";
 
 // TODO: when a div is clicked on make that area expand to show full user info
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
@@ -45,23 +45,17 @@ function SocialPage({
 
   return (
     <div className="socialPageContainer">
+      <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
       <div className="socialPageCards">
-        <h2 className="socialTitle">{currentPage} Page</h2>
         <div className="buttonContainer" onChange={handleChange}>
           <div>
-            <input
-              type="radio"
-              id="swapButton"
-              name="swap"
-              value="communities"
-              defaultChecked
-            />
+            <input type="radio" id="swapButton" name="swap" value="communities"/>
             <label htmlFor="swapButton">Communities</label>
           </div>
           <div>
-            <input type="radio" id="swapButton" name="swap" value="friends" />
-            <label htmlFor="swapButton">Friends</label>
+            <input type="radio" id="swapButton" name="swap" value="friends" defaultChecked/>
           </div>
+            <label htmlFor="swapButton">Friends</label>
         </div>
         {renderPage()}
       </div>

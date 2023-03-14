@@ -1,26 +1,30 @@
 .socialPageContainer{
+    height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
-    overflow-y:hidden;
 }
+
 .socialPageCards{
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
+
 .socialTitle{
     display: flex;
     color: rgb(17, 181, 93);
     justify-content: center;
 }
+
 .buttonContainer{
+    padding: 3px;
     display:flex;
-    position: absolute;
     background-color: white;
     border-bottom: 1px black solid;
     justify-content: flex-end;
-    width:78.8%;
-    margin-top: 50px;
 }
+
 #swapButton{  
     background-color: blue;
     padding:3px;

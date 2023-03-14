@@ -61,7 +61,8 @@ function FriendsList({
         headers: {
           authorization: `Bearer ${token}`
         }
-      );
+      
+    });
 
       const data = await result.json();
 
@@ -123,7 +124,6 @@ function FriendsList({
 
   return (
     <div className="friendsContainer">
-      <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
       <div className="friendPage">{friends}</div>
     </div>
   );
