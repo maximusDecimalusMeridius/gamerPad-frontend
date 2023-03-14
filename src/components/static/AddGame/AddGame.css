@@ -18,14 +18,14 @@
     -moz-appearance: none;
     -o-appearance: none;
     appearance: none;
-    border: 1px solid #4a4e52;
+    border: 1px solid #222223;
     border-radius: 5px;
     outline: none;
     transition-duration: 0.3s;
 }
 
 #favoriteCheckbox:checked, #LFMCheckbox:checked {
-    border: 1px solid var(--button-red);
+    border: 1px solid #ffffff;
     background-color: var(--button-red);
 }
 

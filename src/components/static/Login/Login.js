@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
-function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage, setuserInfo}) {
+function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
     
     const navigate = useNavigate();
 
@@ -24,7 +24,6 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             })
 
             const data = await result.json();
-            setuserInfo(data)
             if(result.ok){
                 navigate("/", {replace: true})
                 setIsLoggedIn(true);

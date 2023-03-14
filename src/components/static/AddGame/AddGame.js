@@ -27,36 +27,36 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         }
 
         console.log(newUserGameObj)
-        // try {
-        //     const token = localStorage("token");
+        try {
+            const token = localStorage.getItem("token");
 
-        //     const newUserGameObj = {
-        //         favorite: {isFavorite},
-        //         lookingForMore: {isLFM},
-        //         content: {contentRating},
-        //         replay: {valueRating},
-        //         value: {replayRating},
-        //         GameId: {gameId},
-        //         platforms: {platformList}
-        //     }
+            const newUserGameObj = {
+                favorite: {isFavorite},
+                lookingForMore: {isLFM},
+                content: {contentRating},
+                replay: {valueRating},
+                value: {replayRating},
+                GameId: {gameId},
+                platforms: {platformList}
+            }
 
-        //     const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame", {
-        //         method: "POST",
-        //         body: JSON.stringify(newUserGameObj),
-        //         headers: {
-        //             authorization: `Bearer ${token}`
-        //         }
-        //     })
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame", {
+                method: "POST",
+                body: JSON.stringify(newUserGameObj),
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            })
 
-        //     const data = await result.json();
+            const data = await result.json();
 
-        //     if(result.ok){
-        //         setShowModal(false)
-        //     }
+            if(result.ok){
+                setShowModal(false)
+            }
 
-        // } catch (error) {
-        //     console.error(error);
-        // }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     const handleAddPlatform = (e) => {

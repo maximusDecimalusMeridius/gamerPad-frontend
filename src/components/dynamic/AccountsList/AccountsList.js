@@ -37,6 +37,29 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
         }
     }
 
+    const handleDeleteAccount = async (e) => {
+        e.preventDefault()
+
+        try {
+            const token = localStorage.getItem("token");
+
+            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/accounts/${e.target.id}`, {
+              method: "Delete",
+              headers: {
+                "Content-Type": "application/json",
+                authorization: token ? `Bearer ${token}` : ''
+              }
+            })
+      
+            if (result.ok) {
+                fetchAccounts()
+            }
+      
+          } catch (error) {
+            console.error(error);
+          }
+    }
+
     const accounts = accountsList.map((account, index) => {
         // TODO: iterate over accounts to populate below
         let typeClass = "gamingAccount accountDiv"
@@ -48,7 +71,7 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
                 <h3>{account.username}</h3>
                 <p>{account.gamerTag}</p>
                 <p>{account.account}</p>
-                <button>remove</button>
+                <button id={account.id} onClick={handleDeleteAccount}>remove</button>
             </div>
         )
     })

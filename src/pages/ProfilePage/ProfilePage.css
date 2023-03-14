@@ -1,5 +1,5 @@
 .profilePageContainer {
-    height: calc(100% - var(--header-height));
+    /* height: calc(100% - var(--header-height)); */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,6 +10,7 @@
     height: 250px;
     width: 250px;
     border-radius: 50%;
+    background-color: #323232;
 }
 
 .profileHeader {
@@ -25,29 +26,12 @@
     flex-shrink: 0;
 }
 
-.profileInfo {
-    width: 100%;
-    height: 100%;
-    background: #bebebe;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: center;
-    overflow: auto;
-}
-
-.profileInnerDiv {
-    width: 75%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
 
 .profileInnerDiv p {
     margin: 20px;
 }
 
-.yourAccounts, .profileTitle {
+.yourAccounts {
     color: white;
     margin: 5px;
     text-align: center;
@@ -58,18 +42,36 @@
     flex-direction: column;
 }
 
-.updatePasswordForm {
+.updatePasswordForm, .profileInfo {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: #bebebe;
+    height: 300px;
+    /* overflow: auto; */
 }
 
-.passwordFormInputs {
+.passwordFormInputs, .profileInnerDiv {
     width: 60%;
     max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.updatePasswordForm input {
+    margin-top: 5px;
+}
+
+.updateAndCancelBtns {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-between;
 }
 
 .passwordFormInputs input {
@@ -79,17 +81,42 @@
     font-style: italic;
 }
 
-.editButton {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+.passwordRowItem button {
+    margin: 5px;
 }
 
-/* .profileTable {
-    
-} */
+#LFFCheckbox {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.3s;
+}
 
-@media (width < 385px) {
+#LFFCheckbox:checked {
+    border: 1px solid #ffffff;
+    background-color: var(--button-red);
+}
+
+@media (width < 700px) {
+    .passwordFormInputs, .profileInnerDiv {
+        width: 90%;
+    }
+
+    .updatePasswordForm, .profileInfo {
+        height: 100%;
+    }
+
+    #mainProfilePicture {
+        margin-top: 20px;
+        height: 200px;
+        width: 200px;
+    }
 
     .profileHeader {
         flex-wrap: wrap;
@@ -105,11 +132,10 @@
         order: 2;
     }
 
-    .updatePasswordForm {
-        flex-direction: column;
-    }
-
-    .passwordFormInputs {
-        width: 90%;
+    .updateAndCancelBtns {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
     }
 }
