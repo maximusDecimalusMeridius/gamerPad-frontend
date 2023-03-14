@@ -37,15 +37,13 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
         }
     }
 
-    console.log(accountsList);
-
     const accounts = accountsList.map((account, index) => {
         // TODO: iterate over platforms to populate below
         return(
             <div key={crypto.randomUUID()}>
                 <div>{account.account}</div>
                 <div>{account.type}</div>
-                <div>{account.gamerTag}</div>
+                <div>{account.username}</div>
             </div>
         )
     })

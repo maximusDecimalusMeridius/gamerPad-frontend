@@ -1,7 +1,77 @@
+#addGameModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
 .inputContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#favoriteCheckbox, #LFMCheckbox {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #4a4e52;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.3s;
+}
+
+#favoriteCheckbox:checked, #LFMCheckbox:checked {
+    border: 1px solid var(--button-red);
+    background-color: var(--button-red);
+}
+
+.addPlatformContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentRatingContainer, .valueRatingContainer, .replayRatingContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.ratingsInput{
+    color: black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#contentRating, #valueRating, #replayRating {
+    margin-top: 5px;
+}
+
+.platformList {
+    display: flex;
+    flex-wrap: wrap;
+    height: 15%;
+    justify-content: center;
+}
+
+
+.platformDiv {
+    color: black;
+    display: flex;
+    border: 1px solid #767c81;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.removePlatformBtn {
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 #formNoteTitle {
@@ -17,3 +87,41 @@
     width: 90%;
     width: 90%;
 }
+
+.addSubmitButton {
+    width: 100%;
+}
+
+/* Input range styling */
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+                          /***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #767c81;
+    height: 0.5rem;
+  }
+  
+  /******** Firefox ********/
+  input[type="range"]::-moz-range-track {
+    background: #767c81;
+    height: 0.5rem;
+  }
+
+  /***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -6px; /* Centers thumb on the track */
+    background-color: var(--button-red);
+    height: 20px;
+    width: 20px;    
+    border-radius: 10px;
+ }

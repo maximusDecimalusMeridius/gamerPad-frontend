@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './ProfilePage.css';
-import SearchBar from "../../components/static/SearchBar/SearchBar";
 import AccountsList from "../../components/dynamic/AccountsList/AccountsList";
 // TODO: create a searchbar for other users
 // TODO: create an add button that will add whichever user is currently selected
@@ -20,35 +19,27 @@ function ProfilePage({accountsList, setAccountsList, originalAccountsList, setOr
   return (
     <div className="profilePageContainer">
       <div className="profileHeader">
-        <div>Games</div>
         <h3>{username}</h3>
-        <div>Friends</div>
       </div>
       <div className="profileInfo">
-        <div className="userRow">
-          <p className="userRowItem">Username: </p>
-          <p className="userRowItem">{username}</p>
-          <div className="userRowItem editButton">✏️</div>
-        </div>
-        <div className="friendCodeRow">
-          <p className="friendCodeRowItem">Friend Code: </p>
-          <p className="friendCodeRowItem" id="friend-code">"My code"</p>
-          <div className="friendCodeRowItem editButton">✏️</div>
-        </div>
+
+          <p className="userRowItem">Username: {username}</p>
+          <p className="friendCodeRowItem">Friend Code: "My code"</p>
+
         <div className="passwordRow">
-          <div className="passwordRowItem"><p>Update Password:</p></div>
           <div className="passwordRowItem">
-            <form className="updatePasswordForm">
+            {/* <form className="updatePasswordForm">
               <div className="passwordFormInputs">
                 <input type="email" placeholder="old password"></input>
                 <input type="email" placeholder="new password"></input>
                 <input type="email" placeholder="re-enter new pw"></input>
               </div>
-              <button> Update PW</button>
-            </form>
+              <button> Update </button>
+            </form> */}
+             <button> Update password</button>
+             <button> Update info</button>
           </div>
         </div>
-        <div className="lfmRow"></div>
       </div>
       <AccountsList 
         setUserName={setUserName}

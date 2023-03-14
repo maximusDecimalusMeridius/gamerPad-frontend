@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "../../static/SearchBar/SearchBar"
+import React, { useState } from "react";
 import "../NotesList/NotesList.css";
 
 function Note({ id, title, textContent, color, createdAt, index, handleDelete, author, currentNotes, handleEdit }) {

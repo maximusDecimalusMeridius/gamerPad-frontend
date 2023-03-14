@@ -6,7 +6,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
     
     const navigate = useNavigate();
 
-    const verificationArray = ["Xbox Live", "Playstation", "blizzard.net", "nintendo id", "Steam", "Riot Games", "Epic Games"]
+    const verificationArray = ["Xbox Live", "Playstation", "blizzard.net", "nintendo id", "Steam", "Riot Games", "Epic Games", "Discord"]
     const [accountUsername, setAccountUsername] = useState("");
     const [accountType, setAccountType] = useState("");
     const [gamertag, setGamertag] = useState("");    
@@ -95,7 +95,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                 </select>
                 <input type="text" id="accountUsername" name="accountUsername" placeholder="account_name#3232" onChange={handleChange} value={accountUsername}required></input>
                 <input type="text" id="accountType" name="accountType" placeholder="account type" onChange={handleChange} value={accountType}required></input>
-                <input type="text" id="gamertag" name="gamertag" placeholder="gamertag" onChange={handleChange} value={gamertag}required></input>
+                <input type="text" id="gamertag" name="gamertag" placeholder="gamertag" onChange={handleChange} value={gamertag}></input>
             </div>
             <div className="statusWindow">
                 <p className="warningMessage" id="warningMessage">{warningMessage}</p>
