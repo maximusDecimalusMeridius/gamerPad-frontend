@@ -61,6 +61,7 @@ function FriendsList({
         headers: {
           authorization: `Bearer ${token}`
         }
+      }
       );
 
       const data = await result.json();
