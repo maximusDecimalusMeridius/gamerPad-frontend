@@ -56,11 +56,11 @@ function SocialPage({
               value="communities"
               defaultChecked
             />
-            <label htmlfor="swapButton">Communities</label>
+            <label htmlFor="swapButton">Communities</label>
           </div>
           <div>
             <input type="radio" id="swapButton" name="swap" value="friends" />
-            <label htmlfor="swapButton">Friends</label>
+            <label htmlFor="swapButton">Friends</label>
           </div>
         </div>
         {renderPage()}

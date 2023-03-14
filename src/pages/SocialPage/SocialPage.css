@@ -1,12 +1,16 @@
 .socialPageContainer{
     display: flex;
     flex-direction: column;
-    height: 100%;
-    overflow-y:hidden
+    overflow-y:hidden;
+}
+.socialPageCards{
+    display: flex;
+    flex-direction: column;
 }
 .socialTitle{
+    display: flex;
     color: rgb(17, 181, 93);
-    text-align: center;
+    justify-content: center;
 }
 .buttonContainer{
     display:flex;
