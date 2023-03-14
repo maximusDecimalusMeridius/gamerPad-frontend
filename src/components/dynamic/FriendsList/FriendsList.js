@@ -31,7 +31,7 @@ function FriendsList({
       const token = localStorage.getItem("token");
 
       const result = await fetch(
-        "http://localhost:3001/api/friends/currentUserFriends",
+        "https://gamerpad-backend.herokuapp.com/api/friends/currentUserFriends",
         {
           method: "GET",
           headers: {
@@ -56,13 +56,10 @@ function FriendsList({
     try {
       const token = localStorage.getItem("token");
 
-      const result = await fetch(
-        `http://localhost:3001/api/friends/${event.target.dataset.id}`,
-        {
-          method: "DELETE",
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
+      const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/friends/${event.target.dataset.id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`
         }
       );
 
