@@ -57,24 +57,47 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
         if(name === `username`){
             if(value === ''){
                 setWarningMessage('Username field is required');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
+            }else if(value.length < 3 || value.length > 20){
+                setWarningMessage('Username must be between 3 to 20 characters');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else {
                 setWarningMessage('');
             }
         } else if(name === `email`){
             if(value === ''){
                 setWarningMessage('Email field is required');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else if(!emailValidator.test(value)){ 
                 setWarningMessage('Please enter a valid email address');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else {
                 setWarningMessage('');
             }
         } else if(name === `password`){
             if(value === ''){
                 setWarningMessage('Password field is required');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else if(!(passwordValidator.test(value))){
                 setWarningMessage('Passwords require at least 1 uppercase character, 1 lowercase character, 1 number, and 1 special character ds');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else if(value.length < 8 || value.length > 128){
                 setWarningMessage('Passwords must be between 8 and 128 characters long');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else {
                 setCurrentPassword(value)
                 setWarningMessage('');
@@ -82,8 +105,14 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
         } else if(name === `vPassword`){
             if(value === ''){
                 setWarningMessage('Password field is required');
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else if(value !== currentPassword){
                 setWarningMessage('Passwords need to match'); 
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
             } else {
                 setWarningMessage('');
             }

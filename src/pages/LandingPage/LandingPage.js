@@ -52,6 +52,7 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
     }
     
     const setPage = () => {
+        setWarningMessage('');
         if(activePage === "Login"){
             setActivePage("Signup");
             setOtherPage("Login");
