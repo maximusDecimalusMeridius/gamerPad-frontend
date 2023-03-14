@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./FriendsList.css";
 
-function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList }) {
+function FriendsList({
+  friendsList,
+  setFriendsList,
+  originalFriendsList,
+  setOriginalFriendsList,
+}) {
   const [openIndex, setOpenIndex] = useState(-1);
 
   useEffect(() => {
@@ -17,12 +22,11 @@ function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOrig
       width: "20px",
       cursor: "pointer",
       fontWeight: "bold",
-      color: "red"
-    }
-  }
+      color: "red",
+    },
+  };
 
   const fetchFriends = async (event) => {
-
     try {
       const token = localStorage.getItem("token");
 
@@ -36,10 +40,10 @@ function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOrig
         }
       );
       const data = await result.json();
+      console.log(data);
 
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);
-
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +53,6 @@ function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOrig
   };
 
   const handleDelete = async (event) => {
-
     try {
       const token = localStorage.getItem("token");
 
@@ -58,20 +61,18 @@ function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOrig
         headers: {
           authorization: `Bearer ${token}`
         }
-      });
+      }
+      );
 
       const data = await result.json();
 
-      if(result.ok){
+      if (result.ok) {
         fetchFriends();
       }
-
     } catch (error) {
       console.error(error);
     }
-  }
-
-  
+  };
 
   const friends = friendsList.map((friend, index) => {
     const isOpen = index === openIndex;
@@ -82,9 +83,9 @@ function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOrig
           <h2
             className="friendUsername"
             onClick={() => handleFriendClick(index)}
-          >{friend.username}
+          >
+            {friend.username}
           </h2>
-          <span onClick={handleDelete} style={style.span} data-id={friend.id}>X</span>
           {isOpen && (
             <img
               className="friendPic"
@@ -92,17 +93,38 @@ function FriendsList({ friendsList, setFriendsList, originalFriendsList, setOrig
               alt="user profile identity"
             />
           )}
-        </div>
+          {isOpen && friend.Accounts.length > 0 && (
+            <ul className="friendAccounts">
+              <li>Accounts:</li>
+              {friend.Accounts.map((Account) => (
+                <li key={index}>{Account.account} </li>
+                ))}
+                {friend.Accounts.map((Account) => (
+                  <li key={index}>{Account.username}</li>
+                  ))}
+                  
 
+            </ul>
+          )}
+          {isOpen && friend.UserGames.length > 0 && (
+            <ul className="friendGames">
+              <li>Top Games:</li>
+              {friend.UserGames.map((userGame) => (
+                <li key={userGame.id}>{userGame.Game.title}</li>
+              ))}
+            </ul>
+          )}
+          {isOpen && (
+          <span onClick={handleDelete} style={style.span} data-id={friend.id}>
+            X
+          </span> )}
+        </div>
       </div>
     );
   });
 
   return (
-    <div className="friendsContainer">
-      <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
-      <div className="friendPage">{friends}</div>
-    </div>
+    <div className="friendContainer">{friends}</div>
   );
 }
 

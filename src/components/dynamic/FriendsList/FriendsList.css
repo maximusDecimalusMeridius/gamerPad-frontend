@@ -1,30 +1,27 @@
 
-.friendsContainer{
+.friendContainer{
     height: 100%;
-    background-color: rgb(17, 181, 93);
-    background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
-}
-.friendPage{
+    width: 100%;
+    padding-top: 25px;
     display:flex;
+    flex-grow: 1;
     flex-direction: column;
-    height:60vh;
+    justify-content: flex-start;
     align-items: center;
-    overflow-y: scroll;
-    padding: 10px;
+    overflow-y: auto;
+    gap: 10px;
+    border-bottom-left-radius: var(--homeContainer-border-radius);
+    border-bottom-right-radius: var(--homeContainer-border-radius);
 }
+
 .friendCard {
-    width: 74%;
-    max-height:fit-content;
-    min-height: fit-content;
-    min-width:fit-content;
-    margin-top: 30px;
+    width: 90%;
+    height: fit-content;
+    min-width: 175px;
     padding: 10px;
-    /* flex-grow: 1; */
-    /* flex grow was causing issues with expanding too much */
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid blue;
     background: #bebebe;
 }
 .friendCardHeader{
@@ -39,19 +36,32 @@
     height:fit-content;
     border-radius: 5px;
     cursor: pointer;
+
 }
 .friendPic{
     border-radius: 50%;
     height:80px;
     width:80px;
     justify-self: flex-start;
+
+}
+.friendAccounts{
+    width:200px;
+    order:-1;
+    list-style: none;
+}
+.friendAccounts li{
+    color:black;
+}
+.friendGames{
+    order:-2;
+    list-style: none;
 }
 
 @media screen and (max-width:380px){ 
-    .friendsContainer{
-        max-width:250px
-    }
-    .friendCard{
-        min-width: 250px;
+   
+
+    .friendCard h2 {
+        font-size: 18px;
     }
 }
