@@ -18,11 +18,13 @@
 }
 
 .loggedInHeader {
+    height: 40px;
     color: white;
+    display: inline;
 }
 
-#headerTitle {
-    text-align: center;
+.headerTitle {
+    border: 2px solid blue;
 }
 
 /* Hamburger menu icon */

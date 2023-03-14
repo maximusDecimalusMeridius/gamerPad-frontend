@@ -123,9 +123,7 @@ function FriendsList({
   });
 
   return (
-    <div className="friendsContainer">
-      <div className="friendPage">{friends}</div>
-    </div>
+    <div className="friendContainer">{friends}</div>
   );
 }
 

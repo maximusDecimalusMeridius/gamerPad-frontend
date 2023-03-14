@@ -9,6 +9,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .socialTitle{
@@ -41,4 +42,10 @@
     margin-left: 1px;
     height:fit-content;
     width:fit-content;
+}
+
+@media (width < 350px) {
+    .buttonContainer {
+        justify-content: center;
+    }
 }
