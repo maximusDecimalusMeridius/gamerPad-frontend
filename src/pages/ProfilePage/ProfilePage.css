@@ -4,7 +4,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    
+}
+
+#mainProfilePicture {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
 }
 
 .profileHeader {
@@ -22,23 +27,30 @@
 
 .profileInfo {
     width: 100%;
-    height: 50%;
+    height: 100%;
     background: #bebebe;
-}
-
-.userRow {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    overflow: auto;
 }
 
-.friendCodeRow {
+.profileInnerDiv {
+    width: 75%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-#friend-code {
-    margin-left: 5px;
-    margin: auto;
+.profileInnerDiv p {
+    margin: 20px;
+}
+
+.yourAccounts, .profileTitle {
+    color: white;
+    margin: 5px;
+    text-align: center;
 }
 
 .passwordRow {
@@ -78,6 +90,7 @@
 } */
 
 @media (width < 385px) {
+
     .profileHeader {
         flex-wrap: wrap;
     }

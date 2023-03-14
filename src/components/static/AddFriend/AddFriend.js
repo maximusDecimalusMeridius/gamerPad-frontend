@@ -30,7 +30,7 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                 }
             })
 
-            const data = await result.json();
+            // const data = await result.json();
 
             if(result.ok){
                 console.log("friend added");

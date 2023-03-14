@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../../static/SearchBar/SearchBar";
+
 import "./AccountsList.css";
 
 function AccountsList({setUserName, accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList}) {
@@ -38,19 +38,24 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
     }
 
     const accounts = accountsList.map((account, index) => {
-        // TODO: iterate over platforms to populate below
+        // TODO: iterate over accounts to populate below
+        let typeClass = "gamingAccount accountDiv"
+        if(account.type === 'Chat'){
+            typeClass = "chatAccount accountDiv"
+        }
         return(
-            <div key={crypto.randomUUID()}>
-                <div>{account.account}</div>
-                <div>{account.type}</div>
-                <div>{account.username}</div>
+            <div key={crypto.randomUUID()} className={typeClass}>
+                <h3>{account.username}</h3>
+                <p>{account.gamerTag}</p>
+                <p>{account.account}</p>
+                <button>remove</button>
             </div>
         )
     })
 
     return (
         <div className="accountsContainer">
-            <SearchBar originalList={originalAccountsList} setList={setAccountsList}/>
+            
             {accounts}
         </div>
     );
