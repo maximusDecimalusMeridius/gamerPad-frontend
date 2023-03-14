@@ -21,7 +21,7 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
                 password: passwordValue
             }
             
-            const result = await fetch("http://localhost:3001/api/users", {
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users", {
                 method: "POST",
                 body: JSON.stringify(signupObj),
                 headers:{

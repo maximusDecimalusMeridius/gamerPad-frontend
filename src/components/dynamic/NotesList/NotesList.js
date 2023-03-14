@@ -30,7 +30,7 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
         try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch("http://localhost:3001/api/notes/currentUserNotes", {
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/notes/currentUserNotes", {
                 method: "GET",
                 headers: {
                     authorization: token ? `Bearer ${token}` : ''
@@ -65,10 +65,10 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
         try {
             const token = localStorage.getItem("token");
 
-            let url = `http://localhost:3001/api/notes/${noteId}`;
+            let url = `https://gamerpad-backend.herokuapp.com/api/notes/${noteId}`;
 
             if (currentNotes === "sharedNotes") {
-                url = `http://localhost:3001/api/notes/removeSharedNote/${noteId}`;
+                url = `https://gamerpad-backend.herokuapp.com/api/notes/removeSharedNote/${noteId}`;
             }
 
             const result = await fetch(url, {
@@ -118,7 +118,7 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
                 title: newTitle,
                 textContent: newTextContent
             }
-            const result = await fetch(`http://localhost:3001/api/notes/${noteId}`, {
+            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/notes/${noteId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type":"application/json",
