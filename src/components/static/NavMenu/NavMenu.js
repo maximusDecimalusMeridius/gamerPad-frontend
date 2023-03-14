@@ -39,7 +39,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav }) {
                         <Link to="/dashboard" className="link">About Us</Link>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-4" onClick={handleMenuClick}>
-                        <Link to="/social" className="link">Friends</Link>
+                        <Link to="/dashboard" className="link">Friends</Link>
                     </li>
                     <li className="navMenuItem" id="logoutButton" onClick={endSession}>
                         Logout
