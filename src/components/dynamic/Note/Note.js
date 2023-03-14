@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../NotesList/NotesList.css";
+import fontColorContrast from 'font-color-contrast'
 
 function Note({ id, title, textContent, color, createdAt, index, handleDelete, author, currentNotes, handleEdit }) {
 
@@ -60,13 +61,21 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
         }
     }
 
+    const fc1 = fontColorContrast(color) // '#000000'
+    
+    const [fontColor, setFontColor] = useState('#ffffff')
+
+    useEffect(()=>{
+        setFontColor(fc1)
+    }, [fc1])
+
     const renderNotes = () => {
         if (currentNotes === "sharedNotes") {
 
             return (
                 <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${color}` }}>
-                    <div className="noteHeader" style={{ background: `${color}` }}>
-                        <h2 className="noteTitle">{title}</h2>
+                    <div className="noteHeader" style={{ background: `${color}`}}>
+                        <h2 className="noteTitle" style={{ color: `${fontColor}` }}>{title}</h2>
                         <p className="noteMoreBtns" onClick={() => { handleDelete(id) }}>🗑️</p>
                     </div>
                     <div className="noteContent">
@@ -79,8 +88,8 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
         } else if (!isEditing && currentNotes === "writtenNotes") {
             return (
                 <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${color}` }}>
-                    <div className="noteHeader" style={{ background: `${color}` }}>
-                        <h2 className="noteTitle">{title}</h2>
+                    <div className="noteHeader" style={{ background: `${color}`}}>
+                        <h2 className="noteTitle" style={{ color: `${fontColor}` }}>{title}</h2>
                         <p className="noteMenu" onClick={handleMoreClick}>...</p>
                         <div className="noteMoreDiv" style={{ background: `${color}`, display: `${sideBarVisibility}` }}>
                             <p className="noteMoreBtns" onClick={() => {setIsEditing(true)}}>✏️</p>
@@ -107,7 +116,7 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
         } else {
             return (
                 <div className="noteCard" key={index} id={`wNote-${index + 1}`} style={{ border: `3px solid ${color}` }}>
-                    <div className="noteHeader" style={{ background: `${color}` }}>
+                    <div className="noteHeader" style={{ background: `${color}`}}>
                         <input className="noteTitle" value={titleInput} onChange={handleChange}></input>
                         <p className="noteMenu" onClick={() => {
                             setIsEditing(false);
