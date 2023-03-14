@@ -36,32 +36,32 @@ function CommunitiesList() {
   const comms = commsList.map((game, index) => {
     const isOpen = index === openIndex;
     return (
-        <div className="commsCard" key={index}>
-          <div className="commsCardHeader">
-            <h2
-              className="commTitle"
-              onClick={() => handleCommsClick(index)}
-            >
-              {game.title}
-            </h2>
-            {isOpen && (
-              <ul className="topMems">
-                  <li>person 1</li>
-                  <li>person 2</li>
-                  <li>person 3</li>
-              </ul>
-            )}
-          </div>
+      <div className="commsCard" key={index}>
+        <div className="commsCardHeader">
+          <h2
+            className="commTitle"
+            onClick={() => handleCommsClick(index)}
+          >
+            {game.title}
+          </h2>
+          {isOpen && (
+            <ul className="topMems">
+              <li>person 1</li>
+              <li>person 2</li>
+              <li>person 3</li>
+            </ul>
+          )}
         </div>
-      );
-    });
-    return (
-        <div className="commsContainer">
-      <SearchBar  originalList={originalCommsList} setList={setCommsList}/>
+      </div>
+    );
+  });
+  return (
+    <div className="commsContainer">
+
       <div className="commsPage">
         {comms}
+      </div>
     </div>
-    </div> 
   )
 }
 

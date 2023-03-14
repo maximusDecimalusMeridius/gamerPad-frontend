@@ -36,23 +36,13 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
         //  on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
         // TODO: add close box on modal/slide out menu
 
-    const handleModal = () => {
-        showModal ? setShowModal(false) : setShowModal(true)
-    }
-    const handleMenu = () => {
-        showMenu ? setShowMenu(false) : setShowMenu(true)
-    }
-
     return (
         <div className="header">
             <div className="imageContainer">
-                {isLoggedIn ? (<h1 className="imagePlaceholder cursor"  onClick={openUserMenu}></h1>) : ""}
-                {/* <a><image onClick={openUserMenu}>{}</image></a> */}
+                {isLoggedIn ? (<h1 className="imagePlaceholder cursor" onClick={openUserMenu}></h1>) : ""}
             </div>
             <div className="headerTitle">
-                {isLoggedIn ? (<Link to="/dashboard">
-                    <h1 className="loggedInHeader">gamerPad</h1>
-                </Link>) : (<h1>gamerPad</h1>)}
+                {isLoggedIn ? ( <h1 className="loggedInHeader">gamerPad</h1>) : (<h1>gamerPad</h1>)}
                 
             </div>
             
