@@ -6,6 +6,8 @@
     width: 100%;
     background-color: rgb(17, 181, 93);
     background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
+    border-bottom-left-radius: var(--homeContainer-border-radius);
+    border-bottom-right-radius: var(--homeContainer-border-radius);
 }
 
 .friendPage{
@@ -17,11 +19,13 @@
     justify-content: flex-start;
     align-items: center;
     overflow-y: auto;
-    gap: 20px;
+    gap: 10px;
+    border-bottom-left-radius: var(--homeContainer-border-radius);
+    border-bottom-right-radius: var(--homeContainer-border-radius);
 }
 
 .friendCard {
-    width: 74%;
+    width: 90%;
     max-height:fit-content;
     min-height: fit-content;
     min-width:fit-content;

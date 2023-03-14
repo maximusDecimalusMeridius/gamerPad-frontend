@@ -17,12 +17,22 @@
     justify-content: center;
 }
 
-.buttonContainer{
+.buttonContainer {
+    height: fit-content;
+    width: 100%;
     padding: 3px;
-    display:flex;
-    background-color: white;
-    border-bottom: 1px black solid;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
+    align-content: center;
+    gap: 5px; 
+    background: white;
+    border-bottom: 1px solid black;
+}
+
+.buttonContainer label {
+    font-size: 16px;
+    white-space: nowrap;
 }
 
 #swapButton{  

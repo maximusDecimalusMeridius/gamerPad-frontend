@@ -34,10 +34,7 @@ img, video {
 
 main {
     height: calc(100% - var(--header-height));
-    padding-top: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    margin-top: var(--header-height);
 }
 
 body {
@@ -75,6 +72,8 @@ button:active {
 .appContainer {
     height: 100%;
     background: #44bba4;
+    display: flex;
+    flex-direction: column;
 }
 
 .cursor {
