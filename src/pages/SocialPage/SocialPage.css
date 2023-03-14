@@ -11,8 +11,11 @@
 .buttonContainer{
     display:flex;
     position: absolute;
+    background-color: white;
+    border-bottom: 1px black solid;
+    justify-content: flex-end;
+    width:78.8%;
     margin-top: 50px;
-    height: 60vh;
 }
 #swapButton{  
     background-color: blue;
