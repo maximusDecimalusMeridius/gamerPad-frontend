@@ -86,9 +86,6 @@ function FriendsList({
           >
             {friend.username}
           </h2>
-          <span onClick={handleDelete} style={style.span} data-id={friend.id}>
-            X
-          </span>
           {isOpen && (
             <img
               className="friendPic"
@@ -117,6 +114,10 @@ function FriendsList({
               ))}
             </ul>
           )}
+          {isOpen && (
+          <span onClick={handleDelete} style={style.span} data-id={friend.id}>
+            X
+          </span> )}
         </div>
       </div>
     );
