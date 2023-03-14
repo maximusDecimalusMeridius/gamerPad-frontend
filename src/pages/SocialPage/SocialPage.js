@@ -54,8 +54,8 @@ function SocialPage({
           </div>
           <div>
             <input type="radio" id="swapButton" name="swap" value="friends" defaultChecked/>
-          </div>
             <label htmlFor="swapButton">Friends</label>
+          </div>
         </div>
         {renderPage()}
       </div>

@@ -35,6 +35,9 @@ img, video {
 main {
     height: calc(100% - var(--header-height));
     margin-top: var(--header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 body {
