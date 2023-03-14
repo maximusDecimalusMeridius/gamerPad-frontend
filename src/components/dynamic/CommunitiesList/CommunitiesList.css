@@ -1,15 +1,22 @@
 .commsContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
     background-color: rgb(17, 181, 93);
     background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
-  
 }
-.commsPage{
-    display:flex;
-    flex-direction:column;
-     align-items: center;
-     padding: 10px;
-     overflow-y: auto;
 
+.commsPage{
+    height: 100%;
+    width: 100%;
+    padding-top: 25px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    gap: 20px;
 }
 .commsCard{
     width:40%;

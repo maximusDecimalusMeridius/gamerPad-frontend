@@ -124,7 +124,6 @@ function FriendsList({
 
   return (
     <div className="friendsContainer">
-      <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
       <div className="friendPage">{friends}</div>
     </div>
   );
