@@ -25,11 +25,8 @@ function App() {
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
-<<<<<<< HEAD
   const [originalCommsList, setOriginalCommsList] = useState([]);
-=======
   // const [profilePicture, setprofilePicture] = useState("https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo-300x300.jpg")
->>>>>>> dev
 
   const [token, setToken] = useState("");
 
