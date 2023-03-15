@@ -14,7 +14,7 @@ import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
-                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, profilePicture, setProfilePicture, userInfo}) {
+                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo}) {
 
 
     return (
@@ -36,6 +36,8 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     originalFriendsList={originalFriendsList}
                                                     setOriginalFriendsList={setOriginalFriendsList}
                                                     setProfilePicture={setProfilePicture}   
+                                                    commsList={commsList}
+                                                    setCommsList={setCommsList}
                                                     originalCommsList={originalCommsList}
                                                     setOriginalCommsList={setOriginalCommsList}
                                                      />}/>
@@ -64,6 +66,8 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     originalFriendsList={originalFriendsList}
                                                     setOriginalFriendsList={setOriginalFriendsList}
                                                     setProfilePicture={setProfilePicture}   
+                                                    commsList={commsList}
+                                                    setCommsList={setCommsList}
                                                     originalCommsList={originalCommsList}
                                                     setOriginalCommsList={setOriginalCommsList}
                                                     />}>

@@ -19,7 +19,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
 function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,originalCommsList, setOriginalCommsList, setProfilePicture}) {
+                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,originalCommsList, setOriginalCommsList, commsList, setCommsList,  setProfilePicture}) {
   return (
     <div className="dashboardContainer">
       <ul className="pageTabs">
@@ -43,6 +43,8 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                   setOriginalFriendsList={setOriginalFriendsList} 
                                   originalCommsList={originalCommsList}
                                   setOriginalCommsList={setOriginalCommsList}
+                                  commsList={commsList}
+                                  setCommsList={setCommsList}
                                   setProfilePicture={setProfilePicture}   />}
                                   />
           <Route path="social">
@@ -53,6 +55,8 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                     setOriginalFriendsList={setOriginalFriendsList}
                                     originalCommsList={originalCommsList}
                                     setOriginalCommsList={setOriginalCommsList}
+                                    commsList={commsList}
+                                    setCommsList={setCommsList}
                                     setProfilePicture={setProfilePicture}   
                                     />} />
             <Route index={true} element={<SocialPage 
@@ -62,6 +66,8 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                           setOriginalFriendsList={setOriginalFriendsList}
                                           originalCommsList={originalCommsList}
                                           setOriginalCommsList={setOriginalCommsList}
+                                          commsList={commsList}
+                                          setCommsList={setCommsList}
                                           setProfilePicture={setProfilePicture}   
                                             />} />
           </Route>
