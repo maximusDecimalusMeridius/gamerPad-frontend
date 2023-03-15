@@ -44,23 +44,23 @@ function App() {
     }
     
   }
-  const getProfilePic = async () => {
-    try {
+  // const getProfilePic = async (token) => {
+  //   try {
       
-      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/currentUserInfo", {
-        method: "GET",
-        headers: {
-          authorization: token ? `Bearer ${token}` : ''
-        }
-      })
+  //     const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/currentUserInfo", {
+  //       method: "GET",
+  //       headers: {
+  //         authorization: token ? `Bearer ${token}` : ''
+  //       }
+  //     })
       
-      const data = await result.json();
+  //     const data = await result.json();
       
-      setProfilePicture(data.profilePicture)
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  //     setProfilePicture(data.profilePicture)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   useEffect(()=>{
     const savedToken = localStorage.getItem("token");
@@ -70,7 +70,6 @@ function App() {
         if(tokenData.isValid){
           setToken(savedToken);
           setIsLoggedIn(true)
-          getProfilePic()
         } else {
           localStorage.removeItem("token")
         }
@@ -137,7 +136,9 @@ function App() {
                           friendsList={friendsList}
                           setFriendsList={setFriendsList}
                           originalFriendsList={originalFriendsList}
-                          setOriginalFriendsList={setOriginalFriendsList}   
+                          setOriginalFriendsList={setOriginalFriendsList}
+                          profilePicture={profilePicture}
+                          setProfilePicture={setProfilePicture}   
                           originalCommsList={originalCommsList}
                           setOriginalCommsList={setOriginalCommsList}
                           />}

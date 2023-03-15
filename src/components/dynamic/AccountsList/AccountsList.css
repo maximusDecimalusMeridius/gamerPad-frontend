@@ -1,11 +1,12 @@
 .accountsContainer {
     width: 100%;
-    min-height: 150px;
+    height: fit-content;
     /* background: rgb(132, 26, 26); */
-    overflow: auto;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-grow: 1;
 }
 
 .chatAccount {

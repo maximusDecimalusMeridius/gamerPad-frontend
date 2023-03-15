@@ -17,7 +17,7 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
             const token = localStorage.getItem("token");
 
             const newFriendObj = {
-                FriendId: friendName,
+                username: friendName,
                 friendCode: friendCode
             }
 

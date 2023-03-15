@@ -19,7 +19,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
 function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,originalCommsList, setOriginalCommsList}) {
+                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,originalCommsList, setOriginalCommsList, setProfilePicture}) {
   return (
     <div className="dashboardContainer">
       <ul className="pageTabs">
@@ -42,7 +42,8 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                   originalFriendsList={originalFriendsList}
                                   setOriginalFriendsList={setOriginalFriendsList} 
                                   originalCommsList={originalCommsList}
-                                  setOriginalCommsList={setOriginalCommsList}/>}
+                                  setOriginalCommsList={setOriginalCommsList}
+                                  setProfilePicture={setProfilePicture}   />}
                                   />
           <Route path="social">
             <Route path="" element={<SocialPage 
@@ -52,6 +53,7 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                     setOriginalFriendsList={setOriginalFriendsList}
                                     originalCommsList={originalCommsList}
                                     setOriginalCommsList={setOriginalCommsList}
+                                    setProfilePicture={setProfilePicture}   
                                     />} />
             <Route index={true} element={<SocialPage 
                                           friendsList={friendsList}
@@ -60,6 +62,7 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                           setOriginalFriendsList={setOriginalFriendsList}
                                           originalCommsList={originalCommsList}
                                           setOriginalCommsList={setOriginalCommsList}
+                                          setProfilePicture={setProfilePicture}   
                                             />} />
           </Route>
           <Route path="notes">

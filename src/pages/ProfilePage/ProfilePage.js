@@ -10,7 +10,7 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList }) {
+function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture }) {
 
   const [username, setUserName] = useState([]);
   const [userInfo, setuserInfo] = useState({})
@@ -18,9 +18,19 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
   const [friendsNum, setfriendsNum] = useState(0)
   const [gamesNum, setGamesNum] = useState(0)
 
-  const [profilePicture, setProfilePicture] = useState("")
-
   const [mode, setMode] = useState("profile")
+
+  const [oldPassword, setOldPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  const [newPassword2nd, setNewPassword2nd] = useState("")
+
+  const [profilePicUrl, setProfilePicUrl] = useState("")
+  const [usernameChange, setUsernameChange] = useState("")
+  const [emailChange, setEmailChange] = useState("")
+  const [friendCodeChange, setFriendCodeChange] = useState("")
+  const [LFFCheckbox, setLFFCheckbox] = useState(false)
+
+
 
   const getCurrentUserInfo = async () => {
 
@@ -36,11 +46,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
 
       const data = await result.json();
       setuserInfo(data)
-
       setfriendsNum(data.Friends.length)
       setGamesNum(data.UserGames.length)
-
-      setProfilePicture(data.profilePicture)
+      setProfilePicUrl(data.profilePicture)
     } catch (error) {
       console.error(error);
     }
@@ -57,27 +65,17 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     if (e.target.id === "updatePassword") {
       setMode("updatePassword")
     } else if (e.target.id === "updateProfile") {
-      setProfilePicUrl(userInfo.profilePicture)
       setUsernameChange(userInfo.username)
       setEmailChange(userInfo.email)
       setFriendCodeChange(userInfo.friendCode)
       setLFFCheckbox(userInfo.lookingForFriends)
-      setProfilePicture(userInfo.profilePicture)
       setMode("updateProfile")
     } else if (e.target.id === "cancel") {
       setMode("profile")
     }
   }
 
-  const [oldPassword, setOldPassword] = useState("")
-  const [newPassword, setNewPassword] = useState("")
-  const [newPassword2nd, setNewPassword2nd] = useState("")
-
-  const [profilePicUrl, setProfilePicUrl] = useState("")
-  const [usernameChange, setUsernameChange] = useState("")
-  const [emailChange, setEmailChange] = useState("")
-  const [friendCodeChange, setFriendCodeChange] = useState("")
-  const [LFFCheckbox, setLFFCheckbox] = useState(false)
+  
 
 
   const handleChange = (e) => {
@@ -88,7 +86,6 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     } else if (e.target.id === "newPassword2nd") {
       setNewPassword2nd(e.target.value)
     } else if (e.target.id === "profilePicUrl") {
-      setProfilePicture(e.target.value)
       setProfilePicUrl(e.target.value)
     } else if (e.target.id === "usernameChange") {
       setUsernameChange(e.target.value)
@@ -124,7 +121,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
 
       if (result.ok) {
         getCurrentUserInfo()
-        setMode("profile")
+        setMode("profile");
+        setProfilePicture(profilePicUrl);
+        localStorage.setItem("profilePicture", profilePicUrl);
       }
 
     } catch (error) {
@@ -136,7 +135,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     if (mode === "updatePassword") {
       return (
         <form className="updatePasswordForm">
-          <img id="mainProfilePicture" src={userInfo.profilePicture} alt='profile'></img>
+          <img id="mainProfilePicture" src={profilePicUrl} alt='profile'></img>
           <div className="passwordFormInputs">
             <input type="password" placeholder="old password" id="oldPassword" value={oldPassword} onChange={handleChange}></input>
             <input type="password" placeholder="new password" id="newPassword" value={newPassword} onChange={handleChange}></input>
@@ -151,7 +150,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     } else if (mode === "updateProfile") {
       return (
         <form className="updatePasswordForm">
-          <img id="mainProfilePicture" src={profilePicture} alt='profile'></img>
+          <img id="mainProfilePicture" src={profilePicUrl} alt='profile'></img>
           <div className="passwordFormInputs">
             <input type="text" placeholder="Profile picture Url" id='profilePicUrl' value={profilePicUrl} onChange={handleChange}></input>
             <input type="text" placeholder="username" id='usernameChange' value={usernameChange} onChange={handleChange}></input>
@@ -171,7 +170,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     } else if (mode === "profile") {
       return (
         <div className='profileInfo'>
-          <img id="mainProfilePicture" src={userInfo.profilePicture} alt='profile'></img>
+          <img id="mainProfilePicture" src={profilePicture || localStorage.getItem("profilePicture")} alt='profile'></img>
           <div className='profileInnerDiv'>
             <div>
               <p className="userRowItem">Username: {username}</p>
@@ -182,11 +181,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
               {userInfo.lookingForFriends ? <p className="LFFRowItem">Looking for friends: ✔️</p> : <p className="LFFRowItem">Looking for friends: ❌</p>}
             </div>
           </div>
-          <div className="passwordRow">
-            <div className="updateAndCancelBtns">
-              {/* <button id='updatePassword' onClick={handleModeChange}> Update password</button> */}
-              <button id='updateProfile' onClick={handleModeChange}> Update profile</button>
-            </div>
+          <div className="updateAndCancelBtns">
+            {/* <button id='updatePassword' onClick={handleModeChange}> Update password</button> */}
+            <button id='updateProfile' onClick={handleModeChange}> Update profile</button>
           </div>
         </div>
       )
@@ -200,16 +197,18 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         <h3>{username}</h3>
         <div>{friendsNum} Friends</div>
       </div>
-      {renderProfile()}
-      <h2 className='yourAccounts'>Your Accounts</h2>
-      <SearchBar originalList={originalAccountsList} setList={setAccountsList} />
-      <AccountsList
-        setUserName={setUserName}
-        accountsList={accountsList}
-        setAccountsList={setAccountsList}
-        originalAccountsList={originalAccountsList}
-        setOriginalAccountsList={setOriginalAccountsList}
-      />
+      <div className="profileContent">
+        {renderProfile()}
+        <h2 className='yourAccounts'>Your Accounts</h2>
+        <SearchBar originalList={originalAccountsList} setList={setAccountsList} />
+        <AccountsList
+          setUserName={setUserName}
+          accountsList={accountsList}
+          setAccountsList={setAccountsList}
+          originalAccountsList={originalAccountsList}
+          setOriginalAccountsList={setOriginalAccountsList}
+        />
+      </div>
 
     </div>
   );
