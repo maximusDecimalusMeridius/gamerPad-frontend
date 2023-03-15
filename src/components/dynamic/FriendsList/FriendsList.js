@@ -41,7 +41,7 @@ function FriendsList({
         }
       );
       const data = await result.json();
-      console.log(data);
+      // console.log(data);
 
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);

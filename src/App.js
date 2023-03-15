@@ -26,6 +26,7 @@ function App() {
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
   const [originalCommsList, setOriginalCommsList] = useState([]);
+  const [commsList, setCommsList] = useState([])
   const [profilePicture, setProfilePicture] = useState("")
   const [token, setToken] = useState("");
 
@@ -103,6 +104,9 @@ function App() {
             setFriendsList={setFriendsList}
             originalFriendsList={originalFriendsList}
             setOriginalFriendsList={setOriginalFriendsList}
+            commsList={commsList}
+            setCommsList={setCommsList}
+            originalCommsList={setOriginalCommsList}
             showMenu={showMenu}
             setShowMenu={setShowModal}
             warningMessage={warningMessage}
@@ -141,6 +145,8 @@ function App() {
                           setProfilePicture={setProfilePicture}   
                           originalCommsList={originalCommsList}
                           setOriginalCommsList={setOriginalCommsList}
+                          commsList={commsList}
+                          setCommsList={setCommsList}
                           />}
         </main>        
       </div>

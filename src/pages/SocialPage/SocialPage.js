@@ -14,6 +14,8 @@ function SocialPage({
   setFriendsList,
   originalFriendsList,
   setOriginalFriendsList,
+  commsList,
+  setCommsList,
   originalCommsList,
   setOriginalCommsList,
   setProfilePicture
@@ -35,6 +37,8 @@ function SocialPage({
       );
     } else {
       return <CommunitiesList 
+      commsList={commsList}
+      setCommsList={setCommsList}
       originalCommsList={originalCommsList}
       setOriginalCommsList={setOriginalCommsList}/>;
     }
@@ -52,11 +56,11 @@ function SocialPage({
   const renderSearchBar = () => {
     if (currentPage === "Communities") {
         return (
-            <SearchBar originalList={originalCommsList} setList={setOriginalCommsList} />
+            <SearchBar originalList={originalCommsList} setList={setCommsList} />
         )
     } else if (currentPage === "Friends") {
         return (
-            <SearchBar originalList={originalFriendsList} setList={setOriginalFriendsList} />
+            <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
         )
     }
 }
