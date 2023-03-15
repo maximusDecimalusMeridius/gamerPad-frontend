@@ -17,7 +17,7 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
             const token = localStorage.getItem("token");
 
             const newFriendObj = {
-                FriendId: friendName,
+                username: friendName,
                 friendCode: friendCode
             }
 
@@ -30,7 +30,7 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                 }
             })
 
-            const data = await result.json();
+            // const data = await result.json();
 
             if(result.ok){
                 console.log("friend added");
@@ -38,6 +38,26 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                 navigate("/", {replace: true})
                 //we can reload if we persist "loggedInData"
                 // window.location.reload();
+                try {
+                    const token = localStorage.getItem("token");
+              
+                    const result = await fetch(
+                      "https://gamerpad-backend.herokuapp.com/api/friends/currentUserFriends",
+                      {
+                        method: "GET",
+                        headers: {
+                          authorization: token ? `Bearer ${token}` : "",
+                        },
+                      }
+                    );
+                    const data = await result.json();
+              
+                    setFriendsList(data.Friends);
+                    setOriginalFriendsList(data.Friends);
+              
+                  } catch (error) {
+                    console.error(error);
+                  }
             } else {
                 setWarningMessage("Error adding friend");
                 setTimeout(() => {
@@ -49,6 +69,8 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
             console.error(error);
         }
     }
+
+    
 
     const handleChange = (event) => {
         if(event.target.id === "friendName"){
