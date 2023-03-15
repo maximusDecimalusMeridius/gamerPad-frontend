@@ -26,8 +26,7 @@ function App() {
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
   const [originalCommsList, setOriginalCommsList] = useState([]);
-  // const [profilePicture, setprofilePicture] = useState("https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo-300x300.jpg")
-
+  const [profilePicture, setProfilePicture] = useState("")
   const [token, setToken] = useState("");
 
   const validateToken = async (token) => {
@@ -43,7 +42,25 @@ function App() {
     } catch (error) {
         console.error(error);
     }
-}
+    
+  }
+  const getProfilePic = async () => {
+    try {
+      
+      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/currentUserInfo", {
+        method: "GET",
+        headers: {
+          authorization: token ? `Bearer ${token}` : ''
+        }
+      })
+      
+      const data = await result.json();
+      
+      setProfilePicture(data.profilePicture)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(()=>{
     const savedToken = localStorage.getItem("token");
@@ -53,6 +70,7 @@ function App() {
         if(tokenData.isValid){
           setToken(savedToken);
           setIsLoggedIn(true)
+          getProfilePic()
         } else {
           localStorage.removeItem("token")
         }
@@ -90,6 +108,8 @@ function App() {
             setShowMenu={setShowModal}
             warningMessage={warningMessage}
             setWarningMessage={setWarningMessage}
+            profilePicture={profilePicture}
+            setprofilePicture={setProfilePicture}
             />
         </header>
     
