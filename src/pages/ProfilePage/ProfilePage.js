@@ -10,7 +10,7 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture }) {
+function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage}) {
 
   const [username, setUserName] = useState([]);
   const [userInfo, setuserInfo] = useState({})
@@ -124,6 +124,24 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setMode("profile");
         setProfilePicture(profilePicUrl);
         localStorage.setItem("profilePicture", profilePicUrl);
+      } else if(result.status === 403) {
+        console.log(`error`);
+        setWarningMessage("You must be logged in to update an acount");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+      } else if(result.status === 404) {
+        console.log(`error`);
+        setWarningMessage("No record matching that user");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+      } else if(result.status === 500) {
+        console.log(`error`);
+        setWarningMessage("User name is already taken");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
       }
 
     } catch (error) {
@@ -160,6 +178,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
               <label htmlFor='LFF'>Looking For Friends: </label>
               <input type="checkbox" name='LFF' id="LFFCheckbox" checked={LFFCheckbox} onChange={handleChange}></input>
             </div>
+            <p className="warningMessage" id="warningMessage">{warningMessage}</p>
           </div>
           <div className="updateAndCancelBtns">
             <button id='update' onClick={editProfile}>Update</button>
