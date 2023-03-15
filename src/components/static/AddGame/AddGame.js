@@ -36,7 +36,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                 content: contentRating,
                 replay: valueRating,
                 value: replayRating,
-                GameId: gameId,
+                GameId: gameId.trim(),
                 platforms: platformList
             }
 

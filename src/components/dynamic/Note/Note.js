@@ -37,7 +37,7 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
         try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/notes/${noteId}/shareWith/${friendInput}`, {
+            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/notes/${noteId}/shareWith/${friendInput.trim()}`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",
@@ -53,8 +53,6 @@ function Note({ id, title, textContent, color, createdAt, index, handleDelete, a
             } else {
                 setshareNoteResult("Something went wrong! Make sure you have the accurate username");
             }
-
-          
             
         } catch (error) {
             console.error(error);

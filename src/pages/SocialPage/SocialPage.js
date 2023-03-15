@@ -16,7 +16,11 @@ function SocialPage({
   setOriginalFriendsList,
   originalCommsList,
   setOriginalCommsList,
-  setProfilePicture
+  setProfilePicture,
+  showModal,
+  setShowModal,
+  activeModal,
+  setActiveModal
 }) {
   const [currentPage, setCurrentPage] = useState("Friends");
   const [otherPage, setOtherPage] = useState("Communities");
@@ -26,6 +30,10 @@ function SocialPage({
     if (currentPage === "Friends") {
       return (
         <FriendsList
+          showModal={showModal}
+          setShowModal={setShowModal}
+          activeModal={activeModal}
+          setActiveModal={setActiveModal}
           friendsList={friendsList}
           setFriendsList={setFriendsList}
           originalFriendsList={originalFriendsList}

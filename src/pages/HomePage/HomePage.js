@@ -48,7 +48,7 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                 profilePicture={profilePicture}
                                                 setProfilePicture={setProfilePicture}/>}
                                                  />
-                <Route path="dashboard" element={<DashboardPage
+                <Route path="dashboard/*" element={<DashboardPage
                                                     showModal={showModal}
                                                     setShowModal={setShowModal}
                                                     activeModal={activeModal}
