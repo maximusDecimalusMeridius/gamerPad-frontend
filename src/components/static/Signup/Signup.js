@@ -1,7 +1,7 @@
 import React from "react";
 import "./Signup.css"
 
-function Signup({activePage, userValue, emailValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
+function Signup({activePage, userValue, emailValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage, setuserInfo}) {
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,6 +23,7 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
 
             const data = await result.json();
             console.log(data);
+            setuserInfo(data)
 
             if(result.ok){
                 setIsLoggedIn(true);

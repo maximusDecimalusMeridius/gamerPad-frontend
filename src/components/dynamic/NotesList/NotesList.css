@@ -78,14 +78,14 @@
     bottom: -100px;
     position: absolute;
     border-radius: 5px;
-    z-index: 6;
+    z-index: 2;
 }
 
 .clickOutDiv{
     position: absolute;
     height: 100vh;
     width: 100vw;
-    z-index: 5;
+    z-index: 1;
     top: 0;
     left: 0;
 }
@@ -104,7 +104,7 @@
     font-size: 25px;
     cursor: pointer;
     user-select: none;
-    z-index: 6;
+    z-index: 2;
 }
 
 .noteContent {
