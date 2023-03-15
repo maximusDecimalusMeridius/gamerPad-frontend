@@ -15,7 +15,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 password: passwordValue
             }
 
-            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/login", {
+            const result = await fetch("http://gamerpad-backend.herokuapp.com/api/users/login", {
                 method: "POST",
                 body: JSON.stringify(loginObj),
                 headers:{
