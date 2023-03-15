@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./CommunitiesList.css";
-import SearchBar from "../../static/SearchBar/SearchBar";
 
-function CommunitiesList({originalCommsList, setOriginalCommsList}) {
-  const [commsList, setCommsList] = useState([]);
+
+function CommunitiesList({commsList, setCommsList, originalCommsList, setOriginalCommsList}) {
   const [openIndex, setOpenIndex] = useState(-1);
 
 
@@ -15,16 +14,16 @@ function CommunitiesList({originalCommsList, setOriginalCommsList}) {
   const fetchComms = async (event) => {
     try {
       const token = localStorage.getItem("token");
-      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games", {
+      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame/allUserGames", {
         method: "GET",
         headers: {
           authorization: token ? `Bearer ${token}` : "",
         },
       });
       const data = await result.json();
-      console.log(data);
       setCommsList(data);
       setOriginalCommsList(data);
+      console.log(data)
     } catch (error) {
       console.error(error);
     }
@@ -33,30 +32,33 @@ function CommunitiesList({originalCommsList, setOriginalCommsList}) {
   const handleCommsClick = (index) => {
     setOpenIndex(index === openIndex ? -1 : index);
   };
-  const comms = commsList.map((game, index) => {
-    const isOpen = index === openIndex;
-    return (
-      <div className="commsCard" key={index}>
+  const comms = commsList && commsList.length > 0 ? commsList.map((game, index) => {
+      const isOpen = index === openIndex;
+      return (
+        <div className="commsCard" key={index}>
         <div className="commsCardHeader">
           <h2
             className="commTitle"
             onClick={() => handleCommsClick(index)}
-          >
+            >
             {game.title}
           </h2>
-          {isOpen && (
-            <ul className="topMems">
-              <li>person 1</li>
-              <li>person 2</li>
-              <li>person 3</li>
-            </ul>
-          )}
+          {isOpen && <p>released: {game.releaseDate}</p>}
+          {isOpen && <p>Player count: {game.allPlayers}</p>}
+         {isOpen && game.listOfFriends.length > 0 && (
+           <ul className="friendsPlay">
+            <li>friends who play:</li>
+            {game.listOfFriends.map((friend) => (
+              <li key={index}>{friend.username}</li>
+              ))}
+          </ul>
+         )}
         </div>
       </div>
     );
-  });
+}) : null;
   return (
-
+    
 
       <div className="commsContainer">{comms}</div>
    
