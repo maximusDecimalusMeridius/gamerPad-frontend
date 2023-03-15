@@ -37,7 +37,7 @@
     width: 150px;
 }
 
-.inputContainer {
+.gameInputContainer {
     display: flex;
     flex-direction: column;
     width: 50%;
