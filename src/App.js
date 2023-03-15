@@ -45,9 +45,12 @@ function App() {
           setTimeout(() => {
             setShowModal(false);
           }, "1000")
-        } else (
-          setActiveModal("Error Logging In - Please Try Again")
-        )
+        } else {
+          setActiveModal("Error Logging In - Please Try Again");
+          setTimeout(() => {
+            setShowModal(false);
+          }, "1000")
+        }
 
         return result.json()
     } catch (error) {
