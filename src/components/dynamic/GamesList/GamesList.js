@@ -42,30 +42,29 @@ function GamesList() {
     }
 
     // Delete userGame
-    const handleClick = async (e) => {
-        if (e.detail === 3) {
-            console.log('triple')
-            try {
-                const token = localStorage.getItem("token");
+    const handleDeleteGame = async (e) => {
+            
+        try {
+            const token = localStorage.getItem("token");
 
-                let url = `https://gamerpad-backend.herokuapp.com/api/games/usergame/${e.target.dataset.id}`;
+            let url = `https://gamerpad-backend.herokuapp.com/api/games/usergame/${e.target.parentNode.dataset.id}`;
 
-                const result = await fetch(url, {
-                    method: "DELETE",
-                    headers: {
-                        authorization: token ? `Bearer ${token}` : ''
-                    }
-                })
-
-
-                if (result.ok) {
-                    fetchGames()
+            const result = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    authorization: token ? `Bearer ${token}` : ''
                 }
+            })
 
-            } catch (error) {
-                console.error(error);
+
+            if (result.ok) {
+                fetchGames()
             }
+
+        } catch (error) {
+            console.error(error);
         }
+
     }
 
     // map over data to display 
@@ -92,9 +91,10 @@ function GamesList() {
         }
 
         return (
-            <div className="gameCard" key={index}>
+            <div className="gameCard" key={index} data-id={game.id}>
+                <div className="closeMenu cursor" onClick={handleDeleteGame}>x</div>
                 <div className="gameCardHeader">
-                    <div><span data-id={game.id} onClick={handleClick}>{game.Game.title}</span>{(game.favorite) ? "⭐" : ""}</div>
+                    <div><span>{game.Game.title}</span>{(game.favorite) ? "⭐" : ""}</div>
                     <ul className="gameCardPlatforms">
                         {platforms}
                     </ul>
