@@ -8,8 +8,7 @@
 }
 
 .navMenu {
-    height: 80vh;
-    min-height: 100%;
+    height: 100%;
     border: solid transparent;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -47,4 +46,8 @@ a:link, a:visited,a:hover, a:active {
 
 #logoutButton:hover {
     background: white;
+}
+
+@media (height < 550px){
+    
 }

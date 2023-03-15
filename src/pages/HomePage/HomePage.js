@@ -14,7 +14,7 @@ import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
-                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, userInfo}) {
+                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, profilePicture, setProfilePicture, userInfo}) {
 
 
     return (
@@ -35,6 +35,7 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     setFriendsList={setFriendsList}
                                                     originalFriendsList={originalFriendsList}
                                                     setOriginalFriendsList={setOriginalFriendsList}
+                                                    setProfilePicture={setProfilePicture}   
                                                     originalCommsList={originalCommsList}
                                                     setOriginalCommsList={setOriginalCommsList}
                                                      />}/>
@@ -43,7 +44,9 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                 accountsList={accountsList}
                                                 setAccountsList={setAccountsList}
                                                 originalAccountsList={originalAccountsList}
-                                                setOriginalAccountsList={setOriginalAccountsList}/>}
+                                                setOriginalAccountsList={setOriginalAccountsList}
+                                                profilePicture={profilePicture}
+                                                setProfilePicture={setProfilePicture}/>}
                                                  />
                 <Route path="dashboard" element={<DashboardPage
                                                     showModal={showModal}
@@ -60,6 +63,7 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     setFriendsList={setFriendsList}
                                                     originalFriendsList={originalFriendsList}
                                                     setOriginalFriendsList={setOriginalFriendsList}
+                                                    setProfilePicture={setProfilePicture}   
                                                     originalCommsList={originalCommsList}
                                                     setOriginalCommsList={setOriginalCommsList}
                                                     />}>
@@ -80,8 +84,10 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                 setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                                                 sharedNotes={sharedNotes}
                                                 setSharedNotes={setSharedNotes}/>} />
-                <Route path="social" element={<FriendsList />} />
-                <Route path="communities" element={<FriendsList />} />
+                <Route path="social" element={<FriendsList 
+                                                setProfilePicture={setProfilePicture}   />} />
+                <Route path="communities" element={<FriendsList
+                                                    setProfilePicture={setProfilePicture}   />} />
             </Routes>      
 
         </div>

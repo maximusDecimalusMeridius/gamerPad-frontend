@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
-import UserMenu from "../../static/UserMenu/UserMenu.js";
+
 import {Link, useNavigate} from "react-router-dom";
 
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
@@ -36,7 +36,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
         <div className="header">
             <div className="imageContainer">
                 
-                {isLoggedIn ? (<img src={profilePicture} className="imagePlaceholder cursor" onClick={openProfile}></img>) : ""}
+                {isLoggedIn ? (<img src={profilePicture || localStorage.getItem("profilePicture")} className="imagePlaceholder cursor" onClick={openProfile} alt="headshot"></img>) : ""}
             </div>
             <div className="headerTitle">
                 {isLoggedIn ? ( <h1 className="loggedInHeader">gamerPad</h1>) : (<h1>gamerPad</h1>)}

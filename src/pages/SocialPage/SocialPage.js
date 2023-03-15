@@ -15,7 +15,8 @@ function SocialPage({
   originalFriendsList,
   setOriginalFriendsList,
   originalCommsList,
-  setOriginalCommsList
+  setOriginalCommsList,
+  setProfilePicture
 }) {
   const [currentPage, setCurrentPage] = useState("Friends");
   const [otherPage, setOtherPage] = useState("Communities");
@@ -29,6 +30,7 @@ function SocialPage({
           setFriendsList={setFriendsList}
           originalFriendsList={originalFriendsList}
           setOriginalFriendsList={setOriginalFriendsList}
+          setProfilePicture={setProfilePicture}   
         />
       );
     } else {

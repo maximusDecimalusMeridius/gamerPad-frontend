@@ -28,12 +28,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
         setActiveModal(event.target.textContent);
         setMenuType(false)
     }
-    // const handleMenuClick = (event) => {
-    //     if(event.target.classList.contains("modalContainer") || event.target.classList.contains("link") || event.target.id === "exitBox"){
-    //         setMenuType(false)
-    //         setOpenNav(false)
-    //     }
-    // }
+
     <Navigate to="/ProfilePage" />
     return (
       
