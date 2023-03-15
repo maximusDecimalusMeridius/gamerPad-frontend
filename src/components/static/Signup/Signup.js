@@ -10,12 +10,12 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        if(passwordValue !== confirmValue){
-            setWarningMessage(`Passwords do not match`);
-            return 
-        }
-
+        
         try {
+            if(passwordValue !== confirmValue){
+                setWarningMessage(`Passwords do not match`);
+                return 
+            }
             const signupObj = {
                 username: userValue,
                 email: emailValue,
