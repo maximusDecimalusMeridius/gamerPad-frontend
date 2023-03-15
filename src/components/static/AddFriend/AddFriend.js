@@ -57,7 +57,6 @@ function AddFriend({ setShowModal, friendsList, setFriendsList, originalFriendsL
 
                 } catch (error) {
                     console.error(error);
-<<<<<<< HEAD
                   }
             } else if (result.status === 404){
                 setWarningMessage("Error adding friend, wrong code or username");
@@ -66,11 +65,6 @@ function AddFriend({ setShowModal, friendsList, setFriendsList, originalFriendsL
                 }, "2000")
             } else if (result.status === 403){
                 setWarningMessage("You must be logged in to add a friend");
-=======
-                }
-            } else {
-                setWarningMessage("Error adding friend");
->>>>>>> 6cad0fdbaced31eca6a633da27aef204fe2700ec
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
