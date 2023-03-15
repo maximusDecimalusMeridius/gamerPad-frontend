@@ -10,9 +10,10 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture }) {
+function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage}) {
 
   const [username, setUserName] = useState([]);
+  const [friendCount, setFriendCount] = useState(0)
   const [userInfo, setuserInfo] = useState({})
 
   const [friendsNum, setfriendsNum] = useState(0)
@@ -99,7 +100,57 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       setLFFCheckbox(e.target.checked)
     }
   }
-
+  const validateField = (e) => {
+    console.log(e)
+    const {name, value} = e.target;
+    const emailValidator = /[\w-.]+@([\w-]+\.)+[\w-]{2,4}/gi
+    console.log(name)
+    console.log(value)
+    if(name === `username`){
+        if(value === ''){
+            setWarningMessage('Username field is required');
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
+        }else if(value.length < 3 || value.length > 20){
+            setWarningMessage('Username must be between 3 to 20 characters');
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
+        } else {
+            setWarningMessage('');
+        }
+    } else if(name === `email`){
+        if(value === ''){
+            setWarningMessage('Email field is required');
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
+        } else if(!emailValidator.test(value)){ 
+            setWarningMessage('Please enter a valid email address');
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
+        } else {
+            setWarningMessage('');
+        }
+    } else if(name === `friendCode`){
+      if(value===""){
+        setWarningMessage('field is required');
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000")
+    } else if(!emailValidator.test(value)){ 
+        setWarningMessage('Please enter a valid word');
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000")
+    } else {
+        setWarningMessage('');
+    }
+     
+    }
+}
   const editProfile = async (e) => {
     e.preventDefault()
 
@@ -126,6 +177,24 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setMode("profile");
         setProfilePicture(profilePicUrl);
         localStorage.setItem("profilePicture", profilePicUrl);
+      } else if(result.status === 403) {
+        console.log(`error`);
+        setWarningMessage("You must be logged in to update an acount");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+      } else if(result.status === 404) {
+        console.log(`error`);
+        setWarningMessage("No record matching that user");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+      } else if(result.status === 500) {
+        console.log(`error`);
+        setWarningMessage("User name is already taken");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
       }
 
     } catch (error) {
@@ -139,9 +208,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         <form className="updatePasswordForm">
           <img id="mainProfilePicture" src={profilePicUrl} alt='profile'></img>
           <div className="passwordFormInputs">
-            <input type="password" placeholder="old password" id="oldPassword" value={oldPassword} onChange={handleChange}></input>
-            <input type="password" placeholder="new password" id="newPassword" value={newPassword} onChange={handleChange}></input>
-            <input type="password" placeholder="re-enter new pw" id="newPassword2nd" value={newPassword2nd} onChange={handleChange}></input>
+            <input type="password" placeholder="old password" id="oldPassword" name="oldPassword" value={oldPassword} onChange={handleChange} onBlur={validateField}></input>
+            <input type="password" placeholder="new password" id="newPassword" name="newPassword" value={newPassword} onChange={handleChange} onBlur={validateField}></input>
+            <input type="password" placeholder="re-enter new pw" id="newPassword2nd" name="vPassword" value={newPassword2nd} onChange={handleChange} onBlur={validateField}></input>
           </div>
           <div className="updateAndCancelBtns">
             <button id='update' onClick={handleModeChange}>Update</button>
@@ -151,20 +220,21 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       )
     } else if (mode === "updateProfile") {
       return (
-        <form className="updatePasswordForm">
+        <form className="updatePasswordForm" onSubmit={editProfile}>
           <img id="mainProfilePicture" src={profilePicUrl} alt='profile'></img>
           <div className="passwordFormInputs">
             <input type="text" placeholder="Profile picture Url" id='profilePicUrl' value={profilePicUrl} onChange={handleChange}></input>
-            <input type="text" placeholder="username" id='usernameChange' value={usernameChange} onChange={handleChange}></input>
-            <input type="email" placeholder="email" id="emailChange" value={emailChange} onChange={handleChange}></input>
-            <input type="text" placeholder="FriendCode" id='friendCodeChange' value={friendCodeChange} onChange={handleChange}></input>
+            <input type="text" placeholder="username" id='usernameChange' name="username" value={usernameChange} onChange={handleChange} onBlur={validateField} required></input>
+            <input type="email" placeholder="email" id="emailChange" name="email" value={emailChange} onChange={handleChange} onBlur={validateField} required></input>
+            <input type="text" placeholder="FriendCode" id='friendCodeChange' name="friendCode" value={friendCodeChange} onChange={handleChange} onBlur={validateField} required></input>
             <div>
               <label htmlFor='LFF'>Looking For Friends: </label>
               <input type="checkbox" name='LFF' id="LFFCheckbox" checked={LFFCheckbox} onChange={handleChange}></input>
             </div>
+            <p className="warningMessage" id="warningMessage">{warningMessage}</p>
           </div>
           <div className="updateAndCancelBtns">
-            <button id='update' onClick={editProfile}>Update</button>
+            <button id='update' className="submitButton">Update</button>
             <button id='cancel' onClick={handleModeChange}>Cancel</button>
           </div>
         </form>

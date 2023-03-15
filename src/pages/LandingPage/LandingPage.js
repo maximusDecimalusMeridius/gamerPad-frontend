@@ -8,6 +8,7 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
     const [otherPage, setOtherPage] = useState("Signup");
     const [userValue, setUserValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
+    const [confirmValue, setConfirmValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     
     const handleChange = (event) => {
@@ -17,6 +18,8 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
             setEmailValue(event.target.value);
         } else if (event.target.name === "password") {
             setPasswordValue(event.target.value);
+        } else if (event.target.name === "vPassword") {
+            setConfirmValue(event.target.value);
         }
     }
 
@@ -40,6 +43,7 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
                     userValue={userValue}
                     emailValue={emailValue}
                     passwordValue={passwordValue}
+                    confirmValue={confirmValue}
                     handleChange={handleChange}
                     isLoggedIn={isLoggedIn}
                     setIsLoggedIn={setIsLoggedIn}
@@ -50,6 +54,7 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
     }
     
     const setPage = () => {
+        setWarningMessage('');
         if(activePage === "Login"){
             setActivePage("Signup");
             setOtherPage("Login");
