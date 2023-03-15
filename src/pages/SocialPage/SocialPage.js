@@ -14,9 +14,12 @@ function SocialPage({
   setFriendsList,
   originalFriendsList,
   setOriginalFriendsList,
+  originalCommsList,
+  setOriginalCommsList
 }) {
   const [currentPage, setCurrentPage] = useState("Friends");
   const [otherPage, setOtherPage] = useState("Communities");
+
 
   const renderPage = () => {
     if (currentPage === "Friends") {
@@ -29,10 +32,12 @@ function SocialPage({
         />
       );
     } else {
-      return <CommunitiesList />;
+      return <CommunitiesList 
+      originalCommsList={originalCommsList}
+      setOriginalCommsList={setOriginalCommsList}/>;
     }
   };
-
+  
   const handleChange = (event) => {
     if (event.target.value === "friends") {
       setCurrentPage("Friends");
@@ -42,10 +47,21 @@ function SocialPage({
       setOtherPage("Friends");
     }
   };
+  const renderSearchBar = () => {
+    if (currentPage === "Communities") {
+        return (
+            <SearchBar originalList={originalCommsList} setList={setOriginalCommsList} />
+        )
+    } else if (currentPage === "Friends") {
+        return (
+            <SearchBar originalList={originalFriendsList} setList={setOriginalFriendsList} />
+        )
+    }
+}
 
   return (
     <div className="socialPageContainer">
-      <SearchBar originalList={originalFriendsList} setList={setFriendsList} />
+        {renderSearchBar()}
       <div className="socialPageCards">
         <div className="buttonContainer" onChange={handleChange}>
           <div>

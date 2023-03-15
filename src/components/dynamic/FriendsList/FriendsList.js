@@ -115,7 +115,7 @@ function FriendsList({
             </ul>
           )}
           {isOpen && (
-          <span onClick={handleDelete} style={style.span} data-id={friend.id}>
+          <span className="deleteButton" onTouchStart={handleDelete} onClick={handleDelete} style={style.span} data-id={friend.id}>
             X
           </span> )}
         </div>

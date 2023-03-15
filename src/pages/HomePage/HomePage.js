@@ -14,7 +14,7 @@ import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
-                    originalAccountsList, setOriginalAccountsList, userInfo}) {
+                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, userInfo}) {
 
 
     return (
@@ -35,6 +35,8 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     setFriendsList={setFriendsList}
                                                     originalFriendsList={originalFriendsList}
                                                     setOriginalFriendsList={setOriginalFriendsList}
+                                                    originalCommsList={originalCommsList}
+                                                    setOriginalCommsList={setOriginalCommsList}
                                                      />}/>
                 <Route path="profile" element={<ProfilePage 
                                                 {...userInfo}
@@ -58,6 +60,8 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     setFriendsList={setFriendsList}
                                                     originalFriendsList={originalFriendsList}
                                                     setOriginalFriendsList={setOriginalFriendsList}
+                                                    originalCommsList={originalCommsList}
+                                                    setOriginalCommsList={setOriginalCommsList}
                                                     />}>
                         <Route path="notes" element={<NotesList 
                                                         writtenNotes={writtenNotes}
