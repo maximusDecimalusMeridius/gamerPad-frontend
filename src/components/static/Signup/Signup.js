@@ -17,8 +17,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
                 return 
             }
             const signupObj = {
-                username: userValue,
-                email: emailValue,
+                username: userValue.trim(),
+                email: emailValue.trim(),
                 password: passwordValue
             }
             

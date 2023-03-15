@@ -18,8 +18,8 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: Create Div for carosel, with A tags on each image within carosel, have background linked to communities page
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
-function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,originalCommsList, setOriginalCommsList, commsList, setCommsList,  setProfilePicture}) {
+function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, sharedNotes, setSharedNotes,
+                      friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, originalCommsList, setOriginalCommsList, commsList, setCommsList,  setProfilePicture, showModal, setShowModal, activeModal, setActiveModal}) {
   return (
     <div className="dashboardContainer">
       <ul className="pageTabs">
@@ -37,6 +37,10 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
       <Routes>
         <Route path="/">
           <Route path="" element={<SocialPage 
+                                  showModal={showModal}
+                                  setShowModal={setShowModal}
+                                  activeModal={activeModal}
+                                  setActiveModal={setActiveModal}
                                   friendsList={friendsList}
                                   setFriendsList={setFriendsList}
                                   originalFriendsList={originalFriendsList}
@@ -49,6 +53,10 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                   />
           <Route path="social">
             <Route path="" element={<SocialPage 
+                                    showModal={showModal}
+                                    setShowModal={setShowModal}
+                                    activeModal={activeModal}
+                                    setActiveModal={setActiveModal}
                                     friendsList={friendsList}
                                     setFriendsList={setFriendsList}
                                     originalFriendsList={originalFriendsList}
@@ -60,6 +68,10 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                     setProfilePicture={setProfilePicture}   
                                     />} />
             <Route index={true} element={<SocialPage 
+                                          showModal={showModal}
+                                          setShowModal={setShowModal}
+                                          activeModal={activeModal}
+                                          setActiveModal={setActiveModal}
                                           friendsList={friendsList}
                                           setFriendsList={setFriendsList}
                                           originalFriendsList={originalFriendsList}

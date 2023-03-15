@@ -17,8 +17,8 @@ function AddFriend({ setShowModal, friendsList, setFriendsList, originalFriendsL
             const token = localStorage.getItem("token");
 
             const newFriendObj = {
-                username: friendName,
-                friendCode: friendCode
+                username: friendName.trim(),
+                friendCode: friendCode.trim()
             }
 
             const result = await fetch("https://gamerpad-backend.herokuapp.com/api/friends/addFriend", {

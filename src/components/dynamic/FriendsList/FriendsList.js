@@ -7,7 +7,11 @@ function FriendsList({
   setFriendsList,
   originalFriendsList,
   setOriginalFriendsList,
-  setProfilePicture
+  setProfilePicture,
+  showModal,
+  setShowModal,
+  activeModal,
+  setActiveModal
 }) {
   const [openIndex, setOpenIndex] = useState(-1);
 
@@ -84,6 +88,11 @@ function FriendsList({
     }
   };
 
+  const addFriend = () => {
+    setShowModal(true);
+    setActiveModal("Add Friend");
+  }
+
   const friends = friendsList.map((friend, index) => {
     const isOpen = index === openIndex;
 
@@ -107,10 +116,10 @@ function FriendsList({
             <ul className="friendAccounts">
               <li>Accounts:</li>
               {friend.Accounts.map((Account) => (
-                <li key={index}>{Account.account} </li>
+                <li key={crypto.randomUUID()}>{Account.account} </li>
                 ))}
                 {friend.Accounts.map((Account) => (
-                  <li key={index}>{Account.username}</li>
+                  <li key={crypto.randomUUID()}>{Account.username}</li>
                   ))}
                   
 
@@ -120,7 +129,7 @@ function FriendsList({
             <ul className="friendGames">
               <li>Top Games:</li>
               {friend.UserGames.map((userGame) => (
-                <li key={userGame.id}>{userGame.Game.title}</li>
+                <li key={crypto.randomUUID()}>{userGame.Game.title}</li>
               ))}
             </ul>
           )}
@@ -134,7 +143,7 @@ function FriendsList({
   });
 
   return (
-    <div className="friendContainer">{friends}</div>
+    <div className="friendContainer">{friends.length === 0 ? <p>Let's <span className="cursor" onClick={addFriend} style={{fontWeight: "bold"}}>add a friend</span> to get started!</p> : friends}</div>
   );
 }
 

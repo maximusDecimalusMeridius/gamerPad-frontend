@@ -225,7 +225,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         if (platformsAutoComplete && !searchingGame) {
             return (
                 <div className="modalForm" id="addGameModal">
-                    <div className="inputContainer">
+                    <div className="gameInputContainer">
                         <p type="text" id="gameId" name="friendName" placeholder="game id" onChange={handleChange}required>{game.title}</p>
                     </div>
                     <div className="ratingsInput">
@@ -249,7 +249,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                         </div>
                     </div>
                     <div className="addPlatformContainer">
-                        <div className="inputContainer">
+                        <div className="gameInputContainer">
                             <input type="text" name="platformName" id="platformInput" placeholder="Platforms" onChange={handleChange} value={platformInput}></input>
                             <div id="platformSearchList">
                                 {platformsAutoComplete.map((platform, index) => {
