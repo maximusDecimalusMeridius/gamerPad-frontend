@@ -21,17 +21,14 @@
     transition: all .5s ease-out;
     border-radius: 10px;
     box-shadow: inset 1px 1px 4px 2px black;
+    position: relative;
 }
 
 .gameCardHeader {
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.gameCardTitle {
-
 }
 
 .gameCardPlatforms {
@@ -47,6 +44,12 @@
 .gameCardPlatforms li {
     font-size: 12px;
     font-style: italic;
+}
+
+.closeMenu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .ratingsContainer {

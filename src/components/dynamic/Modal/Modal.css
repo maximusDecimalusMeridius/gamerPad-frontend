@@ -3,7 +3,9 @@
     top: 0;
     left: 0;
     height: 100vh;
+    min-height: 375px;
     width: 100vw;
+    min-width: 250px;
     z-index: 3;
     background: rgba(50, 50, 50, .8);
     display: flex;
@@ -15,7 +17,7 @@
     width: 100%;
     max-width: 600px;
     height: 80%;
-    min-height: 250px;
+    min-height: 375px;
     max-height: 500px;
     background: var(--window-dark-gray);
     display: flex;
@@ -121,4 +123,14 @@
 .addSubmitButton {
     width: 50%;
     box-shadow: 4px 4px 6px 2px black;
+}
+
+@media (width < 375px) {
+    .modalTitle {
+        font-size: 24px;
+    }
+    
+    .modalNavMenu {
+        font-size: 12px;
+    }
 }

@@ -19,8 +19,8 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
         const token = localStorage.getItem("token");
 
         const newNoteObj = {
-            title: noteTitle,
-            textContent: noteContent,
+            title: noteTitle.trim(),
+            textContent: noteContent.trim(),
             color: noteColorCode
         }
 

@@ -31,7 +31,8 @@ function App() {
   const [token, setToken] = useState("");
 
   const validateToken = async (token) => {
-
+    setActiveModal("Checking Login Info...");
+    setShowModal(true);
     try {
         const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/isValidToken", {
             method: "GET",
@@ -39,29 +40,25 @@ function App() {
                 authorization: token ? `Bearer ${token}` : ''
             }
         })
+
+        if(result.ok){
+          setActiveModal("Logged In!");
+          setTimeout(() => {
+            setShowModal(false);
+          }, "1000")
+        } else {
+          setActiveModal("Error Logging In - Please Try Again");
+          setTimeout(() => {
+            setShowModal(false);
+          }, "1000")
+        }
+
         return result.json()
     } catch (error) {
         console.error(error);
     }
     
   }
-  // const getProfilePic = async (token) => {
-  //   try {
-      
-  //     const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/currentUserInfo", {
-  //       method: "GET",
-  //       headers: {
-  //         authorization: token ? `Bearer ${token}` : ''
-  //       }
-  //     })
-      
-  //     const data = await result.json();
-      
-  //     setProfilePicture(data.profilePicture)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
   useEffect(()=>{
     const savedToken = localStorage.getItem("token");

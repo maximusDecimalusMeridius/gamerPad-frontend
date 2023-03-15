@@ -43,7 +43,7 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
         try {
             const token = localStorage.getItem("token");
 
-            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/accounts/${e.target.id}`, {
+            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/accounts/${e.target.parentNode.dataset.id}`, {
               method: "Delete",
               headers: {
                 "Content-Type": "application/json",
@@ -67,7 +67,8 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
             typeClass = "chatAccount accountDiv"
         }
         return(
-            <div key={crypto.randomUUID()} className={typeClass}>
+            <div key={crypto.randomUUID()} className={typeClass} data-id={account.id}>
+                <div className="closeMenu cursor" onClick={handleDeleteAccount}>x</div>
                 <h3>{account.username}</h3>
                 <p>{account.gamerTag}</p>
                 <p>{account.account}</p>
@@ -78,7 +79,6 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
 
     return (
         <div className="accountsContainer">
-            
             {accounts}
         </div>
     );

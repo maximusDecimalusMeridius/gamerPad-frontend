@@ -11,8 +11,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
         
         try {
             const signupObj = {
-                username: userValue,
-                email: emailValue,
+                username: userValue.trim(),
+                email: emailValue.trim(),
                 password: passwordValue
             }
             
@@ -48,8 +48,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
             <input type="text" id="signupUsername" name="username" placeholder="username" onChange={handleChange} value={userValue} required></input>
             <input type="text" id="signupEmail" name="email" placeholder="email" onChange={handleChange} value={emailValue} required></input>
             <div className="passwordContainer">
-                <input type="text" id="signupPassword" name="password" placeholder="password" onChange={handleChange} value={passwordValue} required></input>
-                <input type="text" id="signupConfirm" placeholder="verify password" required></input>
+                <input type="password" id="signupPassword" name="password" placeholder="password" onChange={handleChange} value={passwordValue} required></input>
+                <input type="password" id="signupConfirm" placeholder="verify password" required></input>
             </div>
             <div className="statusWindow">
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>

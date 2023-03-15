@@ -10,12 +10,10 @@ import NotesPage from "../NotesPage/NotesPage";
 import SocialPage from "../SocialPage/SocialPage";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
-
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
                     originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo}) {
-
 
     return (
         <div className="homeContainer" id="homePage">
@@ -50,7 +48,7 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                 profilePicture={profilePicture}
                                                 setProfilePicture={setProfilePicture}/>}
                                                  />
-                <Route path="dashboard" element={<DashboardPage
+                <Route path="dashboard/*" element={<DashboardPage
                                                     showModal={showModal}
                                                     setShowModal={setShowModal}
                                                     activeModal={activeModal}
