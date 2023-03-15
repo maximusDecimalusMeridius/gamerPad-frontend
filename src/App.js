@@ -25,6 +25,7 @@ function App() {
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
+  const [originalCommsList, setOriginalCommsList] = useState([]);
 
   const [token, setToken] = useState("");
 
@@ -116,6 +117,8 @@ function App() {
                           setFriendsList={setFriendsList}
                           originalFriendsList={originalFriendsList}
                           setOriginalFriendsList={setOriginalFriendsList}   
+                          originalCommsList={originalCommsList}
+                          setOriginalCommsList={setOriginalCommsList}
                           />}
         </main>        
       </div>

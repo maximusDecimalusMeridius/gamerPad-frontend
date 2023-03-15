@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./CommunitiesList.css";
 import SearchBar from "../../static/SearchBar/SearchBar";
 
-function CommunitiesList() {
+function CommunitiesList({originalCommsList, setOriginalCommsList}) {
   const [commsList, setCommsList] = useState([]);
   const [openIndex, setOpenIndex] = useState(-1);
-  const [originalCommsList, setOriginalCommsList] = useState([]);
+
 
   useEffect(() => {
     fetchComms();
@@ -56,12 +56,10 @@ function CommunitiesList() {
     );
   });
   return (
-    <div className="commsContainer">
 
-      <div className="commsPage">
-        {comms}
-      </div>
-    </div>
+
+      <div className="commsContainer">{comms}</div>
+   
   )
 }
 
