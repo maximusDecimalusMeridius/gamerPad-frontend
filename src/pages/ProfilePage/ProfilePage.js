@@ -13,7 +13,10 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage}) {
 
   const [username, setUserName] = useState([]);
+<<<<<<< HEAD
   const [friendCount, setFriendCount] = useState(0)
+=======
+>>>>>>> 6cad0fdbaced31eca6a633da27aef204fe2700ec
   const [userInfo, setuserInfo] = useState({})
 
   const [friendsNum, setfriendsNum] = useState(0)
@@ -125,12 +128,33 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setMode("profile");
         setProfilePicture(profilePicUrl);
         localStorage.setItem("profilePicture", profilePicUrl);
+<<<<<<< HEAD
       }  else if (result.status >= 400){
         setWarningMessage("Error");
         setTimeout(() => {
             setWarningMessage("");
         }, "2000")
           
+=======
+      } else if(result.status === 403) {
+        console.log(`error`);
+        setWarningMessage("You must be logged in to update an acount");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+      } else if(result.status === 404) {
+        console.log(`error`);
+        setWarningMessage("No record matching that user");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+      } else if(result.status === 500) {
+        console.log(`error`);
+        setWarningMessage("User name is already taken");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000");
+>>>>>>> 6cad0fdbaced31eca6a633da27aef204fe2700ec
       }
 
     } catch (error) {
@@ -167,6 +191,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
               <label htmlFor='LFF'>Looking For Friends: </label>
               <input type="checkbox" name='LFF' id="LFFCheckbox" checked={LFFCheckbox} onChange={handleChange}></input>
             </div>
+            <p className="warningMessage" id="warningMessage">{warningMessage}</p>
           </div>
           <div className="updateAndCancelBtns">
             <button id='update' onClick={editProfile}>Update</button>
@@ -201,11 +226,16 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     <div className="profilePageContainer">
       <div className="profileHeader">
         <div>{gamesNum} Games</div>
+<<<<<<< HEAD
         {/* put in games counter */}
         <h3>{username}</h3>
         <div>{friendsNum} Friends: {`${friendCount}`}</div>
         {/* put in Friend counter */}
         {/* pass down setter to account */}
+=======
+        <h3>{username}</h3>
+        <div>{friendsNum} Friends</div>
+>>>>>>> 6cad0fdbaced31eca6a633da27aef204fe2700ec
       </div>
       <div className="profileContent">
         {renderProfile()}

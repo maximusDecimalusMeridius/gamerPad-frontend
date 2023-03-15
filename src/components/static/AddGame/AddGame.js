@@ -26,7 +26,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
             platforms: { platformList }
         }
 
-        console.log(newUserGameObj)
         try {
             const token = localStorage.getItem("token");
 
