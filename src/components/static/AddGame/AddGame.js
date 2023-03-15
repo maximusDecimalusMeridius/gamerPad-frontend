@@ -160,26 +160,35 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
     const searchGames = async (e) => {
         e.preventDefault()
 
-        try {
-            const searchTitle = (searchInput.toLocaleLowerCase()).split(' ').join('%20')
-
-            const token = localStorage.getItem("token");
-
-            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/games/searchGame/${searchTitle}`, {
-                method: "GET",
-                headers: {
-                    authorization: token ? `Bearer ${token}` : ''
+        if(searchInput.length>0){
+            try {
+                const searchTitle = (searchInput.toLocaleLowerCase()).split(' ').join('%20')
+    
+                const token = localStorage.getItem("token");
+    
+                const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/games/searchGame/${searchTitle}`, {
+                    method: "GET",
+                    headers: {
+                        authorization: token ? `Bearer ${token}` : ''
+                    }
+                })
+                const data = await result.json();
+                if (data) {
+                    setGamesList(data)
+                    console.log(data)
+                } 
+                if(data.length<1){
+                    setWarningMessage(`Oh no! We did not find any games including ${searchInput}`);
+                    setTimeout(() => {
+                    setWarningMessage("");
+                }, "3000")
                 }
-            })
-            const data = await result.json();
-            if (data) {
-                setGamesList(data)
-                console.log(data)
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
         }
     }
+
 
     const [searchingGame, setSearchingGame] = useState(true)
 
@@ -197,6 +206,8 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                         {gamesList.map((game, index) => {
                             return <p key={index} className="searchedGames" onClick={() =>{ setGame(game); setSearchingGame(false); getPlatforms()}}>{game.title}</p>
                         })}
+                        {/* {gamesList.length ? null : <p>Oh no! We did not find any games including {searchInput} </p>} */}
+                        <p className="warningMessage" id="warningMessage">{warningMessage}</p>
                     </div>
                 </div>
             )

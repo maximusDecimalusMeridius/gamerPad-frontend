@@ -70,7 +70,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
     }
 
     return (
-        <div className="modalContainer cursor" id="modalContainer" onClick={handleClick}>
+        <div className="modalContainer cursor" id="modalContainer" onMouseDown={handleClick}>
             <div className="modalWindow">
                 <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>x</div>
                 <h2 className="modalTitle">{activeModal}</h2>
