@@ -1,10 +1,10 @@
-import {React, useState} from "react";
+import React from "react";
+import {useNavigate} from "react-router-dom";
 import "./Signup.css"
 
-function Signup({activePage, userValue, emailValue, passwordValue, confirmValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
-
+function Signup({activePage, userValue, emailValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage, setuserInfo}) {
     
-    const [currentPassword, setCurrentPassword] = useState('')
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -35,6 +35,7 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
             if(result.ok){
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
+                navigate("/", {replace: true})
             } else {
                 setWarningMessage("Error signing up");
                 setTimeout(() => {

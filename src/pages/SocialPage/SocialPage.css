@@ -1,23 +1,51 @@
 .socialPageContainer{
+    height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
+}
+
+.socialPageCards{
     height: 100%;
-    overflow-y:hidden
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
+
 .socialTitle{
+    display: flex;
     color: rgb(17, 181, 93);
-    text-align: center;
+    justify-content: center;
 }
-.buttonContainer{
-    display:flex;
-    position: absolute;
-    margin-top: 50px;
-    height: 60vh;
+
+.buttonContainer {
+    height: fit-content;
+    width: 100%;
+    padding: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: center;
+    gap: 5px; 
+    background: white;
+    border-bottom: 1px solid black;
 }
+
+.buttonContainer label {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
 #swapButton{  
     background-color: blue;
     padding:3px;
     margin-left: 1px;
     height:fit-content;
     width:fit-content;
+}
+
+@media (width < 350px) {
+    .buttonContainer {
+        justify-content: center;
+    }
 }

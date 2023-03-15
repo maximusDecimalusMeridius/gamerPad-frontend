@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../../static/SearchBar/SearchBar";
+
 import "./AccountsList.css";
 
 function AccountsList({setUserName, accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList}) {
@@ -37,22 +37,48 @@ function AccountsList({setUserName, accountsList, setAccountsList, originalAccou
         }
     }
 
-    console.log(accountsList);
+    const handleDeleteAccount = async (e) => {
+        e.preventDefault()
+
+        try {
+            const token = localStorage.getItem("token");
+
+            const result = await fetch(`https://gamerpad-backend.herokuapp.com/api/accounts/${e.target.id}`, {
+              method: "Delete",
+              headers: {
+                "Content-Type": "application/json",
+                authorization: token ? `Bearer ${token}` : ''
+              }
+            })
+      
+            if (result.ok) {
+                fetchAccounts()
+            }
+      
+          } catch (error) {
+            console.error(error);
+          }
+    }
 
     const accounts = accountsList.map((account, index) => {
-        // TODO: iterate over platforms to populate below
+        // TODO: iterate over accounts to populate below
+        let typeClass = "gamingAccount accountDiv"
+        if(account.type === 'Chat'){
+            typeClass = "chatAccount accountDiv"
+        }
         return(
-            <div key={crypto.randomUUID()}>
-                <div>{account.account}</div>
-                <div>{account.type}</div>
-                <div>{account.gamerTag}</div>
+            <div key={crypto.randomUUID()} className={typeClass}>
+                <h3>{account.username}</h3>
+                <p>{account.gamerTag}</p>
+                <p>{account.account}</p>
+                <button id={account.id} onClick={handleDeleteAccount}>remove</button>
             </div>
         )
     })
 
     return (
         <div className="accountsContainer">
-            <SearchBar originalList={originalAccountsList} setList={setAccountsList}/>
+            
             {accounts}
         </div>
     );

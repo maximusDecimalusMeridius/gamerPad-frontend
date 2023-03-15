@@ -1,24 +1,25 @@
-.commsPage{
-    display:flex;
-    flex-direction:column;
-    height: 60vh;
-     align-items: center;
-     overflow-y: scroll;
-     padding: 10px;
-
-}
 .commsContainer {
-    background-color: rgb(17, 181, 93);
-    background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
-
+    height: 100%;
+    width: 100%;
+    padding-top: 25px;
+    display:flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    gap: 10px;
+    border-bottom-left-radius: var(--homeContainer-border-radius);
+    border-bottom-right-radius: var(--homeContainer-border-radius);
 }
+
 .commsCard{
     width:40%;
 }
 .commsCardHeader{
     color:#085d19;
     padding:2px;
-    margin:2px;
+    margin:5px;
     border:solid black 1px;
     border-radius:10px;
     box-shadow: rgb(26, 2, 2) 5px, 5px, 0px, 5px;
@@ -30,6 +31,6 @@
 .commTitle{
     cursor: pointer;
 }
-.topMems{
+.friendsPlay{
     list-style: none;
 }

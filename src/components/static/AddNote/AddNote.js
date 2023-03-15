@@ -56,8 +56,13 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
             navigate("/dashboard/notes", {replace: true})
             // setNoteTitle("");
             // setNoteContent("");
-        } else {
+        } else if (result.status >= 400 ){
             setWarningMessage("Error adding note");
+            setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
+        } else if (result.status === 500){
+            setWarningMessage("You must be logged in to add notes");
             setTimeout(() => {
                 setWarningMessage("");
             }, "2000")
@@ -88,7 +93,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
     return (
         <div className="contentModalWindow">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
-            <input id="formNoteColorCode" type="color" onChange={handleChange}></input>
+            <input id="formNoteColorCode" type="color" value={noteColorCode} onChange={handleChange}></input>
             <div className="inputContainer">
                 <input type="text" id="formNoteTitle" name="noteTitle" placeholder="note title" onChange={handleChange} value={noteTitle} required></input>
                 <input type="text" id="formNoteContent" name="noteContent" placeholder={`your ${getPlaceholder()}`} onChange={handleChange} value={noteContent} required></input>
