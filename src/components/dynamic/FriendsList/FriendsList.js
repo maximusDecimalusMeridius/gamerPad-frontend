@@ -116,10 +116,10 @@ function FriendsList({
             <ul className="friendAccounts">
               <li>Accounts:</li>
               {friend.Accounts.map((Account) => (
-                <li key={index}>{Account.account} </li>
+                <li key={crypto.randomUUID()}>{Account.account} </li>
                 ))}
                 {friend.Accounts.map((Account) => (
-                  <li key={index}>{Account.username}</li>
+                  <li key={crypto.randomUUID()}>{Account.username}</li>
                   ))}
                   
 
@@ -129,7 +129,7 @@ function FriendsList({
             <ul className="friendGames">
               <li>Top Games:</li>
               {friend.UserGames.map((userGame) => (
-                <li key={userGame.id}>{userGame.Game.title}</li>
+                <li key={crypto.randomUUID()}>{userGame.Game.title}</li>
               ))}
             </ul>
           )}
