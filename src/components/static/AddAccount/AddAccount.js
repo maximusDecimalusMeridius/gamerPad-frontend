@@ -26,14 +26,16 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
             const token = localStorage.getItem("token");
 
             const newAccountObj = {
-                account: document.querySelector("#accountName").value.trim(),
+                account: accountName.trim(),
                 color: accountColorCode,
                 type: accountType.trim(),
                 username: accountUsername.trim(),
                 gamerTag: gamertag.trim()
             }
 
-            const result = await fetch ("https://gamerpad-backend.herokuapp.com/api/accounts", {
+            console.log(newAccountObj)
+
+            const result = await fetch ("http://gamerpad-backend.herokuapp.com/api/accounts", {
                 method: "POST",
                 body: JSON.stringify(newAccountObj),
                 headers: {
