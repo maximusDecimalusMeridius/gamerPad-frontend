@@ -25,7 +25,8 @@ function App() {
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
-
+  const [originalCommsList, setOriginalCommsList] = useState([]);
+  const [profilePicture, setProfilePicture] = useState("")
   const [token, setToken] = useState("");
 
   const validateToken = async (token) => {
@@ -41,7 +42,25 @@ function App() {
     } catch (error) {
         console.error(error);
     }
-}
+    
+  }
+  // const getProfilePic = async (token) => {
+  //   try {
+      
+  //     const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/currentUserInfo", {
+  //       method: "GET",
+  //       headers: {
+  //         authorization: token ? `Bearer ${token}` : ''
+  //       }
+  //     })
+      
+  //     const data = await result.json();
+      
+  //     setProfilePicture(data.profilePicture)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   useEffect(()=>{
     const savedToken = localStorage.getItem("token");
@@ -88,6 +107,8 @@ function App() {
             setShowMenu={setShowModal}
             warningMessage={warningMessage}
             setWarningMessage={setWarningMessage}
+            profilePicture={profilePicture}
+            setprofilePicture={setProfilePicture}
             />
         </header>
     
@@ -115,7 +136,11 @@ function App() {
                           friendsList={friendsList}
                           setFriendsList={setFriendsList}
                           originalFriendsList={originalFriendsList}
-                          setOriginalFriendsList={setOriginalFriendsList}   
+                          setOriginalFriendsList={setOriginalFriendsList}
+                          profilePicture={profilePicture}
+                          setProfilePicture={setProfilePicture}   
+                          originalCommsList={originalCommsList}
+                          setOriginalCommsList={setOriginalCommsList}
                           />}
         </main>        
       </div>

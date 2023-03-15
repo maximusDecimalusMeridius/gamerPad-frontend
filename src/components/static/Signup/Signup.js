@@ -1,16 +1,17 @@
 import {React, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./Signup.css"
 
 function Signup({activePage, userValue, emailValue, passwordValue, confirmValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
 
-    
+    const navigate = useNavigate();
     const [currentPassword, setCurrentPassword] = useState('')
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         
         if(passwordValue !== confirmValue){
-            document.querySelector(`.warningMessage`).innerText = `Passwords do not match`
+            setWarningMessage(`Passwords do not match`);
             return 
         }
 
@@ -35,6 +36,7 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
             if(result.ok){
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
+                navigate("/", {replace: true})
             } else {
                 setWarningMessage("Error signing up");
                 setTimeout(() => {
@@ -121,58 +123,14 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
     
     return (
         <form id="signupForm" onSubmit={handleSubmit}>
-            <input 
-                type="text" 
-                id="signupUsername" 
-                name="username" 
-                placeholder="username" 
-                onChange={handleChange} 
-                onBlur={validateField} 
-                value={userValue} 
-                required
-            >
-            </input>
-            <input 
-                type="text" 
-                id="signupEmail" 
-                name="email" 
-                placeholder="email" 
-                onChange={handleChange} 
-                onBlur={validateField} 
-                value={emailValue} 
-                required
-            >
-            </input>
-            <input 
-                type="password" 
-                id="signupPassword" 
-                name="password" 
-                placeholder="password" 
-                onChange={handleChange} 
-                onBlur={validateField} 
-                value={passwordValue} 
-                required
-            >
-            </input>
-            <input 
-                type="password" 
-                id="signupConfirm"
-                name="vPassword"
-                placeholder="verify password" 
-                onChange={handleChange} 
-                onBlur={validateField} 
-                value={confirmValue}
-                required>
-                </input>
-            <label className="checkboxEl">
-                <input 
-                    type="checkbox" 
-                    id="ageValidation" 
-                    className="checkbox" 
-                    required
-                />
-                I certify I am at least 13 years of age.
-            </label>
+            <input type="text" id="signupUsername" name="username" placeholder="username" onChange={handleChange} onBlur={validateField} value={userValue} required></input>
+            <input type="text" id="signupEmail" name="email" placeholder="email" onChange={handleChange} onBlur={validateField} value={emailValue} required></input>
+            <input type="password" id="signupPassword" name="password" placeholder="password" onChange={handleChange} onBlur={validateField} value={passwordValue} required></input>
+            <input type="password" id="signupConfirm"name="vPassword"placeholder="verify password" onChange={handleChange} onBlur={validateField} value={confirmValue}required></input>
+            <div className="checkboxEl">
+                <input type="checkbox" id="ageValidation" className="checkbox" required/>
+                <label htmlFor="ageVaildation">I certify I am at least 13 years of age.</label>
+            </div>
             <div className="statusWindow">
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>
                 <p className="warningMessage" id="warningMessage">{warningMessage}</p>

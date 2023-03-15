@@ -3,7 +3,7 @@ import "./LandingPage.css";
 import Login from "../../components/static/Login/Login";
 import Signup from "../../components/static/Signup/Signup";
 
-function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage}) {
+function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage, setuserInfo}) {
     const [activePage, setActivePage] = useState("Login");
     const [otherPage, setOtherPage] = useState("Signup");
     const [userValue, setUserValue] = useState("");
@@ -26,6 +26,7 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
     const renderPage = () => {
         if(activePage === "Login") {
             return <Login 
+                    setuserInfo={setuserInfo}
                     activePage={activePage}
                     userValue={userValue}
                     passwordValue={passwordValue}
@@ -37,6 +38,7 @@ function LandingPage({isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessa
                     />
         } else {
             return <Signup
+                    setuserInfo={setuserInfo}
                     activePage={activePage}
                     userValue={userValue}
                     emailValue={emailValue}

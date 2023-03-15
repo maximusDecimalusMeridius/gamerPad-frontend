@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
@@ -24,13 +24,13 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             })
 
             const data = await result.json();
-
             if(result.ok){
                 navigate("/", {replace: true})
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
             } else {
+                console.log(result);
                 setWarningMessage("Error logging in");
                 setTimeout(() => {
                     setWarningMessage("");
