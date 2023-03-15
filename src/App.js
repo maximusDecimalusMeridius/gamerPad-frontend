@@ -147,6 +147,8 @@ function App() {
                           setOriginalCommsList={setOriginalCommsList}
                           commsList={commsList}
                           setCommsList={setCommsList}
+                          warningMessage={warningMessage}
+                          setWarningMessage={setWarningMessage}
                           />}
         </main>        
       </div>

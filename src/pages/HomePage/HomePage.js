@@ -11,10 +11,10 @@ import SocialPage from "../SocialPage/SocialPage";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
 
-function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
+function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warningMessage, setWarningMessage,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                    sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
-                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo}) {
+                    sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList, 
+                    originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo }) {
 
 
     return (
@@ -48,7 +48,9 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                 originalAccountsList={originalAccountsList}
                                                 setOriginalAccountsList={setOriginalAccountsList}
                                                 profilePicture={profilePicture}
-                                                setProfilePicture={setProfilePicture}/>}
+                                                setProfilePicture={setProfilePicture}
+                                                warningMessage={warningMessage}
+                                                setWarningMessage={setWarningMessage}/>}
                                                  />
                 <Route path="dashboard" element={<DashboardPage
                                                     showModal={showModal}

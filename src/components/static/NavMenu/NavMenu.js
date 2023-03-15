@@ -4,7 +4,7 @@ import ProfilePage from "../../../pages/ProfilePage/ProfilePage";
 
 import "./NavMenu.css"
 
-function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal, setShowModal, activeModal, setActiveModal}) {
+function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal, setShowModal, activeModal, setActiveModal, warningMessage, setWarningMessage}) {
 
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
         setMenuType(false)
     }
 
-    <Navigate to="/ProfilePage" />
+    <Navigate to="/ProfilePage"  />
     return (
       
         <div className="modalContainer" id="modalContainer" onClick={handleMenuClick}>
@@ -37,7 +37,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
             <ul className="navMenu">
                 {isLoggedIn ? (<>
                     <li className="navMenuItem" id="navMenuItem-1" onClick={handleMenuClick}>
-                        <Link to="/profile" className="link">Profile Name</Link>
+                        <Link to="/profile" className="link" warningMessage={warningMessage} setWarningMessage={setWarningMessage}>Profile Name</Link>
                         </li>
                     <li className="navMenuItem" id="navMenuItem-2" onClick={handleMenuClick}>
                         <Link to="/dashboard" className="link">Dashboard</Link>

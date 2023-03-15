@@ -10,7 +10,7 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture }) {
+function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage}) {
 
   const [username, setUserName] = useState([]);
   const [friendCount, setFriendCount] = useState(0)
@@ -125,6 +125,12 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setMode("profile");
         setProfilePicture(profilePicUrl);
         localStorage.setItem("profilePicture", profilePicUrl);
+      }  else if (result.status >= 400){
+        setWarningMessage("Error");
+        setTimeout(() => {
+            setWarningMessage("");
+        }, "2000")
+          
       }
 
     } catch (error) {
