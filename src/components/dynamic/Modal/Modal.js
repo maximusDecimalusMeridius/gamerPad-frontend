@@ -70,7 +70,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
     }
 
     return (
-        <div className="modalContainer cursor" id="modalContainer" onClick={handleClick}>
+        <div className="modalContainer cursor" id="modalContainer" onMouseDown={handleClick}>
             <div className="modalWindow">
                 {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (
                     ""
