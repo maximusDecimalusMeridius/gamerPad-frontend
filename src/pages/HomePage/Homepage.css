@@ -9,7 +9,3 @@
     align-items: center;
     flex-grow: 1;
 }
-
-.homeContainer * {
-    border: 1px solid red;
-}

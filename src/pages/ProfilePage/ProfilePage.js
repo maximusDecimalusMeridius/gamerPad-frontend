@@ -182,11 +182,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
               {userInfo.lookingForFriends ? <p className="LFFRowItem">Looking for friends: ✔️</p> : <p className="LFFRowItem">Looking for friends: ❌</p>}
             </div>
           </div>
-          <div className="passwordRow">
-            <div className="updateAndCancelBtns">
-              {/* <button id='updatePassword' onClick={handleModeChange}> Update password</button> */}
-              <button id='updateProfile' onClick={handleModeChange}> Update profile</button>
-            </div>
+          <div className="updateAndCancelBtns">
+            {/* <button id='updatePassword' onClick={handleModeChange}> Update password</button> */}
+            <button id='updateProfile' onClick={handleModeChange}> Update profile</button>
           </div>
         </div>
       )
@@ -200,16 +198,18 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         <h3>{username}</h3>
         <div>{friendsNum} Friends</div>
       </div>
-      {renderProfile()}
-      <h2 className='yourAccounts'>Your Accounts</h2>
-      <SearchBar originalList={originalAccountsList} setList={setAccountsList} />
-      <AccountsList
-        setUserName={setUserName}
-        accountsList={accountsList}
-        setAccountsList={setAccountsList}
-        originalAccountsList={originalAccountsList}
-        setOriginalAccountsList={setOriginalAccountsList}
-      />
+      <div className="profileContent">
+        {renderProfile()}
+        <h2 className='yourAccounts'>Your Accounts</h2>
+        <SearchBar originalList={originalAccountsList} setList={setAccountsList} />
+        <AccountsList
+          setUserName={setUserName}
+          accountsList={accountsList}
+          setAccountsList={setAccountsList}
+          originalAccountsList={originalAccountsList}
+          setOriginalAccountsList={setOriginalAccountsList}
+        />
+      </div>
 
     </div>
   );
