@@ -53,6 +53,16 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
 
             if(result.ok){
                 setShowModal(false)
+            } else if(result.status === 403) {
+                setWarningMessage("You must be logged in to add a game");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
+            } else if(result.status >= 400){
+                  setWarningMessage("Error adding game");
+                 setTimeout(() => {
+                setWarningMessage("");
+            }, "2000")
             }
 
         } catch (error) {

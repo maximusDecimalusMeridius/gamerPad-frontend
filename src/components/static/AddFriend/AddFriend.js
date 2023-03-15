@@ -58,8 +58,13 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
                   } catch (error) {
                     console.error(error);
                   }
-            } else {
-                setWarningMessage("Error adding friend");
+            } else if (result.status === 404){
+                setWarningMessage("Error adding friend, wrong code or username");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
+            } else if (result.status === 403){
+                setWarningMessage("You must be logged in to add a friend");
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
