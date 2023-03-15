@@ -11,7 +11,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
         
         try {
             const loginObj = {
-                login: userValue.trim(),
+                login: userValue,
                 password: passwordValue
             }
 
