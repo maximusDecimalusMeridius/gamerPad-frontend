@@ -35,16 +35,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         try {
             const token = localStorage.getItem("token");
 
-            const newUserGameObj = {
-                favorite: isFavorite,
-                lookingForMore: isLFM,
-                content: contentRating,
-                replay: valueRating,
-                value: replayRating,
-                GameId: gameId,
-                platforms: platformList
-            }
-
             const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame", {
                 method: "POST",
                 body: JSON.stringify(newUserGameObj),
