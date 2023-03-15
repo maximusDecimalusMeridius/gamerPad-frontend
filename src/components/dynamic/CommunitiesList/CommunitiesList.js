@@ -15,7 +15,7 @@ function CommunitiesList({originalCommsList, setOriginalCommsList}) {
   const fetchComms = async (event) => {
     try {
       const token = localStorage.getItem("token");
-      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games", {
+      const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame/allUserGames", {
         method: "GET",
         headers: {
           authorization: token ? `Bearer ${token}` : "",
@@ -44,13 +44,14 @@ function CommunitiesList({originalCommsList, setOriginalCommsList}) {
           >
             {game.title}
           </h2>
-          {isOpen && (
-            <ul className="topMems">
-              <li>person 1</li>
-              <li>person 2</li>
-              <li>person 3</li>
-            </ul>
-          )}
+         {isOpen && game.listOfFriends.length > 0 && (
+          <ul className="friendsPlay">
+            <li>friends who play:</li>
+            {game.listOfFriends.map((friend) => (
+              <li key={index}>{friend.username}</li>
+            ))}
+          </ul>
+         )}
         </div>
       </div>
     );
