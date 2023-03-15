@@ -1,8 +1,11 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import "./Signup.css"
 
 function Signup({activePage, userValue, emailValue, passwordValue, handleChange, isLoggedIn, setIsLoggedIn, warningMessage, setWarningMessage, setuserInfo}) {
     
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         
@@ -23,11 +26,11 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
 
             const data = await result.json();
             console.log(data);
-            setuserInfo(data)
 
             if(result.ok){
                 setIsLoggedIn(true);
                 localStorage.token = data.token;
+                navigate("/", {replace: true})
             } else {
                 setWarningMessage("Error signing up");
                 setTimeout(() => {
@@ -45,8 +48,8 @@ function Signup({activePage, userValue, emailValue, passwordValue, handleChange,
             <input type="text" id="signupUsername" name="username" placeholder="username" onChange={handleChange} value={userValue} required></input>
             <input type="text" id="signupEmail" name="email" placeholder="email" onChange={handleChange} value={emailValue} required></input>
             <div className="passwordContainer">
-                <input type="password" id="signupPassword" name="password" placeholder="password" onChange={handleChange} value={passwordValue} required></input>
-                <input type="password" id="signupConfirm" placeholder="verify password" required></input>
+                <input type="text" id="signupPassword" name="password" placeholder="password" onChange={handleChange} value={passwordValue} required></input>
+                <input type="text" id="signupConfirm" placeholder="verify password" required></input>
             </div>
             <div className="statusWindow">
                 <button className="submitButton" data-activepage={activePage}>{activePage}</button>
