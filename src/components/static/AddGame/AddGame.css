@@ -3,12 +3,54 @@
     flex-direction: column;
     justify-content: space-evenly;
     height: 100%;
+    color: #222223;
+}
+
+#addGameBtnsContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#listOfGamesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.searchedGames {
+    border: #222223 solid 1px ;
+    width: fit-content;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.searchedGames:hover {
+    background-color: var(--button-red);
+    color: #ffffff;
+}
+
+#addGameBtnsContainer button {
+    margin: 5px;
+    width: 150px;
 }
 
 .inputContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 50%;
+}
+
+#platformInput {
+    width: 100%;
+    font-size: 16px;
+}
+
+
+.selectPlatform{
+    cursor: pointer;
 }
 
 #favoriteCheckbox, #LFMCheckbox {
@@ -92,6 +134,18 @@
     width: 100%;
 }
 
+#platformSearchList {
+    overflow: auto;
+    height: 50px;
+    color: #222223;
+    border: solid 1px rgb(71, 71, 71);
+    width: 100%;
+}
+
+#platformSearchList p:hover {
+    color: var(--button-red);
+}
+
 /* Input range styling */
 
 input[type="range"] {
@@ -99,14 +153,14 @@ input[type="range"] {
     appearance: none;
     background: transparent;
     cursor: pointer;
-  }
+}
 
                           /***** Track Styles *****/
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 input[type="range"]::-webkit-slider-runnable-track {
     background: #767c81;
     height: 0.5rem;
-  }
+}
   
   /******** Firefox ********/
   input[type="range"]::-moz-range-track {

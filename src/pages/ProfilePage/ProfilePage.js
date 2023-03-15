@@ -45,10 +45,12 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       })
 
       const data = await result.json();
+      if(data){
       setuserInfo(data)
       setfriendsNum(data.Friends.length)
       setGamesNum(data.UserGames.length)
       setProfilePicUrl(data.profilePicture)
+      }
     } catch (error) {
       console.error(error);
     }
