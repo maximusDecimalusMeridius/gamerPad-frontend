@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.selectPlatform{
+    cursor: pointer;
+}
+
 #favoriteCheckbox, #LFMCheckbox {
     height: 15px;
     width: 15px;
@@ -92,6 +96,16 @@
     width: 100%;
 }
 
+#platformSearchList {
+    overflow: auto;
+    height: 50px;
+    color: #222223;
+}
+
+#platformSearchList p:hover {
+    color: var(--button-red);
+}
+
 /* Input range styling */
 
 input[type="range"] {
@@ -99,14 +113,14 @@ input[type="range"] {
     appearance: none;
     background: transparent;
     cursor: pointer;
-  }
+}
 
                           /***** Track Styles *****/
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 input[type="range"]::-webkit-slider-runnable-track {
     background: #767c81;
     height: 0.5rem;
-  }
+}
   
   /******** Firefox ********/
   input[type="range"]::-moz-range-track {
