@@ -32,7 +32,6 @@ function GamesList() {
 
             const data = await result.json();
 
-            console.log(data);
             setGamesList(data.UserGames)
             setOriginalGameList(data.UserGames)
 

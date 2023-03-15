@@ -10,7 +10,7 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage}) {
+function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage }) {
 
   const [username, setUserName] = useState([]);
   const [friendCount, setFriendCount] = useState(0)
@@ -46,11 +46,11 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       })
 
       const data = await result.json();
-      if(data){
-      setuserInfo(data)
-      setfriendsNum(data.Friends.length)
-      setGamesNum(data.UserGames.length)
-      setProfilePicUrl(data.profilePicture)
+      if (data) {
+        setuserInfo(data)
+        setfriendsNum(data.Friends.length)
+        setGamesNum(data.UserGames.length)
+        setProfilePicUrl(data.profilePicture)
       }
     } catch (error) {
       console.error(error);
@@ -78,7 +78,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     }
   }
 
-  
+
 
 
   const handleChange = (e) => {
@@ -101,56 +101,55 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     }
   }
   const validateField = (e) => {
-    console.log(e)
-    const {name, value} = e.target;
+
+    const { name, value } = e.target;
     const emailValidator = /[\w-.]+@([\w-]+\.)+[\w-]{2,4}/gi
-    console.log(name)
-    console.log(value)
-    if(name === `username`){
-        if(value === ''){
-            setWarningMessage('Username field is required');
-            setTimeout(() => {
-                setWarningMessage("");
-            }, "2000")
-        }else if(value.length < 3 || value.length > 20){
-            setWarningMessage('Username must be between 3 to 20 characters');
-            setTimeout(() => {
-                setWarningMessage("");
-            }, "2000")
-        } else {
-            setWarningMessage('');
-        }
-    } else if(name === `email`){
-        if(value === ''){
-            setWarningMessage('Email field is required');
-            setTimeout(() => {
-                setWarningMessage("");
-            }, "2000")
-        } else if(!emailValidator.test(value)){ 
-            setWarningMessage('Please enter a valid email address');
-            setTimeout(() => {
-                setWarningMessage("");
-            }, "2000")
-        } else {
-            setWarningMessage('');
-        }
-    } else if(name === `friendCode`){
-      if(value===""){
+
+    if (name === `username`) {
+      if (value === '') {
+        setWarningMessage('Username field is required');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else if (value.length < 3 || value.length > 20) {
+        setWarningMessage('Username must be between 3 to 20 characters');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else {
+        setWarningMessage('');
+      }
+    } else if (name === `email`) {
+      if (value === '') {
+        setWarningMessage('Email field is required');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else if (!emailValidator.test(value)) {
+        setWarningMessage('Please enter a valid email address');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else {
+        setWarningMessage('');
+      }
+    } else if (name === `friendCode`) {
+      if (value === "") {
         setWarningMessage('field is required');
         setTimeout(() => {
-            setWarningMessage("");
+          setWarningMessage("");
         }, "2000")
-    } else if(!emailValidator.test(value)){ 
+      } else if (!emailValidator.test(value)) {
         setWarningMessage('Please enter a valid word');
         setTimeout(() => {
-            setWarningMessage("");
+          setWarningMessage("");
         }, "2000")
-    } else {
+      } else {
         setWarningMessage('');
+      }
+
     }
-     
-    }
-}
+  }
   const editProfile = async (e) => {
     e.preventDefault()
 
@@ -177,23 +176,20 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setMode("profile");
         setProfilePicture(profilePicUrl);
         localStorage.setItem("profilePicture", profilePicUrl);
-      } else if(result.status === 403) {
-        console.log(`error`);
+      } else if (result.status === 403) {
         setWarningMessage("You must be logged in to update an acount");
         setTimeout(() => {
-            setWarningMessage("");
+          setWarningMessage("");
         }, "2000");
-      } else if(result.status === 404) {
-        console.log(`error`);
+      } else if (result.status === 404) {
         setWarningMessage("No record matching that user");
         setTimeout(() => {
-            setWarningMessage("");
+          setWarningMessage("");
         }, "2000");
-      } else if(result.status === 500) {
-        console.log(`error`);
+      } else if (result.status === 500) {
         setWarningMessage("User name is already taken");
         setTimeout(() => {
-            setWarningMessage("");
+          setWarningMessage("");
         }, "2000");
       }
 

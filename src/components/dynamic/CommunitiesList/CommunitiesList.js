@@ -13,6 +13,7 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
 
   const fetchComms = async (event) => {
     try {
+      
       const token = localStorage.getItem("token");
       const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame/allUserGames", {
         method: "GET",
@@ -20,10 +21,11 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
           authorization: token ? `Bearer ${token}` : "",
         },
       });
+
       const data = await result.json();
       setCommsList(data);
       setOriginalCommsList(data);
-      console.log(data)
+
     } catch (error) {
       console.error(error);
     }

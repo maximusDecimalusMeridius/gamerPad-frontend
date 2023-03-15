@@ -62,7 +62,6 @@ function App() {
 
   useEffect(()=>{
     const savedToken = localStorage.getItem("token");
-    console.log(savedToken)
     if(savedToken){
       validateToken(savedToken).then(tokenData=>{
         if(tokenData.isValid){

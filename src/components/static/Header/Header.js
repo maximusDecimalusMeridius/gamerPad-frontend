@@ -27,11 +27,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
         setOpenNav(!openNav);
         setMenuType(false);
     }
-        // create modal/slideout menu when hamburger menu is clicked
-        //  on modal have links to all main pages, and dashboard as home route
-        //  on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
-        // TODO: add close box on modal/slide out menu
-// console.log({profilePicture})
+
     return (
         <div className="header">
             <div className="imageContainer">

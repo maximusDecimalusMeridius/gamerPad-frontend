@@ -45,15 +45,12 @@ function FriendsList({
         }
       );
       const data = await result.json();
-      // console.log(data);
 
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);
       if(data.profilePicture === localStorage.getItem("profileURL")){
-        console.log("pic already exists")
         return;
       } else {
-        console.log("profile pic saved!")
         setProfilePicture(data.profilePicture);
         localStorage.profilePicture = data.profilePicture;
       }
