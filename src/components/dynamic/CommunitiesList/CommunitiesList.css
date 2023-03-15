@@ -1,23 +1,18 @@
 .commsContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(17, 181, 93);
-    background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
-}
-
-.commsPage{
     height: 100%;
     width: 100%;
     padding-top: 25px;
     display:flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     overflow-y: auto;
-    gap: 20px;
+    gap: 10px;
+    border-bottom-left-radius: var(--homeContainer-border-radius);
+    border-bottom-right-radius: var(--homeContainer-border-radius);
 }
+
 .commsCard{
     width:40%;
 }
