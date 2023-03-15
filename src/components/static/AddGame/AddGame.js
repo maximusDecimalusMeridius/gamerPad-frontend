@@ -16,6 +16,8 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        console.log(event);
+
         const newUserGameObj = {
             favorite: { isFavorite },
             lookingForMore: { isLFM },

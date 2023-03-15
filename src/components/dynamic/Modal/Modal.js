@@ -72,12 +72,12 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
     return (
         <div className="modalContainer cursor" id="modalContainer" onClick={handleClick}>
             <div className="modalWindow">
-                {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Error Logging In - Please Try Again" ? (
+                {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (
                     ""
-                ) : <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>x</div>}
+                ) : <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>X</div>}
                 <h2 className="modalTitle">{activeModal}</h2>
                 {renderForm()}
-                {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Error Logging In - Please Try Again" ? (
+                {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (
                     ""
                 ) : ( <ul className="modalNavMenu">
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Account")}>{activeModal === "Add Account" ? `${activeModal}` : "Account"}</li> |
