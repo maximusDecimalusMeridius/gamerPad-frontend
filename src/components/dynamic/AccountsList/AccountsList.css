@@ -1,6 +1,30 @@
 .accountsContainer {
     width: 100%;
     min-height: 150px;
-    background: white;
+    /* background: rgb(132, 26, 26); */
     overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chatAccount {
+    background-color: var(--button-red);
+}
+
+.gamingAccount {
+    background-color: rgb(91, 91, 91);
+}
+
+.accountDiv {
+    color: white;
+    display: flex;
+    border: 1px solid #2a2929;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    height: 120px;
+    width: 200px;
+    flex-direction: column;
+    justify-content: space-between;
 }

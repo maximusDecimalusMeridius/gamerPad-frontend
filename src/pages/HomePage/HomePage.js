@@ -14,7 +14,7 @@ import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
-                    originalAccountsList, setOriginalAccountsList}) {
+                    originalAccountsList, setOriginalAccountsList, userInfo}) {
 
 
     return (
@@ -37,6 +37,7 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal,
                                                     setOriginalFriendsList={setOriginalFriendsList}
                                                      />}/>
                 <Route path="profile" element={<ProfilePage 
+                                                {...userInfo}
                                                 accountsList={accountsList}
                                                 setAccountsList={setAccountsList}
                                                 originalAccountsList={originalAccountsList}
