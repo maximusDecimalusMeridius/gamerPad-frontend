@@ -21,9 +21,9 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
         },
       });
       const data = await result.json();
-      console.log(data);
       setCommsList(data);
       setOriginalCommsList(data);
+      console.log(data)
     } catch (error) {
       console.error(error);
     }
@@ -44,6 +44,7 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
             {game.title}
           </h2>
           {isOpen && <p>released: {game.releaseDate}</p>}
+          {isOpen && <p>Player count: {game.allPlayers}</p>}
          {isOpen && game.listOfFriends.length > 0 && (
            <ul className="friendsPlay">
             <li>friends who play:</li>
