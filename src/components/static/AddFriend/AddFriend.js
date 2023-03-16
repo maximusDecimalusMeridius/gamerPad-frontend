@@ -92,7 +92,7 @@ function AddFriend({ setShowModal, friendsList, setFriendsList, originalFriendsL
                     <input type="text" id="friendName" name="friendName" placeholder="friend's name" onChange={handleChange} value={friendName} required></input>
                     <input type="text" id="friendCode" name="friendCode" placeholder="friend's code" onChange={handleChange} value={friendCode} required></input>
                 </div>
-                <div className="statusWindow">
+                <div className="statusWindowFriend">
                     <p className="warningMessage" id="warningMessage">{warningMessage}</p>
                     <button className="addSubmitButton">Add Friend</button>
                 </div>

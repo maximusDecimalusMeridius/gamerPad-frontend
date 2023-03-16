@@ -98,7 +98,7 @@ function AddNote({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOr
                 <input type="text" id="formNoteTitle" name="noteTitle" placeholder="note title" onChange={handleChange} value={noteTitle} required></input>
                 <input type="text" id="formNoteContent" name="noteContent" placeholder={`your ${getPlaceholder()}`} onChange={handleChange} value={noteContent} required></input>
             </div>
-            <div className="statusWindow">
+            <div className="statusWindowNote">
                 <p className="warningMessage" id="warningMessage">{warningMessage}</p>
                 <button className="addSubmitButton">Create Note</button>
             </div>

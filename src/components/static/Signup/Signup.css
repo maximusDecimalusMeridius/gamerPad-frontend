@@ -25,3 +25,21 @@
     display: flex;
     width: 80%;
 }
+
+#ageValidation {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #222223;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.3s;
+}
+
+#ageValidation:checked {
+    border: 1px solid #ffffff;
+    background-color: var(--button-red);
+}

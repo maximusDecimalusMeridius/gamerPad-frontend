@@ -10,7 +10,7 @@ import NotesPage from "../NotesPage/NotesPage";
 import SocialPage from "../SocialPage/SocialPage";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
-function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warningMessage, setWarningMessage,
+function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal, activeModal, setActiveModal, warningMessage, setWarningMessage,
     writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
     originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo }) {
@@ -36,17 +36,15 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
         if (event.target.id === "addAllButton") {
             event.target.nextSibling.classList.toggle("grow");
             document.querySelector("#addAllButton").classList.toggle("openButton");
-        } else if(event.target.id ==='addColorMenu') {
-            event.target.nextSibling.classList.toggle("grow");
-            document.querySelector("#addColorMenu").classList.toggle("openButton");
         } else {
             event.target.parentNode.classList.toggle("grow");
             document.querySelector("#addAllButton").classList.toggle("openButton");
         }
     }
 
-    const [backgroundColor, setBackgroundColor] = useState("#bebebe");
+    
     const [primaryColor, setPrimaryColor] = useState('#bd4b3a')
+    const [colorModalVisibility, setColorModalVisibility] = useState('none')
 
     const handleChange = (event) => {
         if(event.target.id === "backgroundColor") {
@@ -84,6 +82,12 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
         } catch (error) {
             console.error(error);
         }
+    }
+
+    const handleCloseColors = (e) => {
+        e.preventDefault()
+        setColorModalVisibility('none')
+        localStorage.backgroundColor = backgroundColor
     }
 
     return (
@@ -176,13 +180,16 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
                 </div>
             </div>
             <div className="colorSelection">
-                <p id="addColor" className="addAllButton cursor" >🌈</p>
-                <ul className="addColorMenu" onClick={toggleMenu}>
-                        <li className="cursor sublink">Add Background Color</li>
-                        <li><input className="cursor" id="backgroundColor" type="color" onChange={handleChange}></input></li>
-                        <li className="cursor sublink">Add Primary Color</li>
-                        <li><input className="cursor" id="primaryColor" type="color" onChange={handleChange}></input></li>
+                <p id="addColor" className="addAllButton cursor" onClick={() => {setColorModalVisibility('flex')}} >🌈</p>
+                <div  className="colorModal" style={{ display: `${colorModalVisibility}`}}>
+                <ul className="shareDiv">
+                        <p className="shareNoteCloseBtn" onClick={handleCloseColors}>X</p>
+                        <h2 className="cursor sublink">Add Background Color</h2>
+                        <input className="cursor" id="backgroundColor" type="color" onChange={handleChange}></input>
+                        {/* <li className="cursor sublink">Add Primary Color</li>
+                        <li><input className="cursor" id="primaryColor" type="color" onChange={handleChange}></input></li> */}
                 </ul>
+                </div>
             </div>
         </div>
     )

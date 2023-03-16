@@ -206,10 +206,10 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         if (searchingGame) {
             return (
                 <div className="modalForm" id="addGameModal">
-                    <form>
+                    <form id="gameSearchForm">
                         <h2>Seach for your game</h2>
                         <input type="text" name="searchInput" value={searchInput} id="searchInput" onChange={handleChange}></input>
-                        <button onClick={searchGames}>Search</button>
+                        <button id="gameSearchBtn" onClick={searchGames}>Search</button>
                     </form>
                     <h3>Results</h3>
                     <div id="listOfGamesContainer">
@@ -226,9 +226,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         if (platformsAutoComplete && !searchingGame) {
             return (
                 <div className="modalForm" id="addGameModal">
-                    <div className="gameInputContainer">
-                        <p type="text" id="gameId" name="friendName" placeholder="game id" onChange={handleChange}required>{game.title}</p>
-                    </div>
+                        <h3 type="text" id="gameId" name="friendName" placeholder="game id" onChange={handleChange}>{game.title}</h3>
                     <div className="ratingsInput">
                         <label htmlFor="favorite">Favorite</label>
                         <input type="checkbox" name="favorite" checked={isFavorite} id="favoriteCheckbox" onChange={handleChange}></input>
