@@ -37,10 +37,15 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
             <ul className="navMenu">
                 {isLoggedIn ? (<>
                     <li className="navMenuItem" id="navMenuItem-1" onClick={handleMenuClick}>
-                        <Link to="/profile" className="link" warningMessage={warningMessage} setWarningMessage={setWarningMessage}>Profile Name</Link>
+                        <Link to="/profile" className="link" warningMessage={warningMessage} setWarningMessage={setWarningMessage}>Profile</Link>
                         </li>
                     <li className="navMenuItem" id="navMenuItem-2" onClick={handleMenuClick}>
-                        <Link to="/dashboard" className="link">Dashboard</Link>
+                        <ul><Link to="/dashboard" className="link">Dashboard</Link>
+                            <li className="sublink">Social - Friends</li>
+                            <li className="sublink">Social - Communities</li>
+                            <li className="sublink">Notes</li>
+                            <li className="sublink">Games</li>      
+                        </ul>
                     </li>
                     <li className="navMenuItem" id="navMenuItem-3" onClick={handleMenuClick}>
                         <Link to="/dashboard" className="link">About Us</Link>
@@ -49,12 +54,7 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
                         <Link to="/dashboard" className="link">Friends</Link>
                     </li>
                     <br/>
-                   
-        
-                    <li className="navMenuItem cursor link" id="navMenuItem-5" value="Add Account" onClick={handleModal}>Add Account</li>
-                    <li className="navMenuItem cursor link" id="navMenuItem-6" value="Add Friend" onClick={handleModal}>Add Friend</li>
-                    <li className="navMenuItem cursor link" id="navMenuItem-7" value="Add Game" onClick={handleModal}>Add Game</li>
-                    <li className="navMenuItem cursor link" id="navMenuItem-8" value="Add Note" onClick={handleModal}>Add Note</li>
+                    
                     <li className="navMenuItem cursor link" id="navMenuItem-9" onClick={handleMenuClick}>Theme Prefs</li>
                     <br/>
                     <li className="navMenuItem" id="logoutButton" onClick={endSession}>

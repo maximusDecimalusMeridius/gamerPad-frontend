@@ -15,6 +15,32 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
                     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
                     originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo}) {
 
+    const handleModal = (event) => {
+        toggleMenu(event);
+        if(event.target.id === "account"){
+            setShowModal(true);
+            setActiveModal("Add Account");
+        } else if(event.target.id === "friend"){
+            setShowModal(true);
+            setActiveModal("Add Friend");
+        } else if(event.target.id === "game"){
+            setShowModal(true);
+            setActiveModal("Add Game");
+        } else if(event.target.id === "note"){
+            setShowModal(true);
+            setActiveModal("Add Note");
+        }
+    }
+
+    const toggleMenu = (event) => {
+        if(event.target.id === "addAllButton"){
+            event.target.nextSibling.classList.toggle("grow");
+            document.querySelector("#addAllButton").classList.toggle("openButton");
+        } else {
+            event.target.parentNode.classList.toggle("grow");
+            document.querySelector("#addAllButton").classList.toggle("openButton");
+        }
+    }
 
     return (
         <div className="homeContainer" id="homePage">
@@ -94,7 +120,15 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
                 <Route path="communities" element={<FriendsList
                                                     setProfilePicture={setProfilePicture}   />} />
             </Routes>      
-
-        </div>
+            <div className="addAllButtonBox">
+                <div id="addAllButton" className="addAllButton cursor" onClick={toggleMenu}>+</div>
+                    <ul className="addAllMenu">
+                        <li className="cursor sublink" id="account" value="Add Account" onClick={handleModal}>Add Account</li>
+                        <li className="cursor sublink" id="friend" value="Add Friend" onClick={handleModal}>Add Friend</li>
+                        <li className="cursor sublink" id="game" value="Add Game" onClick={handleModal}>Add Game</li>
+                        <li className="cursor sublink" id="note" value="Add Note" onClick={handleModal}>Add Note</li>
+                    </ul>
+                </div>
+            </div>
     )
 } export default HomePage;
