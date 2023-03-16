@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rozha+One&display=swap');
 
 :root {
-    --window-light-gray: #f6f7eb;
+    --window-light-gray: #efefefca;
     --window-dark-gray: #393e41;
     --header-height: 50px;
     --nav-menu-text-color: #bebebe;
@@ -103,3 +103,4 @@ header {
     position: fixed;
     z-index: 3;
 }
+

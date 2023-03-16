@@ -88,14 +88,11 @@
 }
 
 .filled {
-    background: var(--xbox-green);
-    box-shadow: 0px 0px 6px 3px var(--light-xbox-green);
+    background: var(--button-red);
+    box-shadow: 0px 0px 6px 3px var(--button-red);
 }
 
 @media (width < 750px) {
-    .gamesContainer {
-        
-    }
 
     .gameCard {
         width: 100%;
