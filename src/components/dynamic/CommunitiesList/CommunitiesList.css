@@ -2,35 +2,50 @@
     height: 100%;
     width: 100%;
     padding-top: 25px;
-    display:flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     overflow-y: auto;
     gap: 10px;
     border-bottom-left-radius: var(--homeContainer-border-radius);
     border-bottom-right-radius: var(--homeContainer-border-radius);
 }
 
-.commsCard{
-    width:40%;
-}
 .commsCardHeader{
-    color:#085d19;
-    padding:2px;
-    margin:5px;
-    border:solid black 1px;
-    border-radius:10px;
-    box-shadow: rgb(26, 2, 2) 5px, 5px, 0px, 5px;
-    min-width: 140px;
-    text-align: center;
-    background-color: #bebebe;
+    height: fit-content;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #323232;
+    color: white;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: inset 2px 2px 4px black;
+    text-shadow: 1px 1px 2px black;
 
 }
+
+.commsCard {
+    width: 45%;
+    flex-shrink: 0;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.openCommsHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
 .commTitle{
     cursor: pointer;
 }
+
 .friendsPlay{
     list-style: none;
+}
+
+.growWide {
+    margin-right: auto;
 }

@@ -35,6 +35,10 @@ img, video {
     height: 100%;
 }
 
+input[type=radio] {
+    cursor: pointer;
+}
+
 main {
     height: calc(100% - var(--header-height));
     margin-top: var(--header-height);
