@@ -21,6 +21,8 @@ function App() {
   const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([]);
   const [friendsList, setFriendsList] = useState([]);
   const [originalFriendsList, setOriginalFriendsList] = useState([]);
+  const [gamesList, setGamesList] = useState([]);
+  const [originalGameList, setOriginalGameList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
@@ -103,6 +105,10 @@ function App() {
             setFriendsList={setFriendsList}
             originalFriendsList={originalFriendsList}
             setOriginalFriendsList={setOriginalFriendsList}
+            gamesList={gamesList}
+            setGamesList={setGamesList}
+            originalGameList={originalGameList}
+            setOriginalGameList={setOriginalGameList}
             commsList={commsList}
             setCommsList={setCommsList}
             originalCommsList={setOriginalCommsList}
@@ -136,6 +142,10 @@ function App() {
                           setAccountsList={setAccountsList}
                           originalAccountsList={originalAccountsList}
                           setOriginalAccountsList={setOriginalAccountsList}
+                          gamesList={gamesList}
+                          setGamesList={setGamesList}
+                          originalGameList={originalGameList}
+                          setOriginalGameList={setOriginalGameList}
                           sharedNotes={sharedNotes}
                           setSharedNotes={setSharedNotes}
                           friendsList={friendsList}

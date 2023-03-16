@@ -79,9 +79,6 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     }
   }
 
-
-
-
   const handleChange = (e) => {
     if (e.target.id === "oldPassword") {
       setOldPassword(e.target.value)
@@ -104,7 +101,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
   const validateField = (e) => {
 
     const { name, value } = e.target;
-    const emailValidator = /^[a-zA-Z0-9!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
+    const emailValidator = /^[a-zA-Z0-9.!?#$%^&*\-_]+\.@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/
 
     if (name === `username`) {
       if (value === '') {
@@ -123,11 +120,6 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     } else if (name === `email`) {
       if (value === '') {
         setWarningMessage('Email field is required');
-        setTimeout(() => {
-          setWarningMessage("");
-        }, "2000")
-      } else if (!emailValidator.test(value)) {
-        setWarningMessage('Please enter a valid email address');
         setTimeout(() => {
           setWarningMessage("");
         }, "2000")
@@ -153,9 +145,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
   }
   const editProfile = async (e) => {
     e.preventDefault()
-    const emailValidator = /^[a-zA-Z0-9!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
-
-
+    const emailValidator = /^[a-zA-Z0-9.!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
 
     try {
       if(!emailValidator.test(emailChange)) {

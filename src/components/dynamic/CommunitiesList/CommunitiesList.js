@@ -54,10 +54,10 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
       <>
         <div className="openCommsCard growWide cursor" onClick={() => handleCommsClick(index)}>
         <div className="openCommsHeader" >
-          <h2 className="commTitle">{game.title}</h2>
-          <p className="whosPlaying">{game.allPlayers} Playing</p>
+          <h2 className="commTitle noselect">{game.title}</h2>
+          <p className="whosPlaying noselect">{game.allPlayers} Playing</p>
         </div>
-        <p className="releaseDate">Released: {game.releaseDate}</p>
+        <p className="releaseDate noselect">Released: {game.releaseDate}</p>
         <h3>Friends Who Play:</h3>
         <ul className="friendsPlay">
           {game.listOfFriends.map((friend) => (
@@ -77,9 +77,9 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
       const isOpen = index === openIndex;
       return (
         <>
-        {!isOpen ? (<div className="commsCard cursor" onClick={() => handleCommsClick(index)}><div className="closedCommsHeader">
-          <h2 className="commTitle" >{game.title}</h2>
-          <p className="whosPlaying">{game.allPlayers} Playing</p>
+        {!isOpen ? (<div className="commsCard noselect cursor" onClick={() => handleCommsClick(index)}><div className="closedCommsHeader">
+          <h2 className="commTitle noselect" >{game.title}</h2>
+          <p className="whosPlaying noselect">{game.allPlayers} Playing</p>
         </div></div>) : openCard(game, index)}
         </>
     );

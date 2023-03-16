@@ -113,6 +113,10 @@ function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal
                     setCommsList={setCommsList}
                     originalCommsList={originalCommsList}
                     setOriginalCommsList={setOriginalCommsList}
+                    gamesList={gamesList}
+                    setGamesList={setGamesList}
+                    originalGameList={originalGameList}
+                    setOriginalGameList={setOriginalGameList}
                 />} />
                 <Route path="profile" element={<ProfilePage
                     {...userInfo}
@@ -145,6 +149,10 @@ function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal
                     setCommsList={setCommsList}
                     originalCommsList={originalCommsList}
                     setOriginalCommsList={setOriginalCommsList}
+                    gamesList={gamesList}
+                    setGamesList={setGamesList}
+                    originalGameList={originalGameList}
+                    setOriginalGameList={setOriginalGameList}
                 />}>
                     <Route path="notes" element={<NotesList
                         writtenNotes={writtenNotes}
@@ -153,9 +161,17 @@ function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal
                         setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                         sharedNotes={sharedNotes}
                         setSharedNotes={setSharedNotes} />} />
-                    <Route path="games" element={<GamesList />} />
+                    <Route path="games" element={<GamesList 
+                                                    gamesList={gamesList}
+                                                    setGamesList={setGamesList}
+                                                    originalGameList={originalGameList}
+                                                    setOriginalGameList={setOriginalGameList}/>} />
                 </Route>
-                <Route path="games" element={<GamesPage />} />
+                <Route path="games" element={<GamesPage
+                                                gamesList={gamesList}
+                                                setGamesList={setGamesList}
+                                                originalGameList={originalGameList}
+                                                setOriginalGameList={setOriginalGameList}/>} />
                 <Route path="notes" element={<NotesList
                     writtenNotes={writtenNotes}
                     setWrittenNotes={setWrittenNotes}

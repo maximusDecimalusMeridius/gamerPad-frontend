@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import "./AddGame.css"
+import getAllGames from "../../../util/fetch";
 
-function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
+function AddGame({ setShowModal, warningMessage, setWarningMessage, setGamesList, setOriginalGameList }) {
 
     const [game, setGame] = useState("");
     const [platformInput, setPlatformInput] = useState('');
     const [contentRating, setContentRating] = useState(3);
     const [valueRating, setValueRating] = useState(3);
     const [replayRating, setReplayRating] = useState(3);
-
     const [platformList, setPlatformList] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
     const [isLFM, setIsLFM] = useState(false)
@@ -49,6 +49,11 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
             const data = await result.json();
 
             if (result.ok) {
+                getAllGames().then(fetchResult => {
+                    console.log(fetchResult)
+                    setGamesList(fetchResult.UserGames)
+                    setOriginalGameList(fetchResult.UserGames)
+                })
                 setShowModal(false)
                 navigate("/dashboard/games", {replace: true})
             } else if(result.status === 403) {
@@ -57,8 +62,8 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                     setWarningMessage("");
                 }, "2000")
             } else if(result.status >= 400){
-                  setWarningMessage("Error adding game");
-                 setTimeout(() => {
+                setWarningMessage("Error adding game");
+                setTimeout(() => {
                 setWarningMessage("");
             }, "2000")
             }
@@ -97,6 +102,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         }))
     }
 
+    
     const [platformsAutoComplete, setPlatformsAutoComplete] = useState([])
 
     const getPlatforms = async (e) => {
@@ -137,6 +143,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         }
     }
 
+    const [searchGamesList, setSearchGamesList] = useState([]);
     const [originalPlatformsList, setOriginalPlatformsList] = useState()
 
     useEffect(() => {
@@ -165,7 +172,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         }
     }
 
-    const [gamesList, setGamesList] = useState([])
     const [searchInput, setSearchInput] = useState("")
 
     const searchGames = async (e) => {
@@ -185,7 +191,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                 })
                 const data = await result.json();
                 if (data) {
-                    setGamesList(data)
+                    setSearchGamesList(data)
                 } 
                 if(data.length<1){
                     setWarningMessage(`Oh no! We did not find any games including ${searchInput}`);
@@ -213,7 +219,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                     </form>
                     <h3>Results</h3>
                     <div id="listOfGamesContainer">
-                        {gamesList.map((game, index) => {
+                        {searchGamesList.map((game, index) => {
                             return <p key={index} className="searchedGames" onClick={() =>{ setGame(game); setSearchingGame(false); getPlatforms()}}>{game.title}</p>
                         })}
                         {/* {gamesList.length ? null : <p>Oh no! We did not find any games including {searchInput} </p>} */}

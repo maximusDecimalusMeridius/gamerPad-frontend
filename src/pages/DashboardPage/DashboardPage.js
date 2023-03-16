@@ -18,7 +18,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: Create Div for carosel, with A tags on each image within carosel, have background linked to communities page
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
-function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, sharedNotes, setSharedNotes,
+function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, sharedNotes, setSharedNotes, gamesList, setGamesList, originalGameList, setOriginalGameList,
                       friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, originalCommsList, setOriginalCommsList, commsList, setCommsList,  setProfilePicture, showModal, setShowModal, activeModal, setActiveModal}) {
   return (
     <div className="dashboardContainer">
@@ -100,8 +100,16 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                             setSharedNotes={setSharedNotes}/>} />
           </Route>
           <Route path="games">
-            <Route path="" element={<GamesList />} />
-            <Route index={true} element={<GamesList />} />
+            <Route path="" element={<GamesList 
+                                      gamesList={gamesList}
+                                      setGamesList={setGamesList}
+                                      originalGameList={originalGameList}
+                                      setOriginalGameList={setOriginalGameList}/>} />
+            <Route index={true} element={<GamesList
+                                          gamesList={gamesList}
+                                          setGamesList={setGamesList}
+                                          originalGameList={originalGameList}
+                                          setOriginalGameList={setOriginalGameList}/>} />
           </Route>
           </Route>
       </Routes>

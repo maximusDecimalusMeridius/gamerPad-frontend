@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./GamesList.css";
 
-function GamesList() {
+function GamesList({gamesList, setGamesList, originalGameList, setOriginalGameList}) {
 
     // const [filter, setFilter] = useState("all");
     // const [contentRating, setContentRating] = useState("3");
     // const [replayRating, setReplayRating] = useState("3");
     // const [valueRating, setValueRating] = useState("3");
-    const [gamesList, setGamesList] = useState([]);
-    const [originalGameList, setOriginalGameList] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
@@ -17,7 +15,6 @@ function GamesList() {
         document.title = `gamerPad - Games`;
     }, []);
 
-    // TODO: Fetch data
     const fetchGames = async (event) => {
 
         try {
@@ -69,7 +66,6 @@ function GamesList() {
     // map over data to display 
     const games = gamesList.map((game, index) => {
 
-        // TODO: iterate over platforms to populate below
         const platforms = game.Platforms.map((platform, index) => {
             return (
                 <li className="gamePlatform" key={index}>{platform.platform}</li>
@@ -91,7 +87,7 @@ function GamesList() {
 
         return (
             <div className="gameCard" key={index} data-id={game.id}>
-                <div className="closeMenu cursor" onClick={handleDeleteGame}>x</div>
+                <div className="closeMenu cursor" onClick={handleDeleteGame}>🗑️</div>
                 <div className="gameCardHeader">
                     <div><span>{game.Game.title}</span>{(game.favorite) ? "⭐" : ""}</div>
                     <ul className="gameCardPlatforms">
@@ -100,15 +96,15 @@ function GamesList() {
                 </div>
                 <div className="ratingsContainer">
                     <div className="ratings" id="contentRatings" data-rating={game.content}>
-                        <h3>Content</h3>
+                        <h3 className="filterTitle">Content</h3>
                         {addBubbles(game.content)}
                     </div>
                     <div className="ratings" id="replayRatings" data-rating={game.replay}>
-                        <h3>Replay</h3>
+                        <h3 className="filterTitle">Replay</h3>
                         {addBubbles(game.replay)}
                     </div>
                     <div className="ratings" id="valueRatings" data-rating={game.value}>
-                        <h3>Value</h3>
+                        <h3 className="filterTitle">Value</h3>
                         {addBubbles(game.value)}
                     </div>
                 </div>
@@ -117,10 +113,12 @@ function GamesList() {
     })
 
     return (
-        <div className="gamesContainer">
+        <>
             <SearchBar originalList={originalGameList} setList={setGamesList} />
-            {games}
-        </div>
+            <div className="gamesContainer">
+                {games}
+            </div>
+        </>
     );
 }
 
