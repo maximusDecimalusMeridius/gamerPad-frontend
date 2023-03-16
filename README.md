@@ -2,7 +2,7 @@
 
 
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
+[![License](https://img.shields.io/badge/License-Proprietary-blue.svg)](http://choosealicense.com/licenses/mit/)
 
 
 ## Table of Contents
@@ -14,7 +14,7 @@
    * [Questions](#Questions)
    * [Contacts](#Contacts)
 
-![GamerPad](./assets/images/gamerPad.png)
+![GamerPad](./public/assets/images/gamerPad.png)
 
 ## Description
 
@@ -78,13 +78,13 @@ If you have any questions or comments regarding this application please contact 
 
 &emsp;Email: kai.ropp@gmail.com
 
-**Maya Cohen - Senior Programmer:**
+**Maya Cohen - Junior Programmer:**
 
 &emsp;Github: [Mayalynn96](https://github.com/Mayalynn96)
 
 &emsp;Email: mayalynncohen@gmail.com
 
-**Tyler Brown - Senior Programmer:**
+**Tyler Brown - Junior Programmer:**
 
 &emsp;Github: [OneDeadFox](https://github.com/OneDeadFox)
 
