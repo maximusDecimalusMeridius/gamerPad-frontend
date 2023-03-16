@@ -2,14 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from "./components/static/Header/Header";
-import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import GamesPage from "./pages/GamesPage/GamesPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import NotesPage from "./pages/NotesPage/NotesPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import SocialPage from "./pages/SocialPage/SocialPage";
 import HomePage from "./pages/HomePage/HomePage"
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 // TODO: set state for rendering dashboard and landing page with boolean value 
 function App() {
   
@@ -23,14 +18,14 @@ function App() {
   const [originalFriendsList, setOriginalFriendsList] = useState([]);
   const [gamesList, setGamesList] = useState([]);
   const [originalGameList, setOriginalGameList] = useState([]);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu] = useState(false);
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
   const [originalCommsList, setOriginalCommsList] = useState([]);
   const [commsList, setCommsList] = useState([])
   const [profilePicture, setProfilePicture] = useState("")
-  const [token, setToken] = useState("");
+  const [setToken] = useState("");
 
   const validateToken = async (token) => {
     setActiveModal("Checking Login Info...");

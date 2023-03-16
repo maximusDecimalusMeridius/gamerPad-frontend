@@ -33,7 +33,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                 gamerTag: gamertag.trim()
             }
 
-            const result = await fetch ("http://gamerpad-backend.herokuapp.com/api/accounts", {
+            const result = await fetch ("https://gamerpad-backend.herokuapp.com/api/accounts", {
                 method: "POST",
                 body: JSON.stringify(newAccountObj),
                 headers: {
