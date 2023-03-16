@@ -64,12 +64,13 @@ function AccountsList({ setUserName, accountsList, setAccountsList, originalAcco
         // TODO: iterate over accounts to populate below
         let type = account.type;
         let style = {
-            border: "",
-            backgroundColor: `${account.color}`
+            border: ""
         }
         
+        style.background = `${account.color}`;
+
         if (type === "Chat") {
-            style.border = `5px solid purple`
+            style.border = `5px solid purple`;
         } else if (type === "Streaming"){
             style.border = `5px solid orange`
         } else if (type === "Gaming") {
@@ -84,7 +85,6 @@ function AccountsList({ setUserName, accountsList, setAccountsList, originalAcco
                 <h3>{account.username}</h3>
                 <p>{account.gamerTag}</p>
                 <p>{account.account}</p>
-                <button id={account.id} onClick={handleDeleteAccount}>remove</button>
             </div>
         )
     })

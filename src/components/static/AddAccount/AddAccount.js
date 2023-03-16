@@ -52,7 +52,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     gamerTag: `${data.gamerTag}`,
                     id: data.id,
                     type: `${data.type}`,
-                    username: `${data.username}`
+                    username: `${data.username}`,
+                    color: `${data.color}`
                 }])
                 setOriginalAccountsList([...originalAccountsList, {
                     UserId: data.UserId,
@@ -61,7 +62,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     gamerTag: `${data.gamerTag}`,
                     id: data.id,
                     type: `${data.type}`,
-                    username: `${data.username}`
+                    username: `${data.username}`,
+                    color: `${data.color}`
                 }])
                 setShowModal(false);
                 navigate("/profile", {replace: true})
