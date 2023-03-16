@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./FriendsList.css";
 
@@ -14,6 +15,8 @@ function FriendsList({
   setActiveModal
 }) {
   const [openIndex, setOpenIndex] = useState(-1);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchFriends();
@@ -90,6 +93,11 @@ function FriendsList({
     setActiveModal("Add Friend");
   }
 
+  const goToProfile = () => {
+    
+    navigate("/profile", {replace: true})
+  }
+
   const friends = friendsList.map((friend, index) => {
     const isOpen = index === openIndex;
 
@@ -140,7 +148,13 @@ function FriendsList({
   });
 
   return (
-    <div className="friendContainer">{friends.length === 0 ? <p>Let's <span className="cursor" onClick={addFriend} style={{fontWeight: "bold"}}>add a friend</span> to get started!</p> : friends}</div>
+    <div className="friendContainer">{friends.length === 0 ? <> 
+          <p className="welcomeP">Let's <span className="hotLink cursor" onClick={addFriend}>add a friend</span> to get started!</p>
+            <br />
+            OR<br />
+          <p className="welcomeP">View your friend code on your <span className="hotLink cursor" onClick={goToProfile}>PROFILE</span> page!</p>
+        </> : friends}
+    </div>
   );
 }
 

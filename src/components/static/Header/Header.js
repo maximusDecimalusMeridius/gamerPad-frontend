@@ -3,7 +3,7 @@ import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
