@@ -6,7 +6,7 @@ import AddGame from "../../static/AddGame/AddGame.js"
 import AddNote from "../../static/AddNote/AddNote.js"
 
 function Modal({showModal, setShowModal, activeModal, setActiveModal,
-                writtenNotes, setWrittenNotes, originalWrittenNotesList,
+                writtenNotes, setWrittenNotes, originalWrittenNotesList, gamesList, setGamesList, originalGameList, setOriginalGameList,
                 setOriginalWrittenNotesList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, 
                 setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType, warningMessage, setWarningMessage}) {
 
@@ -57,6 +57,10 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                         setShowModal={setShowModal}
                         warningMessage={warningMessage}
                         setWarningMessage={setWarningMessage}
+                        gamesList={gamesList}
+                        setGamesList={setGamesList}
+                        originalGameList={setOriginalGameList}
+                        setOriginalGameList={setOriginalGameList}
                         />
 
             default:

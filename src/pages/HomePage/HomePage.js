@@ -11,7 +11,7 @@ import SocialPage from "../SocialPage/SocialPage";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
 function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warningMessage, setWarningMessage,
-    writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
+    writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, gamesList, setGamesList, originalGameList, setOriginalGameList,
     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
     originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo }) {
 
@@ -53,9 +53,6 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
             setBackgroundColor(event.target.value)
         }
     }
-
-    const [gamesList, setGamesList] = useState([]);
-    const [originalGameList, setOriginalGameList] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
@@ -149,9 +146,17 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
                         setOriginalWrittenNotesList={setOriginalWrittenNotesList}
                         sharedNotes={sharedNotes}
                         setSharedNotes={setSharedNotes} />} />
-                    <Route path="games" element={<GamesList />} />
+                    <Route path="games" element={<GamesList 
+                                                    gamesList={gamesList}
+                                                    setGamesList={setGamesList}
+                                                    originalGameList={originalGameList}
+                                                    setOriginalGameList={setOriginalGameList}/>} />
                 </Route>
-                <Route path="games" element={<GamesPage />} />
+                <Route path="games" element={<GamesPage
+                                                gamesList={gamesList}
+                                                setGamesList={setGamesList}
+                                                originalGameList={originalGameList}
+                                                setOriginalGameList={setOriginalGameList}/>} />
                 <Route path="notes" element={<NotesList
                     writtenNotes={writtenNotes}
                     setWrittenNotes={setWrittenNotes}

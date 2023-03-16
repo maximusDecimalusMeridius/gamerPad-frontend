@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./GamesList.css";
 
-function GamesList() {
+function GamesList({gamesList, setGamesList, originalGameList, setOriginalGameList}) {
 
     // const [filter, setFilter] = useState("all");
     // const [contentRating, setContentRating] = useState("3");
     // const [replayRating, setReplayRating] = useState("3");
     // const [valueRating, setValueRating] = useState("3");
-    const [gamesList, setGamesList] = useState([]);
-    const [originalGameList, setOriginalGameList] = useState([]);
 
     // useEffect hook to fetch all notes on page load
     useEffect(() => {

@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import "./AddGame.css"
 
-function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
+function AddGame({ setShowModal, warningMessage, setWarningMessage, gamesList, setGamesList, originalGameList, setOriginalGameList }) {
 
     const [game, setGame] = useState("");
     const [platformInput, setPlatformInput] = useState('');
     const [contentRating, setContentRating] = useState(3);
     const [valueRating, setValueRating] = useState(3);
     const [replayRating, setReplayRating] = useState(3);
-
     const [platformList, setPlatformList] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
     const [isLFM, setIsLFM] = useState(false)
@@ -48,7 +47,28 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
 
             const data = await result.json();
 
+            console.log(data);
+            console.log(gamesList[0])
+
             if (result.ok) {
+                setGamesList([...gamesList, {
+                    favorite: `${data.favorite}`,
+                    createdAt: `${data.createdAt}`,
+                    updatedAt: `${data.createdAt}`,
+                    id: data.id,
+                    publisher: null,
+                    releaseDate: "",
+                    title: data.title
+                }])
+                setOriginalGameList([...gamesList, {
+                    favorite: `${data.favorite}`,
+                    createdAt: `${data.createdAt}`,
+                    updatedAt: `${data.createdAt}`,
+                    id: data.id,
+                    publisher: null,
+                    releaseDate: "",
+                    title: data.title
+                }])
                 setShowModal(false)
                 navigate("/dashboard/games", {replace: true})
             } else if(result.status === 403) {
@@ -165,7 +185,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
         }
     }
 
-    const [gamesList, setGamesList] = useState([])
     const [searchInput, setSearchInput] = useState("")
 
     const searchGames = async (e) => {

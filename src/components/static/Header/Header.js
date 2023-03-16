@@ -10,8 +10,8 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                 sharedNotes, setSharedNotes, accountsList, setAccountsList, originalAccountsList, 
                 setOriginalAccountsList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,
-                showMenu, setShowMenu, warningMessage, setWarningMessage, 
-                profilePicture, setProfilePicture
+                showMenu, setShowMenu, warningMessage, setWarningMessage, profilePicture, setProfilePicture,
+                gamesList, setGamesList, originalGameList, setOriginalGameList
             }) {
     
     const [menuType, setMenuType] = useState(false);
@@ -63,6 +63,10 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setFriendsList={setFriendsList}
                             originalFriendsList={originalFriendsList}
                             setOriginalFriendsList={setOriginalFriendsList}
+                            gamesList={gamesList}
+                            setGamesList={setGamesList}
+                            originalGameList={setOriginalGameList}
+                            setOriginalGameList={setOriginalGameList}
                             warningMessage={warningMessage}
                             setWarningMessage={setWarningMessage}
                         />}
