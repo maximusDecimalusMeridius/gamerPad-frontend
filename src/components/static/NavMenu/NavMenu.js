@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import ProfilePage from "../../../pages/ProfilePage/ProfilePage";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import "./NavMenu.css"
 
@@ -23,11 +22,6 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
             setOpenNav(false)
         }
     }
-    const handleModal = (event) => {
-        setShowModal(true);
-        setActiveModal(event.target.textContent);
-        setMenuType(false)
-    }
 
     <Navigate to="/ProfilePage"  />
     return (
@@ -39,25 +33,19 @@ function NavMenu({ isLoggedIn, setIsLoggedIn, setMenuType, setOpenNav, showModal
                     <li className="navMenuItem" id="navMenuItem-1" onClick={handleMenuClick}>
                         <Link to="/profile" className="link" warningMessage={warningMessage} setWarningMessage={setWarningMessage}>Profile</Link>
                         </li>
-                    <li className="navMenuItem" id="navMenuItem-2" onClick={handleMenuClick}>
-                        <ul><Link to="/dashboard" className="link">Dashboard</Link>
-                            <li className="sublink">Social - Friends</li>
-                            <li className="sublink">Social - Communities</li>
-                            <li className="sublink">Notes</li>
-                            <li className="sublink">Games</li>      
-                        </ul>
+                    <li className="navMenuItem" id="navMenuItem-2">
+                        <Link to="/dashboard" className="link" onClick={handleMenuClick}>Dashboard</Link>
                     </li>
+                    <ul className="dashboardItems">
+                        <Link to="/dashboard"><li className="link subitem" onClick={handleMenuClick}>Social</li></Link>
+                        <Link to="/dashboard/notes"><li className="link subitem" onClick={handleMenuClick}>Notes</li></Link>
+                        <Link to="/dashboard/games"><li className="link subitem" onClick={handleMenuClick}>Games</li></Link>      
+                    </ul>
                     <li className="navMenuItem" id="navMenuItem-3" onClick={handleMenuClick}>
-                        <Link to="/dashboard" className="link">About Us</Link>
+                        <Link to="https://docs.google.com/presentation/d/1nZxT10Zg4T0WPLiNUHyoXvCyTMZiRPIb5omz-qwyJ04/edit#slide=id.g1fd4261539c_0_5" target="_blank" referrer="noreferrer" className="link">About Us</Link>
                     </li>
-                    <li className="navMenuItem" id="navMenuItem-4" onClick={handleMenuClick}>
-                        <Link to="/dashboard" className="link">Friends</Link>
-                    </li>
-                    <br/>
-                    
-                    <li className="navMenuItem cursor link" id="navMenuItem-9" onClick={handleMenuClick}>Theme Prefs</li>
-                    <br/>
-                    <li className="navMenuItem" id="logoutButton" onClick={endSession}>
+                    {/* <li className="navMenuItem cursor link" id="navMenuItem-9" onClick={handleMenuClick}>Theme Prefs</li> */}
+                    <li id="logoutButton" onClick={endSession}>
                         Logout
                     </li>
       
