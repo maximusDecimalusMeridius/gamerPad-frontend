@@ -13,7 +13,6 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
 
   const fetchComms = async (event) => {
     try {
-      
       const token = localStorage.getItem("token");
       const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame/allUserGames", {
         method: "GET",
@@ -31,34 +30,60 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
     }
   };
 
+  const getColor = () => {
+    
+    const colorArray = ["red", "blue", "green", "purple", "orange"];
+
+    const yourColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+
+    return (
+      {
+        height: "fit-content",
+        width: "fit-content",
+        padding: "5px",
+        border: "3px solid white",
+        borderRadius: "5px",
+        background: "#323232",
+        backgroundColor: `${yourColor}`
+      }
+    )
+  }
+
+  const openCard = (game, index) => {
+    return (
+      <>
+        <div className="openCommsCard growWide cursor" onClick={() => handleCommsClick(index)}>
+        <div className="openCommsHeader" >
+          <h2 className="commTitle">{game.title}</h2>
+          <p className="whosPlaying">{game.allPlayers} Playing</p>
+        </div>
+        <p className="releaseDate">Released: {game.releaseDate}</p>
+        <h3>Friends Who Play:</h3>
+        <ul className="friendsPlay">
+          {game.listOfFriends.map((friend) => (
+            <li style={getColor()} key={index}>{friend.username}</li>
+            ))}
+        </ul>
+          </div>
+  
+      </>
+    )
+  }
+
   const handleCommsClick = (index) => {
     setOpenIndex(index === openIndex ? -1 : index);
   };
   const comms = commsList && commsList.length > 0 ? commsList.map((game, index) => {
       const isOpen = index === openIndex;
       return (
-        <div className="commsCard" key={index}>
-        <div className="commsCardHeader">
-          <h2
-            className="commTitle"
-            onClick={() => handleCommsClick(index)}
-            >
-            {game.title}
-          </h2>
-          {isOpen && <p>released: {game.releaseDate}</p>}
-          {isOpen && <p>Player count: {game.allPlayers}</p>}
-         {isOpen && game.listOfFriends.length > 0 && (
-           <ul className="friendsPlay">
-            <li>friends who play:</li>
-            {game.listOfFriends.map((friend) => (
-              <li key={index}>{friend.username}</li>
-              ))}
-          </ul>
-         )}
-        </div>
-      </div>
+        <>
+        {!isOpen ? (<div className="commsCard cursor" onClick={() => handleCommsClick(index)}><div className="closedCommsHeader">
+          <h2 className="commTitle" >{game.title}</h2>
+          <p className="whosPlaying">{game.allPlayers} Playing</p>
+        </div></div>) : openCard(game, index)}
+        </>
     );
-}) : null;
+}) : "No communities - Add some games!";
   return (
     
 

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
@@ -35,7 +36,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                 {isLoggedIn ? (<img src={profilePicture || localStorage.getItem("profilePicture")} className="imagePlaceholder cursor" onClick={openProfile} alt="headshot"></img>) : ""}
             </div>
             <div className="headerTitle">
-                {isLoggedIn ? ( <h1 className="loggedInHeader">gamerPad</h1>) : (<h1>gamerPad</h1>)}
+                {isLoggedIn ? ( <Link to="/dashboard"><h1 className="loggedInHeader">gamerPad</h1></Link>) : (<h1>gamerPad</h1>)}
                 
             </div>
             
