@@ -10,7 +10,7 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
     const handleSubmit = async (event) => {
         event.preventDefault();
         const emailValidator = /^[a-zA-Z0-9!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
-        const passwordValidator = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*+?:;])[A-Za-z\d~!@#$%^&*+?:;]/;
+        const passwordValidator = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*+?:;])[A-Za-z\d~!@#$%^&*+?:;]{8,128}/;
 
         try {
             if (passwordValue !== confirmValue) {

@@ -162,6 +162,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setTimeout(() => {
           setWarningMessage("");
       }, "2000")
+      return
       }
       const token = localStorage.getItem("token");
       const profilObject = {
