@@ -79,7 +79,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
             <div className="modalWindow">
                 {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (
                     ""
-                ) : <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>X</div>}
+                ) : <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>❌</div>}
                 <h2 className="modalTitle">{activeModal}</h2>
                 {renderForm()}
                 {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (

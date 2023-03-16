@@ -22,7 +22,19 @@
     min-height: 50px;
 }
 
+#formNoteColorCode {
+    margin-bottom: 10px;
+}
+
 .modalForm {
     width: 90%;
     width: 90%;
+    text-align: center;
+}
+
+.statusWindowNote {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

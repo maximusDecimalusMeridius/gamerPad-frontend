@@ -81,7 +81,7 @@ button:active {
 
 .appContainer {
     height: 100%;
-    background: #44bba4;
+    background: #7c295c;
     display: flex;
     flex-direction: column;
 }

@@ -107,7 +107,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                 <input type="text" id="accountUsername" name="accountUsername" placeholder="account_name#3232" onChange={handleChange} value={accountUsername}required></input>
                 <input type="text" id="gamertag" name="gamertag" placeholder="gamer tag / friend code" onChange={handleChange} value={gamertag}></input>
             </div>
-            <div className="statusWindow">
+            <div className="statusWindowAccount">
                 <button className="addSubmitButton">Add Account</button>
                 <p className="warningMessage" id="warningMessage">{warningMessage}</p>
             </div>
