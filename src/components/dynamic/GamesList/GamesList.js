@@ -32,13 +32,38 @@ function GamesList() {
 
             const data = await result.json();
 
-            console.log(data);
             setGamesList(data.UserGames)
             setOriginalGameList(data.UserGames)
 
         } catch (error) {
             console.error(error);
         }
+    }
+
+    // Delete userGame
+    const handleDeleteGame = async (e) => {
+            
+        try {
+            const token = localStorage.getItem("token");
+
+            let url = `https://gamerpad-backend.herokuapp.com/api/games/usergame/${e.target.parentNode.dataset.id}`;
+
+            const result = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    authorization: token ? `Bearer ${token}` : ''
+                }
+            })
+
+
+            if (result.ok) {
+                fetchGames()
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+
     }
 
     // map over data to display 
@@ -52,10 +77,10 @@ function GamesList() {
         })
 
         const addBubbles = (rating) => {
-            
+
             const bubbleArray = new Array(5).fill("");
 
-            const bubbles = bubbleArray.map( (bubble, index) => ( (index + 1) <= rating ? <div key={index} className="bubble filled">{bubble}</div> : <div key={index} className="bubble">{bubble}</div>) );
+            const bubbles = bubbleArray.map((bubble, index) => ((index + 1) <= rating ? <div key={index} className="bubble filled">{bubble}</div> : <div key={index} className="bubble">{bubble}</div>));
 
             return (
                 <div className="bubbles">
@@ -65,9 +90,10 @@ function GamesList() {
         }
 
         return (
-            <div className="gameCard" key={index}>
+            <div className="gameCard" key={index} data-id={game.id}>
+                <div className="closeMenu cursor" onClick={handleDeleteGame}>x</div>
                 <div className="gameCardHeader">
-                    <div>{game.Game.title} {(game.favorite) ? "⭐" : ""}</div>
+                    <div><span>{game.Game.title}</span>{(game.favorite) ? "⭐" : ""}</div>
                     <ul className="gameCardPlatforms">
                         {platforms}
                     </ul>

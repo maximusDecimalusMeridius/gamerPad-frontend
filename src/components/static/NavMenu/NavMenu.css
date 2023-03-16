@@ -8,15 +8,15 @@
 }
 
 .navMenu {
-    height: 80vh;
-    min-height: 100%;
-    border: solid transparent;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    height: 100%;
+    padding: 10px;
+    border-left: 1px solid white;
+    /* border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px; */
     background: #323232;
     list-style: none;
     font-size: 24px;
-    box-shadow: 5px 10px 10px gray;
+    box-shadow: 5px 10px 10px black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,9 +24,23 @@
     gap: 2vh;
 }
 
-a:link, a:visited,a:hover, a:active {
+a {
+    transition: .1s all ease-in;
+}
+
+a:link, a:visited {
     text-decoration: none;
     color: var(--nav-menu-text-color);
+}
+
+a:hover {
+    color: white;
+    text-shadow: 1px 1px 4px black;
+    transform: scale(1.1) translateX(2px);
+}
+
+a:active {
+    color: red;
 }
 
 .navMenuItem {
@@ -36,15 +50,44 @@ a:link, a:visited,a:hover, a:active {
     width: 90%;
     border-radius: 20px;
     background-color: #323232;
+    transition: .25s background ease-in, .25s text-shadow ease-in, .1s transform linear;
+    
+}
+
+.navMenuItem:hover {
+    text-shadow: 1px 1px 4px black;
+    transform: scale(1.05) translateX(5px);    
+}
+
+.dashboardItems {
+    width: 100%;
+    padding: 5px 25px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 16px;
+    gap: 1vh;
 }
 
 #logoutButton {
-    color: red;
+    width: 90%;
+    padding: 5px;
+    margin-top: 30px;
+    color: white;
     font-weight: bold;
     text-align:center;
     cursor: pointer;
+    border-radius: 20px;
+    background-color: #323232;
 }
 
 #logoutButton:hover {
-    background: white;
+    color: red;
+    transform: "";
+}
+
+@media (height < 550px){
+    
 }

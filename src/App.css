@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rozha+One&display=swap');
+
 :root {
     --window-light-gray: #f6f7eb;
     --window-dark-gray: #393e41;
@@ -34,10 +37,10 @@ img, video {
 
 main {
     height: calc(100% - var(--header-height));
-    padding-top: 50px;
+    margin-top: var(--header-height);
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center; 
 }
 
 body {
@@ -75,10 +78,19 @@ button:active {
 .appContainer {
     height: 100%;
     background: #44bba4;
+    display: flex;
+    flex-direction: column;
 }
 
 .cursor {
     cursor: pointer;
+}
+
+.noselect {
+    user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -webkit-user-select: none;
 }
 
 header {

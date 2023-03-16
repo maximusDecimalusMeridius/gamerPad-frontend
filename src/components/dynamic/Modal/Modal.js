@@ -70,17 +70,23 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
     }
 
     return (
-        <div className="modalContainer cursor" id="modalContainer" onClick={handleClick}>
+        <div className="modalContainer cursor" id="modalContainer" onMouseDown={handleClick}>
             <div className="modalWindow">
-                <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>x</div>
+                {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (
+                    ""
+                ) : <div className="closeModalX cursor" id="closeModalX" onClick={handleClick}>X</div>}
                 <h2 className="modalTitle">{activeModal}</h2>
                 {renderForm()}
-                <ul className="modalNavMenu">
+                {activeModal === "Checking Login Info..." || activeModal === "Logged In!" || activeModal === "Logging out..." || activeModal === "Error Logging In - Please Try Again" ? (
+                    ""
+                ) : ( <ul className="modalNavMenu">
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Account")}>{activeModal === "Add Account" ? `${activeModal}` : "Account"}</li> |
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Friend")}>{activeModal === "Add Friend" ? `${activeModal}` : "Friend"}</li> |
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Note")}>{activeModal === "Add Note" ? `${activeModal}` : "Note"}</li> |
                     <li className="modalNavItem cursor" onClick={() => setActiveModal("Add Game")}>{activeModal === "Add Game" ? `${activeModal}` : "Game"}</li>
                 </ul>
+                )}
+                
             </div>
         
         </div>

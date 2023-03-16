@@ -1,45 +1,96 @@
 
-.friendsContainer{
+.friendContainer{
     height: 100%;
-    background-color: rgb(17, 181, 93);
-    background: linear-gradient(rgb(17, 181, 93), rgba(12, 175, 88, 0.353)) 50%;
-}
-.friendPage{
+    width: 100%;
+    padding-top: 25px;
     display:flex;
+    flex-grow: 1;
     flex-direction: column;
-    height:60vh;
+    justify-content: flex-start;
     align-items: center;
-    overflow-y: scroll;
-    padding: 10px;
+    overflow-y: auto;
+    gap: 10px;
+    border-bottom-left-radius: var(--homeContainer-border-radius);
+    border-bottom-right-radius: var(--homeContainer-border-radius);
 }
+
 .friendCard {
-    width: 74%;
-    max-height:fit-content;
-    min-height: fit-content;
-    min-width:fit-content;
-    margin-top: 30px;
-    padding: 10px;
-    /* flex-grow: 1; */
-    /* flex grow was causing issues with expanding too much */
+    width: 90%;
+    height: fit-content;
+    min-width: 175px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid blue;
-    background: #bebebe;
+    background: #323232;
+    position: relative;
+    border-radius: 25px;
+    box-shadow: inset 2px 2px 4px black;
 }
+
 .friendCardHeader{
     width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    
+    padding: 1px;
+    display: grid;
+    grid-template-areas:
+        "openCardHeader friendAccounts friendGames"
+        "openCardHeader friendAccounts friendGames";
+    grid-template-columns: repeat(3, 1fr);
+    transition: .25s all ease-out;
+    gap: 10px;
 }
+
+.openCardHeader {
+    grid-area: openCardHeader;
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.friendAccounts {
+    grid-area: friendAccounts;
+    text-shadow: 1px 1px 2px black;
+}
+
+.friendGames{
+    grid-area: friendGames;
+    text-shadow: 1px 1px 2px black;
+}
+
 .friendUsername{
-    background-color: rgb(84, 84, 247);
-    height:fit-content;
+    height: fit-content;
+    width: fit-content;    
     border-radius: 5px;
     cursor: pointer;
+    color: #bebebe;
+    text-shadow: 1px 1px 2px black;
 }
+
+.friendUsername:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.friendUsernameClosed{
+    height: fit-content;
+    width: fit-content;    
+    border-radius: 5px;
+    cursor: pointer;
+    color: #bebebe;
+    text-shadow: 1px 1px 2px black;
+    transition: .25s all ease-out;
+}
+
+.friendUsernameClosed:hover {
+    color: white;
+    cursor: pointer;
+    transform: translateX(5px);
+}
+
 .friendPic{
     border-radius: 50%;
     height:80px;
@@ -47,11 +98,110 @@
     justify-self: flex-start;
 }
 
+.account, .game {
+    width: 100%;
+    list-style: none;
+    padding: 5px;
+    border-bottom: 1px solid #323232;
+    border-bottom-style: dotted;
+}
+
+.account:first-child {
+    /* border radii taken from class accountTable */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.account:last-child {
+    /* border radii taken from class accountTable */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.tableHeader {
+    text-transform: uppercase;
+    font-style: italic;
+    color: white;
+}
+
+.accountTable, .gameTable {
+    max-height: 100px;
+    margin-top: 5px;
+    color: black;
+    padding: 5px;
+    /* text-shadow: 1px 1px 2px black; */
+    background: #bebebe;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 4px black;
+    text-shadow: 1px 1px 2px rgb(167, 167, 167);
+    overflow: auto;
+}
+
+.account li, .game li{
+    font-size: 14px;
+    padding-left: 2px;
+}
+
+.deleteButton{
+    width: fit-content;
+    display: flex;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: .25s all ease-out;
+}
+
+.deleteButton:hover {
+    color: red;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* links on page load with no friends */
+.hotLink {
+    font-weight: bold;
+}
+
+.hotLink:hover {
+    color: white;
+}
+
+.hotLink:active {
+    color: red;
+}
+
+.welcomeP {
+    text-align: center;
+}
+
 @media screen and (max-width:380px){ 
-    .friendsContainer{
-        max-width:250px
+   
+
+    .friendCard h2 {
+        font-size: 18px;
     }
-    .friendCard{
-        min-width: 250px;
+}
+
+@media (width < 800px) {
+    .friendCardHeader{
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            "openCardHeader openCardHeader"
+            "friendAccounts friendGames";
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .openCardHeader {
+       
+    }
+}
+
+@media (width < 600px) {
+    .friendCardHeader {
+        display: flex;
+        flex-direction: column;
     }
 }

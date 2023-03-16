@@ -1,10 +1,27 @@
 .profilePageContainer {
-    height: calc(100% - var(--header-height));
+    --profile-padding: 2%;
+    height: 90%;
+    width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    
+    box-shadow: 2px 5px 8px 2px black;
+    border-radius: var(--homeContainer-border-radius);
+}
+
+.profileContent {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#mainProfilePicture {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-color: #323232;
 }
 
 .profileHeader {
@@ -18,27 +35,46 @@
     align-items: flex-end;
     font-size: 24px;
     flex-shrink: 0;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 }
 
 .profileInfo {
     width: 100%;
-    height: fit-content;
-    background: #bebebe;
-}
-
-.userRow {
+    padding: var(--profile-padding);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #bebebe;
+    flex-wrap: nowrap;
 }
 
-.friendCodeRow {
+.profileInnerDiv {
+    height: 100%;
+    width: 60%;
+    max-width: 400px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-#friend-code {
-    margin-left: 5px;
-    margin: auto;
+.profileInnerDiv div {
+    width: 100%;
+}
+
+.profileInnerDiv p {
+    margin: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.yourAccounts {
+    color: white;
+    padding: 5px;
+    text-align: center;
+    background: #323232;
 }
 
 .passwordRow {
@@ -48,8 +84,12 @@
 
 .updatePasswordForm {
     display: flex;
+    padding: var(--profile-padding);
     justify-content: space-around;
     align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: #bebebe;
 }
 
 .passwordFormInputs {
@@ -58,6 +98,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.updatePasswordForm input {
+    margin-top: 5px;
+}
+
+.updateAndCancelBtns {
+    width: 125px;
+    display: flex;
+    flex-direction: column;
+}
+
+.updateAndCancelBtns #updateProfile {
+    white-space: nowrap;
 }
 
 .passwordFormInputs input {
@@ -67,17 +123,56 @@
     font-style: italic;
 }
 
-.editButton {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+.passwordRowItem button {
+    margin: 5px;
 }
 
-/* .profileTable {
-    
-} */
+#LFFCheckbox {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.3s;
+}
 
-@media (width < 385px) {
+#LFFCheckbox:checked {
+    border: 1px solid #ffffff;
+    background-color: var(--button-red);
+}
+
+@media (width < 1000px) {
+    .profileInfo {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .profileInnerDiv, .passwordFormInputs {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .updatePasswordForm {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    #mainProfilePicture {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media (width < 700px) {
+
     .profileHeader {
         flex-wrap: wrap;
     }
@@ -92,11 +187,13 @@
         order: 2;
     }
 
-    .updatePasswordForm {
-        flex-direction: column;
+    #mainProfilePicture {
+        height: 150px;
+        width: 150px;
     }
 
-    .passwordFormInputs {
-        width: 90%;
+    .profileInfo p {
+        font-size: 12px;
     }
+
 }

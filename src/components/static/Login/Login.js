@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
@@ -15,7 +15,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 password: passwordValue
             }
 
-            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/login", {
+            const result = await fetch("http://gamerpad-backend.herokuapp.com/api/users/login", {
                 method: "POST",
                 body: JSON.stringify(loginObj),
                 headers:{
@@ -24,7 +24,6 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
             })
 
             const data = await result.json();
-
             if(result.ok){
                 navigate("/", {replace: true})
                 setIsLoggedIn(true);

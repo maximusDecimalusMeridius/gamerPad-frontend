@@ -15,15 +15,15 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
     }, []);
 
       // temporary styles for temporary elements
-    const style = {
-        span: {
-            height: "20px",
-            width: "20px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            color: "red"
-    }
-    }
+    // const style = {
+    //     span: {
+    //         height: "20px",
+    //         width: "20px",
+    //         cursor: "pointer",
+    //         fontWeight: "bold",
+    //         color: "red"
+    // }
+    // }
 
     const fetchNotes = async (event) => {
 
@@ -61,7 +61,6 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
 
     const handleDelete = async (noteId) => {
 
-        console.log(noteId)
         try {
             const token = localStorage.getItem("token");
 
@@ -84,22 +83,30 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
                     setWrittenNotes(writtenNotes.filter((note) => {
                         if (note.id !== noteId) {
                             return note
+                        } else {
+                            return null
                         }
                     }))
                     setOriginalWrittenNotesList(writtenNotes.filter((note) => {
                         if (note.id !== noteId) {
                             return note
+                        } else {
+                            return null
                         }
                     }))
                 } else {
                     setSharedNotes(sharedNotes.filter((note) => {
                         if (note.id !== noteId) {
                             return note
+                        } else {
+                            return null
                         }
                     }))
                     setOriginalSharedNotesList(sharedNotes.filter((note) => {
                         if (note.id !== noteId) {
                             return note
+                        } else {
+                            return null
                         }
                     }))
                 }

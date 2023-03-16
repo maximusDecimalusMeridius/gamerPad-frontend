@@ -14,7 +14,7 @@
    * [Questions](#Questions)
    * [Contacts](#Contacts)
 
-![GamerPad](./public/assets/images/gamerPad.png)
+![GamerPad](./assets/images/gamerPad.png)
 
 ## Description
 
@@ -70,19 +70,19 @@ If you have any questions or comments regarding this application please contact 
 
 &emsp;Github: [maximusDecimalusMeridius](https://github.com/maximusDecimalusMeridius)
 
-&emsp;Email: **please add your email here**
+&emsp;Email: andrew.gaudy@gmail.com
 
 **Kai Ropp - Github Admin:**
 
 &emsp;Github: [kairo97](https://github.com/kairo97)
 
-&emsp;Email: **please add your email here**
+&emsp;Email: kai.ropp@gmail.com
 
 **Maya Cohen - Senior Programmer:**
 
 &emsp;Github: [Mayalynn96](https://github.com/Mayalynn96)
 
-&emsp;Email: **please add your email here**
+&emsp;Email: mayalynncohen@gmail.com
 
 **Tyler Brown - Senior Programmer:**
 

@@ -1,13 +1,12 @@
 .imagePlaceholder {
     width: 40px;
     height: 40px;
-    background: red;
     border-radius: 50%;
 }
 
 .header {
     width: 100%;
-    height: fit-content;
+    height: 50px;
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
@@ -18,12 +17,11 @@
 }
 
 .loggedInHeader {
+    height: 40px;
     color: white;
+    display: inline;
 }
 
-#headerTitle {
-    text-align: center;
-}
 
 /* Hamburger menu icon */
 .hamburger{
@@ -32,7 +30,7 @@
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
-    z-index: 2;
+    z-index: 4;
 }
 
 .burger{
