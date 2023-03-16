@@ -20,7 +20,6 @@ function FriendsList({
 
   useEffect(() => {
     fetchFriends();
-    document.title = `gamerPad - Friends`;
   }, []);
 
   const fetchFriends = async (event) => {

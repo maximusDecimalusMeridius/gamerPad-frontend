@@ -11,7 +11,6 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
         fetchNotes();
-        document.title = `gamerPad - Notes`;
     }, []);
 
       // temporary styles for temporary elements

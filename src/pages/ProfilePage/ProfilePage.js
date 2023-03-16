@@ -59,7 +59,6 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
   }
 
   useEffect(() => {
-    document.title = `gamerPad - Profile`;
     getCurrentUserInfo()
   }, [])
 

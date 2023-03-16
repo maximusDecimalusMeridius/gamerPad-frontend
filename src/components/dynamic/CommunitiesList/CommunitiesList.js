@@ -8,7 +8,6 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
 
   useEffect(() => {
     fetchComms();
-    document.title = `gamerPad - Communities`;
   }, []);
 
   const fetchComms = async (event) => {
