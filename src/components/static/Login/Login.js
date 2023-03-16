@@ -15,7 +15,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 password: passwordValue
             }
 
-            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/login", {
+            const result = await fetch("http://gamerpad-backend.herokuapp.com/api/users/login", {
                 method: "POST",
                 body: JSON.stringify(loginObj),
                 headers:{
@@ -30,7 +30,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
             } else {
-                setWarningMessage("Error logging in");
+                setWarningMessage("Invalid credentials");
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")

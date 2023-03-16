@@ -6,13 +6,15 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
     
     const navigate = useNavigate();
 
-    const verificationArray = ["Xbox Live", "Playstation", "blizzard.net", "nintendo id", "Steam", "Riot Games", "Epic Games", "Discord"]
+    const typeArray = ["Streaming", "Chat", "Gaming"];
+    const [accountName, setAccountName] = useState("");
     const [accountUsername, setAccountUsername] = useState("");
     const [accountType, setAccountType] = useState("");
     const [gamertag, setGamertag] = useState("");    
-    const dropdown = verificationArray.map((platform, index) => {
+    const [accountColorCode, setAccountColorCode] = useState("#bebebe");
+    const dropdown = typeArray.map((type, index) => {
         return (
-            <option key={index}>{platform}</option>
+            <option key={index}>{type}</option>
         )
     })
 
@@ -24,13 +26,14 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
             const token = localStorage.getItem("token");
 
             const newAccountObj = {
-                account: document.querySelector("#accountName").value,
-                type: accountType,
-                username: accountUsername,
-                gamerTag: gamertag
+                account: accountName.trim(),
+                color: accountColorCode,
+                type: document.querySelector("#accountType").value,
+                username: accountUsername.trim(),
+                gamerTag: gamertag.trim()
             }
 
-            const result = await fetch ("https://gamerpad-backend.herokuapp.com/api/accounts", {
+            const result = await fetch ("http://gamerpad-backend.herokuapp.com/api/accounts", {
                 method: "POST",
                 body: JSON.stringify(newAccountObj),
                 headers: {
@@ -41,8 +44,6 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
 
             const data = await result.json();
 
-            console.log(data);
-
             if(result.ok){
                 setAccountsList([...accountsList, {
                     UserId: data.UserId,
@@ -51,7 +52,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     gamerTag: `${data.gamerTag}`,
                     id: data.id,
                     type: `${data.type}`,
-                    username: `${data.username}`
+                    username: `${data.username}`,
+                    color: `${data.color}`
                 }])
                 setOriginalAccountsList([...originalAccountsList, {
                     UserId: data.UserId,
@@ -60,7 +62,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     gamerTag: `${data.gamerTag}`,
                     id: data.id,
                     type: `${data.type}`,
-                    username: `${data.username}`
+                    username: `${data.username}`,
+                    color: `${data.color}`
                 }])
                 setShowModal(false);
                 navigate("/profile", {replace: true})
@@ -77,12 +80,16 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
     }
 
     const handleChange = (event) => {
-        if(event.target.id === "accountUsername") {
+        if (event.target.id === "accountName") {
+            setAccountName(event.target.value);
+        } else if (event.target.id === "accountUsername") {
             setAccountUsername(event.target.value);
         } else if(event.target.id === "accountType") {
             setAccountType(event.target.value);
         } else if(event.target.id === "gamertag"){
             setGamertag(event.target.value);
+        } else if(event.target.id === "accountColorCode") {
+            setAccountColorCode(event.target.value)
         }
     }
 
@@ -90,16 +97,19 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
         <div className="contentModalWindow">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
             <div className="inputContainer">
-                <select type="text" id="accountName" name="accountName" placeholder="account name" onChange={handleChange} required>
+                <div className="firstInputRowContainer">
+                    <input type="text" id="accountName" name="accountName" placeholder="account name" onChange={handleChange} value={accountName} required></input>
+                    <input className="cursor" id="accountColorCode" type="color" value={accountColorCode} onChange={handleChange}></input>
+                </div>
+                <select type="text" id="accountType" name="accountType" placeholder="account type" required>
                     {dropdown}
                 </select>
                 <input type="text" id="accountUsername" name="accountUsername" placeholder="account_name#3232" onChange={handleChange} value={accountUsername}required></input>
-                <input type="text" id="accountType" name="accountType" placeholder="account type" onChange={handleChange} value={accountType}required></input>
                 <input type="text" id="gamertag" name="gamertag" placeholder="gamer tag / friend code" onChange={handleChange} value={gamertag}></input>
             </div>
-            <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+            <div className="statusWindowAccount">
                 <button className="addSubmitButton">Add Account</button>
+                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
             </div>
         </form>
         </div>

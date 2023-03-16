@@ -22,8 +22,6 @@
     display: inline;
 }
 
-.headerTitle {
-}
 
 /* Hamburger menu icon */
 .hamburger{
@@ -32,7 +30,7 @@
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
-    z-index: 2;
+    z-index: 4;
 }
 
 .burger{

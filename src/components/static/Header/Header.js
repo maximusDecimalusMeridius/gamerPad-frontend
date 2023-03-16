@@ -1,16 +1,17 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import "./Header.css";
 import Modal from "../../dynamic/Modal/Modal.js";
 import NavMenu from "../../static/NavMenu/NavMenu.js";
 
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal, setActiveModal,
                 writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
                 sharedNotes, setSharedNotes, accountsList, setAccountsList, originalAccountsList, 
                 setOriginalAccountsList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,
-                showMenu, setShowMenu, warningMessage, setWarningMessage, 
-                profilePicture, setProfilePicture
+                showMenu, setShowMenu, warningMessage, setWarningMessage, profilePicture, setProfilePicture,
+                gamesList, setGamesList, originalGameList, setOriginalGameList
             }) {
     
     const [menuType, setMenuType] = useState(false);
@@ -27,11 +28,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
         setOpenNav(!openNav);
         setMenuType(false);
     }
-        // create modal/slideout menu when hamburger menu is clicked
-        //  on modal have links to all main pages, and dashboard as home route
-        //  on modal/slideout menu have majority of page taken up on mobile layout, slightly under half og page on desktop
-        // TODO: add close box on modal/slide out menu
-// console.log({profilePicture})
+
     return (
         <div className="header">
             <div className="imageContainer">
@@ -39,7 +36,7 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                 {isLoggedIn ? (<img src={profilePicture || localStorage.getItem("profilePicture")} className="imagePlaceholder cursor" onClick={openProfile} alt="headshot"></img>) : ""}
             </div>
             <div className="headerTitle">
-                {isLoggedIn ? ( <h1 className="loggedInHeader">gamerPad</h1>) : (<h1>gamerPad</h1>)}
+                {isLoggedIn ? ( <Link to="/dashboard"><h1 className="loggedInHeader">gamerPad</h1></Link>) : (<h1>gamerPad</h1>)}
                 
             </div>
             
@@ -66,6 +63,10 @@ function Header({isLoggedIn, setIsLoggedIn, showModal, setShowModal, activeModal
                             setFriendsList={setFriendsList}
                             originalFriendsList={originalFriendsList}
                             setOriginalFriendsList={setOriginalFriendsList}
+                            gamesList={gamesList}
+                            setGamesList={setGamesList}
+                            originalGameList={setOriginalGameList}
+                            setOriginalGameList={setOriginalGameList}
                             warningMessage={warningMessage}
                             setWarningMessage={setWarningMessage}
                         />}

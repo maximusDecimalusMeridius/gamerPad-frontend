@@ -4,15 +4,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5px;
 }
 
-#formNoteTitle {
-    width: 90%;
+.addSubmitButton {
+    width: 200px;
 }
 
-#formNoteContent {
-    width: 90%;
-    min-height: 50px;
+.statusWindowAccount {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.inputContainer > input, 
+.inputContainer > select,
+.inputContainer > div {
+    width: 60%;
+    min-width: 80%;
+}
+
+.firstInputRowContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+#accountName {
+    flex-grow: 1;
+}
+
+#accountColorCode {
+    height: 25px;
+    width: 25px;
+    border: 2px solid transparent;
+    position: relative;
 }
 
 .modalForm {

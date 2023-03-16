@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AddFriend.css"
 
-function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, warningMessage, setWarningMessage}) {
-    
+function AddFriend({ setShowModal, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, warningMessage, setWarningMessage }) {
+
     const navigate = useNavigate();
 
     const [friendName, setFriendName] = useState([]);
@@ -12,86 +12,91 @@ function AddFriend({setShowModal, friendsList, setFriendsList, originalFriendsLi
     const handleSubmit = async (event) => {
 
         event.preventDefault();
-        
+
         try {
             const token = localStorage.getItem("token");
 
             const newFriendObj = {
-                username: friendName,
-                friendCode: friendCode
+                username: friendName.trim(),
+                friendCode: friendCode.trim()
             }
 
-            const result = await fetch ("https://gamerpad-backend.herokuapp.com/api/friends/addFriend", {
+            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/friends/addFriend", {
                 method: "POST",
                 body: JSON.stringify(newFriendObj),
                 headers: {
-                    "Content-Type":"application/json",
+                    "Content-Type": "application/json",
                     authorization: `Bearer ${token}`
                 }
             })
 
             // const data = await result.json();
 
-            if(result.ok){
-                console.log("friend added");
+            if (result.ok) {
+
                 setShowModal(false);
-                navigate("/", {replace: true})
+                navigate("/", { replace: true })
                 //we can reload if we persist "loggedInData"
                 // window.location.reload();
                 try {
                     const token = localStorage.getItem("token");
-              
+
                     const result = await fetch(
-                      "https://gamerpad-backend.herokuapp.com/api/friends/currentUserFriends",
-                      {
-                        method: "GET",
-                        headers: {
-                          authorization: token ? `Bearer ${token}` : "",
-                        },
-                      }
+                        "https://gamerpad-backend.herokuapp.com/api/friends/currentUserFriends",
+                        {
+                            method: "GET",
+                            headers: {
+                                authorization: token ? `Bearer ${token}` : "",
+                            },
+                        }
                     );
                     const data = await result.json();
-              
+
                     setFriendsList(data.Friends);
                     setOriginalFriendsList(data.Friends);
-              
-                  } catch (error) {
+
+                } catch (error) {
                     console.error(error);
                   }
-            } else {
-                setWarningMessage("Error adding friend");
+            } else if (result.status === 404){
+                setWarningMessage("Error adding friend, wrong code or username");
+                setTimeout(() => {
+                    setWarningMessage("");
+                }, "2000")
+            } else if (result.status === 403){
+                setWarningMessage("You must be logged in to add a friend");
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
             }
 
-        } catch(error) {
+        } catch (error) {
             console.error(error);
         }
     }
 
-    
+
 
     const handleChange = (event) => {
-        if(event.target.id === "friendName"){
+        if (event.target.id === "friendName") {
             setFriendName(event.target.value);
         } else if (event.target.id === "friendCode") {
             setFriendCode(event.target.value);
         }
     }
-    
+
     return (
         <div className="contentModalWindow">
             <form className="modalForm" id="signupForm" onSubmit={handleSubmit}>
-            <div className="inputContainer">
-                <input type="text" id="friendName" name="friendName" placeholder="friend's name" onChange={handleChange} value={friendName}required></input>
-                <input type="text" id="friendCode" name="friendCode" placeholder="friend's code" onChange={handleChange} value={friendCode}required></input>
-            </div>
-            <div className="statusWindow">
-                <p className="warningMessage" id="warningMessage">{warningMessage}</p>
-                <button className="addSubmitButton">Add Friend</button>
-            </div>
-        </form>
+                <div className="inputContainer">
+                    <input type="text" id="friendName" name="friendName" placeholder="friend's name" onChange={handleChange} value={friendName} required></input>
+                    <input type="text" id="friendCode" name="friendCode" placeholder="friend's code" onChange={handleChange} value={friendCode} required></input>
+                </div>
+                <div className="statusWindowFriend">
+                    <p className="warningMessage" id="warningMessage">{warningMessage}</p>
+                    <button className="addSubmitButton">Add Friend</button>
+                </div>
+            </form>
         </div>
     );
 }

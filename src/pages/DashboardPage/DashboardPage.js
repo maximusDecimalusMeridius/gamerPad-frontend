@@ -18,8 +18,8 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 // TODO: Create Div for carosel, with A tags on each image within carosel, have background linked to communities page
 // TODO: conditionally rendered friend list, games list, note list
 // TODO: Create card element for friend's list each friend on list is linked to their own pages)
-function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
-                        sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList,originalCommsList, setOriginalCommsList, setProfilePicture}) {
+function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, sharedNotes, setSharedNotes, gamesList, setGamesList, originalGameList, setOriginalGameList,
+                      friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, originalCommsList, setOriginalCommsList, commsList, setCommsList,  setProfilePicture, showModal, setShowModal, activeModal, setActiveModal}) {
   return (
     <div className="dashboardContainer">
       <ul className="pageTabs">
@@ -37,31 +37,49 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
       <Routes>
         <Route path="/">
           <Route path="" element={<SocialPage 
+                                  showModal={showModal}
+                                  setShowModal={setShowModal}
+                                  activeModal={activeModal}
+                                  setActiveModal={setActiveModal}
                                   friendsList={friendsList}
                                   setFriendsList={setFriendsList}
                                   originalFriendsList={originalFriendsList}
                                   setOriginalFriendsList={setOriginalFriendsList} 
                                   originalCommsList={originalCommsList}
                                   setOriginalCommsList={setOriginalCommsList}
+                                  commsList={commsList}
+                                  setCommsList={setCommsList}
                                   setProfilePicture={setProfilePicture}   />}
                                   />
           <Route path="social">
             <Route path="" element={<SocialPage 
+                                    showModal={showModal}
+                                    setShowModal={setShowModal}
+                                    activeModal={activeModal}
+                                    setActiveModal={setActiveModal}
                                     friendsList={friendsList}
                                     setFriendsList={setFriendsList}
                                     originalFriendsList={originalFriendsList}
                                     setOriginalFriendsList={setOriginalFriendsList}
                                     originalCommsList={originalCommsList}
                                     setOriginalCommsList={setOriginalCommsList}
+                                    commsList={commsList}
+                                    setCommsList={setCommsList}
                                     setProfilePicture={setProfilePicture}   
                                     />} />
             <Route index={true} element={<SocialPage 
+                                          showModal={showModal}
+                                          setShowModal={setShowModal}
+                                          activeModal={activeModal}
+                                          setActiveModal={setActiveModal}
                                           friendsList={friendsList}
                                           setFriendsList={setFriendsList}
                                           originalFriendsList={originalFriendsList}
                                           setOriginalFriendsList={setOriginalFriendsList}
                                           originalCommsList={originalCommsList}
                                           setOriginalCommsList={setOriginalCommsList}
+                                          commsList={commsList}
+                                          setCommsList={setCommsList}
                                           setProfilePicture={setProfilePicture}   
                                             />} />
           </Route>
@@ -82,8 +100,16 @@ function DashboardPage({writtenNotes, setWrittenNotes, originalWrittenNotesList,
                                             setSharedNotes={setSharedNotes}/>} />
           </Route>
           <Route path="games">
-            <Route path="" element={<GamesList />} />
-            <Route index={true} element={<GamesList />} />
+            <Route path="" element={<GamesList 
+                                      gamesList={gamesList}
+                                      setGamesList={setGamesList}
+                                      originalGameList={originalGameList}
+                                      setOriginalGameList={setOriginalGameList}/>} />
+            <Route index={true} element={<GamesList
+                                          gamesList={gamesList}
+                                          setGamesList={setGamesList}
+                                          originalGameList={originalGameList}
+                                          setOriginalGameList={setOriginalGameList}/>} />
           </Route>
           </Route>
       </Routes>

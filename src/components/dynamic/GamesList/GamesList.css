@@ -21,17 +21,14 @@
     transition: all .5s ease-out;
     border-radius: 10px;
     box-shadow: inset 1px 1px 4px 2px black;
+    position: relative;
 }
 
 .gameCardHeader {
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.gameCardTitle {
-
 }
 
 .gameCardPlatforms {
@@ -49,6 +46,13 @@
     font-style: italic;
 }
 
+.closeMenu {
+    height: fit-content;
+    margin: 1px 3px;
+    width: fit-content;
+    position: absolute;
+}
+
 .ratingsContainer {
     width: 90%;
     max-width: 600px;
@@ -61,6 +65,7 @@
 
 .ratings {
     width: 150px;
+    padding: 3px;
     text-align: center;
     background: #323232;
     color: white;
@@ -72,27 +77,24 @@
     height: 40px;
     width: inherit;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .bubble {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     border: 2px solid white;
     border-radius: 50%;
     background: white;
 }
 
 .filled {
-    background: var(--xbox-green);
-    box-shadow: 0px 0px 6px 3px var(--light-xbox-green);
+    background: var(--button-red);
+    box-shadow: 0px 0px 6px 3px var(--button-red);
 }
 
 @media (width < 750px) {
-    .gamesContainer {
-        
-    }
 
     .gameCard {
         width: 100%;

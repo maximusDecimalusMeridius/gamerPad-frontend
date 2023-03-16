@@ -1,11 +1,15 @@
 .profilePageContainer {
     --profile-padding: 2%;
     height: 90%;
-    width: 80%;
+    width: 85%;
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 5px 8px 2px black;
+    box-shadow: 3px 3px 10px 2px rgb(36, 35, 35);
     border-radius: var(--homeContainer-border-radius);
+}
+
+.profileContent .searchbarInput:focus {
+    position: relative;
 }
 
 .profileContent {
@@ -21,7 +25,7 @@
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background-color: #323232;
+    background-color: #353535b1;
 }
 
 .profileHeader {
@@ -46,7 +50,7 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #bebebe;
+    background-color: #1a1919b7;
     flex-wrap: nowrap;
 }
 
@@ -58,6 +62,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    color: white;
 }
 
 .profileInnerDiv div {
@@ -89,7 +94,7 @@
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
-    background-color: #bebebe;
+    background-color: #1a1919b7;
 }
 
 .passwordFormInputs {
@@ -100,6 +105,10 @@
     align-items: center;
     height: 100%;
     justify-content: space-evenly;
+}
+
+.passwordFormInputs label {
+    color: white;
 }
 
 .updatePasswordForm input {
@@ -123,6 +132,10 @@
     font-style: italic;
 }
 
+#update, #cancel {
+    margin-top: 5px;
+}
+
 .passwordRowItem button {
     margin: 5px;
 }
@@ -134,7 +147,7 @@
     -moz-appearance: none;
     -o-appearance: none;
     appearance: none;
-    border: 1px solid #000000;
+    border: 1px solid white;
     border-radius: 5px;
     outline: none;
     transition-duration: 0.3s;
@@ -156,6 +169,7 @@
     .profileInnerDiv, .passwordFormInputs {
         width: 90%;
         max-width: 300px;
+        text-align: center;
     }
 
     .updatePasswordForm {

@@ -61,7 +61,6 @@ function NotesList({ writtenNotes, setWrittenNotes, sharedNotes, setSharedNotes,
 
     const handleDelete = async (noteId) => {
 
-        console.log(noteId)
         try {
             const token = localStorage.getItem("token");
 

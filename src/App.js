@@ -21,16 +21,20 @@ function App() {
   const [originalWrittenNotesList, setOriginalWrittenNotesList] = useState([]);
   const [friendsList, setFriendsList] = useState([]);
   const [originalFriendsList, setOriginalFriendsList] = useState([]);
+  const [gamesList, setGamesList] = useState([]);
+  const [originalGameList, setOriginalGameList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   const [accountsList, setAccountsList] = useState([]);
   const [originalAccountsList, setOriginalAccountsList] = useState([]);
   const [warningMessage, setWarningMessage] = useState("");
   const [originalCommsList, setOriginalCommsList] = useState([]);
+  const [commsList, setCommsList] = useState([])
   const [profilePicture, setProfilePicture] = useState("")
   const [token, setToken] = useState("");
 
   const validateToken = async (token) => {
-
+    setActiveModal("Checking Login Info...");
+    setShowModal(true);
     try {
         const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/isValidToken", {
             method: "GET",
@@ -38,33 +42,28 @@ function App() {
                 authorization: token ? `Bearer ${token}` : ''
             }
         })
+
+        if(result.ok){
+          setActiveModal("Logged In!");
+          setTimeout(() => {
+            setShowModal(false);
+          }, "1000")
+        } else {
+          setActiveModal("Error Logging In - Please Try Again");
+          setTimeout(() => {
+            setShowModal(false);
+          }, "1000")
+        }
+
         return result.json()
     } catch (error) {
         console.error(error);
     }
     
   }
-  // const getProfilePic = async (token) => {
-  //   try {
-      
-  //     const result = await fetch("https://gamerpad-backend.herokuapp.com/api/users/currentUserInfo", {
-  //       method: "GET",
-  //       headers: {
-  //         authorization: token ? `Bearer ${token}` : ''
-  //       }
-  //     })
-      
-  //     const data = await result.json();
-      
-  //     setProfilePicture(data.profilePicture)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
   useEffect(()=>{
     const savedToken = localStorage.getItem("token");
-    console.log(savedToken)
     if(savedToken){
       validateToken(savedToken).then(tokenData=>{
         if(tokenData.isValid){
@@ -75,11 +74,14 @@ function App() {
         }
       })
     }
+    setBackgroundColor(localStorage.getItem("backgroundColor"))
   },[])
+
+  const [backgroundColor, setBackgroundColor] = useState("#bebebe")
   
   return (
     <Router>
-      <div className="appContainer">
+      <div className="appContainer" style={{backgroundColor:`${backgroundColor}`}}>
        
         <header>
           <Header 
@@ -103,6 +105,13 @@ function App() {
             setFriendsList={setFriendsList}
             originalFriendsList={originalFriendsList}
             setOriginalFriendsList={setOriginalFriendsList}
+            gamesList={gamesList}
+            setGamesList={setGamesList}
+            originalGameList={originalGameList}
+            setOriginalGameList={setOriginalGameList}
+            commsList={commsList}
+            setCommsList={setCommsList}
+            originalCommsList={setOriginalCommsList}
             showMenu={showMenu}
             setShowMenu={setShowModal}
             warningMessage={warningMessage}
@@ -119,6 +128,8 @@ function App() {
                           setWarningMessage={setWarningMessage}
                           />}
           {isLoggedIn && <HomePage 
+                          setBackgroundColor={setBackgroundColor}
+                          backgroundColor={backgroundColor}
                           showModal={showModal}
                           setShowModal={setShowModal}
                           activeModal={activeModal}
@@ -131,6 +142,10 @@ function App() {
                           setAccountsList={setAccountsList}
                           originalAccountsList={originalAccountsList}
                           setOriginalAccountsList={setOriginalAccountsList}
+                          gamesList={gamesList}
+                          setGamesList={setGamesList}
+                          originalGameList={originalGameList}
+                          setOriginalGameList={setOriginalGameList}
                           sharedNotes={sharedNotes}
                           setSharedNotes={setSharedNotes}
                           friendsList={friendsList}
@@ -141,6 +156,10 @@ function App() {
                           setProfilePicture={setProfilePicture}   
                           originalCommsList={originalCommsList}
                           setOriginalCommsList={setOriginalCommsList}
+                          commsList={commsList}
+                          setCommsList={setCommsList}
+                          warningMessage={warningMessage}
+                          setWarningMessage={setWarningMessage}
                           />}
         </main>        
       </div>

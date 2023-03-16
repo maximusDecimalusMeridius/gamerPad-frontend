@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProfilePage.css';
+import { Link } from "react-router-dom";
 import AccountsList from "../../components/dynamic/AccountsList/AccountsList";
 import SearchBar from '../../components/static/SearchBar/SearchBar';
 // import bcrypt from 'bcrypt'
@@ -10,9 +11,10 @@ import SearchBar from '../../components/static/SearchBar/SearchBar';
 // TODO: when the area expands it the user's profile image beneath their username, and their top games
 // TODO: beneath the user image will be a lsit of their top usernames/gamertags they have linked
 // TODO: when a username/gamertag is searched the acordian changes to reflect the search
-function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture }) {
+function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setOriginalAccountsList, profilePicture, setProfilePicture, warningMessage, setWarningMessage }) {
 
   const [username, setUserName] = useState([]);
+  const [friendCount, setFriendCount] = useState(0)
   const [userInfo, setuserInfo] = useState({})
 
   const [friendsNum, setfriendsNum] = useState(0)
@@ -45,10 +47,12 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       })
 
       const data = await result.json();
-      setuserInfo(data)
-      setfriendsNum(data.Friends.length)
-      setGamesNum(data.UserGames.length)
-      setProfilePicUrl(data.profilePicture)
+      if (data) {
+        setuserInfo(data)
+        setfriendsNum(data.Friends.length)
+        setGamesNum(data.UserGames.length)
+        setProfilePicUrl(data.profilePicture)
+      }
     } catch (error) {
       console.error(error);
     }
@@ -75,9 +79,6 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
     }
   }
 
-  
-
-
   const handleChange = (e) => {
     if (e.target.id === "oldPassword") {
       setOldPassword(e.target.value)
@@ -97,11 +98,63 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       setLFFCheckbox(e.target.checked)
     }
   }
+  const validateField = (e) => {
 
+    const { name, value } = e.target;
+    const emailValidator = /^[a-zA-Z0-9.!?#$%^&*\-_]+\.@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/
+
+    if (name === `username`) {
+      if (value === '') {
+        setWarningMessage('Username field is required');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else if (value.length < 3 || value.length > 20) {
+        setWarningMessage('Username must be between 3 to 20 characters');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else {
+        setWarningMessage('');
+      }
+    } else if (name === `email`) {
+      if (value === '') {
+        setWarningMessage('Email field is required');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else {
+        setWarningMessage('');
+      }
+    } else if (name === `friendCode`) {
+      if (value === "") {
+        setWarningMessage('field is required');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else if (!emailValidator.test(value)) {
+        setWarningMessage('Please enter a valid word');
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000")
+      } else {
+        setWarningMessage('');
+      }
+
+    }
+  }
   const editProfile = async (e) => {
     e.preventDefault()
+    const emailValidator = /^[a-zA-Z0-9.!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
 
     try {
+      if(!emailValidator.test(emailChange)) {
+        setWarningMessage('Please enter a valid email address')
+        setTimeout(() => {
+          setWarningMessage("");
+      }, "2000")
+      return
+      }
       const token = localStorage.getItem("token");
       const profilObject = {
         username: usernameChange,
@@ -124,6 +177,21 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         setMode("profile");
         setProfilePicture(profilePicUrl);
         localStorage.setItem("profilePicture", profilePicUrl);
+      } else if (result.status === 403) {
+        setWarningMessage("You must be logged in to update an acount");
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000");
+      } else if (result.status === 404) {
+        setWarningMessage("No record matching that user");
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000");
+      } else if (result.status === 500) {
+        setWarningMessage("User name is already taken");
+        setTimeout(() => {
+          setWarningMessage("");
+        }, "2000");
       }
 
     } catch (error) {
@@ -137,9 +205,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
         <form className="updatePasswordForm">
           <img id="mainProfilePicture" src={profilePicUrl} alt='profile'></img>
           <div className="passwordFormInputs">
-            <input type="password" placeholder="old password" id="oldPassword" value={oldPassword} onChange={handleChange}></input>
-            <input type="password" placeholder="new password" id="newPassword" value={newPassword} onChange={handleChange}></input>
-            <input type="password" placeholder="re-enter new pw" id="newPassword2nd" value={newPassword2nd} onChange={handleChange}></input>
+            <input type="password" placeholder="old password" id="oldPassword" name="oldPassword" value={oldPassword} onChange={handleChange} onBlur={validateField}></input>
+            <input type="password" placeholder="new password" id="newPassword" name="newPassword" value={newPassword} onChange={handleChange} onBlur={validateField}></input>
+            <input type="password" placeholder="re-enter new pw" id="newPassword2nd" name="vPassword" value={newPassword2nd} onChange={handleChange} onBlur={validateField}></input>
           </div>
           <div className="updateAndCancelBtns">
             <button id='update' onClick={handleModeChange}>Update</button>
@@ -149,20 +217,21 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
       )
     } else if (mode === "updateProfile") {
       return (
-        <form className="updatePasswordForm">
+        <form className="updatePasswordForm" onSubmit={editProfile}>
           <img id="mainProfilePicture" src={profilePicUrl} alt='profile'></img>
           <div className="passwordFormInputs">
             <input type="text" placeholder="Profile picture Url" id='profilePicUrl' value={profilePicUrl} onChange={handleChange}></input>
-            <input type="text" placeholder="username" id='usernameChange' value={usernameChange} onChange={handleChange}></input>
-            <input type="email" placeholder="email" id="emailChange" value={emailChange} onChange={handleChange}></input>
-            <input type="text" placeholder="FriendCode" id='friendCodeChange' value={friendCodeChange} onChange={handleChange}></input>
+            <input type="text" placeholder="username" id='usernameChange' name="username" value={usernameChange} onChange={handleChange} onBlur={validateField} required></input>
+            <input type="email" placeholder="email" id="emailChange" name="email" value={emailChange} onChange={handleChange} onBlur={validateField} required></input>
+            <input type="text" placeholder="FriendCode" id='friendCodeChange' name="friendCode" value={friendCodeChange} onChange={handleChange} onBlur={validateField} required></input>
             <div>
               <label htmlFor='LFF'>Looking For Friends: </label>
               <input type="checkbox" name='LFF' id="LFFCheckbox" checked={LFFCheckbox} onChange={handleChange}></input>
             </div>
+            <p className="warningMessage" id="warningMessage">{warningMessage}</p>
           </div>
           <div className="updateAndCancelBtns">
-            <button id='update' onClick={editProfile}>Update</button>
+            <button id='update' className="submitButton">Update</button>
             <button id='cancel' onClick={handleModeChange}>Cancel</button>
           </div>
         </form>
@@ -174,7 +243,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
           <div className='profileInnerDiv'>
             <div>
               <p className="userRowItem">Username: {username}</p>
-              <p className="emailRowItem">email: {userInfo.email}</p>
+              <p className="emailRowItem">Email: {userInfo.email}</p>
             </div>
             <div>
               <p className="friendCodeRowItem">Friend Code: {userInfo.friendCode}</p>
@@ -193,9 +262,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
   return (
     <div className="profilePageContainer">
       <div className="profileHeader">
-        <div>{gamesNum} Games</div>
+      <Link to="/dashboard/social">{friendsNum} Friends</Link>
         <h3>{username}</h3>
-        <div>{friendsNum} Friends</div>
+      <Link to="/dashboard/games">{gamesNum} Games</Link>
       </div>
       <div className="profileContent">
         {renderProfile()}

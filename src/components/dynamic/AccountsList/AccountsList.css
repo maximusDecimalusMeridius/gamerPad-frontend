@@ -2,30 +2,44 @@
     width: 100%;
     height: fit-content;
     /* background: rgb(132, 26, 26); */
-
+    background-color: #353535b1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     flex-grow: 1;
 }
 
-.chatAccount {
+/* .chatAccount {
     background-color: var(--button-red);
 }
 
 .gamingAccount {
     background-color: rgb(91, 91, 91);
-}
+} */
 
 .accountDiv {
-    color: white;
     display: flex;
-    border: 1px solid #2a2929;
     border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    height: 120px;
-    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    /* height: 100px; */
+    min-width: 225px;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    box-shadow: 3px 3px 6px 2px rgba(51, 49, 49, 0.807);
+}
+
+.accountDiv p {
+    margin-top: 5px;
+}
+
+.accountDiv h3 {
+    margin-top: 10px;
+}
+
+.closeMenu {
+    position: absolute;
+    top: 3px;
+    right: 3px;
 }
