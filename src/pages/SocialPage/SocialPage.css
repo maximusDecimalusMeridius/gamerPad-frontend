@@ -27,7 +27,7 @@
     justify-content: flex-end;
     align-content: center;
     gap: 5px; 
-    background: white;
+    background-color: var(--window-light-gray);
     border-bottom: 1px solid black;
 }
 
@@ -36,12 +36,23 @@
     white-space: nowrap;
 }
 
-#swapButton{  
-    background-color: blue;
-    padding:3px;
-    margin-left: 1px;
-    height:fit-content;
-    width:fit-content;
+#swapButton {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #222223;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.3s;
+    margin: 0px 2px;
+}
+
+#swapButton:checked {
+    border: 1px solid #ffffff;
+    background-color: var(--button-red);
 }
 
 @media (width < 350px) {
