@@ -26,8 +26,6 @@ function AccountsList({ setUserName, accountsList, setAccountsList, originalAcco
 
             const data = await result.json();
 
-            console.log(data);
-
             setAccountsList(data.Accounts)
             setOriginalAccountsList(data.Accounts)
             setUserName(data.username)

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import "./AddGame.css"
 
 function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
@@ -12,6 +13,8 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
     const [platformList, setPlatformList] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
     const [isLFM, setIsLFM] = useState(false)
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -47,6 +50,7 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
 
             if (result.ok) {
                 setShowModal(false)
+                navigate("/dashboard/games", {replace: true})
             } else if(result.status === 403) {
                 setWarningMessage("You must be logged in to add a game");
                 setTimeout(() => {

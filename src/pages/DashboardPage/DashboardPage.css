@@ -31,6 +31,7 @@
     background: white;
     border-top-left-radius: var(--homeContainer-border-radius);
     border-top-right-radius: var(--homeContainer-border-radius);
+    text-shadow: 0px;
 }
 
 .pageTab:hover a {

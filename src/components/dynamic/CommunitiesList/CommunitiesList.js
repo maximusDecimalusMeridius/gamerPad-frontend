@@ -30,20 +30,41 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
     }
   };
 
+  const getColor = () => {
+    
+    const colorArray = ["red", "blue", "green", "purple", "orange"];
+
+    const yourColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+
+    return (
+      {
+        height: "fit-content",
+        width: "fit-content",
+        padding: "5px",
+        border: "3px solid white",
+        borderRadius: "5px",
+        background: "#323232",
+        backgroundColor: `${yourColor}`
+      }
+    )
+  }
+
   const openCard = (game, index) => {
     return (
       <>
-        <div className="openCommsHeader cursor" onClick={() => handleCommsClick(index)}>
+        <div className="openCommsCard growWide cursor" onClick={() => handleCommsClick(index)}>
+        <div className="openCommsHeader" >
           <h2 className="commTitle">{game.title}</h2>
           <p className="whosPlaying">{game.allPlayers} Playing</p>
         </div>
-        <p>Released: {game.releaseDate}</p>
-        <ul className="friendsPlay"><span>Friends Playing:</span>
+        <p className="releaseDate">Released: {game.releaseDate}</p>
+        <h3>Friends Who Play:</h3>
+        <ul className="friendsPlay">
           {game.listOfFriends.map((friend) => (
-            <li key={index}>{friend.username}</li>
+            <li style={getColor()} key={index}>{friend.username}</li>
             ))}
         </ul>
-            
+          </div>
   
       </>
     )
@@ -55,14 +76,12 @@ function CommunitiesList({commsList, setCommsList, originalCommsList, setOrigina
   const comms = commsList && commsList.length > 0 ? commsList.map((game, index) => {
       const isOpen = index === openIndex;
       return (
-        <div className="commsCard" key={index}>
-        <div className="commsCardHeader">
-          {!isOpen ? (<div className="openCommsHeader cursor" onClick={() => handleCommsClick(index)}>
+        <>
+        {!isOpen ? (<div className="commsCard cursor" onClick={() => handleCommsClick(index)}><div className="closedCommsHeader">
           <h2 className="commTitle" >{game.title}</h2>
           <p className="whosPlaying">{game.allPlayers} Playing</p>
-        </div>) : openCard(game, index)}
-        </div>
-      </div>
+        </div></div>) : openCard(game, index)}
+        </>
     );
 }) : "No communities - Add some games!";
   return (

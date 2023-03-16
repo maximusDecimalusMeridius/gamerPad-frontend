@@ -88,7 +88,6 @@ function FriendsList({
   }
 
   const openCard = (friend, index) => {
-    console.log(friend);
     return (
       <>
         <div className="openCardHeader">
@@ -101,7 +100,7 @@ function FriendsList({
         <div className="friendAccounts">
           <span className="tableHeader">Accounts:</span>
           <div className="accountTable">
-            {friend.Accounts.length === 0 ? <p style={{padding: "10px"}}>User hasn't added accounts!</p> : <>
+            {friend.Accounts.length === 0 ? <p style={{padding: "5px", fontSize: "12px"}}>User hasn't added accounts!</p> : <>
             {friend.Accounts.map((account) => (
               <ul className="account" key={crypto.randomUUID()}>
                   <li>{account.account}</li>
@@ -114,11 +113,10 @@ function FriendsList({
         <div className="friendGames">
           <span className="tableHeader">Games:</span>
           <div className="gameTable">
-          {friend.UserGames.length === 0 ? <p style={{padding: "10px"}}>User hasnt added games!</p> : <>
+          {friend.UserGames.length === 0 ? <p style={{padding: "5px", fontSize: "12px"}}>User hasnt added games!</p> : <>
           {friend.UserGames.map((game) => (
               <ul className="game" key={crypto.randomUUID()}>
                   <li>{game.Game.title}</li>
-                  <li>{game.Game.releaseDate}</li>
               </ul>
               ))}
             </>}
@@ -134,7 +132,7 @@ function FriendsList({
     return (
       <div className="friendCard" key={index}>
         <div className="friendCardHeader">
-          {isOpen ? openCard(friend, index) : ( <h2 className="friendUsernameClosed" onClick={() => handleFriendClick(index)}>
+          {isOpen ? openCard(friend, index) : ( <h2 className="friendUsernameClosed cursor" onClick={() => handleFriendClick(index)}>
             {friend.username}
           </h2>
           )}

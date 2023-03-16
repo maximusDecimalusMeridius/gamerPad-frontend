@@ -3,42 +3,81 @@
     width: 100%;
     padding-top: 25px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     overflow-y: auto;
     gap: 10px;
     border-bottom-left-radius: var(--homeContainer-border-radius);
     border-bottom-right-radius: var(--homeContainer-border-radius);
+    position: relative;
 }
 
-.commsCardHeader{
+.commsCard {
+    width: 45%;
+    min-height: 75px;
     height: fit-content;
-    min-height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    padding-top: 10px;
     background: #323232;
     color: white;
     position: relative;
     border-radius: 15px;
     box-shadow: inset 2px 2px 4px black;
     text-shadow: 1px 1px 2px black;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
-.commsCard {
+.openCommsCard {
     width: 45%;
-    flex-shrink: 0;
-    flex-grow: 1;
+    min-height: 75px;
+    height: fit-content;
+    padding-top: 10px;
+    background: #323232;
+    color: white;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: inset 2px 2px 4px black;
+    text-shadow: 1px 1px 2px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: .25s all ease-out;
+    top: 15%;
+}
+
+
+.closedCommsHeader {
+    width: 95%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .openCommsHeader {
+    height: fit-content;
+    width: 95%;
     display: flex;
     justify-content: space-between;
 }
 
+.releaseDate {
+    width: 90%;
+}
+
 .commTitle{
+    width: fit-content;
+    height: fit-content;
     cursor: pointer;
 }
 
@@ -46,6 +85,78 @@
     list-style: none;
 }
 
+/* .friendTag {
+    height: fit-content;
+    width: fit-content;
+    padding: 5px;
+    border: 3px solid white;
+    border-radius: 5px;
+    background: #323232;
+} */
+
 .growWide {
-    margin-right: auto;
+    width: 70%;
+    height: 80%;
+    min-height: 175px;
+    height: fit-content;
+    z-index: 3;
+    position: absolute;
+    background: #131313ef;
+    border: 3px solid white;
+}
+
+.releaseDate {
+    text-align: left;
+    font-size: 12px;
+}
+
+.growWide::after {
+    content: 'click anywhere to close';
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    font-style: italic;
+}
+
+@media (width < 900px) {
+    .commsContainer {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    
+    .commsCard {
+        width: 80%;
+    }
+
+    .commTitle {
+        font-size: 18px;
+    }
+
+    .whosPlaying {
+        font-size: 14px;
+        font-style: italic;
+    }
+}
+
+@media (width < 600px) {
+    .openCommsHeader {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .releaseDate {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .growWide {
+        height: fit-content;
+    }
 }
