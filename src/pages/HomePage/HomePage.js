@@ -11,7 +11,7 @@ import SocialPage from "../SocialPage/SocialPage";
 import FriendsList from "../../components/dynamic/FriendsList/FriendsList";
 
 function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal, activeModal, setActiveModal, warningMessage, setWarningMessage,
-    writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList, gamesList, setGamesList, originalGameList, setOriginalGameList,
+    writtenNotes, setWrittenNotes, originalWrittenNotesList, setOriginalWrittenNotesList,
     sharedNotes, setSharedNotes, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, setAccountsList,
     originalAccountsList, setOriginalAccountsList, originalCommsList, setOriginalCommsList, commsList, setCommsList, profilePicture, setProfilePicture, userInfo }) {
 
@@ -82,6 +82,12 @@ function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal
         } catch (error) {
             console.error(error);
         }
+    }
+
+    const handleCloseColors = (e) => {
+        e.preventDefault()
+        setColorModalVisibility('none')
+        localStorage.backgroundColor = backgroundColor
     }
 
     return (
