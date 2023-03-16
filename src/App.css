@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rozha+One&display=swap');
+
 :root {
     --window-light-gray: #f6f7eb;
     --window-dark-gray: #393e41;
@@ -81,6 +84,13 @@ button:active {
 
 .cursor {
     cursor: pointer;
+}
+
+.noselect {
+    user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -webkit-user-select: none;
 }
 
 header {
