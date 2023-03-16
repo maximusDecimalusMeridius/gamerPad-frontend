@@ -31,7 +31,6 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
             })
 
             const data = await result.json();
-            console.log(data);
 
             if(result.ok){
                 setIsLoggedIn(true);
@@ -50,12 +49,11 @@ function Signup({activePage, userValue, emailValue, passwordValue, confirmValue,
     }
 
     const validateField = (e) => {
-        console.log(e)
+
         const {name, value} = e.target;
         const passwordValidator = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*+?:;])[A-Za-z\d~!@#$%^&*+?:;]/;
         const emailValidator = /[\w-.]+@([\w-]+\.)+[\w-]{2,4}/gi
-        console.log(value)
-        console.log(document.querySelector(`#signupPassword`).innerText)
+
         if(name === `username`){
             if(value === ''){
                 setWarningMessage('Username field is required');

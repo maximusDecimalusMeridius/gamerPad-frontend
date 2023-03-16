@@ -33,7 +33,7 @@ function AddFriend({ setShowModal, friendsList, setFriendsList, originalFriendsL
             // const data = await result.json();
 
             if (result.ok) {
-                console.log("friend added");
+
                 setShowModal(false);
                 navigate("/", { replace: true })
                 //we can reload if we persist "loggedInData"

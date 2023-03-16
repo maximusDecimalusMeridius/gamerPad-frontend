@@ -30,7 +30,6 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
             } else {
-                console.log(result);
                 setWarningMessage("Error logging in");
                 setTimeout(() => {
                     setWarningMessage("");

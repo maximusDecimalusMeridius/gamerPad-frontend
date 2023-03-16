@@ -9,13 +9,13 @@
     flex-grow: 1;
 }
 
-.chatAccount {
+/* .chatAccount {
     background-color: var(--button-red);
 }
 
 .gamingAccount {
     background-color: rgb(91, 91, 91);
-}
+} */
 
 .accountDiv {
     color: white;

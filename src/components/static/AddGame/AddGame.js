@@ -109,7 +109,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
             if (data) {
                 setPlatformsAutoComplete(data)
                 setOriginalPlatformsList(data)
-                console.log(data)
             }
         } catch (error) {
             console.error(error);
@@ -131,7 +130,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                 { id: e.target.dataset.id, platform: e.target.textContent },
                 ...platformList
             ])
-            console.log(platformList)
         }
     }
 
@@ -184,7 +182,6 @@ function AddGame({ setShowModal, warningMessage, setWarningMessage }) {
                 const data = await result.json();
                 if (data) {
                     setGamesList(data)
-                    console.log(data)
                 } 
                 if(data.length<1){
                     setWarningMessage(`Oh no! We did not find any games including ${searchInput}`);

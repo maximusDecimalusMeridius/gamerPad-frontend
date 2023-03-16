@@ -8,4 +8,90 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    position: relative;
+}
+
+.addAllButtonBox {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+.addAllButton {
+    height: 50px;
+    width: 50px;
+    padding: 3px;
+    font-size: 32px;
+    border-radius: 50%;
+    background: #323232;
+    position: relative;
+    color: white;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    transition: .25s all ease-out;
+    z-index: 2;
+    user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -webkit-user-select: none;
+}
+
+.addAllMenu {
+    list-style-type: none;
+    padding: 30px 20px;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    position: absolute;
+    right: -125px;
+    bottom: 50px;
+    font-size: 16px;
+    transition: .5s height ease-out, .5s width ease-out, .25s opacity linear, .5s transform linear,
+                .5s right linear, .5s bottom linear;
+    background: #323232;
+    color: #bebebe;
+    overflow: hidden;
+    transform: rotate(90deg);
+    border-radius: 15px;
+    z-index: 1;
+    box-shadow: 4px 4px 8px 2px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    border: 4px solid white;
+}
+
+.addAllMenu > li {
+    white-space: nowrap;
+}
+
+.addAllMenu > li:hover {
+    color: white;
+}
+
+.addAllMenu > li:active {
+    color: red;
+}
+
+.grow {
+    height: 250px;
+    width: 150px;
+    right: 25px;
+    bottom: 25px;
+    opacity: 1;
+    transform: rotate(0);
+}
+
+.openButton {
+    transform: rotate(-45deg);
+    color: red;
+    border: 4px solid red;
+    box-shadow: 0px 0px 8px hsl(350, 100%, 62%),
+                inset 0px 0px 4px hsl(350, 100%, 62%)
 }

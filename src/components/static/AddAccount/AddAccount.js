@@ -28,12 +28,10 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
             const newAccountObj = {
                 account: accountName.trim(),
                 color: accountColorCode,
-                type: accountType.trim(),
+                type: document.querySelector("#accountType").value,
                 username: accountUsername.trim(),
                 gamerTag: gamertag.trim()
             }
-
-            console.log(newAccountObj)
 
             const result = await fetch ("http://gamerpad-backend.herokuapp.com/api/accounts", {
                 method: "POST",
@@ -54,7 +52,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     gamerTag: `${data.gamerTag}`,
                     id: data.id,
                     type: `${data.type}`,
-                    username: `${data.username}`
+                    username: `${data.username}`,
+                    color: `${data.color}`
                 }])
                 setOriginalAccountsList([...originalAccountsList, {
                     UserId: data.UserId,
@@ -63,7 +62,8 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     gamerTag: `${data.gamerTag}`,
                     id: data.id,
                     type: `${data.type}`,
-                    username: `${data.username}`
+                    username: `${data.username}`,
+                    color: `${data.color}`
                 }])
                 setShowModal(false);
                 navigate("/profile", {replace: true})
@@ -101,7 +101,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     <input type="text" id="accountName" name="accountName" placeholder="account name" onChange={handleChange} value={accountName} required></input>
                     <input className="cursor" id="accountColorCode" type="color" value={accountColorCode} onChange={handleChange}></input>
                 </div>
-                <select type="text" id="accountType" name="accountType" placeholder="account type" onChange={handleChange} value={accountType} required>
+                <select type="text" id="accountType" name="accountType" placeholder="account type" required>
                     {dropdown}
                 </select>
                 <input type="text" id="accountUsername" name="accountUsername" placeholder="account_name#3232" onChange={handleChange} value={accountUsername}required></input>
