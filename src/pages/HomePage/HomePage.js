@@ -54,35 +54,6 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
         }
     }
 
-    // useEffect hook to fetch all notes on page load
-    useEffect(() => {
-        fetchGames();
-        document.title = `gamerPad - Games`;
-    }, []);
-
-    // Fetch data
-    const fetchGames = async (event) => {
-
-        try {
-            const token = localStorage.getItem("token");
-
-            const result = await fetch("https://gamerpad-backend.herokuapp.com/api/games/usergame", {
-                method: "GET",
-                headers: {
-                    authorization: token ? `Bearer ${token}` : ''
-                }
-            })
-
-            const data = await result.json();
-
-            setGamesList(data.UserGames)
-            setOriginalGameList(data.UserGames)
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     return (
         <div className="homeContainer" id="homePage">
             <Routes>
@@ -106,6 +77,10 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
                     setCommsList={setCommsList}
                     originalCommsList={originalCommsList}
                     setOriginalCommsList={setOriginalCommsList}
+                    gamesList={gamesList}
+                    setGamesList={setGamesList}
+                    originalGameList={originalGameList}
+                    setOriginalGameList={setOriginalGameList}
                 />} />
                 <Route path="profile" element={<ProfilePage
                     {...userInfo}
@@ -138,6 +113,10 @@ function HomePage({ showModal, setShowModal, activeModal, setActiveModal, warnin
                     setCommsList={setCommsList}
                     originalCommsList={originalCommsList}
                     setOriginalCommsList={setOriginalCommsList}
+                    gamesList={gamesList}
+                    setGamesList={setGamesList}
+                    originalGameList={originalGameList}
+                    setOriginalGameList={setOriginalGameList}
                 />}>
                     <Route path="notes" element={<NotesList
                         writtenNotes={writtenNotes}

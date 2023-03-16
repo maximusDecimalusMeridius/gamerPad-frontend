@@ -9,7 +9,7 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const emailValidator = /^[a-zA-Z0-9!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
+        const emailValidator = /^[a-zA-Z0-9.!#$_%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         const passwordValidator = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*+?:;])[A-Za-z\d~!@#$%^&*+?:;]{8,128}/;
 
         try {
@@ -23,7 +23,7 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
                 }, "2000")
                 return
             } else if (!emailValidator.test(emailValue)) {
-                setWarningMessage('Please enter a valid email address')
+                setWarningMessage('Please enter a valid email address!')
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
@@ -65,7 +65,7 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
 
         const { name, value } = e.target;
         const passwordValidator = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*+?:;])[A-Za-z\d~!@#$%^&*+?:;]/;
-        const emailValidator = /^[a-zA-Z0-9!#$%^&*\-_]+@([a-zA-Z0-9!#$%^&*\-_]+\.)+[a-zA-Z0-9!#$%^&*\-_]{2,4}$/gi
+        const emailValidator = /^[a-zA-Z0-9.!#$_%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
         if (name === `username`) {
             if (value === '') {
@@ -84,11 +84,6 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
         } else if (name === `email`) {
             if (value === '') {
                 setWarningMessage('Email field is required');
-                setTimeout(() => {
-                    setWarningMessage("");
-                }, "2000")
-            } else if (!emailValidator.test(value)) {
-                setWarningMessage('Please enter a valid email address');
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
