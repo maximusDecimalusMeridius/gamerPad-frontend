@@ -101,7 +101,7 @@ function FriendsList({
         <div className="friendAccounts">
           <span className="tableHeader">Accounts:</span>
           <div className="accountTable">
-            {friend.Accounts.length === 0 ? <p style={{padding: "10px"}}>User hasn't added accounts!"</p> : <>
+            {friend.Accounts.length === 0 ? <p style={{padding: "10px"}}>User hasn't added accounts!</p> : <>
             {friend.Accounts.map((account) => (
               <ul className="account" key={crypto.randomUUID()}>
                   <li>{account.account}</li>
