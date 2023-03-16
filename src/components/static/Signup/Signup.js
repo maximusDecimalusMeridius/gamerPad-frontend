@@ -101,17 +101,9 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
-<<<<<<< HEAD
             } else if(!(passwordValidator.test(value))){
-                const errorBar = document.querySelector(`#warningMessage`);
-                const tempStyle = errorBar.getAttribute(`style`);
-                errorBar.setAttribute(`style`, `${tempStyle}; text-align: justify`);
-=======
-            } else if (!(passwordValidator.test(value))) {
->>>>>>> 92354808e686c5d03349a430554aaddc9a4ab6f1
                 setWarningMessage('Passwords require at least 1 uppercase character, 1 lowercase character, 1 number, and 1 special character ds');
                 setTimeout(() => {
-                    errorBar.setAttribute(`style`, `${tempStyle}`);
                     setWarningMessage("");
                 }, "2000")
             } else if (value.length < 8 || value.length > 128) {

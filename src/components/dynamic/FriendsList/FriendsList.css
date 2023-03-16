@@ -98,12 +98,27 @@
     justify-self: flex-start;
 }
 
-.account, .game {
+.friendsPlay {
+    width: 100%;
+    height: fit-content;
+    min-height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account {
     width: 100%;
     list-style: none;
     padding: 5px;
     border-bottom: 1px solid #323232;
     border-bottom-style: dotted;
+}
+
+.game {
+    width: 100%;
+    list-style: none;
+    padding: 5px;
 }
 
 .account:first-child {
@@ -125,6 +140,7 @@
 }
 
 .accountTable, .gameTable {
+    min-height: 50px;
     max-height: 100px;
     margin-top: 5px;
     color: black;
@@ -140,6 +156,7 @@
 .account li, .game li{
     font-size: 14px;
     padding-left: 2px;
+    white-space: nowrap;
 }
 
 .deleteButton{
@@ -148,7 +165,7 @@
     font-size: 12px;
     position: absolute;
     bottom: 0px;
-    left: 0px;
+    left: -5px;
     cursor: pointer;
     font-weight: bold;
     color: white;
