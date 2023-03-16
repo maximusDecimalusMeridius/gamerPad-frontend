@@ -30,7 +30,7 @@ function Login({activePage, userValue, passwordValue, handleChange, isLoggedIn, 
                 localStorage.token = data.token;
                 localStorage.isLoggedIn = true;
             } else {
-                setWarningMessage("Error logging in");
+                setWarningMessage("Invalid credentials");
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
