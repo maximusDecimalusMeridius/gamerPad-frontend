@@ -39,6 +39,11 @@ a:hover {
     transform: scale(1.1) translateX(2px);
 }
 
+.pageTab a:hover {
+    text-shadow: 1px 1px 2px gray;
+    transform: scale(1) translateX(0px);
+}
+
 a:active {
     color: red;
 }

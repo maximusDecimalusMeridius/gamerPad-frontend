@@ -20,6 +20,7 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
     const renderForm = () => {
         
         switch(activeModal) {
+                        
             case("Add Account"):
                 return <AddAccount 
                         accountsList={accountsList}

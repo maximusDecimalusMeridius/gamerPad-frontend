@@ -101,7 +101,7 @@ function Signup({ activePage, userValue, emailValue, passwordValue, confirmValue
                 setTimeout(() => {
                     setWarningMessage("");
                 }, "2000")
-            } else if (!(passwordValidator.test(value))) {
+            } else if(!(passwordValidator.test(value))){
                 setWarningMessage('Passwords require at least 1 uppercase character, 1 lowercase character, 1 number, and 1 special character ds');
                 setTimeout(() => {
                     setWarningMessage("");
