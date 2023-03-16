@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "../../static/SearchBar/SearchBar";
 import "./FriendsList.css";
 
@@ -23,17 +23,6 @@ function FriendsList({
     document.title = `gamerPad - Friends`;
   }, []);
 
-  // temporary styles for temporary elements
-  const style = {
-    span: {
-      height: "20px",
-      width: "20px",
-      cursor: "pointer",
-      fontWeight: "bold",
-      color: "red",
-    },
-  };
-
   const fetchFriends = async (event) => {
     try {
       const token = localStorage.getItem("token");
@@ -51,13 +40,13 @@ function FriendsList({
 
       setFriendsList(data.Friends);
       setOriginalFriendsList(data.Friends);
-      if(data.profilePicture === localStorage.getItem("profileURL")){
+      if (data.profilePicture === localStorage.getItem("profileURL")) {
         return;
       } else {
         setProfilePicture(data.profilePicture);
         localStorage.profilePicture = data.profilePicture;
       }
-    
+
     } catch (error) {
       console.error(error);
     }
@@ -94,8 +83,49 @@ function FriendsList({
   }
 
   const goToProfile = () => {
-    
-    navigate("/profile", {replace: true})
+
+    navigate("/profile", { replace: true })
+  }
+
+  const openCard = (friend, index) => {
+    console.log(friend);
+    return (
+      <>
+        <div className="openCardHeader">
+          <h2 className="friendUsername" onClick={() => handleFriendClick(index)}>{friend.username}</h2>
+          <img className="friendPic" src={friend.profilePicture} alt="user profile identity" />
+          <span className="deleteButton" onTouchStart={handleDelete} onClick={handleDelete} data-id={friend.id}>
+            Delete
+          </span>
+        </div>
+        <div className="friendAccounts">
+          <span className="tableHeader">Accounts:</span>
+          <div className="accountTable">
+            {friend.Accounts.length === 0 ? <p style={{padding: "10px"}}>User hasn't added accounts!"</p> : <>
+            {friend.Accounts.map((account) => (
+              <ul className="account" key={crypto.randomUUID()}>
+                  <li>{account.account}</li>
+                  <li>{account.username}</li>
+              </ul>
+              ))}
+            </>}
+          </div>
+        </div>
+        <div className="friendGames">
+          <span className="tableHeader">Games:</span>
+          <div className="gameTable">
+          {friend.UserGames.length === 0 ? <p style={{padding: "10px"}}>User hasnt added games!</p> : <>
+          {friend.UserGames.map((game) => (
+              <ul className="game" key={crypto.randomUUID()}>
+                  <li>{game.Game.title}</li>
+                  <li>{game.Game.releaseDate}</li>
+              </ul>
+              ))}
+            </>}
+          </div>
+        </div>
+      </>
+    )
   }
 
   const friends = friendsList.map((friend, index) => {
@@ -104,56 +134,22 @@ function FriendsList({
     return (
       <div className="friendCard" key={index}>
         <div className="friendCardHeader">
-          <h2
-            className="friendUsername"
-            onClick={() => handleFriendClick(index)}
-          >
+          {isOpen ? openCard(friend, index) : ( <h2 className="friendUsernameClosed" onClick={() => handleFriendClick(index)}>
             {friend.username}
           </h2>
-          {isOpen && (
-            <img
-              className="friendPic"
-              src={friend.profilePicture}
-              alt="user profile identity"
-            />
           )}
-          {isOpen && friend.Accounts.length > 0 && (
-            <ul className="friendAccounts">
-              <li>Accounts:</li>
-              {friend.Accounts.map((Account) => (
-                <li key={crypto.randomUUID()}>{Account.account} </li>
-                ))}
-                {friend.Accounts.map((Account) => (
-                  <li key={crypto.randomUUID()}>{Account.username}</li>
-                  ))}
-                  
-
-            </ul>
-          )}
-          {isOpen && friend.UserGames.length > 0 && (
-            <ul className="friendGames">
-              <li>Top Games:</li>
-              {friend.UserGames.map((userGame) => (
-                <li key={crypto.randomUUID()}>{userGame.Game.title}</li>
-              ))}
-            </ul>
-          )}
-          {isOpen && (
-          <span className="deleteButton" onTouchStart={handleDelete} onClick={handleDelete} style={style.span} data-id={friend.id}>
-            X
-          </span> )}
         </div>
       </div>
     );
   });
 
   return (
-    <div className="friendContainer">{friends.length === 0 ? <> 
-          <p className="welcomeP">Let's <span className="hotLink cursor" onClick={addFriend}>add a friend</span> to get started!</p>
-            <br />
-            OR<br />
-          <p className="welcomeP">View your friend code on your <span className="hotLink cursor" onClick={goToProfile}>PROFILE</span> page!</p>
-        </> : friends}
+    <div className="friendContainer">{friends.length === 0 ? <>
+      <p className="welcomeP">Let's <span className="hotLink cursor" onClick={addFriend}>add a friend</span> to get started!</p>
+      <br />
+      OR<br />
+      <p className="welcomeP">View your friend code on your <span className="hotLink cursor" onClick={goToProfile}>PROFILE</span> page!</p>
+    </> : friends}
     </div>
   );
 }

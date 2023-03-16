@@ -18,52 +18,146 @@
     width: 90%;
     height: fit-content;
     min-width: 175px;
-    padding: 10px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #bebebe;
+    background: #323232;
+    position: relative;
+    border-radius: 25px;
+    box-shadow: inset 2px 2px 4px black;
 }
+
 .friendCardHeader{
     width: 100%;
+    padding: 1px;
+    display: grid;
+    grid-template-areas:
+        "openCardHeader friendAccounts friendGames"
+        "openCardHeader friendAccounts friendGames";
+    grid-template-columns: repeat(3, 1fr);
+    transition: .25s all ease-out;
+    gap: 10px;
+}
+
+.openCardHeader {
+    grid-area: openCardHeader;
+    padding: 5px;
+    gap: 5px;
     display: flex;
-    flex-direction: row-reverse;
-    flex-wrap:wrap-reverse;
-    justify-content: flex-end;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.friendAccounts {
+    grid-area: friendAccounts;
+    text-shadow: 1px 1px 2px black;
+}
+
+.friendGames{
+    grid-area: friendGames;
+    text-shadow: 1px 1px 2px black;
 }
 
 .friendUsername{
-    display: flex;
-    background-color: rgb(84, 84, 247);
-    align-self: flex-end;
-    height:fit-content;
+    height: fit-content;
+    width: fit-content;    
     border-radius: 5px;
     cursor: pointer;
-
+    color: #bebebe;
+    text-shadow: 1px 1px 2px black;
 }
+
+.friendUsername:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.friendUsernameClosed{
+    height: fit-content;
+    width: fit-content;    
+    border-radius: 5px;
+    cursor: pointer;
+    color: #bebebe;
+    text-shadow: 1px 1px 2px black;
+    transition: .25s all ease-out;
+}
+
+.friendUsernameClosed:hover {
+    color: white;
+    cursor: pointer;
+    transform: translateX(5px);
+}
+
 .friendPic{
     border-radius: 50%;
     height:80px;
     width:80px;
     justify-self: flex-start;
+}
 
-}
-.friendAccounts{
-    width:200px;
-    order:-1;
+.account, .game {
+    width: 100%;
     list-style: none;
+    padding: 5px;
+    border-bottom: 1px solid #323232;
+    border-bottom-style: dotted;
 }
-.friendAccounts li{
-    color:black;
+
+.account:first-child {
+    /* border radii taken from class accountTable */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
-.friendGames{
-    order:-2;
-    list-style: none;
+
+.account:last-child {
+    /* border radii taken from class accountTable */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
+.tableHeader {
+    text-transform: uppercase;
+    font-style: italic;
+    color: white;
+}
+
+.accountTable, .gameTable {
+    max-height: 100px;
+    margin-top: 5px;
+    color: black;
+    padding: 5px;
+    /* text-shadow: 1px 1px 2px black; */
+    background: #bebebe;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 4px black;
+    text-shadow: 1px 1px 2px rgb(167, 167, 167);
+    overflow: auto;
+}
+
+.account li, .game li{
+    font-size: 14px;
+    padding-left: 2px;
+}
+
 .deleteButton{
+    width: fit-content;
     display: flex;
-    align-self:flex-end;
-    font-size: 30px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: .25s all ease-out;
+}
+
+.deleteButton:hover {
+    color: red;
+    text-shadow: 1px 1px 2px black;
 }
 
 /* links on page load with no friends */
@@ -88,5 +182,26 @@
 
     .friendCard h2 {
         font-size: 18px;
+    }
+}
+
+@media (width < 800px) {
+    .friendCardHeader{
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            "openCardHeader openCardHeader"
+            "friendAccounts friendGames";
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .openCardHeader {
+       
+    }
+}
+
+@media (width < 600px) {
+    .friendCardHeader {
+        display: flex;
+        flex-direction: column;
     }
 }
