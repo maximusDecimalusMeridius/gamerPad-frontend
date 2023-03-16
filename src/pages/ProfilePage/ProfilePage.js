@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProfilePage.css';
+import { Link } from "react-router-dom";
 import AccountsList from "../../components/dynamic/AccountsList/AccountsList";
 import SearchBar from '../../components/static/SearchBar/SearchBar';
 // import bcrypt from 'bcrypt'
@@ -252,7 +253,7 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
           <div className='profileInnerDiv'>
             <div>
               <p className="userRowItem">Username: {username}</p>
-              <p className="emailRowItem">email: {userInfo.email}</p>
+              <p className="emailRowItem">Email: {userInfo.email}</p>
             </div>
             <div>
               <p className="friendCodeRowItem">Friend Code: {userInfo.friendCode}</p>
@@ -271,9 +272,9 @@ function ProfilePage({ accountsList, setAccountsList, originalAccountsList, setO
   return (
     <div className="profilePageContainer">
       <div className="profileHeader">
-        <div>{gamesNum} Games</div>
+      <Link to="/dashboard/social">{friendsNum} Friends</Link>
         <h3>{username}</h3>
-        <div>{friendsNum} Friends</div>
+      <Link to="/dashboard/games">{gamesNum} Games</Link>
       </div>
       <div className="profileContent">
         {renderProfile()}

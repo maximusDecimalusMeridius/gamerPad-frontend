@@ -1,11 +1,15 @@
 .profilePageContainer {
     --profile-padding: 2%;
     height: 90%;
-    width: 80%;
+    width: 85%;
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 5px 8px 2px black;
+    box-shadow: 3px 3px 10px 2px rgb(36, 35, 35);
     border-radius: var(--homeContainer-border-radius);
+}
+
+.profileContent .searchbarInput:focus {
+    position: relative;
 }
 
 .profileContent {
@@ -123,6 +127,10 @@
     font-style: italic;
 }
 
+#update, #cancel {
+    margin-top: 5px;
+}
+
 .passwordRowItem button {
     margin: 5px;
 }
@@ -156,6 +164,7 @@
     .profileInnerDiv, .passwordFormInputs {
         width: 90%;
         max-width: 300px;
+        text-align: center;
     }
 
     .updatePasswordForm {
