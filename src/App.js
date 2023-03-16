@@ -72,11 +72,14 @@ function App() {
         }
       })
     }
+    setBackgroundColor(localStorage.getItem("backgroundColor"))
   },[])
+
+  const [backgroundColor, setBackgroundColor] = useState("#bebebe")
   
   return (
     <Router>
-      <div className="appContainer">
+      <div className="appContainer" style={{backgroundColor:`${backgroundColor}`}}>
        
         <header>
           <Header 
@@ -119,6 +122,8 @@ function App() {
                           setWarningMessage={setWarningMessage}
                           />}
           {isLoggedIn && <HomePage 
+                          setBackgroundColor={setBackgroundColor}
+                          backgroundColor={backgroundColor}
                           showModal={showModal}
                           setShowModal={setShowModal}
                           activeModal={activeModal}
