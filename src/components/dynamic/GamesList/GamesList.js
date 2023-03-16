@@ -12,7 +12,6 @@ function GamesList({gamesList, setGamesList, originalGameList, setOriginalGameLi
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
         fetchGames();
-        document.title = `gamerPad - Games`;
     }, []);
 
     const fetchGames = async (event) => {

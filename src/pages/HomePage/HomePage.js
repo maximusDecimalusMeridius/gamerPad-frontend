@@ -58,7 +58,6 @@ function HomePage({ backgroundColor, setBackgroundColor, showModal, setShowModal
     // useEffect hook to fetch all notes on page load
     useEffect(() => {
         fetchGames();
-        document.title = `gamerPad - Games`;
     }, []);
 
     // Fetch data
