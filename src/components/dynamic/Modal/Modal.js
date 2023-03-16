@@ -10,13 +10,6 @@ function Modal({showModal, setShowModal, activeModal, setActiveModal,
                 setOriginalWrittenNotesList, friendsList, setFriendsList, originalFriendsList, setOriginalFriendsList, accountsList, 
                 setAccountsList, originalAccountsList, setOriginalAccountsList, setMenuType, warningMessage, setWarningMessage}) {
 
-    //TODO: conditionally render display component based on activeModal
-    //TODO: pass setter to every component
-
-    useEffect(() => {
-        document.title = `gamerPad - Add Something!`
-    })
-
     const renderForm = () => {
         
         switch(activeModal) {
