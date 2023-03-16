@@ -25,7 +25,7 @@ function App() {
   const [originalCommsList, setOriginalCommsList] = useState([]);
   const [commsList, setCommsList] = useState([])
   const [profilePicture, setProfilePicture] = useState("")
-  const [setToken] = useState("");
+  const [token, setToken] = useState("");
 
   const validateToken = async (token) => {
     setActiveModal("Checking Login Info...");
