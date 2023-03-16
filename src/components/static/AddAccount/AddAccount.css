@@ -7,6 +7,17 @@
     gap: 5px;
 }
 
+.addSubmitButton {
+    width: 200px;
+}
+
+.statusWindowAccount {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 .inputContainer > input, 
 .inputContainer > select,
 .inputContainer > div {

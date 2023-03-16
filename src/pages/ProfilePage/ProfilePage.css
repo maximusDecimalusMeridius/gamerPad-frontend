@@ -25,7 +25,7 @@
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background-color: #323232;
+    background-color: #353535b1;
 }
 
 .profileHeader {
@@ -50,7 +50,7 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #bebebe;
+    background-color: #1a1919b7;
     flex-wrap: nowrap;
 }
 
