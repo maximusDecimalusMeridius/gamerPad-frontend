@@ -28,7 +28,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
             const newAccountObj = {
                 account: accountName.trim(),
                 color: accountColorCode,
-                type: accountType.trim(),
+                type: document.querySelector("#accountType").value,
                 username: accountUsername.trim(),
                 gamerTag: gamertag.trim()
             }
@@ -99,7 +99,7 @@ function AddAccount({setShowModal, accountsList, setAccountsList, originalAccoun
                     <input type="text" id="accountName" name="accountName" placeholder="account name" onChange={handleChange} value={accountName} required></input>
                     <input className="cursor" id="accountColorCode" type="color" value={accountColorCode} onChange={handleChange}></input>
                 </div>
-                <select type="text" id="accountType" name="accountType" placeholder="account type" onChange={handleChange} value={accountType} required>
+                <select type="text" id="accountType" name="accountType" placeholder="account type" required>
                     {dropdown}
                 </select>
                 <input type="text" id="accountUsername" name="accountUsername" placeholder="account_name#3232" onChange={handleChange} value={accountUsername}required></input>
